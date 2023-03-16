@@ -82,7 +82,10 @@
 
 <div class='multi-column-{{ id }}'>
   <div class="container">
+    {% if section.settings.title %}
     <h3 class='yc-section-title'>{{ section.settings.title }}</h3>
+    {% endif %}
+    
     <div class='multi-column-blocks'>
       {% for block in section.blocks %}
         {% assign block_setting = block.settings %}

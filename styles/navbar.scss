@@ -138,6 +138,19 @@
         font-weight: 400;
         height: 100%;
         text-decoration: none;
+        position: relative;
+      }
+
+      &.active ::after {
+        display: block;
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        border-radius: 50%;
+        right: 0;
+        width: 40%;
+        height: 2px;
+        background-color: var(--yc-primary-color)
       }
     }
 

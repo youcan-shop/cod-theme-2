@@ -121,6 +121,10 @@
   text-decoration: none;
   position: relative;
 }
+.yc-header .yc-navbar .menu-item.active a {
+  color: var(--yc-primary-color);
+  font-weight: 600;
+}
 .yc-header .yc-navbar .menu-item.active ::after {
   display: block;
   content: "";

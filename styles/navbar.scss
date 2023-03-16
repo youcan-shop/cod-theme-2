@@ -141,6 +141,13 @@
         position: relative;
       }
 
+      &.active {
+        a {
+          color: var(--yc-primary-color);
+          font-weight: 600;
+        }
+      }
+
       &.active ::after {
         display: block;
         content: "";

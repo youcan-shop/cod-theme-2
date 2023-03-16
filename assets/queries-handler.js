@@ -8,6 +8,9 @@ const sortField = urlParams.get('sort_field');
 const sortOrder = urlParams.get('sort_order');
 const sortSelect = document.querySelector('.sort-select');
 let page = +urlParams.get('page[cod]');
+const productFiltring = document.querySelector('#productDropdownFiltring');
+const dropdownBtn = productDropdownFiltring.querySelector('.dropbtn');
+const dropdownContent = productDropdownFiltring.querySelector('.dropdown-content');
 
 const updateUrl = (key, value, url) => {
   if (url.searchParams.has(key)) {
@@ -52,10 +55,13 @@ if (paginateBtnCurrent) {
 if (searchTitle) {
   searchTitle.innerHTML = query;
 }
+
 // dropdown select
 function setupDropdown(dropdownBtn, dropdownContent, convertUrlWithMultipleQuery) {
   // Handle the click event for the dropdown button
-  dropdownBtn.addEventListener('click', () => showDropDownMenu(dropdownContent));
+  dropdownBtn.addEventListener('click', () => {
+    dropdownContent.classList.toggle('show');
+  });
 
   // Handle the click event for the options in the dropdown
   dropdownContent.addEventListener('click', (event) => {
@@ -65,32 +71,31 @@ function setupDropdown(dropdownBtn, dropdownContent, convertUrlWithMultipleQuery
 
     window.location.href = convertUrlWithMultipleQuery(['sort_field', 'sort_order'], [newSortField, newSortOrder]);
   });
+
+  // Hide the dropdown when the user clicks outside of it
+  window.addEventListener('click', (event) => {
+    if (!event.target.matches('.dropbtn, .dropbtn *')) {
+      dropdownContent.classList.remove('show');
+    }
+  });
 }
 
-function filterProduct() {
-  const productFiltring = document.querySelector('#productDropdownFiltring');
-  const filterDropdownBtn = productDropdownFiltring.querySelector('.dropbtn');
-  const filterDropdownContent = productDropdownFiltring.querySelector('.dropdown-content');
+if (productFiltring) {
+  const sortField = urlParams.get('sort_field') || 'price';
+  const sortOrder = urlParams.get('sort_order') || 'asc';
 
-  if (productFiltring) {
-    const sortField = urlParams.get('sort_field') || 'price';
-    const sortOrder = urlParams.get('sort_order') || 'asc';
+  // Get the selected option from the URL parameters
+  const selectedOption = dropdownContent.querySelector(`[data-value="${sortField}-${sortOrder}"]`);
 
-    // Get the selected option from the URL parameters
-    const selectedOption = filterDropdownContent.querySelector(`[data-value="${sortField}-${sortOrder}"]`);
+  // Update the dropdown button text with the selected option
+  dropdownBtn.innerHTML = `<span class='order-by'>${order_by} : </span> ${selectedOption.textContent}`;
 
-    // Update the dropdown button text with the selected option
-    filterDropdownBtn.innerHTML = `<span class='order-by'>${order_by} : </span> ${selectedOption.textContent}`;
+  const icon = document.createElement('ion-icon');
+  icon.setAttribute('name', 'chevron-down-outline');
+  icon.classList.add('dropdown-icon');
+  dropdownBtn.appendChild(icon);
 
-    const icon = document.createElement('ion-icon');
-    icon.setAttribute('name', 'chevron-down-outline');
-    icon.classList.add('dropdown-icon');
-    filterDropdownBtn.appendChild(icon);
+  selectedOption.style.fontWeight = 'bold';
 
-    selectedOption.style.fontWeight = 'bold';
-
-    setupDropdown(filterDropdownBtn, filterDropdownContent, convertUrlWithMultipleQuery);
-  }
+  setupDropdown(dropdownBtn, dropdownContent, convertUrlWithMultipleQuery);
 }
-
-filterProduct();

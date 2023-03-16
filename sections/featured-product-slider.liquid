@@ -6,30 +6,30 @@
 {% assign id = 100 | rand: 2000 %}
 
 {% style %}
-  .section-featured-products-{{id}} {
+  .section-featured-products-{{ id }} {
     margin-top: {{ section.settings.margin_top }}px;
     margin-bottom: {{ section.settings.margin_bottom }}px;
   }
 
   @media screen and (min-width: 768px) {
-    .section-featured-products-{{id}} {
+    .section-featured-products-{{ id }} {
       padding: 0 70px;
     }
   }
 
   @media screen and (min-width: 1024px) {
-    .section-featured-products-{{id}} {
+    .section-featured-products-{{ id }} {
       padding: 0 100px;
     }
   }
 
   @media screen and (min-width: 1440px) {
-    .section-featured-products-{{id}} {
+    .section-featured-products-{{ id }} {
       padding: 0 150px;
     }
   }
 
-  .bg-color-{{id}} {
+  .bg-color-{{ id }} {
     padding: 45px;
     background-color: #E7412F;
     border-radius: 6px;
@@ -49,24 +49,24 @@
     color: #fff;
   }
 
-  .section-featured-products-{{id}} {
+  .section-featured-products-{{ id }} {
     {% if section.settings.background_color %}
       background-color: {{ section.settings.background_color.hex }};
     {% endif %}
   }
 
-  .section-featured-products-{{id}} * {
+  .section-featured-products-{{ id }} * {
     color: {{ section.settings.text_color.hex }};
   }
 
-  .section-featured-products-{{id}} .countdown-wrapper .countdown .sec .num {
+  .section-featured-products-{{ id }} .countdown-wrapper .countdown .sec .num {
     border-color: {{ section.settings.text_color.hex }};
   }
   
 {% endstyle %}
 
-<div class='yc-featured-products section-featured-products-{{id}} container'>
-  <div class='bg-color-{{id}}'>
+<div class='yc-featured-products section-featured-products-{{ id }} container'>
+  <div class='bg-color-{{ id }}'>
     <div class="counter-wrapper">
           <h1 class='yc-section-title'>
             {{ section.settings.title }}

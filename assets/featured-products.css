@@ -60,7 +60,7 @@
   font-weight: 600;
   text-align: start;
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .yc-featured-products .counter-wrapper .yc-section-title {
     font-size: 18px;
   }
@@ -118,6 +118,9 @@
   transform: translate(-50%, -50%) scale(1.1);
 }
 .yc-featured-products .product-list .product-block .product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   text-align: center;
   padding: 10% 15%;
 }
@@ -137,7 +140,6 @@
 .yc-featured-products .product-list .product-block .product-details .product-title {
   font-weight: 600;
   font-size: 12px;
-  margin-bottom: 5px;
 }
 @media (min-width: 768px) {
   .yc-featured-products .product-list .product-block .product-details .product-title {
@@ -150,15 +152,6 @@
   align-items: center;
   justify-content: center;
   gap: 7px;
-  padding: 0 6px;
-}
-@media (min-width: 768px) {
-  .yc-featured-products .product-list .product-block .prices {
-    flex-direction: row;
-    align-items: center;
-    margin: 8px auto;
-    gap: 4px;
-  }
 }
 .yc-featured-products .product-list .product-block .prices .product-price {
   font-weight: 600;
@@ -166,9 +159,10 @@
   font-size: 20px;
   line-height: 120%;
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .yc-featured-products .product-list .product-block .prices .product-price {
-    font-size: 20px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }
 .yc-featured-products .product-list .product-block .prices .compare-at-price {
@@ -178,6 +172,12 @@
   font-size: 18px;
   font-weight: 300;
   color: #9B9B9B;
+}
+@media (max-width: 768px) {
+  .yc-featured-products .product-list .product-block .prices .compare-at-price {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
 .yc-featured-products .product-list .product-block .prices .product-thumbnail:hover img {
   transform: scale(1.1);

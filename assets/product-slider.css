@@ -16,7 +16,6 @@
   transform: translate(-50%, -50%) scale(1.1);
 }
 .product-slider .prices {
-  margin: 20px 0 0;
   text-align: center;
   padding-bottom: 12px;
 }
@@ -58,8 +57,13 @@
   border: 1px solid #E6E6E6;
 }
 .product-slider .product-block .product-details {
-  text-align: center;
   margin: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
 }
 .product-slider .product-block .product-details .prices {
   display: flex;

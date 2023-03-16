@@ -60,7 +60,7 @@
   font-weight: 600;
   text-align: start;
 }
-@media screen and (max-width: 767px) {
+@media (min-width: 768px) {
   .yc-featured-products .counter-wrapper .yc-section-title {
     font-size: 18px;
   }
@@ -148,7 +148,6 @@
 .yc-featured-products .product-list .product-block .prices {
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
   gap: 7px;
   padding: 0 6px;

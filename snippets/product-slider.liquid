@@ -19,12 +19,6 @@
     background: var(--yc-primary-color);
     color: {{ section.settings.tag_text_color.hex }};
   }
-
-  @media screen and (max-width: 768px) {
-    #yc_slider_{{ id }} .product-details {
-      display: none;
-    }
-  }
 {% endstyle %}
 
 <div
@@ -62,11 +56,11 @@
                 <span class='product-title'>{{ block.settings.product.name }}</span>
   
                 <div class='prices'>
-                  {% if block.settings.product.price %}
-                    <span class='product-price'>{{ block.settings.product.price | money }}</span>
-                  {% endif %}
                   {% if section.settings.show_compare_at_price and block.settings.product.compare_at_price %}
                     <span class='compare-at-price'>{{ block.settings.product.compare_at_price | money }}</span>
+                  {% endif %}
+                  {% if block.settings.product.price %}
+                    <span class='product-price'>{{ block.settings.product.price | money }}</span>
                   {% endif %}
                 </div>
   

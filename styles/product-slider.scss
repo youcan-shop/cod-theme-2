@@ -48,31 +48,31 @@
   .splide__pagination {
     display: flex !important;
     justify-content: center;
-    margin-bottom: -36px;
   }
 
   .product-block {
     width: 100%;
     background-color: white;
-    border-radius: 3px;
+    border-radius: 5px;
+    border: 1px solid #E6E6E6;
 
     .product-details {
       text-align: center;
-      margin: 8px auto;
-    }
+      margin: 24px;
 
-    .prices {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
+      .prices {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
 
-    .compare-at-price {
-      font-weight: 400;
-      color: #8D8D8D;
-      font-size: 15px;
-      line-height: 120%;
-      text-decoration-line: line-through;
+      .compare-at-price {
+        font-weight: 400;
+        color: #8D8D8D;
+        font-size: 15px;
+        line-height: 120%;
+        text-decoration-line: line-through;
+      }
     }
   }
 }

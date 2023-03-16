@@ -40,6 +40,9 @@
 .countdown-wrapper .countdown .sec .num {
   border-width: 2px;
 }
+.countdown-wrapper .countdown .sec .word {
+  font-weight: 400;
+}
 .countdown-wrapper .countdown .dots {
   font-size: 40px;
   margin-top: -11px;
@@ -61,6 +64,17 @@
   .yc-featured-products .counter-wrapper .yc-section-title {
     font-size: 18px;
   }
+}
+.yc-featured-products .splide {
+  padding: 37px 0 5rem 0;
+}
+.yc-featured-products .splide .splide__pagination__page {
+  background-color: var(--yc-primary-color);
+  opacity: 0.3;
+}
+.yc-featured-products .splide .splide__pagination__page.is-active {
+  background-color: var(--yc-primary-color);
+  opacity: 1;
 }
 .yc-featured-products .product-list {
   display: grid;

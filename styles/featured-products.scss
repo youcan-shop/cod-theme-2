@@ -20,6 +20,20 @@
     }
   }
 
+  .splide {
+    padding: 37px 0 5rem 0;
+
+    .splide__pagination__page {
+      background-color: var(--yc-primary-color);
+      opacity: 0.3;
+
+      &.is-active {
+        background-color: var(--yc-primary-color);
+        opacity: 1;
+      }
+    }
+  }
+
   .product-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -56,7 +70,7 @@
           object-fit: cover;
           transform: translate(-50%,-50%);
           transition: transform .25s ease;
-  
+
           &:hover {
             transform: translate(-50%,-50%) scale(1.1);
           }

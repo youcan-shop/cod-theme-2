@@ -45,8 +45,14 @@
       border: 1px solid currentColor;
     }
 
-    & .sec .num {
-      border-width: 2px;
+    .sec {
+      .num {
+        border-width: 2px;
+      }
+
+      .word {
+        font-weight: 400;
+      }
     }
 
     .dots {

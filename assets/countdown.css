@@ -40,6 +40,9 @@
 .countdown-wrapper .countdown .sec .num {
   border-width: 2px;
 }
+.countdown-wrapper .countdown .sec .word {
+  font-weight: 400;
+}
 .countdown-wrapper .countdown .dots {
   font-size: 40px;
   margin-top: -11px;

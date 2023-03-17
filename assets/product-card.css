@@ -113,7 +113,7 @@
 
 #selected-product-variants .image-container {
   width: 40px;
-  height: auto;
+  height: 40px;
 }
 
 #selected-product-variants .image-container img {

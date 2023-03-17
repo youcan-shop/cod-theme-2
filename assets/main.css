@@ -367,9 +367,9 @@ input:not([type=radio]),
 .yc-colors-select .color-item {
   width: 34px;
   height: 34px;
-  border-radius: 50%;
-  border: 1px solid #E7E7E7;
+  border-radius: 5px;
   cursor: pointer;
+  padding: 2px;
 }
 .yc-colors-select .color-item:focus {
   outline: none;
@@ -378,13 +378,9 @@ input:not([type=radio]),
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
 }
 .yc-colors-select .color-item .value {
   opacity: 0;
-}
-.yc-colors-select .color-item.active {
-  padding: 4px;
 }
 
 /* --------------------------- */

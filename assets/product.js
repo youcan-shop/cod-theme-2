@@ -13,13 +13,6 @@ function previewProductImage(element) {
 function uploadImage(element) {
   const parentSection = element.closest('.yc-single-product');
   const uploadInput = parentSection.querySelector('#yc-upload');
-  const uploadArea = parentSection.querySelector('.yc-upload');
-  const imagePreview = parentSection.querySelector('.yc-upload-preview');
-  const imageWrapper = imagePreview.querySelector('.yc-image-preview');
-  const progressContainer =  imagePreview.querySelector('.progress-container');
-  const imageName = $('.yc-image-info .image-name');
-  const imageSize = $('.yc-image-info .image-size');
-  const closePreviewButton = $('#close-preview');
   let uploadedImageLink = parentSection.querySelector('#yc-upload-link');
 
   uploadInput.click();
@@ -29,34 +22,29 @@ function uploadImage(element) {
       const reader = new FileReader();
       reader.readAsDataURL(this.files[0]);
 
-      reader.addEventListener("load", () => {
+      reader.onload = function () {
         const base64 = reader.result;
-        const previews = parentSection.querySelectorAll('.yc-image-preview .yc-image img');
 
+        const previews = parentSection.querySelectorAll(
+          '.yc-upload-preview img'
+        );
         previews.forEach((preview) => {
           preview.remove();
         });
 
+        const uploadArea = parentSection.querySelector('.yc-upload');
         uploadArea.style.display = 'none';
-        imagePreview.style.display = 'block';
-        imageWrapper.style.opacity = 0.4;
-        imageName.innerText = this.files[0].name;
-        progressContainer.style.display = "block";
 
         const preview = document.createElement('img');
         preview.src = base64;
-        parentSection.querySelector('.yc-image-preview .yc-image').appendChild(preview);
 
-        closePreviewButton.addEventListener('click', function () {
+        preview.addEventListener('click', function () {
           uploadArea.style.display = 'flex';
-          imagePreview.style.display = 'none';
           uploadInput.value = '';
           preview.remove();
         });
-
-        getFileSize(this.files[0], preview);
-        smoothProgressBar();
-      });
+        parentSection.querySelector('.yc-upload-preview').appendChild(preview);
+      };
 
       const res = await youcanjs.product.upload(this.files[0]);
       if (res.error) return notify(res.error, 'error');
@@ -64,46 +52,6 @@ function uploadImage(element) {
       uploadedImageLink.value = res.link;
     }
   });
-
-  function getFileSize(file, source) {
-    const fileSizeInBytes = file.size;
-    const fileSizeInKB = fileSizeInBytes / 1024;
-    const fileSizeInMB = fileSizeInKB / 1024;
-
-    if(fileSizeInMB > 2) {
-      source.src = '';
-      source.style.height = "40px";
-      imageName.style.color = "red";
-      imageName.innerText = sizeBigMessage;
-      imageSize.innerText = fileSizeInMB.toFixed(2) + " Mb";
-    } else if(fileSizeInMB < 1) {
-      imageName.style.color = "inherit";
-      imageSize.innerText = fileSizeInKB.toFixed(2) + " Kb";
-    } else {
-      imageName.style.color = "inherit";
-      imageSize.innerText = fileSizeInMB.toFixed(2) + " Mb";
-    }
-  }
-
-  function smoothProgressBar() {
-    const progressBar = document.querySelector('.progress-bar');
-    let progress = 0;
-    progressBar.style.width = progress;
-    const interval = setInterval(() => {
-      if (progress >= 100) {
-        setTimeout(() => {
-          progressContainer.style.display = 'none';
-          imageWrapper.style.opacity = 1;
-        }, 1000);
-        clearInterval(interval);
-        return;
-      }
-      progress += 10;
-      progressBar.style.width = `${progress}%`;
-    }, 200);
-
-    progressBar.style.transition = 'width 1s ease-in-out';
-  }
 }
 
 (function productImageHoverZoomer() {
@@ -164,7 +112,8 @@ function selectDefaultOptions(parentSection) {
 
     switch (optionType) {
       case 'dropdown':
-        option.querySelector('.dropdown-content li:first-child').classList.add('selected');
+        option.querySelector('select').value =
+          option.querySelector('select').options[0].value;
         break;
       case 'textual_buttons':
         option.querySelector('.yc-options-item').classList.add('active');
@@ -206,7 +155,7 @@ function getSelectedOptions(parentSection) {
 
     switch (optionType) {
       case 'dropdown':
-        selectedOptions[optionName] = option.querySelector('.dropdown-content li.selected')?.innerText;
+        selectedOptions[optionName] = option.querySelector('select')?.value;
         break;
       case 'textual_buttons':
         selectedOptions[optionName] = option.querySelector(
@@ -285,9 +234,7 @@ function updateProductDetails(parentSection, image, price, variations) {
         String(productPrice.innerHTML).split(' ')[0]
       } ${price}`;
 
-      if(showStickyCheckoutPrice) {
-        showStickyCheckoutPrice.innerHTML = productPrice.innerHTML;
-      }
+      showStickyCheckoutPrice.innerHTML = productPrice.innerHTML;
     })
   }
 
@@ -480,7 +427,7 @@ function showSelectedVariants() {
         variantOption = createAndSetText(variantName, radioButton).element;
       break;
       case 'dropdown':
-        const dropDown = variant.querySelector('.dropdown-content li.selected')?.innerText;
+        const dropDown = variant.querySelector('select')?.value;
         variantOption = createAndSetText(variantName, dropDown).element;
         break;
       case 'image_based_buttons':
@@ -488,7 +435,7 @@ function showSelectedVariants() {
         variantOption = createAndSetText(variantName, imageBasedButton, 'image-container').element;
         break;
       case 'upload_image_zone':
-        const uploadImageZone = variant.querySelector('.yc-image-preview .yc-image img')?.outerHTML;
+        const uploadImageZone = variant.querySelector(' .yc-upload-preview img')?.outerHTML;
         variantOption = createAndSetText(variantName, uploadImageZone, 'image-container').element;
         break;
     }

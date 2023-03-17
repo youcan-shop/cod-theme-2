@@ -12,17 +12,14 @@
       </label>
       {% case option.type %}
         {% when 'dropdown' %}
-          <div class='dropdown-input' onclick='showDropDownMenu()'>
-            <div class='dropbtn'>
-              <span class='option-name'>hello</span>
-              <ion-icon name='chevron-down-outline' class='dropdown-icon'/>
-            </div>
-            <ul class='dropdown-content' name='{{ option.name }}'>
-              {% for item in option.values %}
-                <li value='{{ item }}'>{{ item }}</li>
-              {% endfor %}
-            </ul>
-          </div>
+          <select
+            class='yc-dropdown'
+            name='{{ option.name }}'
+          >
+            {% for item in option.values %}
+              <option value='{{ item }}'>{{ item }}</option>
+            {% endfor %}
+          </select>
         {% when 'textual_buttons' %}
           <ul class='yc-options-list'>
             {% for item in option.values %}
@@ -35,15 +32,22 @@
             {% endfor %}
           </ul>
         {% when 'radio_buttons' %}
-          <div class='yc-radio'>
-            {% for item in option.values %}
-              <label class='yc-radio-buttons' for='{{ item }}'>
-                <input type='radio'  id='{{ item }}' name='{{ option.name }}' value='{{ item }}'>
-                <span class='checkmark'></span>
-                <span class='label-text'>{{ item }}</span>
+          {% for item in option.values %}
+            <div class='yc-radio'>
+              <input
+                type='radio'
+                id='{{ item }}'
+                name='{{ option.name }}'
+                value='{{ item }}'
+              >
+              <label
+                class='yc-radio-buttons'
+                for='{{ item }}'
+              >
+                <span>{{ item }}</span>
               </label>
-            {% endfor %}
-          </div>
+            </div>
+          {% endfor %}
         {% when 'image_based_buttons' %}
           <ul class='yc-image-options-list'>
             {% for item in option.values %}
@@ -60,27 +64,14 @@
             {% endfor %}
           </ul>
         {% when 'upload_image_zone' %}
-          <div class='yc-upload' onclick='uploadImage(this)'>
-            <ion-icon class='upload-icon' name='cloud-upload-outline'></ion-icon>
+          <div
+            class='yc-upload'
+            onclick='uploadImage(this)'
+          >
+            <ion-icon name='cloud-upload-outline'></ion-icon>
             <span class='upload-msg'>{{ 'snippets.single_product.variants.upload' | t }}</span>
           </div>
-          <section class='yc-upload-preview'>
-            <div class='yc-upload-wrapper'>
-              <div class='yc-image-preview'>
-                <span class='yc-image'></span>
-                <div class='yc-image-info'>
-                  <span class='image-name'></span>
-                  <span class='image-size'></span>
-                </div>
-              </div>
-              <button type='button' id='close-preview'>
-                <ion-icon name="close-outline"  style="zoom:2.0;"></ion-icon>
-              </button>
-            </div>
-            <div class="progress-container">
-              <div class="progress-bar"></div>
-            </div>
-          </section>
+          <div class='yc-upload-preview'></div>
         {% when 'color_base_buttons' %}
           <ul class='yc-colors-select'>
             {% for item in option.values %}
@@ -100,5 +91,3 @@
     </div>
   {%- endfor %}
 </div>
-
-{{ 'dropdown-menu.js' | asset_url | script_tag_deferred }}

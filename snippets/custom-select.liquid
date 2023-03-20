@@ -11,6 +11,7 @@
 }
 
 #custom-select-{{select_id}} select {
+  font-family: var(--yc-font-family);
   appearance: none;
   border: 1px solid #E6E6E6;
   cursor: pointer;
@@ -51,10 +52,20 @@
 #custom-select-{{select_id}} .dropdown-option:hover {
   background-color: #F7F7F7;
 }
+
+#custom-select-{{select_id}} .select-icon {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    color: #666;
+}
 {% endstyle %}
 
 <div class="custom-select" id="custom-select-{{ select_id }}">
   <select></select>
+  <span class="select-icon">{% render 'icon', name: 'chevron_down' %}</span>
   <div class="dropdown-list"></div>
 </div>
 

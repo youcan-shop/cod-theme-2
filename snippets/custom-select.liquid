@@ -1,0 +1,103 @@
+{% assign select_id = 100 | rand: 2000 %}
+
+{% style %}
+#custom-select-{{select_id}} {
+  position: relative;
+  min-width: 250px;
+}
+
+#custom-select-{{select_id}} select * {
+  display:none;
+}
+
+#custom-select-{{select_id}} select {
+  appearance: none;
+  border: 1px solid #E6E6E6;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  display: block !important;
+  border-radius: 5px;
+  font-style: normal;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+#custom-select-{{select_id}} .dropdown-list {
+  background-color: #fff;
+  border: 1px solid #E6E6E6;
+  display: none;
+  max-height: 150px;
+  overflow-y: auto;
+  position: absolute;
+  top: 117%;
+  width: 100%;
+  z-index: 1;
+  filter: drop-shadow(0px 4px 4px rgba(193, 193, 193, 0.22));
+  border-radius: 5px;
+}
+
+#custom-select-{{select_id}} .dropdown-list.show {
+  display: block;
+}
+
+#custom-select-{{select_id}} .dropdown-option {
+  cursor: pointer;
+  padding: 10px;
+}
+
+#custom-select-{{select_id}} .dropdown-option:hover {
+  background-color: #F7F7F7;
+}
+{% endstyle %}
+
+<div class="custom-select" id="custom-select-{{ select_id }}">
+  <select></select>
+  <div class="dropdown-list"></div>
+</div>
+
+<script>
+
+function formatOptions(str) {
+  const arr = JSON.parse(str.slice(1, -1));
+  const arabicArr = arr.map((elem) => {
+    return elem.replace(/\\u([\dA-F]{4})/gi, function (match, hex) {
+      return String.fromCharCode(parseInt(hex, 16));
+    });
+  });
+  return arabicArr;
+}
+
+const select_options = `{{data | json}}`;
+const select = document.querySelector('#custom-select-{{select_id}} select');
+const list = document.querySelector('#custom-select-{{select_id}} .dropdown-list');
+const options = formatOptions(select_options).map(option => ({label: option, value: option}));
+
+options.forEach(option => {
+  const selectOption = document.createElement('option');
+  selectOption.value = option.value;
+  selectOption.text = option.label;
+  select.appendChild(selectOption);
+
+  const dropdownOption = document.createElement('div');
+  dropdownOption.classList.add('dropdown-option');
+  dropdownOption.dataset.value = option.value;
+  dropdownOption.textContent = option.label;
+  list.appendChild(dropdownOption);
+});
+
+select.addEventListener('click', event => {
+  event.preventDefault();
+  list.classList.toggle('show');
+});
+
+list.addEventListener('click', event => {
+  if (event.target.classList.contains('dropdown-option')) {
+    select.value = event.target.dataset.value;
+    list.classList.remove('show');
+  }
+});
+
+</script>

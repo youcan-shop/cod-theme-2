@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .yc-cart {
   margin: 4rem 0 2rem;
 }
@@ -147,6 +148,7 @@
   }
 }
 
+/* I Miss Her 💗, what can i do 😩 */
 .table-container {
   display: flex;
   flex-direction: column;
@@ -154,11 +156,20 @@
   overflow-x: auto;
 }
 .table-container .cart__item {
-  background: #F5F5F5;
   border: 1px solid #EDEDED;
   border-radius: 0px 0px 4px 4px;
   position: relative;
   margin-bottom: 25px;
+}
+.table-container .cart__item .product-variant {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 400;
+  font-size: 14px;
+}
+.table-container .cart__item .product-variant .variant-divider:last-child {
+  display: none;
 }
 .table-container .header {
   border: 1px solid #EDEDED;
@@ -170,6 +181,7 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  background-color: var(--yc-neutral-light-color);
 }
 .table-container .header .cell {
   flex-basis: 20%;

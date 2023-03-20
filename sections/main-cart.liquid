@@ -1,5 +1,5 @@
 {{ 'cart.css' | asset_url | stylesheet_tag }}
-
+{%dump cart.items%}
 <div class='yc-cart mt-4'>
   {%- if cart and cart.items %}
     <div class='container cart-table'>
@@ -35,9 +35,11 @@
         <div class='cell '>
           <div class="product-title">{{ item.name }}</div>
           <div class="product-variant">
-            {% comment %} To be added when variants are added on the backend {% endcomment %}
+            {% for variant in item.variations %}
+              <span class="variant">{{ variant.1 }}</span>
+              <span class="variant-divider">.</span>
+            {% endfor %}
           </div>
-          <div class='product-price'>{{ item.price | money }}</div>
         </div>
         <div class='cell'>
           {%- render 'quantity-input', item: item -%}

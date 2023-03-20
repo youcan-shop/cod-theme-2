@@ -496,6 +496,7 @@ function setup() {
         const selectedVariant = getSelectedVariant(section);
         const variantIdInput = section.querySelector('#variantId');
         variantIdInput.value = selectedVariant.id;
+        console.log('selectedVariant', selectedVariant)
 
         updateProductDetails(
           section,

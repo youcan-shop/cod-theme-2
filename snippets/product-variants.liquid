@@ -1,3 +1,5 @@
+
+{% render 'custom-select', data: "[{label: 'one', value:'two'}]" %}
 <div class='product-options'>
   {% for option in options -%}
     <div
@@ -12,7 +14,7 @@
       </label>
       {% case option.type %}
         {% when 'dropdown' %}
-          {% render 'custom-select', data: option.values %}
+          {% render 'custom-select', data: option.values, format: true %}
         {% when 'textual_buttons' %}
           <ul class='yc-options-list'>
             {% for item in option.values %}

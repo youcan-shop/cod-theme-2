@@ -1,3 +1,11 @@
+{% comment %}
+     - To pass hard coded value use this syntax
+    {% render 'custom-select', data: "[{label: 'one', value:'two'}]" %}
+
+    - If you only have an array of values and you want to pass it you can use format option
+    {% render 'custom-select', data: option.values, format: true %}
+{% endcomment %}
+
 {% assign select_id = 100 | rand: 2000 %}
 
 {% style %}
@@ -81,34 +89,41 @@ function formatOptions(str) {
   return arabicArr;
 }
 
-const select_options = `{{data | json}}`;
-const select = document.querySelector('#custom-select-{{select_id}} select');
-const list = document.querySelector('#custom-select-{{select_id}} .dropdown-list');
-const options = formatOptions(select_options).map(option => ({label: option, value: option}));
+function setCustomSelect(){
+    const select_options =  {% if format %} `{{data | json}}` {% else %} {{ data }} {% endif %};
 
-options.forEach(option => {
-  const selectOption = document.createElement('option');
-  selectOption.value = option.value;
-  selectOption.text = option.label;
-  select.appendChild(selectOption);
+    const select = document.querySelector('#custom-select-{{select_id}} select');
+    const list = document.querySelector('#custom-select-{{select_id}} .dropdown-list');
 
-  const dropdownOption = document.createElement('div');
-  dropdownOption.classList.add('dropdown-option');
-  dropdownOption.dataset.value = option.value;
-  dropdownOption.textContent = option.label;
-  list.appendChild(dropdownOption);
-});
+    const format = {% if format %} true {% else %} false {% endif %};
 
-select.addEventListener('click', event => {
-  event.preventDefault();
-  list.classList.toggle('show');
-});
+    const options =  format ? formatOptions(select_options).map(option => ({label: option, value: option})) : select_options;
 
-list.addEventListener('click', event => {
-  if (event.target.classList.contains('dropdown-option')) {
-    select.value = event.target.dataset.value;
-    list.classList.remove('show');
-  }
-});
+    options.forEach(option => {
+      const selectOption = document.createElement('option');
+      selectOption.value = option.value;
+      selectOption.text = option.label;
+      select.appendChild(selectOption);
 
+      const dropdownOption = document.createElement('div');
+      dropdownOption.classList.add('dropdown-option');
+      dropdownOption.dataset.value = option.value;
+      dropdownOption.textContent = option.label;
+      list.appendChild(dropdownOption);
+    });
+
+    select.addEventListener('click', event => {
+      event.preventDefault();
+      list.classList.toggle('show');
+    });
+
+    list.addEventListener('click', event => {
+    if (event.target.classList.contains('dropdown-option')) {
+        select.value = event.target.dataset.value;
+        list.classList.remove('show');
+    }
+    });
+}
+
+setCustomSelect()
 </script>

@@ -302,6 +302,7 @@ input:not([type='radio']),
     border: 1px solid var(--yc-neutral-light-color);
     padding: 5px;
     cursor: pointer;
+    border-radius: 5px;
 
     img {
       width: 100%;
@@ -313,12 +314,14 @@ input:not([type='radio']),
 
 .yc-upload {
   border: 1px dashed var(--yc-neutral-light-color);
+  border-radius: 5px;
   width: 100%;
   height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  font-size: 18px;
 
   cursor: pointer;
 

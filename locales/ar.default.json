@@ -25,8 +25,9 @@
     "items_count": "منتجات",
     "items": {
       "quantity": "الكمية",
-      "total": "المجموع",
-      "remove_cta": "إزالة"
+      "total": "الثمن",
+      "remove_cta": "إزالة",
+      "product": "اسم المنتوج"
     },
     "summary": {
       "title": "ملخص الطلب",

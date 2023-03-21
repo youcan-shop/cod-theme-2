@@ -1,3 +1,5 @@
+@import 'helpers/mixins';
+
 .yc-cart {
   margin: 4rem 0 2rem;
 
@@ -19,7 +21,7 @@
         gap: 9px;
         width: 60%;
 
-        @media screen and (max-width: 768px) {
+        @include max-screen('md') {
           width: 100%;
         }
 
@@ -40,33 +42,53 @@
         max-width: 100%;
         width: 437px;
 
-        @media screen and (max-width: 768px) {
+        @include max-screen('md') {
           display: none;
         }
       }
     }
+
     .summary-box {
       max-width: 100%;
-      border: 1px solid #EFEFEF;
+      border: 1px solid rgba(black, 0.15);
+      background-color: var(--yc-neutral-light-color);
       border-radius: 4px;
       width: 437px;
       float: left;
       margin-bottom: 40px;
-  
+
+      @include max-screen('md') {
+        // background-color: red;
+      }
+
       .promo {
         font-weight: 400;
         margin-bottom: 17px;
         font-size: 15px;
       }
-  
+
       input {
-        border: 1px solid #BDBDBD;
+        border: 1px solid rgba(black, 0.15);
         border-radius: 4px;
+        font-family: inherit;
+        font-weight: 400;
+        font-size: 14px;
+        color: rgba(black, 0.3);
       }
-  
+
+      .yc-btn {
+        padding: 19px;
+      }
+
+      input,
+      .yc-btn {
+        height: 45px;
+        min-height: 45px;
+      }
+
       .price-box {
         margin: 25px auto 15px;
-  
+
         .box {
           font-weight: 400;
           font-size: 16px;
@@ -74,7 +96,7 @@
           color: #A8A8A8;
         }
       }
-      
+
       .price-wrapper {
         padding: 0px 18px 18px;
 
@@ -87,17 +109,18 @@
           text-align: end;
         }
       }
+
       .total {
         font-weight: 700;
         font-size: 14px;
       }
-  
+
       .total-price {
         color: var(--yc-primary-color);
         font-weight: 700;
         font-size: 16px;
       }
-  
+
       .border-space {
         padding-bottom: 22px;
         padding: 0px 18px 18px;
@@ -108,8 +131,8 @@
         font-weight: 700;
         font-size: 16px;
       }
-  
-      @media screen and (max-width: 768px) {
+
+      @include max-screen('md') {
         width: 100%;
       }
     }
@@ -117,56 +140,37 @@
 
   .quantity-wrapper {
     width: fit-content;
-    border: 1px solid #BDBDBD;
-    border-radius: 4px;
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
-    background-color: white;
+    gap: 8px;
 
     button {
-      width: 34px !important;
-      min-width: 34px !important;
-      max-width: 34px !important;
-      height: 34px !important;
-      min-height: 34px !important;
-      max-height: 34px !important;
-      background-color: transparent;
-      font-size: 18px;
-      color: #B7B7B7;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #F3F3F3;
+      border-radius: 5px;
     }
 
     input {
-      width: 34px !important;
-      min-width: 34px !important;
-      max-width: 34px !important;
-      height: 34px !important;
-      min-height: 34px !important;
-      max-height: 34px !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      background-color: white;
       display: flex;
-      font-weight: 600 !important;
-      font-size: 16px !important;
-      border: 0;
+      font-weight: 400;
+      font-size: 12px;
       align-items: center;
       justify-content: center;
       text-align: center;
-    }
-
-    @media screen and (max-width: 520px) {
-      button, input {
-        width: 26px !important;
-        min-width: 25px !important;
-        max-width: 25px !important;
-        height: 27px !important;
-        min-height: 27px !important;
-        max-height: 27px !important;
-      }
+      width: 58px;
+      height: 30px !important;
+      border: 1px solid #E6E6E6;
+      border-radius: 5px;
+      padding: 0;
     }
   }
 }
+
 /* I Miss Her 💗, what can i do 😩 */
 .table-container {
   display: flex;
@@ -259,12 +263,12 @@
       color: #4B5565;
     }
   }
-  
+
   @media screen and (max-width: 767px) {
     .header {
       display: none;
     }
-  
+
     .row {
       flex-wrap: wrap;
       justify-content: center;
@@ -277,7 +281,7 @@
         }
       }
     }
-  
+
     .close-btn {
       button {
         position: absolute;
@@ -286,18 +290,19 @@
         margin: 10px;
       }
     }
-  
+
     .product-title {
       width: 87%;
     }
+
     .row .cell:first-child,
     .row .cell:nth-child(n+3) {
       flex-basis: 35%;
     }
-  
+
     .row .cell:nth-child(2),
     .row .cell:nth-child(n+4) {
       flex-basis: 65%;
     }
   }
-}  
+}

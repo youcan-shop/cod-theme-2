@@ -1,5 +1,5 @@
 {{ 'cart.css' | asset_url | stylesheet_tag }}
-{%dump cart.items%}
+
 <div class='yc-cart mt-4'>
   {%- if cart and cart.items %}
     <div class='container cart-table'>
@@ -20,9 +20,9 @@
     <div class="table-container">
     <div class="row header">
       <div class="cell"></div>
-      <div class="cell">اسم المنتوج</div>
-      <div class="cell">الكمية</div>
-      <div class="cell">المجموع</div>
+      <div class="cell">{{ 'cart.items.product' | t }}</div>
+      <div class="cell">{{ 'cart.items.quantity' | t }}</div>
+      <div class="cell">{{ 'cart.items.total' | t }}</div>
       <div class="cell adjust-space"></div>
     </div>
     {% for item in cart.items %}
@@ -77,7 +77,7 @@
                 >
               <button
                 type='submit'
-                class='yc-btn-secondary'
+                class='yc-btn'
               >
                 <span
                   class='spinner hidden'

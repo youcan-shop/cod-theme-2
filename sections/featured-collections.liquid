@@ -2,27 +2,28 @@
 {% assign id = 100 | rand: 2000 %}
 
 {% style %}
-  .section-featured-collections-{{id}} .yc-featured-container{
+  .section-featured-collections-{{ id }} .container {
     justify-content: {{ section.settings.section_title_position }};
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
   }
+
+  .section-featured-collections-{{ id }} .yc-section-title {
+    text-align: {{ section.settings.section_title_position }};
+  }
 {% endstyle %}
 
 <div class='yc-featured-collections section-featured-collections-{{id}} container'>
-  <div class="yc-featured-container">
-    <img
-      loading='lazy'
-      src='{{ section.settings.image.src }}'
-    >
+  <div class="container">
     <h1 class='yc-section-title'>
       {{ section.settings.title }}
     </h1>
-  </div>
-  <div class='collections-list'>
-    {%- for block in section.blocks -%}
-      {%- render 'collection-preview', category: block.settings.category -%}
-    {%- endfor -%}
+
+    <div class='collections-list'>
+      {%- for block in section.blocks -%}
+        {%- render 'collection-preview', category: block.settings.category -%}
+      {%- endfor -%}
+    </div>
   </div>
 </div>
 
@@ -34,11 +35,6 @@
       "type": "text",
       "id": "title",
       "label": "Title"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image"
     },
     {
       "type": "select",

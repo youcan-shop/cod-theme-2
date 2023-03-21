@@ -14,15 +14,8 @@
   height: 0;
 }
 .yc-collection-listing .collection-list .collection-thumbnail img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 100%;
-  transform: translate(-50%, -50%);
-  transition: transform 0.25s ease;
-}
-.yc-collection-listing .collection-list .collection-thumbnail img:hover {
-  transform: translate(-50%, -50%) scale(1.1);
+  width: 260px;
+  height: 190px;
 }
 .yc-collection-listing .collection-list .collection-details {
   margin-top: 20px;
@@ -31,11 +24,6 @@
 .yc-collection-listing .collection-list .collection-details .collection-name {
   font-weight: 600;
   font-size: 18px;
-}
-@media screen and (max-width: 768px) {
-  .yc-collection-listing .collection-list .collection-details .collection-name {
-    font-size: 16px;
-  }
 }
 @media (min-width: 576px) {
   .yc-collection-listing .collection-list {

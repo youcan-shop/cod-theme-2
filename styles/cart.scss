@@ -16,25 +16,14 @@
       justify-content: space-between;
 
       .header-bar {
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        width: 60%;
-
-        @include max-screen('md') {
-          width: 100%;
-        }
-
         h2 {
-          font-weight: 700;
-          font-size: 21px;
+          font-weight: 400;
+          font-size: 24px;
         }
 
         p {
+          font-size: 18px;
           color: #9B9B9B;
-          font-weight: 400;
-          font-size: 14px;
-          line-height: 22px;
         }
       }
 
@@ -49,26 +38,29 @@
     }
 
     .summary-box {
-      max-width: 100%;
-      border: 1px solid rgba(black, 0.15);
-      background-color: var(--yc-neutral-light-color);
-      border-radius: 4px;
-      width: 437px;
-      float: left;
-      margin-bottom: 40px;
-
-      @include max-screen('md') {
-        // background-color: red;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      #summary {
+        border: 1px solid rgba(black, 0.2);
+        background-color: var(--yc-neutral-light-color);
+        border-radius: 4px;
+        margin-bottom: 40px;
+        width: 100%;
+        max-width: 437px;
+        padding: 24px;
       }
 
       .promo {
         font-weight: 400;
-        margin-bottom: 17px;
+        margin: 0 0 17px 0;
         font-size: 15px;
       }
 
       input {
-        border: 1px solid rgba(black, 0.15);
+        border: 1px solid rgba(black, 0.3);
         border-radius: 4px;
         font-family: inherit;
         font-weight: 400;
@@ -87,7 +79,11 @@
       }
 
       .price-box {
-        margin: 25px auto 15px;
+        margin-top: 7px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        font-weight: 400;
 
         .box {
           font-weight: 400;
@@ -97,8 +93,18 @@
         }
       }
 
+      .total-price {
+        border-top: 1px solid rgba(60, 65, 95, 0.2);
+        margin-top: 5px;
+        
+        *{
+          font-weight: 400;
+          font-size: 18px;
+        }
+      }
+
       .price-wrapper {
-        padding: 0px 18px 18px;
+        margin-top: 20px;
 
         .capitalize {
           width: 80%;
@@ -119,11 +125,6 @@
         color: var(--yc-primary-color);
         font-weight: 700;
         font-size: 16px;
-      }
-
-      .border-space {
-        padding-bottom: 22px;
-        padding: 0px 18px 18px;
       }
 
       .item-total-price {
@@ -246,8 +247,8 @@
 
       .product-image {
         img {
-          width: 140px;
-          height: 110px;
+          width: 92px;
+          height: 92px;
           object-fit: contain;
         }
       }

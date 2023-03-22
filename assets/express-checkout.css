@@ -71,30 +71,13 @@
   transition-property: all;
   will-change: transform, opacity;
   z-index: 99999;
-  width: 100%;
-  height: 70vh;
+  width: 100vw;
   background-color: white;
   left: 0;
   bottom: 0;
-  padding-bottom: 0;
 }
 @media (min-width: 768px) {
   .yc-sticky-checkout {
     height: 50vh;
   }
-}
-.yc-sticky-checkout .cta-bottom-wrapper {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  padding: 16px 20px;
-  background-color: white;
-  border-top: 1px solid #EBEBEB;
-}
-.yc-sticky-checkout .checkout-form {
-  padding-bottom: 20px;
-}
-.yc-sticky-checkout #checkout_step {
-  animation: slideFromBottom 0.2s ease-in-out;
-  will-change: transform;
 }

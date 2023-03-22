@@ -4,7 +4,7 @@ $sticky-checkout-padding: 20px;
 
 #express-checkout-form {
   @include breakpoint('md') {
-    border: 2px solid #F33520;
+    border: 6px solid var(--yc-primary-color);
     background: #F8F8F8;
     box-shadow: 1px -1px 23px rgba(0, 0, 0, 0.04);
     border-radius: 4px;
@@ -29,12 +29,20 @@ $sticky-checkout-padding: 20px;
     box-shadow: unset;
     padding: unset;
   }
+
+  input {
+    font-family: var(--yc-font-family);
+  }
 }
 
 .express-checkout-title {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 144%;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #333333;
+  margin-bottom: 10px;
 }
 
 .express-checkout-button {

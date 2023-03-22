@@ -10,7 +10,7 @@
 }
 
 .express-checkout-fields {
-  border: 2px solid #F33520;
+  border: 4px solid var(--yc-primary-color);
   background: #F8F8F8;
   box-shadow: 1px -1px 23px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
@@ -79,5 +79,41 @@
 @media (min-width: 768px) {
   .yc-sticky-checkout {
     height: 50vh;
+  }
+}
+.yc-sticky-checkout #checkout_step {
+  /*
+    should be displayed side by side
+    .yc-product-card should be 40% width
+    .checkout-form should be 60% width
+    gap should be 10px
+  */
+  /*
+    should be displayed on top of each other
+    .yc-product-card should be 100% width
+    .checkout-form should be 100% width
+    gap should be 32px
+  */
+  flex-direction: column;
+  gap: 32px;
+  padding: 10px;
+}
+.yc-sticky-checkout #checkout_step .yc-product-card {
+  width: 100%;
+}
+.yc-sticky-checkout #checkout_step .checkout-form {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .yc-sticky-checkout #checkout_step {
+    flex-direction: row;
+    gap: 10px;
+    padding: 20px;
+  }
+  .yc-sticky-checkout #checkout_step .yc-product-card {
+    width: 40%;
+  }
+  .yc-sticky-checkout #checkout_step .checkout-form {
+    width: 60%;
   }
 }

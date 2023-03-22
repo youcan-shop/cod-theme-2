@@ -10,10 +10,11 @@
 
   .columns {
     display: flex;
-    gap: 1rem;
+    gap: 2.5rem;
     flex-direction: column;
 
     @include breakpoint('md') {
+      gap: 1rem;
       flex-direction: row;
     }
 

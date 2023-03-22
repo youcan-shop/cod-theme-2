@@ -87,22 +87,6 @@ $sticky-checkout-padding: 20px;
   }
 
   #checkout_step {
-    // desktop 
-    /*
-      should be displayed side by side
-      .yc-product-card should be 40% width
-      .checkout-form should be 60% width
-      gap should be 10px
-    */
-
-    // mobile
-    /*
-      should be displayed on top of each other
-      .yc-product-card should be 100% width
-      .checkout-form should be 100% width
-      gap should be 32px
-    */
-
     flex-direction: column;
     gap: 32px;
     padding: 10px;

@@ -67,12 +67,8 @@
 
     .product-images-container {
       display: flex;
-      flex-direction: row;
-
-      @include breakpoint('md') {
-        flex-direction: column;
-        gap: 20px;
-      }
+      flex-direction: column;
+      gap: 20px;
 
       .thumbnail-images {
         display: flex;
@@ -82,8 +78,8 @@
 
       .thumbnail-images img {
         display: block;
-        width: 150px;
-        height: 150px;
+        width: 90px;
+        height: 90px;
         border-radius: 4px;
         object-fit: cover;
         cursor: pointer;

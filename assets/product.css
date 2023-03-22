@@ -64,13 +64,8 @@
 }
 .yc-single-product .product-images .product-images-container {
   display: flex;
-  flex-direction: row;
-}
-@media (min-width: 768px) {
-  .yc-single-product .product-images .product-images-container {
-    flex-direction: column;
-    gap: 20px;
-  }
+  flex-direction: column;
+  gap: 20px;
 }
 .yc-single-product .product-images .product-images-container .thumbnail-images {
   display: flex;
@@ -79,8 +74,8 @@
 }
 .yc-single-product .product-images .product-images-container .thumbnail-images img {
   display: block;
-  width: 150px;
-  height: 150px;
+  width: 90px;
+  height: 90px;
   border-radius: 4px;
   object-fit: cover;
   cursor: pointer;

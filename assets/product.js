@@ -269,9 +269,7 @@ function createPlaceholderDiv(id) {
   return div;
 }
 
-const expressCheckoutForm = $('#express-checkout-form');
 
-teleport(expressCheckoutForm, '#checkout_step_2 .checkout-form');
 
 
 function teleportProductName() {
@@ -333,7 +331,7 @@ function createAndSetText(tagType = '', tagValue = '', cssClass = '') {
   return { element: element };
 }
 
-// Show selected variants in checkout_step_2
+// Show selected variants in checkout_step
 
 function showSelectedVariants() {
   const variants = document.querySelectorAll('.product-options > div');
@@ -381,8 +379,11 @@ function showSelectedVariants() {
 
 // Sticky checkout steps conditions
 function goToCheckoutStep(step) {
-  $('#checkout_step_2').style.display = 'flex';
+  $('#checkout_step').style.display = 'flex';
   $(' #express-checkout-form').style.display = 'block';
+  const expressCheckoutForm = $('#express-checkout-form');
+
+  teleport(expressCheckoutForm, '#checkout_step .checkout-form');
   showSelectedVariants();
 }
 

@@ -1,21 +1,11 @@
 {{ 'express-checkout.css' | asset_url | stylesheet_tag }}
 
 <div id="yc-sticky-checkout" class="yc-sticky-checkout">
-  <div class="step_2" id="checkout_step_2">
+  <div id="checkout_step">
     {% render 'product-card' %}
+    <div class="checkout-form"></div>
 
-    <div class="step-2-wrapper">
-      <button class="back-icon" onclick="goToCheckoutStep(1)">
-        <ion-icon name="return-up-back-outline"></ion-icon>
-      </button>
-      <button class="close-icon" onclick="goToCheckoutStep(0)">
-        <ion-icon name="close-outline"></ion-icon>
-      </button>
-      <section class="sticky-desktop-wrapper">
-        <div class="variant-card-2"></div>
-        <div class="checkout-form"></div>
-      </section>
-    </div>
+
     <div class="cta-bottom-wrapper">
       <button
         type='submit'

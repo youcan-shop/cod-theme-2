@@ -1,6 +1,6 @@
 function previewProductImage(element) {
   const parentSection = element.closest('.yc-single-product');
-  const thumbnail = parentSection.querySelector('#main-image');
+  const thumbnail = parentSection.querySelector('.main-thumbnail');
   const magnified = parentSection.querySelector('#magnified-image');
 
   thumbnail.src = element.src;
@@ -69,7 +69,8 @@ function uploadImage(element) {
     if (!imgZoomer) return;
 
     function eventHandler(e) {
-      const original = $('.main-image');
+      const original = $('.thumbnail-images .active') || $('.main-image');
+      console.log(original)
       const magnified = $('#magnified-image');
 
       x = (e.offsetX / original.offsetWidth) * 100;

@@ -76,6 +76,8 @@
     <div class='express-checkout-title'>{{ settings.form_title }}</div>
     {%- for field in checkout.fields %}
       <div class='express-checkout-field'>
+        <label>{{ field.display_name }}</label>
+
         <input
           type='{{ field.type }}'
           class='w-full'

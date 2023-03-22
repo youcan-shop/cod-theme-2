@@ -27,6 +27,12 @@
     padding: unset;
   }
 }
+.express-checkout-fields label {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
 .express-checkout-fields input {
   font-family: var(--yc-font-family);
 }

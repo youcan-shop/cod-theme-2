@@ -30,6 +30,13 @@ $sticky-checkout-padding: 20px;
     padding: unset;
   }
 
+  label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
   input {
     font-family: var(--yc-font-family);
   }

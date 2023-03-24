@@ -9,8 +9,6 @@
 .subtitle {
   color: {{ section.settings.subtitle_color.hex }};
 }
-
-
 {% endstyle %}
 
 <div class="thankyou-page-container">
@@ -28,24 +26,24 @@
     </div>
   </div>
   <div class="orders-detail-wrapper">
-    {% comment %}
-     TO DO: Add variants when the data is provided
-    {% endcomment %}
+    {% for variant in order.order_variants %}
+      {%dump variant%}
+    {% endfor %}
   </div>
   <div class="order-details">
     <h2> {{ 'thankyou.details.title' | t }}</h2>
     <div class="table-content">
     <div class="head">
       <div class="item">
-          {{ 'thankyou.details.product' | t }}
-        </div>
-        <div class="data-item">
-          {{ order.total | money }}
-        </div>
+        {{ 'thankyou.details.product' | t }}
+      </div>
+      <div class="data-item">
+        {{ order.total | money }}
+      </div>
     </div>
     <div class="head">
       <div class="item">
-         {{ 'thankyou.details.shipping_cost' | t }}
+        {{ 'thankyou.details.shipping_cost' | t }}
       </div>
       <div class="data-item">
         {{ order.shippingCost | money }}

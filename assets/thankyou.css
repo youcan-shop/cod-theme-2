@@ -49,6 +49,13 @@
 .thankyou-page-container .thankyou-wrapper .content-wrapper .yc-btn {
   margin-top: 2rem;
 }
+.thankyou-page-container .invoice-summary-title {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  margin-bottom: 24px;
+}
 .thankyou-page-container .orders-detail-wrapper {
   border-radius: 5px 5px 0px 0px;
   display: flex;
@@ -84,7 +91,8 @@
   justify-content: space-between;
   align-items: center;
 }
-.thankyou-page-container .order-details .table-content .head .item, .thankyou-page-container .order-details .table-content .head .data-item {
+.thankyou-page-container .order-details .table-content .head .item,
+.thankyou-page-container .order-details .table-content .head .data-item {
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -103,7 +111,8 @@
   border-top: 1px solid #333;
   border-bottom: 1px solid #333;
 }
-.thankyou-page-container .order-details .table-content .total-price-head .item, .thankyou-page-container .order-details .table-content .total-price-head .data-item {
+.thankyou-page-container .order-details .table-content .total-price-head .item,
+.thankyou-page-container .order-details .table-content .total-price-head .data-item {
   font-weight: 400;
   color: #333;
   line-height: 20px;

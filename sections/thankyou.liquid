@@ -25,36 +25,41 @@
       </div>
     </div>
   </div>
+
   <div class="orders-detail-wrapper">
     {% for variant in order.order_variants %}
-      {%dump variant%}
+      <div class="variant">
+        <h2>{{ variant.name }}</h2>
+        <h2>{{ variant.price | money }}</h2>
+      </div>
     {% endfor %}
   </div>
+
   <div class="order-details">
-    <h2> {{ 'thankyou.details.title' | t }}</h2>
     <div class="table-content">
-    <div class="head">
-      <div class="item">
-        {{ 'thankyou.details.product' | t }}
+      <div class="head">
+        <div class="item">
+          {{ 'thankyou.details.product' | t }}
+        </div>
+        <div class="data-item">
+          {{ order.total | money }}
+        </div>
       </div>
-      <div class="data-item">
-        {{ order.total | money }}
+      <div class="head">
+        <div class="item">
+          {{ 'thankyou.details.shipping_cost' | t }}
+        </div>
+        <div class="data-item">
+          {{ order.shippingCost | money }}
+        </div>
       </div>
-    </div>
-    <div class="head">
-      <div class="item">
-        {{ 'thankyou.details.shipping_cost' | t }}
-      </div>
-      <div class="data-item">
-        {{ order.shippingCost | money }}
-      </div>
-    </div>
-    <div class="total-price-head">
-      <div class="item">
-        {{ 'thankyou.details.total' | t }}
-      </div>
-      <div class="data-item">
-        {{ order.total | money }}
+      <div class="total-price-head">
+        <div class="item">
+          {{ 'thankyou.details.total' | t }}
+        </div>
+        <div class="data-item">
+          {{ order.total | money }}
+        </div>
       </div>
     </div>
   </div>

@@ -5,14 +5,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 32px;
   width: 100%;
+  border-radius: 5px !important;
+  overflow: hidden !important;
 }
 .product-images-container .product-block .product-details {
   display: flex;
   row-gap: 10px;
+  padding: 35px;
   flex-direction: column;
   width: 50%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 .product-images-container .product-block .product-name {
   color: #000000;
@@ -69,5 +74,6 @@
   }
   .product-images-container .product-block .product-details {
     width: 100%;
+    padding: 20px;
   }
 }

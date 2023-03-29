@@ -43,8 +43,8 @@
                 "columns_desktop": 4,
                 "columns_mobile": "2",
                 "title": "",
-                "margin_bottom": 20,
-                "margin_top": 20,
+                "margin_bottom": 60,
+                "margin_top": 60,
                 "background_color": "#F6F9FF"
             },
             "blocks": {
@@ -367,7 +367,9 @@
             "type": "featured-collections",
             "settings": {
                 "title": "منتجات حسب الفئة",
-                "section_title_position": "center"
+                "section_title_position": "center",
+                "padding_top": 50,
+                "padding_bottom": 50
             },
             "blocks": {
                 "block_7aczikc7r4zhb9b": {
@@ -398,9 +400,9 @@
     },
     "order": [
         "section_qum9qooyrwe3uz",
+        "section_62tm9748qh15wfk",
         "section_69bvzdw9cs2hlv",
         "section_sxdipwpvyyjc9pl",
-        "section_62tm9748qh15wfk",
         "section_b3g5zwjngmukzqp",
         "product-column",
         "section_609gq1tx2x0aaa",

@@ -314,28 +314,28 @@
                 "block_emefi1dpsjc8dxl": {
                     "type": "product",
                     "settings": {
-                        "product": "b44b2d2d-a29e-4fd2-9965-4825e2d8e64d",
                         "tag_color": "#000000",
                         "tag_text_color": "#ffffff",
-                        "tag_position": "top_right"
+                        "tag_position": "top_right",
+                        "product": "71da9018-ad31-408b-ae2d-03173c007b7c"
                     }
                 },
                 "block_ev668bf3ta5fpr6": {
                     "type": "product",
                     "settings": {
-                        "product": "ce17d5cf-4607-4f0b-9996-6a2d616c0112",
                         "tag_color": "#000000",
                         "tag_text_color": "#ffffff",
-                        "tag_position": "top_right"
+                        "tag_position": "top_right",
+                        "product": "c906d99b-5443-411b-a902-54e05affb809"
                     }
                 },
                 "block_f0s1vbvg2wv18tp": {
                     "type": "product",
                     "settings": {
-                        "product": "2d39bfc2-2269-482d-97e8-35286c06fa8d",
                         "tag_color": "#000000",
                         "tag_text_color": "#ffffff",
-                        "tag_position": "top_right"
+                        "tag_position": "top_right",
+                        "product": "6b2608bd-18f9-4e93-9450-b8c53c9589f1"
                     }
                 }
             },

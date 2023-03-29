@@ -362,10 +362,43 @@
                 "video_height": 500,
                 "video_width": 100
             }
+        },
+        "section_69bvzdw9cs2hlv": {
+            "type": "featured-collections",
+            "settings": {
+                "title": "منتجات حسب الفئة",
+                "section_title_position": "center"
+            },
+            "blocks": {
+                "block_7aczikc7r4zhb9b": {
+                    "type": "category",
+                    "settings": {
+                        "category": "0c4f60eb-bd9a-400b-8b5f-b303558252d4"
+                    }
+                },
+                "block_7g6wu0dpmwqp81e": {
+                    "type": "category",
+                    "settings": {
+                        "category": "9cf0de11-01c8-43d2-8fd9-fc153f25e9e0"
+                    }
+                },
+                "block_7mxzydumi421t4i": {
+                    "type": "category",
+                    "settings": {
+                        "category": "b2104eff-ae3f-4fc6-8bb2-0babe288080c"
+                    }
+                }
+            },
+            "order": [
+                "block_7aczikc7r4zhb9b",
+                "block_7g6wu0dpmwqp81e",
+                "block_7mxzydumi421t4i"
+            ]
         }
     },
     "order": [
         "section_qum9qooyrwe3uz",
+        "section_69bvzdw9cs2hlv",
         "section_sxdipwpvyyjc9pl",
         "section_62tm9748qh15wfk",
         "section_b3g5zwjngmukzqp",

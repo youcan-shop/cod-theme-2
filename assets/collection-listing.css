@@ -14,12 +14,12 @@
 }
 @media only screen and (min-width: 481px) and (max-width: 767px) {
   .yc-collection-listing .collection-list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
 @media only screen and (max-width: 480px) {
   .yc-collection-listing .collection-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
 .yc-collection-listing .collection-list .collection-block {
@@ -31,6 +31,7 @@
   overflow: hidden;
   padding: 0 0 100%;
   height: 0;
+  min-height: 300px;
 }
 .yc-collection-listing .collection-list .collection-thumbnail img {
   position: absolute;
@@ -45,6 +46,10 @@
   transform: translate(-50%, -50%) scale(1.1);
 }
 .yc-collection-listing .collection-list .collection-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   position: absolute;
   top: 70%;

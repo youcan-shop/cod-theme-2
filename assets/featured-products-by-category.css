@@ -1,0 +1,15 @@
+.yc-featured-products-by-category .product-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+@media (min-width: 768px) {
+  .yc-featured-products-by-category .product-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .yc-featured-products-by-category .product-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

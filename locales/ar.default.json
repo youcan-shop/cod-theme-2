@@ -1,7 +1,6 @@
 {
   "general":{
-    "show_more_button": "عرض المزيد",
-    "size_big_message": "المرجو تحميل صورة أقل من 2mb"
+    "show_more_button": "عرض المزيد"
   },
   "navbar": {
     "search": {
@@ -68,7 +67,7 @@
     "single_product": {
       "quantity": "الكمية",
       "variants": {
-        "upload": "تحميل صورة (PNG, JPEG)"
+        "upload": "تحميل صورة"
       }
     },
     "express_checkout": {

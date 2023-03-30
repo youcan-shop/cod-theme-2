@@ -6,15 +6,16 @@
     padding-bottom: {{ section.settings.padding_bottom}}px;
   }
 
-  .product_customization {
+  .product_customization { 
     background-color: {{ section.settings.background_color.hex }};
-  }
+  } 
 
   @media screen and (max-width: 768px) {
     .product_customization {
       display: {% if section.settings.show_product %}block{% else %}none{% endif %};
     }
   }
+  
 {%- endstyle -%}
 
 <section class='product_customization'>
@@ -128,3 +129,6 @@
     ]
   }
 {%- endschema -%}
+
+
+{{ 'product.js' | asset_url | script_tag_deferred }}

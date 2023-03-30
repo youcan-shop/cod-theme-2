@@ -1,14 +1,3 @@
-/**
-  * Display Grid
-  * @param {number} $desktop - Number of columns on desktop
-  * @param {number} $tablet - Number of columns on tablet
-  * @param {number} $mobile - Number of columns on mobile
-  * @param {string} $gap - Gap between columns
-  * @example
-  * .product-list {
-  *   @include display(4, 3, 2, 1rem);
-  * }
-  */
 .yc-single-product {
   display: flex;
   gap: 8px;

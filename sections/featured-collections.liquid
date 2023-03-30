@@ -4,12 +4,8 @@
 {% style %}
   .section-featured-collections-{{id}} .yc-featured-container{
     justify-content: {{ section.settings.section_title_position }};
+    padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
-  }
-
-  .section-featured-collections-{{id}} {
-    margin-top: {{ section.settings.margin_top }}px;
-    margin-bottom: {{ section.settings.margin_bottom }}px;
   }
 {% endstyle %}
 
@@ -40,6 +36,11 @@
       "label": "Title"
     },
     {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
       "type": "select",
       "id": "section_title_position",
       "label": "Title position",
@@ -59,9 +60,13 @@
       ]
     },
     {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Title icon"
+      "type": "range",
+      "id": "padding_top",
+      "min": 5,
+      "max": 160,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top"
     },
     {
       "type": "range",
@@ -71,24 +76,6 @@
       "step": 1,
       "unit": "px",
       "label": "Padding Bottom"
-    },
-    {
-      "type": "range",
-      "id": "margin_top",
-      "min": 5,
-      "max": 160,
-      "step": 1,
-      "unit": "px",
-      "label": "Margin Top"
-    },
-    {
-      "type": "range",
-      "id": "margin_bottom",
-      "min": 5,
-      "max": 160,
-      "step": 1,
-      "unit": "px",
-      "label": "Margin Bottom"
     }
   ],
   "blocks": [

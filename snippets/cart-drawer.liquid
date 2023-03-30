@@ -1,0 +1,9 @@
+{% assign id = 100 | rand: 2000 %}
+
+<div class='navigation-drawer cart-drawer'>
+  <!-- content & total elements will be filled with JS (check cart-drawer.js) -->
+  <div class="content"></div>
+  <div class="total">{{ 0 | money }}</div>
+</div>
+
+{{ 'cart-drawer.js' | asset_url | script_tag }}

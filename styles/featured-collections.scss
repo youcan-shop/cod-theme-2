@@ -18,16 +18,9 @@
   }
 
   .collections-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
 
-    @include breakpoint('md') {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    @include breakpoint('lg') {
-      grid-template-columns: repeat(4, 1fr);
-    }
+    @include display(3, 3, 2, 1.5rem);
+    
     .collection-block {
       position: relative;
       background: gray;

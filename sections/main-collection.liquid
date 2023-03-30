@@ -37,19 +37,19 @@
 </div>
 
 {% schema %}
-{
-  "label": "Collections",
-  "templates": ["list-collections"],
-  "limit": 1,
-  "settings": [
-    {
-      "type": "number",
-      "id": "items_per_page",
-      "label": "Collections per page",
-      "default": 10
-    }
-  ]
-}
+  {
+    "label": "Collections",
+    "templates": ["list-collections"],
+    "limit": 1,
+    "settings": [
+      {
+        "type": "number",
+        "id": "items_per_page",
+        "label": "Collections per page",
+        "default": 10
+      }
+    ]
+  }
 {% endschema %}
 
 {{ 'queries-handler.js' | asset_url | script_tag_deferred }}

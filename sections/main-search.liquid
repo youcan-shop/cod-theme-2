@@ -20,7 +20,7 @@
     line-height: 110%;
     margin-top: 35px;
   }
- 
+
   .yc-searc-{{ id }} .product-item {
     border: 1px solid #E7E7E7;
     border-radius: 4px;
@@ -34,7 +34,7 @@
     <div class='product-list'>
       {%- for item in items %}
         <div class="product-item">
-        {%- render 'product-preview', item: item -%}
+          {%- render 'product-preview', item: item -%}
         </div>
       {%- endfor %}
     </div>

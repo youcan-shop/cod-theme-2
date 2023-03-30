@@ -25,3 +25,34 @@ $breakpoints: (
     @content;
   }
 }
+
+
+/**
+  * Display Grid
+  * @param {number} $desktop - Number of columns on desktop
+  * @param {number} $tablet - Number of columns on tablet
+  * @param {number} $mobile - Number of columns on mobile
+  * @param {string} $gap - Gap between columns
+  * @example
+  * .product-list {
+  *   @include display(4, 3, 2, 1rem);
+  * }
+  */
+
+@mixin display($desktop: 4, $tablet: 3, $mobile: 2, $gap: 1rem) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  grid-gap: $gap;
+
+  @media only screen and (min-width: 768px) {
+    grid-template-columns: repeat($desktop, minmax(0, 1fr));
+  }
+
+  @media only screen and (min-width: 481px) and (max-width: 767px) {
+    grid-template-columns: repeat($tablet, minmax(0, 1fr));
+  }
+
+  @media only screen and (max-width: 480px) {
+    grid-template-columns: repeat($mobile, minmax(0, 1fr));
+  }
+}

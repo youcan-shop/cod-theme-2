@@ -6,6 +6,7 @@
   border-radius: 4px;
   overflow: hidden;
   display: block;
+  position: relative;
 }
 .product-preview .product-thumbnail {
   position: relative;

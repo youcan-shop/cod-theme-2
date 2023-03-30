@@ -1,8 +1,9 @@
 {{ 'queries-handler.css' | asset_url | stylesheet_tag }}
 {{ 'product-listing.css' | asset_url | stylesheet_tag }}
+{{ 'components.css' | asset_url | stylesheet_tag }}
 
 {%- assign per_page = section.settings.items_per_page -%}
-<div class='yc-product-listing-container'>
+<div class='yc-product-listing container'>
   <div class="breadcrumbs-container">
     <div class="breadcrumbs-listings">
       <div class="listings__item">

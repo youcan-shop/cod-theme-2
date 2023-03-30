@@ -4,4 +4,15 @@
    .product-list { 
      @include display(4, 3, 2, 1rem); 
    }
+
+   .button-container {
+      max-width: max-content;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 50px;
+  
+      @include breakpoint('md') {
+        margin-top: 60px;
+      }
+   }
 }

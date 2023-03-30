@@ -77,17 +77,22 @@
 }
 .yc-featured-products .product-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: start;
-  overflow: hidden;
-  align-items: stretch;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  grid-gap: 1.5rem;
 }
-@media (min-width: 768px) {
+@media only screen and (min-width: 768px) {
   .yc-featured-products .product-list {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 29px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .yc-featured-products .product-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media only screen and (max-width: 480px) {
+  .yc-featured-products .product-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 .yc-featured-products .button-container {

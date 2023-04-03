@@ -1,9 +1,15 @@
-{{ 'cart-drawer.css' | asset_url | script_tag }}
+{{ 'cart-drawer.css' | asset_url | stylesheet_tag }}
 
 <div class='navigation-drawer cart-drawer'>
   <!-- content & total elements will be filled with JS (check cart-drawer.js) -->
   <div class="content"></div>
   <div class="total">{{ 0 | money }}</div>
 </div>
+
+{% javascript %}
+  const CART_DRAWER_LOCALES = {
+    quantity: '{{ 'cart.items.quantity' | t }}'
+  }
+{% endjavascript %}
 
 {{ 'cart-drawer.js' | asset_url | script_tag }}

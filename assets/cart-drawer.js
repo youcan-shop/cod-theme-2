@@ -27,7 +27,7 @@ async function setupCartDrawer() {
           </div>
           <div class="info">
             <div class="title">${productVariant.product.name || ''}</div>
-            <div class="quantity">Quantity: ${quantity || 0}</div>
+            <div class="quantity">${CART_DRAWER_LOCALES.quantity}: ${quantity || 0}</div>
             <div class="variants">
               ${Object.keys(productVariant.variations)
                       .map(key => `
@@ -37,7 +37,7 @@ async function setupCartDrawer() {
               }
             </div>
           </div>
-          <div class="price">Price: ${money(productVariant.price * quantity)}</div>
+          <div class="price">${money(productVariant.price * quantity)}</div>
         </div>
       `
     }
@@ -48,7 +48,13 @@ async function setupCartDrawer() {
   try {
     const cartObject = await youcanjs.cart.fetch()
     const cartItems = cartObject.items
+    console.log('Hi sir', cartItems)
+    if (!cartItems || cartItems.data) {
+      console.log('pew')
 
+      return
+    }
+      
     cartDrawerContentEl.innerHTML = cartItems.map(createCartItemHtml).join('')
     cartDrawerTotalEl.innerHTML = money(cartObject.total)
   } catch (error) {

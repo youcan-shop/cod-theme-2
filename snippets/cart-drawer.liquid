@@ -23,7 +23,7 @@
         <div class='total'>{{ 0 | money }}</div>
       </div>
   
-      <a class='yc-btn continue-shopping'>{{ 'cart.continue_shopping' | t }}</a>
+      <a class='yc-btn continue-shopping' href="{{ routes.cart_url }}">{{ 'cart.continue_shopping' | t }}</a>
       <a class='yc-btn close close-cart-drawer-btn'>{{ 'cart.close' | t }}</a>
     </div>
   </div>
@@ -31,7 +31,8 @@
 
 {% javascript %}
   const CART_DRAWER_LOCALES = {
-    quantity: '{{ 'cart.items.quantity' | t }}'
+    quantity: '{{ 'cart.items.quantity' | t }}',
+    remove: `{% render 'icon', name: 'trash' %}`
   }
 {% endjavascript %}
 

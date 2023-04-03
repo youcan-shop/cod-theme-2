@@ -1,6 +1,8 @@
 .navigation-drawer.cart-drawer {
   width: 100%;
   max-width: 480px;
+  transform: translateX(150vw);
+  opacity: 0;
 
   .wall {
     display: flex;
@@ -83,6 +85,13 @@
           gap: 16px;
           flex-wrap: wrap;
         }
+      }
+
+      .price-trash-holder {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-end;
       }
     }
   }

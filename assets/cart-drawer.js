@@ -1,9 +1,11 @@
+const closeCartDrawerBtn = document.querySelectorAll('.close-cart-drawer-btn')
+
 async function setupCartDrawer() {
   const cartDrawerContentEl = document.querySelector('.cart-drawer .content')
   const cartDrawerTotalEl = document.querySelector('.cart-drawer .total')
 
   /**
-   * basing on the cartDrawerTotalEl content and replacing only the number and keeping the currency symbol
+   * Basing on the cartDrawerTotalEl content and replacing only the number and keeping the currency symbol
    * @param {Number} price
    */
   function money(price) {
@@ -18,7 +20,6 @@ async function setupCartDrawer() {
   function createCartItemHtml(cartItem) {
     const { productVariant, quantity } = cartItem
 
-    console.log(productVariant, quantity)
     if (productVariant) {
       return `
         <div class="cart-item">
@@ -30,11 +31,8 @@ async function setupCartDrawer() {
             <div class="quantity">${CART_DRAWER_LOCALES.quantity}: ${quantity || 0}</div>
             <div class="variants">
               ${Object.keys(productVariant.variations)
-                      .map(key => `
-                        <div>${key}: ${productVariant.variations[key]}</div>
-                      `)
-                      .join('')
-              }
+                      .map(key => `<div>${key}: ${productVariant.variations[key]}</div>`)
+                      .join('')}
             </div>
           </div>
           <div class="price">${money(productVariant.price * quantity)}</div>
@@ -48,19 +46,23 @@ async function setupCartDrawer() {
   try {
     const cartObject = await youcanjs.cart.fetch()
     const cartItems = cartObject.items
-    console.log('Hi sir', cartItems)
-    if (!cartItems || cartItems.data) {
-      console.log('pew')
 
-      return
-    }
-      
+    if (!cartItems || cartItems.data) return
+
     cartDrawerContentEl.innerHTML = cartItems.map(createCartItemHtml).join('')
     cartDrawerTotalEl.innerHTML = money(cartObject.total)
   } catch (error) {
     console.error(error)
   }
 }
+
+closeCartDrawerBtn.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const overlay = document.querySelector('.global-overlay')
+
+    if (overlay) overlay.click()
+  })
+})
 
 document.addEventListener('DOMContentLoaded', () => {
   setupCartDrawer()

@@ -1,9 +1,32 @@
 {{ 'cart-drawer.css' | asset_url | stylesheet_tag }}
 
 <div class='navigation-drawer cart-drawer'>
-  <!-- content & total elements will be filled with JS (check cart-drawer.js) -->
-  <div class="content"></div>
-  <div class="total">{{ 0 | money }}</div>
+  <div class='wall'>
+    <div>
+      <div class='header'>
+        <div class='your-cart-title'>
+          {{ 'cart.your_cart' | t }}
+        </div>
+    
+        <button id='close-cart-drawer' class='close-cart-drawer-btn'>
+          {% render 'icon', name: 'cart-drawer-close' %}
+        </button>
+      </div>
+    
+      <!-- content & total elements will be filled with JS (check cart-drawer.js) -->
+      <div class='content'></div>
+    </div>
+  
+    <div class='bottom-coconut'>
+      <div class='total-wrapper'>
+        <div class='total-word'>{{ 'cart.summary.total' | t }}</div>
+        <div class='total'>{{ 0 | money }}</div>
+      </div>
+  
+      <a class='yc-btn continue-shopping'>{{ 'cart.continue_shopping' | t }}</a>
+      <a class='yc-btn close close-cart-drawer-btn'>{{ 'cart.close' | t }}</a>
+    </div>
+  </div>
 </div>
 
 {% javascript %}

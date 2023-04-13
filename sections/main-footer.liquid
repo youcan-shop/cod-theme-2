@@ -30,27 +30,26 @@
         </div>
       {%- endif -%}
     {%- endfor -%}
-
     <div class="column social-media">
       {%- for block in section.blocks -%}
-        <a class="social-media-link" href="{{ block.settings.social_media_url }}" target="_blank">
-          <img src="{{ block.settings.social_media_icon_image.src }}">
-        </a>
+        {%- if section.settings.social_media_exist -%}
+          <a class="social-media-link" href="{{ block.settings.social_media_url }}" target="_blank">
+            <img src="{{ block.settings.social_media_icon_image.src }}">
+          </a>
+        {%- endif -%}
       {%- endfor %}
     </div>
   </div>
-  {%- if section.settings.copyright_and_social_media -%}
-    <div class="copyright-wrapper" {{ block.youcan_attributes }}>
-      <div class="container">
-        <div class="copyright-title">
-          {{ section.settings.copyright }}
-        </div>
-        <div class="copyright-image">
-          <img src="{{ section.settings.copyright_image.src }}">
-        </div>
+  <div class="copyright-wrapper" {{ block.youcan_attributes }}>
+    <div class="container">
+      <div class="copyright-title">
+        {{ section.settings.copyright }}
+      </div>
+      <div class="copyright-image">
+        <img src="{{ section.settings.copyright_image.src }}">
       </div>
     </div>
-  {%- endif -%}
+  </div>
 </footer>
 
 {%- schema -%}
@@ -80,8 +79,8 @@
     },
     {
       "type": "checkbox",
-      "id": "copyright_and_social_media",
-      "label": "Copyright & Social media",
+      "id": "social_media_exist",
+      "label": "Social media",
       "default": true
     },
     {
@@ -97,13 +96,13 @@
   ],
   "blocks": [
     {
-      "label": "social media",
+      "label": "Social media",
       "type": "social-media",
       "settings": [
         {
           "type": "image_picker",
           "id": "social_media_icon_image",
-          "label": "facebook icon"
+          "label": "Social media icon"
         },
         {
           "type": "text",

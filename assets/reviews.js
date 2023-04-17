@@ -107,7 +107,7 @@ const setupReviews = async () => {
   }
 
   try {
-    const res = youcanjs.product.fetchReviews(productsId, { limit: 3 });
+    const res = youcanjs.product.fetchReviews(reviewsProductId, { limit: 3 });
     reviews = await res.data();
 
     addReviews(reviewsWrapper, reviews);

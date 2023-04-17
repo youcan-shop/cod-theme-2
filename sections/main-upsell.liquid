@@ -1,47 +1,10 @@
-{%- style -%}
-  .youcan-section {
-    background-color: #f7f7f7;
-  }
-
-  .upsell-container {
-    max-width: 724px;
-    margin: 0 auto;
-  }
-
-  .upsell-page {
-    padding: 80px 0;
-    position: relative;
-  }
-
-  .upsell-banner {
-    width: 100%;
-    padding: 42px 10px;
-    background-color: #FFFFFF;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 3px solid rgba(60, 65, 95, 0.2);
-    border-width: 3px 0 3px 0;
-    margin-bottom: 80px;
-  }
-
-  .upsell-content {}
-
-  .upsell-form-submit {
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    background-color: red; // debug
-    display: flex;
-  }
-{%- endstyle -%}
+{{ 'upsell.css' | asset_url | stylesheet_tag }}
 
 <div class="upsell-page">
   {%- for block in section.blocks -%}
     {%- if block.type == 'upsell_title' -%}
       <div class="upsell-banner">
-        {{ block.settings.brah_brah }}
+        {{ block.settings.upsell_text }}
       </div>
     {%- endif -%}
   {%- endfor -%}
@@ -50,33 +13,69 @@
     <div class="upsell-content">
       {{ upsell.description }}
     </div>
-    <form action="/api/upsells/{{ upsell.id }}/answer" method="post">
-      {{ csrf }}
+    <form id="upsell-form" action="/api/upsells/{{ upsell.id }}/answer" method="post">
       <input
-        type="text"
-        name="order_id"
-        value="{{ order.id }}" />
+        type="hidden"
+        name="_token"
+        value="{{ csrf }}" />
+      <input
+        type="hidden"
+        name="upsell_id"
+        value="{{ upsell.id }}" />
+        <input
+    type="hidden"
+    name="order_id"
+    value="{{ order.id }}" />
       {%- for product in upsell.products %}
         <input
-          type="text"
+          type="hidden"
           name="product_offers[{{ product.id }}]"
           value="{{ product.variants.0.id }}" />
-        <br/>
       {%- endfor %}
+      <div class="upsell-form-submit">
+        <input
+          type="submit"
+          name="answer"
+          value="yes" />
+        <input
+          type="submit"
+          name="answer"
+          value="no" />
+      </div>
     </form>
-
-    <div class="upsell-form-submit">
-      <input
-        type="submit"
-        name="answer"
-        value="yes" />
-      <input
-        type="submit"
-        name="answer"
-        value="no" />
-    </div>
   </div>
 </div>
+
+<script>
+  document.getElementById("upsell-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const form = event.target;
+  const formData = new FormData(form);
+
+  const answer = event.submitter.value;
+  formData.set('answer', answer);
+
+    fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: {
+        "Accept": "application/json"
+      },
+      credentials: "same-origin"
+    })
+    .then(response => {
+      if (response.ok) {
+        window.location.href = "/checkout/thankyou";
+      } else {
+        // error handling
+      }
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
+  });
+</script>
+
 
 {%- schema %}
   {
@@ -89,8 +88,7 @@
         "settings": [
           {
             "type": "richtext",
-            "default": "Hello mr ilyas",
-            "id": "brah_brah",
+            "id": "upsell_text",
             "label": "Painer",
             "info": "HEHEHEHE"
           }

@@ -1,7 +1,21 @@
 {
     "sections": {
-        "upsell" : {
-            "type": "main-upsell"
+        "upsell": {
+            "type": "main-upsell",
+            "settings": {
+                "brah_brah":"Hello there"
+            },
+            "blocks": {
+                "block_upsell_tchi_random_id": {
+                    "type": "upsell_title",
+                    "settings": {
+                        "brah_brah": "Hello there"
+                    }
+                }
+            },
+            "order": [
+                "block_upsell_tchi_random_id"
+            ]
         }
     },
     "order": [

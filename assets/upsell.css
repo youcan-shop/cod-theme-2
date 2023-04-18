@@ -38,6 +38,10 @@
   line-height: 22px;
   font-weight: 300;
 }
+.upsell-page #upsell-form {
+  position: sticky;
+  bottom: 0;
+}
 .upsell-page .upsell-footer {
   margin: 60px auto 10px;
 }

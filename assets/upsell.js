@@ -1,4 +1,4 @@
-document.getElementById("upsell-form").addEventListener("submit", function (event) {
+document.getElementById("upsell-form").addEventListener("submit", async function (event) {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
@@ -16,31 +16,32 @@ document.getElementById("upsell-form").addEventListener("submit", function (even
   buttonText.style.display = "none";
   spinnerLoader.style.display = "inline-block";
 
-  fetch(form.action, {
-    method: form.method,
-    body: formData,
-    headers: {
-      Accept: "application/json",
-    },
-    credentials: "same-origin",
-  })
-    .then((response) => {
-      if (response.ok) {
-        window.location.href = "/checkout/thankyou";
-      } else {
-        yesButton.disabled = false;
-        noButton.disabled = false;
-        buttonText.style.display = "inline";
-        spinnerLoader.style.display = "none";
-        notify(response, "error");
-      }
-    })
-    .catch((error) => {
-      yesButton.disabled = false;
-      noButton.disabled = false;
-      buttonText.style.display = "inline";
-      spinnerLoader.style.display = "none";
+  const upsellParams = {
+    upsell_id: formData.get("upsell_id"),
+    answer: answer,
+    order_id: formData.get("order_id"),
+    product_offers: {}
+  };
 
-      notify(error, "error");
-    });
+  formData.forEach((value, key) => {
+    if (key.startsWith("product_offers")) {
+      const productId = key;
+      upsellParams.product_offers[productId] = value;
+    }
+  });
+
+  try {
+    const response = await youcanjs.upsell.answer(upsellParams);
+
+    if (response.error) throw new Error(response.error);
+
+    window.location.href = "/checkout/thankyou";
+  } catch (error) {
+    yesButton.disabled = false;
+    noButton.disabled = false;
+    buttonText.style.display = "inline";
+    spinnerLoader.style.display = "none";
+
+    notify(error, "error");
+  }
 });

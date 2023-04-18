@@ -1,11 +1,12 @@
 {{ 'upsell.css' | asset_url | stylesheet_tag }}
 
 <div class="upsell-page">
-  {%- for block in section.blocks -%}
-    {%- if block.type == 'upsell_title' -%}
-      <div class="upsell-banner">
-        {{ block.settings.upsell_text }}
-      </div>
+  {% for block in section.blocks %}
+    {% assign block_setting = block.settings %}
+      {% if block_setting.upsell_text %}
+        <div class="upsell-banner">
+          {{ block.settings.upsell_text }}
+        </div>
     {%- endif -%}
   {%- endfor -%}
 
@@ -53,7 +54,7 @@
   </div>
 </div> 
 
-{{ 'queries-handler.js' | asset_url | script_tag_deferred }}
+{{ 'upsell.js' | asset_url | script_tag_deferred }}
 
 {%- schema %}
   {
@@ -67,12 +68,10 @@
           {
             "type": "richtext",
             "id": "upsell_text",
-            "label": "Painer",
-            "info": "HEHEHEHE"
+            "label": "Upsell text",
           }
         ]
       }
-    ],
-    "settings": []
+    ]
   }
 {%- endschema %}

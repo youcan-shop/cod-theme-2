@@ -31,7 +31,6 @@ document.getElementById("upsell-form").addEventListener("submit", function (even
         noButton.disabled = false;
         buttonText.style.display = "inline";
         spinnerLoader.style.display = "none";
-
         notify(response, "error");
       }
     })

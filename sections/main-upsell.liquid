@@ -1,15 +1,15 @@
 {{ 'upsell.css' | asset_url | stylesheet_tag }}
 
 <div class="upsell-page">
-    {% if section.settings.upsell_text %}
-      <div class="upsell-banner">
-        {{ section.settings.upsell_text }}
-      </div>
+  {% if section.settings.upsell_text %}
+    <div class="upsell-banner">
+      {{ section.settings.upsell_text }}
+    </div>
   {%- endif -%}
   <div class="upsell-form-container upsell-container">
     <div class="upsell-content">
       {{ upsell.description }}
-      <div class="upsell-footer">
+      <div class="upsell-footer"> 
         {{ upsell.footer }}
       </div>
     </div>

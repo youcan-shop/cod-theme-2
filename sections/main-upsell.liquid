@@ -1,6 +1,11 @@
 {{ 'upsell.css' | asset_url | stylesheet_tag }}
 
 <div class="upsell-page">
+    {% if section.settings.upsell_text %}
+      <div class="upsell-banner">
+        {{ section.settings.upsell_text }}
+      </div>
+  {%- endif -%}
   <div class="upsell-form-container upsell-container">
     <div class="upsell-content">
       {{ upsell.description }}
@@ -50,18 +55,11 @@
 {%- schema %}
   {
     "label": "Upsell",
-    "blocks": [
+    "settings": [
       {
-        "limit": 1,
-        "type": "upsell_title",
-        "label": "Title",
-        "settings": [
-          {
-            "type": "richtext",
-            "id": "upsell_text",
-            "label": "Upsell text"
-          }
-        ]
+        "type": "richtext",
+        "id": "upsell_text",
+        "label": "Upsell text"
       }
     ]
   }

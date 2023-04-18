@@ -2,6 +2,18 @@
   background-color: #E9E9E9;
   padding-top: 80px;
 }
+.upsell-page .upsell-banner {
+  width: 100%;
+  padding: 42px 10px;
+  background-color: #FFFFFF;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgba(60, 65, 95, 0.2);
+  border-width: 3px 0 3px 0;
+  margin-bottom: 80px;
+}
 .upsell-page .upsell-content {
   display: grid;
   place-items: center;

@@ -2,19 +2,6 @@
   background-color: #E9E9E9;
   padding-top: 80px;
 
-  .upsell-banner {
-    width: 100%;
-    padding: 42px 10px;
-    background-color: #FFFFFF;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 3px solid rgba(60, 65, 95, 0.2);
-    border-width: 3px 0 3px 0;
-    margin-bottom: 80px;
-  }
-  
   .upsell-content {
     display: grid;
     place-items: center;
@@ -52,35 +39,35 @@
     margin: 60px auto 10px;
   }
 
-    .upsell-form-submit {
-      padding: 42px 0;
-      background-color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      z-index: 1000;
-      position: sticky;
-      bottom: 0;
-      left: 0;
-      right: 0;
+  .upsell-form-submit {
+    padding: 42px 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    z-index: 1000;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .upsell-submit-yes {
+      width: 329px;
+      padding: 16px 42px;
+      background: #66AC3C;
+      color: #fff;
+      border-radius: 6px;
     }
 
-  .upsell-submit-yes {
-    width: 329px;
-    padding: 16px 42px;
-    background: #66AC3C;
-    color: #fff;
-    border-radius: 6px;
-  }
-
-  .upsell-submit-no {
-    width: 329px;
-    padding: 16px 42px;
-    background: #fff;
-    color: #E7412F;
-    border-radius: 6px;
-    margin-left: 20px;
-    border: 1px solid #E7412F;
+    .upsell-submit-no {
+      width: 329px;
+      padding: 16px 42px;
+      background: #fff;
+      color: #E7412F;
+      border-radius: 6px;
+      margin-left: 20px;
+      border: 1px solid #E7412F;
+    }
   }
 }

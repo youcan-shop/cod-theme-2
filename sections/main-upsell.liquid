@@ -1,15 +1,6 @@
 {{ 'upsell.css' | asset_url | stylesheet_tag }}
 
 <div class="upsell-page">
-  {% for block in section.blocks %}
-    {% assign block_setting = block.settings %}
-      {% if block_setting.upsell_text %}
-        <div class="upsell-banner">
-          {{ block.settings.upsell_text }}
-        </div>
-    {%- endif -%}
-  {%- endfor -%}
-
   <div class="upsell-form-container upsell-container">
     <div class="upsell-content">
       {{ upsell.description }}

@@ -10,6 +10,7 @@ document.getElementById("upsell-form").addEventListener("submit", function (even
   const noButton = document.querySelector(".upsell-submit-no");
   const buttonText = event.submitter.querySelector(".button-text");
   const spinnerLoader = event.submitter.querySelector(".spinner");
+
   yesButton.disabled = true;
   noButton.disabled = true;
   buttonText.style.display = "none";

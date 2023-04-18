@@ -14,17 +14,68 @@
     border-width: 3px 0 3px 0;
     margin-bottom: 80px;
   }
-
-  .upsell-form-container {
+  
+  .upsell-content {
+    display: grid;
+    place-items: center;
+    text-align: center;
     max-width: 724px;
-    margin: 0 auto;
+    position: relative;
+    margin: 60px auto 10px;
+
+    h1 {
+      font-weight: 500;
+      color: #333333;
+      line-height: 29px;
+      font-size: 24px;
+    }
+
+    h2 {
+      font-size: 20px;
+      line-height: 22px;
+    }
+
+    p {
+      color: #333333;
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: 300;
+    }
+  }
+
+  .upsell-footer {
+    margin: 60px auto 10px;
+  }
 
     .upsell-form-submit {
+      padding: 42px 0;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      z-index: 1000;
       position: sticky;
       bottom: 0;
       left: 0;
-      background-color: red; // debug
-      display: flex;
+      right: 0;
     }
+
+  .upsell-submit-yes {
+    width: 329px;
+    padding: 16px 42px;
+    background: #66AC3C;
+    color: #fff;
+    border-radius: 6px;
+  }
+
+  .upsell-submit-no {
+    width: 329px;
+    padding: 16px 42px;
+    background: #fff;
+    color: #E7412F;
+    border-radius: 6px;
+    margin-left: 20px;
+    border: 1px solid #E7412F;
   }
 }

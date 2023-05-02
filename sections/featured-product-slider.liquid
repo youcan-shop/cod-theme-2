@@ -65,10 +65,10 @@
 <script defer>
   const setupProductsSlider = () => {
     const isMobile = window.matchMedia("(max-width: 768px)");
-    const products = {{ section.blocks.size }};
+    const productSize = {{ section.blocks.size }};
     let perPage = 4;
-    if (products < 4) {
-      perPage = products;
+    if (productSize < 4) {
+      perPage = productSize;
     }
   
     const desktopSlider = new Splide(`#yc_slider_{{ id }}.yc-slider__desktop`, {

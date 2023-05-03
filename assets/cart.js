@@ -1,7 +1,6 @@
 /**
  * set the height of the page to fit the screen resolution
  */
-
 function setHeightPage() {
   const htmlPageHeight = document.documentElement.clientHeight;
   const bodyHeight = document.body.offsetHeight;

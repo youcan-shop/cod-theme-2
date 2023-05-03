@@ -1,4 +1,6 @@
-// set the height of the page to fit the screen resolution
+/**
+ * set the height of the page to fit the screen resolution
+ */
 
 function setHeightPage() {
   const htmlPageHeight = document.documentElement.clientHeight;
@@ -8,6 +10,7 @@ function setHeightPage() {
 
   emptyCart.style.height = `${emptyCart.offsetHeight + emptySpaceHeight}px`;
 }
+
 setHeightPage();
 
 const promo = document.forms['promo'];
@@ -66,7 +69,7 @@ function updateTotalPrice() {
 
   const totalPriceElement = document.querySelector('.item-total-price');
 
-  if(totalPriceElement) {
+  if (totalPriceElement) {
     totalPriceElement.innerText = `${currency} ${totalPrice}`;
   }
 }

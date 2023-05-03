@@ -151,6 +151,7 @@ async function removeItem(cartItemId, productVariantId) {
 
       if (emptyCart) {
         emptyCart.classList.remove('hidden');
+
         setHeightPage();
       }
     }

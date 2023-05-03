@@ -69,7 +69,7 @@
     }
 
     .column-block .column-title {
-        font-size: 15px;    
+        font-size: 15px;
       }
 
     .column-image-wrapper {
@@ -84,7 +84,7 @@
     {% if section.settings.title %}
     <h3 class='yc-section-title'>{{ section.settings.title }}</h3>
     {% endif %}
-    
+
     <div class='multi-column-blocks'>
       {% for block in section.blocks %}
         {% assign block_setting = block.settings %}
@@ -153,7 +153,7 @@
     {
       "type": "text",
       "id": "title",
-      "label": "Section Title"
+      "label": "Section title"
     },
     {
       "type": "header",
@@ -183,12 +183,12 @@
           "value": "left"
         },
         {
-          "label": "right",
-          "value": "right"
-        },
-        {
           "label": "center",
           "value": "center"
+        },
+        {
+          "label": "right",
+          "value": "right"
         }
       ]
     },

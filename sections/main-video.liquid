@@ -2,8 +2,8 @@
 
 {% style %}
 .video-wrapper {
-  margin-top: {{ section.settings.space_top }}px;
-  margin-bottom: {{ section.settings.space_bottom }}px;
+  margin-top: {{ section.settings.margin_top }}px;
+  margin-bottom: {{ section.settings.margin_bottom }}px;
 }
 
 .youtube-play-button {
@@ -66,7 +66,7 @@
       {
         "type": "select",
         "id": "title_position",
-        "label": "Title position",
+        "label": "Title Position",
         "options": [
           {
             "value": "left",
@@ -86,7 +86,7 @@
       {
         "type": "select",
         "id": "video_type",
-        "label": "Video type",
+        "label": "Video Type",
         "options": [
           {
             "value": "youtube",
@@ -101,13 +101,13 @@
       {
         "type": "text",
         "id": "video_link",
-        "label": "Video link",
+        "label": "Video Link",
         "accept": ["youtube", "vimeo"]
       },
       {
         "type": "range",
         "id": "video_height",
-        "label": "Video height",
+        "label": "Video Height",
         "min": 100,
         "max": 1000,
         "step": 10,
@@ -117,7 +117,7 @@
       {
         "type": "range",
         "id": "video_width",
-        "label": "Video width",
+        "label": "Video Width's Percentage",
         "min": 10,
         "max": 100,
         "step": 5,
@@ -132,7 +132,7 @@
       },
       {
         "type": "range",
-        "id": "space_top",
+        "id": "margin_top",
         "label": "Space top",
         "min": 5,
         "max": 160,
@@ -143,7 +143,7 @@
       },
       {
         "type": "range",
-        "id": "space_bottom",
+        "id": "margin_bottom",
         "label": "Space bottom",
         "min": 5,
         "max": 160,

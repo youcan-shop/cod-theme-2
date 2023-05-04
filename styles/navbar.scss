@@ -134,6 +134,36 @@
         padding: 0 calc(var(--yc-nav-px) / 5);
         height: 100%;
         text-decoration: none;
+        position: relative;
+      }
+
+      &.active {
+        a {
+          color: var(--yc-nav-links-color);
+          font-weight: 600;
+        }
+      }
+
+      &.active ::after, &:hover ::after {
+        display: block;
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        border-radius: 99;
+        right: 0;
+        width: 40%;
+        height: 2px;
+        background-color: var(--yc-nav-links-color);
+        animation: slide 0.3s ease;
+
+        @keyframes slide {
+          0% {
+            width: 0;
+          }
+          100% {
+            width: 40%;
+          }
+        }
       }
     }
 

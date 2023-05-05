@@ -76,7 +76,3 @@ function setCustomSelect(select_id, select_options) {
     }
   });
 }
-
-  
-  
-  

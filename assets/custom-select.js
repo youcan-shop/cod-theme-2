@@ -29,7 +29,7 @@ function setCustomSelect(select_id, select_options, filterCallback) {
   const select = document.querySelector(`#custom-select-${select_id} select`);
   const list = document.querySelector(`#custom-select-${select_id} .dropdown-list`);
   const updateUrlOnSelect = document.querySelector(`#custom-select-${select_id}`).closest('.sort-select');
-
+  
   const options = format
     ? formatOptions(select_options).map((option) => ({ label: option, value: option }))
     : select_options;
@@ -49,6 +49,7 @@ function setCustomSelect(select_id, select_options, filterCallback) {
     dropdownOption.textContent = option.label;
     list.appendChild(dropdownOption);
   });
+
 
   // Set the default selected value in the .selected-option element
   const currentSortField = new URL(window.location.href).searchParams.get('sort_field') || 'price';

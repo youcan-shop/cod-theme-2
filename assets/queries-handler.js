@@ -44,5 +44,3 @@ if (paginateBtnNext) {
 if (paginateBtnCurrent) {
   paginateBtnCurrent.forEach((btn) => btn.setAttribute('href', convertUrl('page[cod]', btn.dataset.index)));
 }
-
- 

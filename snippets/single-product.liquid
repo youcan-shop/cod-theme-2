@@ -56,7 +56,7 @@
               {% endif %}
             </div>
           {%- when 'general_review' -%}
-            {%- render 'general-review' -%}
+            {%- render 'general-review', average_rating: product.averageRating -%}
           {%- when 'product_quantity' -%}
               {%- render 'product-quantity-input' -%}
           {%- when 'product_variants' -%}

@@ -9,9 +9,27 @@ function formatOptions(str) {
   return arabicArr;
 }
 
+const updateUrl = (key, value, url) => {
+  if (url.searchParams.has(key)) {
+    url.searchParams.set(key, value);
+  } else {
+    url.searchParams.append(key, value);
+  }
+};
+
+const convertUrlWithMultipleQuery = (keys, values) => {
+  const url = new URL(window.location.href);
+
+  keys.forEach((key, i) => updateUrl(key, values[i], url));
+
+  return url;
+};
+
 function setCustomSelect(select_id, select_options) {
   const select = document.querySelector(`#custom-select-${select_id} select`);
   const list = document.querySelector(`#custom-select-${select_id} .dropdown-list`);
+
+  const updateUrlOnSelect = document.querySelector(`#custom-select-${select_id}`).closest('.sort-select');
 
   const options = format ? formatOptions(select_options).map(option => ({ label: option, value: option })) : select_options;
 
@@ -28,6 +46,16 @@ function setCustomSelect(select_id, select_options) {
     list.appendChild(dropdownOption);
   });
 
+  // Set the default selected value in the .selected-option element
+  const currentSortField = new URL(window.location.href).searchParams.get('sort_field') || 'price';
+  const currentSortOrder = new URL(window.location.href).searchParams.get('sort_order') || 'asc';
+  const currentSelectedValue = `${currentSortField}-${currentSortOrder}`;
+  const currentSelectedOption = options.find(option => option.value === currentSelectedValue);
+
+  if (currentSelectedOption) {
+    select.value = currentSelectedOption.value;
+  }
+
   select.addEventListener('click', event => {
     event.preventDefault();
     list.classList.toggle('show');
@@ -35,8 +63,20 @@ function setCustomSelect(select_id, select_options) {
 
   list.addEventListener('click', event => {
     if (event.target.classList.contains('dropdown-option')) {
-      select.value = event.target.dataset.value;
+      const selectedOption = document.querySelector(`#custom-select-${select_id} .selected-option`);
+      const selectedValue = event.target.dataset.value;
+      select.value = selectedValue;
       list.classList.remove('show');
+  
+      if (updateUrlOnSelect) {
+        // Handle sorting functionality
+        const [newSortField, newSortOrder] = selectedValue.split('-');
+        window.location.href = convertUrlWithMultipleQuery(['sort_field', 'sort_order'], [newSortField, newSortOrder]);
+      }
     }
   });
 }
+
+  
+  
+  

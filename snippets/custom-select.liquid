@@ -69,10 +69,12 @@
     font-size: 0.8em;
     color: #666;
 }
+
 {% endstyle %}
 
 <div class="custom-select" id="custom-select-{{ select_id }}">
   <select></select>
+  <span class="selected-option"></span> 
   <span class="select-icon">{% render 'icon', name: 'chevron_down' %}</span>
   <div class="dropdown-list"></div>
 </div>
@@ -83,5 +85,5 @@
     const select_options =  {% if format %} `{{data | json}}` {% else %} {{ data }} {% endif %};
     const format = {% if format %} true {% else %} false {% endif %};
 
-    setCustomSelect({{ select_id }},select_options);
+    setCustomSelect({{ select_id }}, select_options);
 </script>

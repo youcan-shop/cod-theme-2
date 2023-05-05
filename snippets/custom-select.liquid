@@ -82,7 +82,7 @@
 {{ 'custom-select.js' | asset_url | script_tag }}
 
 <script>
-    const select_options =  {% if format %} `{{data | json}}` {% else %} {{ data }} {% endif %};
+    const select_options = {% if format %} `{{data | json}}` {% else %} {{ data }} {% endif %};
     const format = {% if format %} true {% else %} false {% endif %};
 
     setCustomSelect({{ select_id }}, select_options);

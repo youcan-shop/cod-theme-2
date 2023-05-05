@@ -25,15 +25,19 @@ const convertUrlWithMultipleQuery = (keys, values) => {
   return url;
 };
 
-function setCustomSelect(select_id, select_options) {
+function setCustomSelect(select_id, select_options, filterCallback) {
   const select = document.querySelector(`#custom-select-${select_id} select`);
   const list = document.querySelector(`#custom-select-${select_id} .dropdown-list`);
-
   const updateUrlOnSelect = document.querySelector(`#custom-select-${select_id}`).closest('.sort-select');
 
-  const options = format ? formatOptions(select_options).map(option => ({ label: option, value: option })) : select_options;
+  const options = format
+    ? formatOptions(select_options).map((option) => ({ label: option, value: option }))
+    : select_options;
 
-  options.forEach(option => {
+  // Filter options using the provided callback
+  const filteredOptions = filterCallback ? options.filter(filterCallback) : options;
+
+  filteredOptions.forEach(option => {
     const selectOption = document.createElement('option');
     selectOption.value = option.value;
     selectOption.text = option.label;

@@ -1,5 +1,3 @@
-let currentSelectedOption;
-
 function formatOptions(str) {
   const arr = JSON.parse(str.slice(1, -1));
   const arabicArr = arr.map((elem) => {

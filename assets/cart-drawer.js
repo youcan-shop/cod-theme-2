@@ -33,11 +33,13 @@ async function setupCartDrawer() {
   function createCartItemHtml(cartItem) {
     const { productVariant, quantity, id } = cartItem
 
+    // Check if there is not an image available
+    const imageUrl = productVariant.product.images.length > 0 ? productVariant.product.images[0].url : defaultImage;
     if (productVariant) {
       return `
         <div class='cart-item'>
           <div class='image'>
-            <img src='${productVariant.image.url || productVariant.product.images[0].url}' />
+            ${imageUrl && `<img src="${imageUrl}" />`}
           </div>
           <div class='info'>
             <div class='title'>${productVariant.product.name || ''}</div>
@@ -63,8 +65,9 @@ async function setupCartDrawer() {
 
   try {
     const cartObject = await youcanjs.cart.fetch()
-    const cartItems = cartObject.items
-
+    const cartItems = cartObject.items 
+    console.log(cartItems)
+  
     if (!cartItems || cartItems.data) return
 
     cartDrawerContentEl.innerHTML = cartItems.map(createCartItemHtml).join('')

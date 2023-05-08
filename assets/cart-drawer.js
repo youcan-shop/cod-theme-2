@@ -66,7 +66,6 @@ async function setupCartDrawer() {
   try {
     const cartObject = await youcanjs.cart.fetch()
     const cartItems = cartObject.items 
-    console.log(cartItems)
   
     if (!cartItems || cartItems.data) return
 

@@ -65,8 +65,8 @@ async function setupCartDrawer() {
 
   try {
     const cartObject = await youcanjs.cart.fetch()
-    const cartItems = cartObject.items 
-  
+    const cartItems = cartObject.items
+
     if (!cartItems || cartItems.data) return
 
     cartDrawerContentEl.innerHTML = cartItems.map(createCartItemHtml).join('')

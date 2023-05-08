@@ -1,3 +1,4 @@
+let currentSelectedOption;
 
 function formatOptions(str) {
   const arr = JSON.parse(str.slice(1, -1));
@@ -25,19 +26,15 @@ const convertUrlWithMultipleQuery = (keys, values) => {
   return url;
 };
 
-function setCustomSelect(select_id, select_options, filterCallback) {
+function setCustomSelect(select_id, select_options, handlerFunction) {
   const select = document.querySelector(`#custom-select-${select_id} select`);
   const list = document.querySelector(`#custom-select-${select_id} .dropdown-list`);
-  const updateUrlOnSelect = document.querySelector(`#custom-select-${select_id}`).closest('.sort-select');
-  
+
   const options = format
     ? formatOptions(select_options).map((option) => ({ label: option, value: option }))
     : select_options;
 
-  // Filter options using the provided callback
-  const filteredOptions = filterCallback ? options.filter(filterCallback) : options;
-
-  filteredOptions.forEach(option => {
+  options.forEach(option => {
     const selectOption = document.createElement('option');
     selectOption.value = option.value;
     selectOption.text = option.label;
@@ -50,17 +47,6 @@ function setCustomSelect(select_id, select_options, filterCallback) {
     list.appendChild(dropdownOption);
   });
 
-
-  // Set the default selected value in the .selected-option element
-  const currentSortField = new URL(window.location.href).searchParams.get('sort_field') || 'price';
-  const currentSortOrder = new URL(window.location.href).searchParams.get('sort_order') || 'asc';
-  const currentSelectedValue = `${currentSortField}-${currentSortOrder}`;
-  const currentSelectedOption = options.find(option => option.value === currentSelectedValue);
-
-  if (currentSelectedOption) {
-    select.value = currentSelectedOption.value;
-  }
-
   select.addEventListener('click', event => {
     event.preventDefault();
     list.classList.toggle('show');
@@ -68,16 +54,36 @@ function setCustomSelect(select_id, select_options, filterCallback) {
 
   list.addEventListener('click', event => {
     if (event.target.classList.contains('dropdown-option')) {
-      const selectedOption = document.querySelector(`#custom-select-${select_id} .selected-option`);
       const selectedValue = event.target.dataset.value;
       select.value = selectedValue;
       list.classList.remove('show');
   
-      if (updateUrlOnSelect) {
-        // Handle sorting functionality
-        const [newSortField, newSortOrder] = selectedValue.split('-');
-        window.location.href = convertUrlWithMultipleQuery(['sort_field', 'sort_order'], [newSortField, newSortOrder]);
+      if (handlerFunction) {
+        handlerFunction(select_id, selectedValue);
       }
     }
   });
+  
+  if (handlerFunction) {
+    handlerFunction(select_id);
+  }
+}  
+
+function selectSortValue(select_id, selectedValue) {
+  const select = document.querySelector(`#custom-select-${select_id} select`);
+
+  // Set the default selected value in the .selected-option element
+  const currentSortField = new URL(window.location.href).searchParams.get('sort_field') || 'price';
+  const currentSortOrder = new URL(window.location.href).searchParams.get('sort_order') || 'asc';
+  const currentSelectedValue = `${currentSortField}-${currentSortOrder}`;
+
+  // Update the selected value in the dropdown
+  select.value = currentSelectedValue;
+
+  // Handle sorting functionality
+  const updateUrlOnSelect = document.querySelector(`#custom-select-${select_id}`).closest('.sort-select');
+  if (updateUrlOnSelect && selectedValue) {
+    const [newSortField, newSortOrder] = selectedValue.split('-');
+    window.location.href = convertUrlWithMultipleQuery(['sort_field', 'sort_order'], [newSortField, newSortOrder]);
+  }
 }

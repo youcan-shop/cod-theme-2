@@ -9,5 +9,5 @@
   ]
 {% endcapture %}
 <div class="sort-select">
-  {% render 'custom-select', data: sort_options %}
+  {% render 'custom-select', data: sort_options, handlerFunction: 'selectSortValue' %}
 </div>

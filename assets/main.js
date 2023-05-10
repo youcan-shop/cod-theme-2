@@ -180,3 +180,26 @@ overlay.addEventListener('click', closeSearch);
 
   document.body.append(elementsContainer);
 })();
+
+/* ------------------------------------------------------ */
+/* ----- Stick the footer at the bottom of the page ----- */
+/* ------------------------------------------------------ */
+const stickFooter = $('#stick-footer');
+/**
+ * This function is for always putting the footer at the bottom of the screen
+ */
+if(stickFooter) {
+  function stickFooterAtBottom() {
+    const htmlPageHeight = document.documentElement.clientHeight;
+    const bodyHeight = document.body.offsetHeight;
+    let emptySpaceHeight = htmlPageHeight - bodyHeight;
+
+    if (emptySpaceHeight < 0) {
+      emptySpaceHeight = 0;
+    }
+
+    stickFooter.style.marginBottom = `${emptySpaceHeight}px`;
+  }
+
+  stickFooterAtBottom();
+}

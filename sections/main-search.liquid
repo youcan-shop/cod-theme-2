@@ -29,14 +29,18 @@
 {%- assign products_per_page = section.settings.products_per_page -%}
 
   {%- paginate search.products by products_per_page cod %}
-  <div class='yc-featured-products yc-searc-{{id}} container'>
+  <div class='yc-featured-products yc-searc-{{id}} container' id="stick-footer">
     <h1 class='search-title' id='search-title'></h1>
     <div class='product-list'>
-      {%- for item in items %}
-        <div class="product-item">
-          {%- render 'product-preview', item: item -%}
-        </div>
-      {%- endfor %}
+      {%- if items %}
+        {%- for item in items %}
+          <div class="product-item">
+            {%- render 'product-preview', item: item -%}
+          </div>
+        {%- endfor %}
+        {%- else %}
+        <p>We're sorry. Were not able to find a match.</p>
+      {% endif %}
     </div>
   </div>
 

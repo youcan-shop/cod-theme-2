@@ -31,17 +31,28 @@
   {%- paginate search.products by products_per_page cod %}
   <div class='yc-featured-products yc-searc-{{id}} container' id="stick-footer">
     <h1 class='search-title' id='search-title'></h1>
-    <div class='product-list'>
-      {%- if items %}
+    {%- if items %}
+      <div class='product-list'>
         {%- for item in items %}
           <div class="product-item">
             {%- render 'product-preview', item: item -%}
           </div>
         {%- endfor %}
-        {%- else %}
-        <p>We're sorry. Were not able to find a match.</p>
-      {% endif %}
-    </div>
+      </div>
+    {%- else %}
+      <div class='flex flex-col justify-center text-center items-center gap-3 pt-12'>
+        <div class='text-2xl md:text-3xl'>{{ 'search.empty.title' | t }}</div>
+        <div class='opacity-60'>
+          <p>{{ 'search.empty.description' | t }}</p>
+        </div>
+        <a
+          href='/'
+          class='yc-btn mt-5'
+        >
+          {{ 'search.empty.home_page' | t }}
+        </a>
+      </div>
+    {% endif %}
   </div>
 
   <!-- prettier-ignore -->

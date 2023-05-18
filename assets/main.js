@@ -198,7 +198,7 @@ function stickFooterAtBottom() {
   let totalSpace = `${ emptySpaceHeight + (youcanTag ? 79 : 0) }px`;
 
   if (totalSpace < '0px') {
-    totalSpace = 0;
+    totalSpace = '32px';
   }
 
   if (stickFooter) {

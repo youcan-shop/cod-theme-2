@@ -184,22 +184,28 @@ overlay.addEventListener('click', closeSearch);
 /* ------------------------------------------------------ */
 /* ----- Stick the footer at the bottom of the page ----- */
 /* ------------------------------------------------------ */
-const stickFooter = $('#stick-footer');
+
 /**
  * This function is for always putting the footer at the bottom of the screen
  */
-if(stickFooter) {
-  function stickFooterAtBottom() {
-    const htmlPageHeight = document.documentElement.clientHeight;
-    const bodyHeight = document.body.offsetHeight;
-    let emptySpaceHeight = htmlPageHeight - bodyHeight;
 
-    if (emptySpaceHeight < 0) {
-      emptySpaceHeight = 0;
-    }
+function stickFooterAtBottom() {
+  const stickFooter = $('#stick-footer');
+  const youcanTag = $('#powered-by-youcan-05-2023');
+  let htmlPageHeight = document.documentElement.clientHeight;
+  let bodyHeight = document.body.offsetHeight;
+  let emptySpaceHeight = htmlPageHeight - bodyHeight;
+  let totalSpace = `${ emptySpaceHeight + (youcanTag ? 79 : 0) }px`;
 
-    stickFooter.style.marginBottom = `${emptySpaceHeight}px`;
+  if (totalSpace < '0px') {
+    totalSpace = 0;
   }
 
+  if (stickFooter) {
+    stickFooter.style.marginBottom = totalSpace;
+  }
+}
+
+window.onload = function() {
   stickFooterAtBottom();
 }

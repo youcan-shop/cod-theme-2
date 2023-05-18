@@ -191,21 +191,17 @@ overlay.addEventListener('click', closeSearch);
 
 function stickFooterAtBottom() {
   const stickFooter = $('#stick-footer');
-  const youcanTag = $('#powered-by-youcan-05-2023');
   let htmlPageHeight = document.documentElement.clientHeight;
   let bodyHeight = document.body.offsetHeight;
-  let emptySpaceHeight = htmlPageHeight - bodyHeight;
-  let totalSpace = `${ emptySpaceHeight + (youcanTag ? 79 : 0) }px`;
+  let emptySpaceHeight = `${htmlPageHeight - bodyHeight}px`;
 
-  if (totalSpace < '0px') {
-    totalSpace = '32px';
+  if (emptySpaceHeight < '0px') {
+    emptySpaceHeight = '32px';
   }
 
   if (stickFooter) {
-    stickFooter.style.marginBottom = totalSpace;
+    stickFooter.style.marginBottom = emptySpaceHeight;
   }
 }
 
-window.onload = function() {
-  stickFooterAtBottom();
-}
+stickFooterAtBottom();

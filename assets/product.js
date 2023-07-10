@@ -393,8 +393,6 @@ function setup() {
     const productDetails = section.querySelector('.product-options');
     const variant = variants[0];
 
-    selectDefaultOptions(section);
-
     updateProductDetails(
       section,
       variant.image,
@@ -420,6 +418,8 @@ function setup() {
         subtree: true,
       });
     }
+
+    selectDefaultOptions(section);
   });
 }
 

@@ -235,6 +235,7 @@ function currencySymbol(parentElement) {
  * @param {HTMLElement} parentSection
  * @param {String} image
  * @param {String} price
+ * @param {String} compareAtPrice
  */
 function updateProductDetails(parentSection, image, price, compareAtPrice) {
   if (image) {

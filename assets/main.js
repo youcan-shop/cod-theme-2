@@ -117,8 +117,8 @@ if (overlay) {
   hideOverlay();
 }
 
-function openDrawer(el) {
-  if(el === '.cart-drawer' && window.location.pathname === '/cart') {
+function openDrawer(el, templateName) {
+  if(el === '.cart-drawer' && templateName === 'cart') {
     return window.location.reload();
   }
 

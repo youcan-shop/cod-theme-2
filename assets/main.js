@@ -118,7 +118,12 @@ if (overlay) {
 }
 
 function openDrawer(el) {
+  if(el === '.cart-drawer' && window.location.pathname === '/cart') {
+    return window.location.reload();
+  }
+
   const targetedDrawer = document.querySelector(`.navigation-drawer${el}`);
+
   if (targetedDrawer) {
     showOverlay();
     targetedDrawer.style.transform = 'none';

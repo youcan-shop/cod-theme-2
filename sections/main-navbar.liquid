@@ -76,7 +76,7 @@
                   </form>
                 </div>
               </div>
-              <div
+              <button
                 class='cart relative'
                 onclick="openDrawer('.cart-drawer')"
               >
@@ -84,7 +84,7 @@
                   {{- cart.items | size -}}
                 </span>
                 {% render 'icon', name: 'cart' %}
-              </div>
+              </button>
               <button
                 class='menu-toggler text-3xl'
                 onclick="openDrawer('.navbar-drawer')"

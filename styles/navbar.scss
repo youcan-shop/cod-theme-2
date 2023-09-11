@@ -38,9 +38,15 @@
     height: var(--yc-nav-height);
     z-index: 100;
     background-color: var(--yc-nav-background);
+    padding: 0 20px;
 
     *:not(span):not(input) {
       @extend .items-configs;
+    }
+
+    @include breakpoint('md') {
+      grid-template-columns: repeat(3, 1fr);
+      padding: 0 40px;
     }
 
     :first-child {
@@ -76,6 +82,7 @@
       }
       .cart {
         font-size: 1.5rem;
+        cursor: pointer;
 
         #cart-items-badge {
           display: flex;
@@ -94,6 +101,12 @@
           border-radius: 50%;
           z-index: 10;
         }
+      }
+    }
+
+    .menu-toggler {
+      @include breakpoint('md') {
+        display: none;
       }
     }
 

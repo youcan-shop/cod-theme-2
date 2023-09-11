@@ -2,7 +2,7 @@
     "current": {
         "font_family": "Almarai",
         "theme_direction": "rtl",
-        "primary_color": "#F33520",
+        "primary_color": "#3C415FFF",
         "sections": {
             "notice-bar": {
                 "type": "notice-bar",
@@ -14,7 +14,10 @@
                     "notice_bar_height_desktop": 45,
                     "notice_bar_height_mobile": 45,
                     "notice_bar_background_color_desktop": "#F33520FF",
-                    "notice_bar_background_color_mobile": "#E72E25FF"
+                    "notice_bar_background_color_mobile": "#E72E25FF",
+                    "notice_bar_content_text_color": "#FFFFFFFF",
+                    "notice_bar_background_color": "#3C415F",
+                    "notice_bar_content": "<p>Special offer: free delivery, pay on delivery, faster and order now<\/p>"
                 }
             },
             "main-navbar": {
@@ -39,11 +42,11 @@
                     "block_gmrv273jdps9sso"
                 ],
                 "settings": {
-                    "cart_badge_color": "#B83375FF",
-                    "navbar_logo": "image-2IqyhOl7b1bbMBEPS5JD0G2MrcW.png",
+                    "cart_badge_color": "#DC5151FF",
+                    "navbar_logo": "logo-2VFLjjhovaJvrEZ3EkN6n6Dawfn.png",
                     "navbar_links_color": "#000000FF",
                     "navbar_background_color": "#FFFFFFFF",
-                    "navbar_height": 85,
+                    "navbar_height": 64,
                     "navbar_always_on_top": true,
                     "toggle_navbar": false
                 }

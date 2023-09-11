@@ -79,7 +79,7 @@
   }
 {% endstyle %}
 
-<section class='multi-column-{{ id }}'>
+<div class='multi-column-{{ id }}'>
   <div class="container">
     {% if section.settings.title %}
     <h3 class='yc-section-title'>{{ section.settings.title }}</h3>
@@ -114,13 +114,13 @@
             <h4 class='column-title'>{{ block_setting.heading }}</h4>
           {% endif %}
           {% if block_setting.description %}
-            <p class='column-description'>{{ block_setting.description }}</p>
+            <div class='column-description'>{{ block_setting.description }}</div>
           {% endif %}
         </div>
       {% endfor %}
     </div>
   </div>
-</section>
+</div>
 
 {% schema %}
 {
@@ -170,7 +170,7 @@
       "type": "color",
       "id": "text_color",
       "label": "Text color",
-      "default": "#3C415FFF"
+      "default": "#000000FF"
     },
     {
       "type": "color",

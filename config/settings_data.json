@@ -2,7 +2,7 @@
     "current": {
         "font_family": "Almarai",
         "theme_direction": "rtl",
-        "primary_color": "#F33520",
+        "primary_color": "#3C415FFF",
         "sections": {
             "notice-bar": {
                 "type": "notice-bar",
@@ -11,7 +11,7 @@
                     "notice_bar_background_color": "#3C415F",
                     "notice_bar_content": "<p>شحن مجاني ومنتج من إختيارك عند شرائك بقيمة 400ج.م أو أكثر<\/p>",
                     "notice_bar_height": 50
-              }
+                }
             },
             "main-navbar": {
                 "type": "main-navbar",
@@ -35,11 +35,11 @@
                     "block_gmrv273jdps9sso"
                 ],
                 "settings": {
-                    "cart_badge_color": "#B83375FF",
-                    "navbar_logo": "image-2IqyhOl7b1bbMBEPS5JD0G2MrcW.png",
-                    "navbar_links_color": "#000000FF",
+                    "cart_badge_color": "#DC5151FF",
+                    "navbar_logo": "logo-2VFLjjhovaJvrEZ3EkN6n6Dawfn.png",
+                    "navbar_links_color": "#3C415F",
                     "navbar_background_color": "#FFFFFFFF",
-                    "navbar_height": 85,
+                    "navbar_height": 64,
                     "navbar_always_on_top": true,
                     "toggle_navbar": false
                 }

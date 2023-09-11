@@ -38,9 +38,15 @@
     height: var(--yc-nav-height);
     z-index: 100;
     background-color: var(--yc-nav-background);
+    padding: 0 20px;
 
     *:not(span):not(input) {
       @extend .items-configs;
+    }
+
+    @include breakpoint('md') {
+      grid-template-columns: repeat(3, 1fr);
+      padding: 0 40px;
     }
 
     :first-child {
@@ -58,7 +64,7 @@
     .corner {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 16px;
 
       & > * {
         display: flex;
@@ -76,6 +82,7 @@
       }
       .cart {
         font-size: 1.5rem;
+        cursor: pointer;
 
         #cart-items-badge {
           display: flex;
@@ -97,10 +104,15 @@
       }
     }
 
+    .menu-toggler {
+      @include breakpoint('md') {
+        display: none;
+      }
+    }
+
     .logo {
       img {
-        height: calc(var(--yc-nav-height) - 20px);
-        max-height: 40px;
+        height: min(calc(var(--yc-nav-height) - 20px), 40px);
       }
     }
 
@@ -110,16 +122,9 @@
       }
     }
 
-    .menu-toggler {
-      @include breakpoint('md') {
-        display: none;
-      }
-    }
-
     .menu-list {
       display: none;
       list-style: none;
-
 
       @include breakpoint('md') {
         display: flex;
@@ -129,11 +134,47 @@
 
     .menu-item {
       a {
+        white-space: nowrap;
         color: var(--yc-nav-links-color);
+        opacity: 80%;
+        filter: saturate(0);
         font-size: 16px;
         padding: 0 calc(var(--yc-nav-px) / 5);
         height: 100%;
         text-decoration: none;
+        position: relative;
+      }
+
+      &.active {
+        a {
+          filter: saturate(1);
+          opacity: 100%;
+          color: var(--yc-nav-links-color);
+          font-weight: 600;
+        }
+      }
+
+      &.active ::after,
+      &:hover ::after {
+        display: block;
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        border-radius: 100px;
+        right: 0;
+        width: 40%;
+        height: 2px;
+        background-color: var(--yc-nav-links-color);
+        animation: slide 0.3s ease;
+
+        @keyframes slide {
+          0% {
+            width: 0;
+          }
+          100% {
+            width: 40%;
+          }
+        }
       }
     }
 
@@ -146,6 +187,11 @@
     .corner a:hover {
       opacity: var(--yc-nav-links-hover-transparency);
     }
+  }
+
+  .yc-navbar-mobile {
+    padding: 12px 20px;
+    background-color: white;
   }
 }
 

@@ -8,18 +8,6 @@
     color: {{ section.settings.text_color.hex }};
   }
 
-  @media screen and (min-width: 1024px) {
-    .multi-column-{{ id }} {
-      padding: 0 150px;
-    }
-  }
-
-  @media screen and (min-width: 1440px) {
-    .multi-column-{{ id }} {
-      padding: 0 240px;
-    }
-  }
-
   .multi-column-{{ id }} .yc-section-title{
     text-align: {{ section.settings.section_title_position }};
     font-weight: 700;
@@ -31,7 +19,6 @@
     grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
     grid-gap: 2vw;
     align-items: stretch;
-    padding: 10px 0;
   }
 
   .column-block {
@@ -51,7 +38,7 @@
   .column-block .column-description {
     margin: 12px auto;
     font-size: 15px;
-    color: {{ section.settings.text_color.hex }};;
+    color: {{ section.settings.text_color.hex }};
     font-weight: 400;
     line-height: 24px;
   }
@@ -94,7 +81,10 @@
 
 <div class='multi-column-{{ id }}'>
   <div class="container">
+    {% if section.settings.title %}
     <h3 class='yc-section-title'>{{ section.settings.title }}</h3>
+    {% endif %}
+
     <div class='multi-column-blocks'>
       {% for block in section.blocks %}
         {% assign block_setting = block.settings %}
@@ -251,12 +241,12 @@
           "label": "4 columns"
         }
       ],
-      "default": "3"
+      "default": "4"
     },
     {
       "type": "select",
       "id": "columns_mobile",
-      "label": "Number of columsn on mobile",
+      "label": "Number of columns on mobile",
       "options": [
         {
           "value": "1",
@@ -267,7 +257,7 @@
           "label": "2 columns"
         }
       ],
-      "default": "1"
+      "default": "2"
     }
   ]
 }

@@ -3,20 +3,32 @@
 .countdown-wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: center;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
+
+  @include breakpoint('md') {
+    flex-direction: row;
+  }
 
   .message {
     text-align: center;
-    font-size: 18px;
+    font-size: 23px;
+    display: none;
   }
 
+  @include breakpoint('md') {
+    flex-direction: row;
+
+    .message {
+      display: block;
+    }
+  }
   .countdown {
     direction: ltr;
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 4px;
     margin: 0;
 
     & .day,
@@ -24,39 +36,55 @@
     & .min,
     & .sec {
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .num {
+      width: min-content;
       display: flex;
       align-items: center;
-      justify-content: center;
-      border-radius: 6px;
-      font-weight: 600;
-      height: 49px;
-      width: 52px;
-      font-weight: 300;
-      font-size: 16px;
-      background-color: white;
-      border-radius: 5px;
-      border: 1px solid currentColor;
     }
 
-    .sec {
-      .num {
-        border-width: 2px;
-      }
+    & .day .num,
+    & .hour .num,
+    & .min .num,
+    & .sec .num {
+      display: block;
+      padding: 0.1rem 0.5rem;
+      border-radius: 6px;
+      font-size: 29px;
+      font-weight: 600;
+      color: #FFFFFF;
+      border: 0;
+      background-color: #EE7A6D;
+    }
 
-      .word {
-        font-weight: 400;
+    & .sec .num {
+      background-color: #000000;
+      border: 0;
+      width: 42px;
+      display: flex;
+      justify-content: center;
+
+      @media screen and (max-width: 600px) {
+        width: 35px;
       }
     }
 
     .dots {
+      color: white;
       font-size: 40px;
       margin-top: -11px;
+    }
+
+    @media screen and (max-width: 600px) {
+      gap: 1px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    & .day .num,
+    & .hour .num,
+    & .min .num,
+    & .sec .num {
+      font-size: 19px !important;
+      padding: 8px !important;
     }
   }
 }

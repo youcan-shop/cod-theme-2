@@ -1,135 +1,138 @@
 {{ 'cart.css' | asset_url | stylesheet_tag }}
 
-<div class='yc-cart'>
+<div class='yc-cart mt-4'>
   {%- if cart and cart.items %}
     <div class='container cart-table'>
-      <div class="header-block">
-        <div class="header-bar">
-          <h2>{{ 'cart.title' | t }}</h2>
-          <div class='cart-title mt-1'>
-            (<p id="cart-items-count">{{ cart.items | size }}</p>
-            <p>{{ 'cart.items_count' | t }}</p>)
+  <div class="header-block">
+    <div class="header-bar">
+      <h2>{{ 'cart.title' | t }}</h2>
+      <p class='mt-1'>
+        ({{ cart.items | size }}
+        {{ 'cart.items_count' | t }})
+      </p>
+    </div>
+    <div class="checkout_cta">
+      <a href='{{ cart.cart_submit_url }}' class='yc-btn w-full'>
+        {{ 'cart.summary.checkout_cta' | t }}
+      </a>
+    </div>
+    </div>
+    <div class="table-container">
+    <div class="row header">
+      <div class="cell"></div>
+      <div class="cell">اسم المنتوج</div>
+      <div class="cell">الكمية</div>
+      <div class="cell">المجموع</div>
+      <div class="cell adjust-space"></div>
+    </div>
+    {% for item in cart.items %}
+      <div class="row cart__item" id='{{ item.id }}'>
+        <div class="cell">
+            <div class='product-image'>
+              <img loading='lazy' src='{{ item.image }}' alt='product-name'>
+            </div>
+        </div>
+        <div class='cell'>
+          <div class="product-title">{{ item.name }}</div>
+            <div class="product-variant">
+              {% for variant in item.variations %}
+                {% if variant[0] != 'default' or variant[1] != 'default' %}
+                <span>{{ variant[0] }}: {{ variant[1] }}</span>
+                <span class="variant-space"></span>
+              {% endif %}
+            {% endfor %}
+            <div>
+              <span class='product-price'> {{ item.price }}</span>
+              <span class='product-currency'></span>
+            </div>
           </div>
-          </p>
+        </div>
+        <div class='cell'>
+          {%- render 'quantity-input', item: item -%}
+        </div>
+        <div class='cell total-price-table'>
+            <div
+              class='cart-item-loader-spinner hidden'
+              id='loading__{{ item.id }}'
+            >
+            <span class='spinner h-7 w-7'></span>
+          </div>
+          <div class="total-price-wrapper">
+            <span class="total-price">{{ item.price | times: item.quantity }}</span>
+            <span class="product-currency"></span>
+          </div>
+        </div>
+        <div class="cell adjust-space close-btn">
+          <button onclick="removeItem('{{ item.id }}', '{{ item.product_variant_id }}')" class='yc-btn-close'>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
         </div>
       </div>
-
-      <!-- cart items table -->
-      <div class="table-container">
-        <!-- table headers -->
-        <div class="row header">
-          <div class="cell"></div>
-          <div class="cell">{{ 'cart.items.product' | t }}</div>
-          <div class="cell">{{ 'cart.items.quantity' | t }}</div>
-          <div class="cell">{{ 'cart.items.total' | t }}</div>
-          <div class="cell adjust-space"></div>
-        </div>
-
-        <!-- table body => cart items -->
-        <div>
-          {% for item in cart.items %}
-            <div class="row cart__item" id='{{ item.id }}'>
-              <div class="cell">
-                  <div class='product-image'>
-                    <img loading='lazy' src='{{ item.image }}' alt='product-name'>
+    {% endfor %}
+    </div>
+      <div class='summary-box h-fit'>
+          <div id='summary'>
+            {% if section.settings.show_coupon %}
+              <form name='promo'>
+                <div class='mb-7 w-full'>
+                  <div class='border-b border-space'>
+                    <label for='promo' class="promo">{{ 'cart.summary.promo' | t }}</label>
+                    <div class="flex gap-2">
+                      <input
+                        type='text'
+                        name='coupon'
+                        id='promo'
+                        placeholder='{{ "cart.summary.promo_input" | t }}'
+                        class='w-full'
+                      >
+                      <button
+                        type='submit'
+                        class='yc-btn-secondary'
+                      >
+                        <span
+                          class='spinner hidden'
+                          id='loading__coupon'
+                        ></span>
+                        <span>{{ 'cart.summary.checkout_cta' | t }}</span>
+                      </button>
+                    </div>
                   </div>
-              </div>
-              <div class='cell '>
-                <div class="product-title">{{ item.name }}</div>
-                <div class="product-price" style="display: none">{{ item.price }}</div>
-                <div class="product-variant">
-                  {% for variant in item.variations %}
-                    <span class="variant">{{ variant.1 }}</span>
-                    <span class="variant-divider">.</span>
-                  {% endfor %}
                 </div>
-              </div>
-              <div class='cell'>
-                {%- render 'quantity-input', item: item -%}
-              </div>
-              <div class='cell total-price-table'>
-                  <div
-                    class='cart-item-loader-spinner hidden'
-                    id='loading__{{ item.id }}'
-                  >
-                  <span class='spinner h-7 w-7'></span>
-                </div>
-                <div class="total-price-wrapper">
-                  <span class="total-price">{{ item.price | times: item.quantity }}</span>
-                  <span class="product-currency"></span>
-                </div>
-              </div>
-              <div class="cell adjust-space close-btn">
-                <button onclick="removeItem('{{ item.id }}', '{{ item.product_variant_id }}')" class='yc-btn-close'>
-                  <ion-icon name="close-outline"></ion-icon>
-                </button>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-
-      <!-- summary-box -->
-      <div class='summary-box'>
-        <div id='summary'>
-          <form name='promo'>
-            <label for='promo' class="promo">{{ 'cart.summary.promo' | t }}</label>
-            <div class="flex gap-2">
-              <input
-                type='text'
-                name='coupon'
-                id='promo'
-                placeholder='{{ "cart.summary.promo_input" | t }}'
-                class='w-full'
-              >
-              <button
-                type='submit'
-                class='yc-btn'
-              >
-                <span
-                  class='spinner hidden'
-                  id='loading__coupon'
-                ></span>
-                <span>{{ 'cart.summary.checkout_cta' | t }}</span>
-              </button>
-            </div>
-          </form>
-
-          {%- if cart and cart.items %}
+              </form>
+            {% endif %}
+            {%- if cart and cart.items %}
             <div class="price-wrapper">
-              <div class='price-box'>
+              <div class='flex flex-col gap-1 price-box'>
                 {%- for item in cart.items %}
                   <div class='flex justify-between text-sm box' id='cart-item-{{ item.id }}'>
                     <div class='capitalize'>{{ item.name }}</div>
-                    <div class="hidden">
-                      {%- render 'quantity-input', item: item -%}
-                      <div class='product-price'>{{ item.price }}</div>
+                      <div class="hidden">
+                        {%- render 'quantity-input', item: item -%}
+                        <div class='product-price'>{{ item.price }}</div>
+                      </div>
+                      <div>
+                        <span class="item-price">{{ item.price | times: item.quantity }}</span>
+                        <span class="product-currency"></span>
+                      </div>
                     </div>
-                    <div>
-                      <span class="item-price">{{ item.price | times: item.quantity }}</span>
-                      <span class="product-currency"></span>
-                    </div>
-                  </div>
                 {%- endfor %}
               </div>
+            {%- endif %}
+            <div class='border-t mt-5'>
+              <div class='flex text-sm justify-between mt-5'>
+                <span class="total">{{ 'cart.summary.total' | t }}</span>
+                <span class="item-total-price"></span>
+              </div>
+              <a href='{{ cart.cart_submit_url }}' class='yc-btn mt-5 w-full'>
+                {{ 'cart.summary.checkout_cta' | t }}
+              </a>
             </div>
-          {%- endif %}
-          <div class='total-price'>
-            <div class='flex justify-between mt-5'>
-              <span class="total">{{ 'cart.summary.total' | t }}</span>
-              <span class="item-total-price"></span>
-            </div>
-            <a href='{{ cart.cart_submit_url }}' class='yc-btn mt-5 w-full'>
-              {{ 'cart.summary.checkout_cta' | t }}
-            </a>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    </div>
   {%- endif %}
-
-  <!-- empty state -->
   <div class='{% if cart and cart.items %}hidden {% endif %} container empty-cart pt-12' id="stick-footer">
     <div class='flex flex-col justify-center text-center items-center gap-3'>
       <ion-icon
@@ -159,8 +162,16 @@
 {% schema %}
 {
   "label": "Cart",
-  "class": "cart",
   "templates": ["cart"],
-  "limit": 1
+  "class": "cart",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_coupon",
+      "label": "Show coupon",
+      "default": false
+    }
+  ]
 }
 {% endschema %}

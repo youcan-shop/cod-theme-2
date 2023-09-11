@@ -1,16 +1,12 @@
 @import 'helpers/mixins';
 
 .thankyou-page-container {
-  max-width: 500px;
+  max-width: 440px;
   width: 100%;
   margin: 10px auto 80px;
 
   @media screen and (max-width: 768px) {
     padding: 0 16px;
-  }
-
-  .thankyou-image {
-    margin-bottom: 32px;
   }
 
   .thankyou-wrapper {
@@ -24,7 +20,6 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: var(--yc-primary-color);
 
       .heading {
         line-height: 42px;
@@ -58,82 +53,59 @@
     }
   }
 
-  .invoice-summary-title {
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 29px;
-    text-align: center;
-    margin-bottom: 24px;
-  }
-
-  .orders-detail-wrapper {
-    border-radius: 5px 5px 0px 0px;
-    display: flex;
-    flex-direction: column;
-    padding: 24px;
-    gap: 26px;
-    border: 1px solid #E6E6E6;
-    border-bottom: none;
-    max-height: 350px;
-    overflow: auto;
-
-    .variant {
-      display: flex;
-      justify-content: space-between;
-
-      h2 {
-        color: var(--yc-primary-color);
-        font-weight: 400;
-      }
-    }
-  }
-
   .order-details {
-    border-radius: 0px 0px 5px 5px;
-    border: 1px solid #E6E6E6;
-    padding: 24px;
-    background-color: #FAFAFA;
+    border: 1px solid #EBEBEB;
+    padding: 24px 28px;
+    border-radius: 0 0 4px 4px;
 
     h2 {
-      font-weight: 400;
-      color: #333;
+      font-weight: 600;
+      line-height: 22px;
+      color: #000000;
+      font-weight: 700;
     }
 
     .table-content {
       .head {
         display: flex;
-        margin-bottom: 24px;
+        margin-top: 15px;
         justify-content: space-between;
         align-items: center;
 
-        .item,
-        .data-item {
+        .item {
           font-weight: 400;
           font-size: 14px;
-          line-height: 17px;
-          color: #757575;
         }
 
-        .data-item {
+        .data-item,
+        .data-item>* {
           font-weight: 700;
           font-size: 14px;
+        }
+
+        .coupon-head .data-item {
+          display: flex;
+          gap: 4px;
         }
       }
 
       .total-price-head {
         display: flex;
-        margin-top: 26px;
-        padding: 14px 0;
+        margin-top: 20px;
+        padding-top: 15px;
         justify-content: space-between;
         align-items: center;
-        border-top: 1px solid #333;
-        border-bottom: 1px solid #333;
+        border-top: 1px solid #EBEBEB;
 
-        .item,
+        .item {
+          font-weight: 700;
+          line-height: 22px;
+        }
+
         .data-item {
-          font-weight: 400;
-          color: #333;
-          line-height: 20px;
+          font-weight: 700;
+          font-size: 16px;
+          color: var(--yc-primary-color);
         }
       }
     }
@@ -141,5 +113,56 @@
 
   .home-page {
     margin-top: 50px;
+  }
+
+  .cart-items {
+    border: 1px solid #EBEBEB;
+    border-bottom: none;
+    padding: 24px 28px 0;
+    border-radius: 4px 4px 0 0;
+
+    >table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+
+      thead>tr {
+        border-bottom: 1px solid #EBEBEB;
+
+        >* {
+          text-align: start;
+          color: #a7a7a7;
+          font-weight: 500;
+          font-size: 14px;
+          padding: 0 0 12px;
+        }
+
+        >.total {
+          text-align: end;
+        }
+      }
+
+      tbody tr {
+        border-bottom: 1px solid #f0f0f0;
+        height: 50px;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        >.product-name {
+          max-width: 160px;
+          color: var(--yc-primary-color);
+        }
+
+        >* {
+          padding: 8px 0;
+        }
+
+        >.total {
+          text-align: end;
+        }
+      }
+    }
   }
 }

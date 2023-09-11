@@ -2,11 +2,22 @@
 
 {% style %}
   .multi-column-{{ id }} {
-    padding: 32px 0;
-    padding-top: {{ section.settings.space_top }}px;
-    padding-bottom: {{ section.settings.space_bottom }}px;
+    margin-top: {{ section.settings.space_top }}px;
+    margin-bottom: {{ section.settings.space_bottom }}px;
     background-color: {{ section.settings.background_color.hex }};
     color: {{ section.settings.text_color.hex }};
+  }
+
+  @media screen and (min-width: 1024px) {
+    .multi-column-{{ id }} {
+      padding: 0 150px;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    .multi-column-{{ id }} {
+      padding: 0 240px;
+    }
   }
 
   .multi-column-{{ id }} .yc-section-title{
@@ -20,6 +31,7 @@
     grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
     grid-gap: 2vw;
     align-items: stretch;
+    padding: 10px 0;
   }
 
   .column-block {
@@ -33,17 +45,15 @@
     margin-top: 16px;
     font-weight: 700;
     font-size: 18px;
+    color: {{ section.settings.caption_color.hex }};;
   }
 
   .column-block .column-description {
     margin: 12px auto;
     font-size: 15px;
+    color: {{ section.settings.text_color.hex }};;
     font-weight: 400;
     line-height: 24px;
-  }
-
-  .multi-column-{{ id }} .column-block .column-description {
-    color: {{ section.settings.text_color.hex }};
   }
 
   .column-block .column-image {
@@ -82,12 +92,9 @@
   }
 {% endstyle %}
 
-<section class='multi-column-{{ id }}'>
+<div class='multi-column-{{ id }}'>
   <div class="container">
-    {% if section.settings.title %}
     <h3 class='yc-section-title'>{{ section.settings.title }}</h3>
-    {% endif %}
-
     <div class='multi-column-blocks'>
       {% for block in section.blocks %}
         {% assign block_setting = block.settings %}
@@ -117,13 +124,13 @@
             <h4 class='column-title'>{{ block_setting.heading }}</h4>
           {% endif %}
           {% if block_setting.description %}
-            <p class='column-description'>{{ block_setting.description }}</p>
+            <div class='column-description'>{{ block_setting.description }}</div>
           {% endif %}
         </div>
       {% endfor %}
     </div>
   </div>
-</section>
+</div>
 
 {% schema %}
 {
@@ -173,7 +180,13 @@
       "type": "color",
       "id": "text_color",
       "label": "Text color",
-      "default": "#3C415FFF"
+      "default": "#000000FF"
+    },
+    {
+      "type": "color",
+      "id": "caption_color",
+      "label": "Caption color",
+      "default": "#000000FF"
     },
     {
       "type": "header",
@@ -205,7 +218,7 @@
       "max": 160,
       "step": 1,
       "unit": "px",
-      "label": "Space Top"
+      "label": "Space top"
     },
     {
       "type": "range",
@@ -214,7 +227,7 @@
       "max": 160,
       "step": 1,
       "unit": "px",
-      "label": "Space Bottom"
+      "label": "Space bottom"
     },
     {
       "type": "select",
@@ -238,12 +251,12 @@
           "label": "4 columns"
         }
       ],
-      "default": "4"
+      "default": "3"
     },
     {
       "type": "select",
       "id": "columns_mobile",
-      "label": "Number of columns on mobile",
+      "label": "Number of columsn on mobile",
       "options": [
         {
           "value": "1",
@@ -254,7 +267,7 @@
           "label": "2 columns"
         }
       ],
-      "default": "2"
+      "default": "1"
     }
   ]
 }

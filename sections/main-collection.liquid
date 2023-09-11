@@ -1,15 +1,16 @@
 {{ 'queries-handler.css' | asset_url | stylesheet_tag }}
 {{ 'product-listing.css' | asset_url | stylesheet_tag }}
-{{ 'components.css' | asset_url | stylesheet_tag }}
 
 {%- assign per_page = section.settings.items_per_page -%}
-<div class='yc-product-listing container'>
+<div class='yc-product-listing-container'>
   <div class="breadcrumbs-container">
     <div class="breadcrumbs-listings">
       <div class="listings__item">
         <a href="/" class="first-listing">{{ 'snippets.collection-listing.home' | t }}</a>
       </div>
-      <div class="listings__item arrow"></div>
+      <div class="listings__item">
+        <img src='{{ 'left-arrow.png' | asset_url }}'>
+      </div>
       <div class="listings__item">
         <a href="/collections" class="second-listing">{{ 'snippets.collection-listing.collections' | t }}</a>
       </div>
@@ -41,19 +42,17 @@
 </div>
 
 {% schema %}
-  {
-    "label": "Products in collection",
-    "templates": ["collections"],
-    "limit": 1,
-    "settings": [
-      {
-        "type": "number",
-        "id": "items_per_page",
-        "label": "Collections per page",
-        "default": 10
-      }
-    ]
-  }
+{
+  "label": "Products in collection",
+  "templates": ["collections"],
+  "limit": 1,
+  "settings": [
+    {
+      "type": "number",
+      "id": "items_per_page",
+      "label": "Collections per page",
+      "default": 10
+    }
+  ]
+}
 {% endschema %}
-
-{{ 'queries-handler.js' | asset_url | script_tag_deferred }}

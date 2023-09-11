@@ -1,17 +1,9 @@
 {{ 'upsell.css' | asset_url | stylesheet_tag }}
 
 <div class="upsell-page">
-  {% if section.settings.upsell_text %}
-    <div class="upsell-banner">
-      {{ section.settings.upsell_text }}
-    </div>
-  {%- endif -%}
-  <div class="upsell-form-container upsell-container">
+  <div class="upsell-container">
     <div class="upsell-content">
       {{ upsell.description }}
-      <div class="upsell-footer"> 
-        {{ upsell.footer }}
-      </div>
     </div>
     <form id="upsell-form">
       <input
@@ -37,31 +29,33 @@
       {%- endfor %}
           
       <div class="upsell-form-submit">
-      <button type="submit" name="answer" value="yes" class="upsell-submit-yes">
-        <span class="button-text">{{ 'upsell.yes_submit_button' | t }}</span>
+      <button type="submit" name="answer" value="yes" class="upsell-submit-yes size-{{- upsell.actions.btn_yes.size -}}"
+        style="background: {{- upsell.actions.btn_yes.bg_color -}};">
+        <span class="button-text text-{{- upsell.actions.btn_yes.font_size -}}" style="color: {{- upsell.actions.btn_yes.font_color -}}">
+            {{- upsell.actions.btn_yes.title -}}
+        </span>
         <div class="spinner hidden"></div>
       </button>
-      <button type="submit" name="answer" value="no" class="upsell-submit-no">
-        <span class="button-text">{{ 'upsell.no_submit_button' | t }}</span>
+      <button type="submit" name="answer" value="no" class="upsell-submit-no size-{{- upsell.actions.btn_no.size -}}"
+        style="background: {{- upsell.actions.btn_no.bg_color -}};">
+        <span class="button-text text-{{- upsell.actions.btn_no.font_size -}}" style="color: {{- upsell.actions.btn_no.font_color -}}">
+            {{- upsell.actions.btn_no.title -}}
+        </span>
         <div class="spinner hidden"></div>
       </button>
     </div>
     </form>
+    <div class="upsell-content"> 
+      {{ upsell.footer }}
+    </div>
   </div>
 </div> 
 
 {{ 'upsell.js' | asset_url | script_tag_deferred }}
 
 {%- schema %}
-  {
-    "label": "Upsell",
-    "templates": ["upsell"],
-    "settings": [
-      {
-        "type": "richtext",
-        "id": "upsell_text",
-        "label": "Upsell text"
-      }
-    ]
-  }
+{
+  "label": "Upsell",
+  "templates": ["upsell"]
+}
 {%- endschema %}

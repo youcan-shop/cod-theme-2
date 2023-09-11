@@ -50,38 +50,38 @@ function updateCart(item, quantity, totalPriceSelector, cartItemId, productVaria
   } else if (price) {
     totalPrice.innerText = isFloat(Number(price) * quantity);
   }
-
-  setupCartDrawer();
 }
+
+function updateTotalPrice() {
+  let calculateTotalPrice = 0;
+  const itemPrices = document.querySelectorAll('.item-price');
+
+  itemPrices.forEach(itemPrice => {
+    const price = itemPrice.innerText;
+    calculateTotalPrice += Number(price);
+  });
+
+  const totalPriceElement = document.querySelector('.item-total-price');
+  const totalPrice = isFloat(calculateTotalPrice);
+
+  if (totalPriceElement) {
+    totalPriceElement.innerText = `${totalPrice} ${currencyCode}`;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setCurrencySymbol();
+  updateTotalPrice();
+});
 
 function updateDOM(cartItemId, productVariantId, quantity) {
   updateCart(cartItemId, quantity, '.total-price', cartItemId, productVariantId);
+  updateTotalPrice();
 }
 
 function updatePrice(cartItemUniqueId, productVariantId, quantity) {
   updateCart(`cart-item-${cartItemUniqueId}`, quantity, '.item-price', cartItemUniqueId, productVariantId);
 }
-
-async function updateTotalPrice() {
-  try {
-    const cartObject = await youcanjs.cart.fetch();
-
-    if (!cartObject) return;
-
-    const totalPriceElement = document.querySelector('.item-total-price');
-
-    if (totalPriceElement) {
-      totalPriceElement.innerHTML = `${isFloat(cartObject.sub_total)} ${currencyCode}`;
-    }
-  } catch (e) {
-    notify(e.message, 'error');
-  }
-}
-
-document.addEventListener('DOMContentLoaded', async () => {
-  setCurrencySymbol();
-  await updateTotalPrice();
-});
 
 async function updateQuantity(cartItemId, productVariantId, quantity) {
   load(`#loading__${cartItemId}`);
@@ -93,9 +93,9 @@ async function updateQuantity(cartItemId, productVariantId, quantity) {
     stopLoad(`#loading__${cartItemId}`);
   }
   updateDOM(cartItemId, productVariantId, quantity);
-  updatePrice(cartItemId, productVariantId, quantity);
-  await updateTotalPrice();
-  setupCartDrawer();
+  updatePrice(cartItemId,productVariantId,quantity);
+  updateTotalPrice();
+  await updateCartDrawer();
 }
 
 async function updateOnchange(cartItemId, productVariantId) {
@@ -117,24 +117,38 @@ async function increaseQuantity(cartItemId, productVariantId, quantity) {
   await updateQuantity(cartItemId, productVariantId, quantity);
 }
 
+function updateCartItemCount(count) {
+  const cartItemsCount = document.getElementById('cart-items-count');
+  if (cartItemsCount) {
+    cartItemsCount.textContent = count;
+  }
+}
+
 async function removeItem(cartItemId, productVariantId) {
   load(`#loading__${cartItemId}`);
   try {
-    const response = await youcanjs.cart.removeItem({ cartItemId, productVariantId });
+    await youcanjs.cart.removeItem({ cartItemId, productVariantId });
     document.getElementById(cartItemId).remove();
     document.getElementById(`cart-item-${cartItemId}`).remove();
 
-    await updateTotalPrice();
+    const updatedCart = await youcanjs.cart.fetch();
+    updateCartItemCount(updatedCart.count);
 
-    const cartItemsCount = document.getElementById('cart-items-count');
+    updateTotalPrice();
+    await updateCartDrawer();
+
     const cartItemsBadge = document.getElementById('cart-items-badge');
 
     const cartItems = document.querySelectorAll('.cart__item');
 
-    cartItemsCount.innerText = response.count;
-    cartItemsBadge.innerText = response.count;
+    if (cartItemsBadge) {
+      cartItemsBadge.innerText = parseInt(cartItemsBadge.innerText) - 1;
+    }
 
     if (cartItems.length === 0) {
+      if (cartItemsBadge) {
+        cartItemsBadge.innerText = 0;
+      }
       const cartTable = document.querySelector('.cart-table')
       const emptyCart = document.querySelector('.empty-cart');
 
@@ -148,8 +162,6 @@ async function removeItem(cartItemId, productVariantId) {
         stickFooterAtBottom();
       }
     }
-
-    setupCartDrawer();
   } catch (e) {
     notify(e.message, 'error');
   } finally {

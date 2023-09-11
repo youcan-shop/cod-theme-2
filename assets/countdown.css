@@ -1,48 +1,76 @@
 .countdown-wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: center;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
+}
+@media (min-width: 768px) {
+  .countdown-wrapper {
+    flex-direction: row;
+  }
 }
 .countdown-wrapper .message {
   text-align: center;
-  font-size: 18px;
+  font-size: 23px;
+  display: none;
+}
+@media (min-width: 768px) {
+  .countdown-wrapper {
+    flex-direction: row;
+  }
+  .countdown-wrapper .message {
+    display: block;
+  }
 }
 .countdown-wrapper .countdown {
   direction: ltr;
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 4px;
   margin: 0;
 }
 .countdown-wrapper .countdown .day, .countdown-wrapper .countdown .hour, .countdown-wrapper .countdown .min, .countdown-wrapper .countdown .sec {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.countdown-wrapper .countdown .num {
+  width: min-content;
   display: flex;
   align-items: center;
-  justify-content: center;
+}
+.countdown-wrapper .countdown .day .num, .countdown-wrapper .countdown .hour .num, .countdown-wrapper .countdown .min .num, .countdown-wrapper .countdown .sec .num {
+  display: block;
+  padding: 0.1rem 0.5rem;
   border-radius: 6px;
+  font-size: 29px;
   font-weight: 600;
-  height: 49px;
-  width: 52px;
-  font-weight: 300;
-  font-size: 16px;
-  background-color: white;
-  border-radius: 5px;
-  border: 1px solid currentColor;
+  color: #FFFFFF;
+  border: 0;
+  background-color: #EE7A6D;
 }
 .countdown-wrapper .countdown .sec .num {
-  border-width: 2px;
+  background-color: #000000;
+  border: 0;
+  width: 42px;
+  display: flex;
+  justify-content: center;
 }
-.countdown-wrapper .countdown .sec .word {
-  font-weight: 400;
+@media screen and (max-width: 600px) {
+  .countdown-wrapper .countdown .sec .num {
+    width: 35px;
+  }
 }
 .countdown-wrapper .countdown .dots {
+  color: white;
   font-size: 40px;
   margin-top: -11px;
+}
+@media screen and (max-width: 600px) {
+  .countdown-wrapper .countdown {
+    gap: 1px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .countdown-wrapper .day .num, .countdown-wrapper .hour .num, .countdown-wrapper .min .num, .countdown-wrapper .sec .num {
+    font-size: 19px !important;
+    padding: 8px !important;
+  }
 }

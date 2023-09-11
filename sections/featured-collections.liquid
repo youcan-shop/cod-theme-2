@@ -2,13 +2,13 @@
 {% assign id = 100 | rand: 2000 %}
 
 {% style %}
-  .section-featured-collections-{{ id }} {
-    padding-top: {{ section.settings.space_top }}px;
-    padding-bottom: {{ section.settings.space_bottom }}px;
+  .section-featured-collections-{{ id }} .yc-featured-container{
+    justify-content: {{ section.settings.section_title_position }};
   }
 
-  .section-featured-collections-{{ id }} .yc-section-title{
-    text-align: {{ section.settings.section_title_position }};
+  .section-featured-collections-{{ id }} {
+    margin-top: {{ section.settings.space_top }}px;
+    margin-bottom: {{ section.settings.space_bottom }}px;
   }
 {% endstyle %}
 
@@ -33,12 +33,14 @@
     {
       "type": "text",
       "id": "title",
-      "label": "Title"
+      "label": "Title",
+      "default": "تصنيفات رائجة"
     },
     {
       "type": "select",
       "id": "section_title_position",
       "label": "Title position",
+      "default": "center",
       "options": [
         {
           "label": "Left",
@@ -61,7 +63,8 @@
       "max": 160,
       "step": 1,
       "unit": "px",
-      "label": "Space top"
+      "label": "Space top",
+      "default": 10
     },
     {
       "type": "range",
@@ -70,7 +73,8 @@
       "max": 160,
       "step": 1,
       "unit": "px",
-      "label": "Space bottom"
+      "label": "Space bottom",
+      "default": 10
     }
   ],
   "blocks": [
@@ -81,7 +85,8 @@
         {
           "type": "category",
           "id": "category",
-          "label": "Category"
+          "label": "Category",
+          "info": "To ensure your images look great and load quickly, use a size of \"350px x 350px\" (1:1 aspect ratio)."
         }
       ]
     }

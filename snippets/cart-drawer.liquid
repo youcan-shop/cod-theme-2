@@ -1,40 +1,35 @@
 {{ 'cart-drawer.css' | asset_url | stylesheet_tag }}
 
-<div class='navigation-drawer cart-drawer'>
-  <div class='wall'>
-    <div class="top-section">
-      <div class='header'>
-        <div class='your-cart-title'>
-          {{ 'cart.your_cart' | t }}
-        </div>
-
-        <button id='close-cart-drawer' class='close-cart-drawer-btn'>
-          {% render 'icon', name: 'cart-drawer-close' %}
-        </button>
-      </div>
-
-      <!-- content & total elements will be filled with JS (check cart-drawer.js) -->
-      <div class='content'></div>
-    </div>
-
-    <div class='bottom-coconut'>
-      <div class='total-wrapper'>
-        <div class='total-word'>{{ 'cart.summary.total' | t }}</div>
-        <div class='total'>{{ 0 | money }}</div>
-      </div>
-
-      <a class='yc-btn continue-shopping' href="{{ routes.cart_url }}">{{ 'cart.continue_shopping' | t }}</a>
-      <a class='yc-btn close close-cart-drawer-btn'>{{ 'cart.close' | t }}</a>
-    </div>
+<div class="cart-overlay"></div>
+<div class="cart-drawer">
+  <button class="cart-drawer__close">
+    <ion-icon class="close-search" name="close-outline"></ion-icon>
+  </button>
+  <div class="cart-drawer__content">
+    <!-- Cart drawer content goes here -->
   </div>
 </div>
 
 {% javascript %}
-  const CART_DRAWER_LOCALES = {
-    quantity: '{{ 'cart.items.quantity' | t }}',
-    remove: `{% render 'icon', name: 'trash' %}`
-  }
-  const defaultImage = '{{ "product-default.png" | asset_url }}';
-{% endjavascript %}
+  const defaultImage = '{{ "default_product.jpeg" | asset_url }}';
 
-{{ 'cart-drawer.js' | asset_url | script_tag }}
+  const ADD_TO_CART_EXPECTED_ERRORS = {
+    select_variant: "{{ 'errors.select_variant' | t }}",
+    quantity_smaller_than_zero: "{{ 'errors.quantity_smaller_than_zero' | t }}",
+    upload_image: "{{ 'errors.upload_image' | t }}",
+    product_added: "{{ 'errors.product_added' | t }}",
+    empty_inventory: "{{ 'errors.empty_inventory' | t }}"
+  }
+
+  const CART_DRAWER_TRANSLATION = {
+    quantityVariant: '{{ 'cart.items.quantity' | t }}',
+    cartName:  "{{ 'cart.cart' | t }}",
+    totalAmount:  '{{ 'cart.total_amount' | t }}',
+    checkoutPayment:  '{{ 'cart.summary.checkout_cta' | t }}',
+    emptyCart:  '{{ 'cart.empty_cart' | t }}',
+    itemsName: '{{ 'cart.items.items_name' | t }}',
+    continueShopping: '{{ 'cart.summary.continue_shppping' | t }}', 
+  }
+
+{% endjavascript %}
+{{ 'add-to-cart.js' | asset_url | script_tag_deferred }}

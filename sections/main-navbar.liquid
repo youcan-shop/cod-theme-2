@@ -5,9 +5,9 @@
     --yc-nav-height: {{ section.settings.navbar_height }}px;
     --yc-nav-background: {{ section.settings.navbar_background_color.hex }};
     --yc-nav-links-color: {%- if section.settings.navbar_links_color -%}
-                            {{ section.settings.navbar_links_color.hex }}
-                          {%- else -%}
-                            var(--yc-neutral-color){%- endif -%};
+      {{ section.settings.navbar_links_color.hex }}
+    {%- else -%}
+      var(--yc-neutral-color){%- endif -%};
     --yc-nav-links-font-weight: {{ section.settings.navbar_links_font_weight }};
     --yc-nav-links-hover-transparency: {{ section.settings.navbar_links_hover_transparency }};
     --yc-nav-font-family: {%- if section.settings.navbar_font_family -%}
@@ -23,7 +23,13 @@
 
 {% if section.settings.toggle_navbar != true %}
   <header class='yc-header {%if section.settings.navbar_always_on_top%} nav-fixed {%endif%}'>
-    <nav class='yc-navbar container {%if section.settings.full_width%} fluid {%endif%}'>
+    {%- if section.settings.navbar_font_family -%}
+      <link
+        href='https://fonts.googleapis.com/css2?family={{ section.settings.navbar_font_family }}:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap'
+        rel='stylesheet'
+      >
+    {%- endif -%}
+    <nav class='yc-navbar container'>
       {%- for block in section.blocks -%}
         {%- case block.type %}
           {%- when 'logo' %}
@@ -37,9 +43,15 @@
             </div>
           {%- when 'menu' %}
             <div class='menu'>
+              <button
+                class='menu-toggler text-3xl'
+                onclick="openDrawer('.navbar-drawer')"
+              >
+                <ion-icon name='menu-outline'></ion-icon>
+              </button>
               <ul class='menu-list'>
                 {% for item in main-link-list.links %}
-                  <li class='menu-item {%if item.active %}active {%-endif%}'>
+                  <li class='menu-item {%-if item.active-%} active {%-endif%}'>
                     <a href='{{ item.url }}'>{{ item.title }}</a>
                   </li>
                 {% endfor %}
@@ -51,7 +63,7 @@
                 class='search'
                 onclick='openSearch()'
               >
-                {% render 'icon', name: 'search', width: 25, height: 25 %}
+                <ion-icon name="search-outline"></ion-icon>
               </button>
               <div id='searchInputHolder'>
                 <div class='container flex justify-center'>
@@ -71,25 +83,16 @@
                       type='submit'
                       class='search-btn'
                     >
-                      {% render 'icon', name: 'search' %}
+                      <ion-icon name="search-outline"></ion-icon>
                     </button>
                   </form>
                 </div>
               </div>
-              <button
-                class='cart relative'
-                onclick="openDrawer('.cart-drawer', '{{ template.name }}')"
-              >
+              <button class='cart relative' id='navbar-cart-icon' onclick='preventCartDrawerOpening("{{ template.name }}")'>
                 <span id='cart-items-badge'>
                   {{- cart.items | size -}}
                 </span>
-                {% render 'icon', name: 'cart' %}
-              </button>
-              <button
-                class='menu-toggler text-3xl'
-                onclick="openDrawer('.navbar-drawer')"
-              >
-                <ion-icon name='menu-outline'></ion-icon>
+                <ion-icon name="cart-outline"></ion-icon>
               </button>
             </div>
         {%- endcase %}
@@ -122,7 +125,7 @@
           <button
             type='submit'
           >
-            {% render 'icon', name: 'search' %}
+            <ion-icon name="search-outline" class="search-icon"></ion-icon>
           </button>
         </form>
       <div class='flex flex-col items-wrapper'>
@@ -158,7 +161,7 @@
       "type": "menu"
     },
     {
-      "label": "Search and Cart",
+      "label": "Search and cart",
       "limit": 1,
       "type": "search_and_cart"
     }
@@ -263,14 +266,7 @@
           "value": "Montserrat",
           "label": "Montserrat"
         }
-      ],
-      "default": "Roboto"
-    },
-    {
-      "type": "checkbox",
-      "id": "full_width",
-      "label": "Full width navbar",
-      "default": false
+      ]
     },
     {
       "type": "checkbox",

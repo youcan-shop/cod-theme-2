@@ -1,26 +1,34 @@
 @import 'helpers/mixins';
 
 .yc-single-product {
-  @include display(2, 2, 1, 3rem);
-  position: relative;
-  margin-top: calc(var(--yc-nav-height) + 20px);
+  display: flex;
+  gap: 8px;
+  margin: 25px auto;
+  flex-direction: column;
+  align-items: start;
+
+  @include breakpoint('md') {
+    gap: 20px;
+    flex-direction: row;
+  }
 
   .product-images {
-    width: 100%;
-    height: fit-content;
+    width: calc(100% + 24px);
+    margin: 0 -12px;
 
     @include breakpoint('md') {
       position: sticky;
+      top: calc(var(--yc-nav-height) + 20px);
+      width: 80%;
       margin: unset;
     }
 
-    .main-thumbnail {
+    .main-image {
       width: auto;
       height: 100%;
       margin: 0 auto;
       object-fit: cover;
     }
-
     #img-zoomer-box {
       width: 100%;
       height: 333px;
@@ -44,7 +52,6 @@
     #img-zoomer-box:active #magnified-image {
       opacity: 1;
     }
-
     #magnified-image {
       width: 100%;
       height: 100%;
@@ -55,19 +62,21 @@
       z-index: 99;
       display: block;
       transition: opacity 0.2s;
-      background-size: 102%;
+      background-size: 112%;
     }
 
     .product-images-container {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
+      flex-direction: row;
+
+      @include breakpoint('md') {
+        flex-direction: column;
+        gap: 20px;
+      }
 
       .thumbnail-images {
         display: flex;
-        gap: 18px;
-        overflow-y: auto;
-        flex-direction: row;
+        flex-direction: column;
 
         @include breakpoint('md') {
           order: 1;
@@ -75,6 +84,7 @@
 
         @media screen and (max-width: 767px) {
           margin-left: 10px;
+          width: 90px;
         }
       }
 
@@ -154,14 +164,15 @@
 
       .thumbnail-images img {
         display: block;
-        width: 135px;
-        height: 135px;
+        margin: 0 auto;
+        width: 100%;
         border-radius: 4px;
-        object-fit: cover;
-        cursor: pointer;
+        height: 100px;
+        object-fit: contain;
 
-        &.active{
-          border: 1px solid #3C415F;
+        @media screen and (max-width: 768px) {
+          max-height: 100%;
+          min-height: 100%;
         }
       }
     }
@@ -182,7 +193,6 @@
       font-size: 25px;
       line-height: 120%;
     }
-
     .product-options {
       display: grid;
       gap: 27px;
@@ -193,11 +203,58 @@
 
       .product-option {
         .yc-upload-preview {
-          img {
-            border: 1px solid var(--yc-neutral-light-color);
-            padding: 5px;
-            aspect-ratio: 1;
-            height: 100px;
+          display: none;
+          background: #F9F9F9;
+          height: auto;
+          border-radius: 8px;
+          padding: 14px 18px;
+
+          .yc-upload-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+
+            .yc-image-preview {
+              display: flex;
+              align-items: center;
+              gap: 15px;
+
+              img {
+                width: 67px;
+                height: auto;
+                border-radius: 4px;
+                object-fit: cover;
+              }
+            }
+
+            .yc-image-preview .yc-image-info {
+              display: grid;
+              gap: 8px;
+              font-weight: 300;
+              font-size: 12px;
+              line-height: 120%;
+              color: var(--yc-neutral-color);
+
+              .image-size {
+                color: #BABABA;
+              }
+            }
+          }
+
+          .progress-container {
+            width: 100%;
+            height: 3px;
+            background-color: #cecece;
+            border-radius: 5px;
+          }
+
+          .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: var(--yc-primary-color);
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
           }
         }
       }
@@ -210,7 +267,28 @@
         }
       }
     }
+    .product-description {
+      overflow: hidden;
 
+      & * {
+        font-family: var(--yc-font-family);
+        line-height: 184.5%;
+      }
+
+      .fr-emoticon-img {
+        height: 1em;
+        width: 1em;
+        min-height: 20px;
+        min-width: 20px;
+        display: inline-block;
+        line-height: 1;
+        vertical-align: middle;
+      }
+
+      strong {
+        font-weight: 700;
+      }
+    }
     .product-option-title {
       text-transform: capitalize;
       margin-top: 0;
@@ -221,6 +299,21 @@
 
       @include breakpoint('md') {
         font-size: 18px;
+      }
+    }
+
+    .countdown-container {
+      border-radius: 4px;
+      padding: 18px 20px;
+
+      .countdown-wrapper .countdown {
+        .num {
+          background: rgba(225, 225, 225, 0.3);
+        }
+
+        .sec .num {
+          background-color: var(--yc-primary-color);
+        }
       }
     }
   }
@@ -260,44 +353,18 @@
       padding: 4px 10px !important;
     }
   }
-
-  .countdown-wrapper {
-    padding: 6px;
-  }
-}
-
-.product-description {
-  overflow: hidden;
-
-  & * {
-    font-family: var(--yc-font-family);
-    line-height: 184.5%;
-  }
-
-  .fr-emoticon-img {
-    height: 1em;
-    width: 1em;
-    min-height: 20px;
-    min-width: 20px;
-    display: inline-block;
-    line-height: 1;
-    vertical-align: middle;
-  }
-
-  strong {
-    font-weight: 700;
-  }
 }
 
 /* ----- Quantity input ----- */
+
 .quantity-field {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 181px;
+  width: 151px;
+  border: 1px solid #BDBDBD;
   border-radius: 4px;
   padding: 5px;
-  gap:15px;
 
   /* Hide input arrows in Chrome, Safari, Edge, Opera */
   .quantity-input::-webkit-outer-spin-button,
@@ -312,13 +379,11 @@
   }
 
   .quantity-input {
-    width: 58px;
+    width: 50%;
     text-align: center;
     border: none;
-    border: 1px solid #E6E6E6;
-    border-radius: 5px;
     padding: 0 !important;
-    font-weight: 300 !important;
+    font-weight: 700 !important;
     font-size: 20px !important;
     line-height: 120% !important;
     color: black;
@@ -330,17 +395,15 @@
 
   .decrement-button,
   .increment-button {
-    width: 37px;
-    height: 37px;
+    width: 25%;
+    height: 100%;
     border: none;
-    color: black;
-    font-weight: 200;
-    background-color: #F3F3F3;
-    border-radius: 5px;
-    font-size: 18px;
+    color: #BDBDBD;
+    font-weight: 700;
+    font-size: 29px;
     line-height: 120%;
+    background: none;
     cursor: pointer;
-
     transition: all 200ms ease-in-out;
 
     &:active {

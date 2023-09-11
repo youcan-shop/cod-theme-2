@@ -51,8 +51,8 @@
     /* Sliders */
     /* -- Desktop */
     --yc-slider-arrows-background: {{ settings.slider_mobile_arrows_background_color.hex }};
-    --yc-slider-arrows-size: 42px;
-    --yc-slider-arrows-content-size: 42px;
+    --yc-slider-arrows-size: {{ settings.slider_arrows_size }}px;
+    --yc-slider-arrows-content-size: {{ settings.slider_arrows_size }}px;
 
     /* -- Mobile */
     --yc-slider-mobile-arrows-background: {{ settings.slider_mobile_desktop_arrows_background_color.hex }};
@@ -121,7 +121,7 @@
 ></script>
 
 {% javascript %}
-  const defaultAvatar = '{{ "avatar.png" | asset_url }}';
+  const defaultAvatar = "{{ 'avatar.png' | asset_url }}";
   const ratings = "{{ 'reviews.ratings' | t }}";
 {% endjavascript %}
 

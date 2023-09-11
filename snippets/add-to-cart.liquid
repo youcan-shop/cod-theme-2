@@ -3,48 +3,38 @@
 {%- style -%}
   .yc-{{ uniq }}-add-to-cart button {
     background: {{ background_color.hex }} !important;
-    color: {{ text_color.hex }} !important;
-    border: 1px solid {{ border_color.hex }} !important;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    padding: 9px 12px;
-    font-family: var(--yc-font-family);
   }
-
   .yc-{{ uniq }}-add-to-cart button span {
-    font-weight: 400;
+    font-weight: 600;
+    color: {{ text_color.hex }} !important;
   }
 
-  .yc-{{ uniq }}-add-to-cart button .btn-content {
-    display: flex;
-    gap: 10px;
+  .yc-{{ uniq }}-add-to-cart .yc-btn:disabled {
+    background: #bdc3c7 !important;
+    color: #ffffff !important;
+    cursor: not-allowed;
   }
 {%- endstyle -%}
 
 <div class='yc-{{ uniq }}-add-to-cart{% if is_sticky %} is_sticky{% endif %}'>
   <button
+    class='yc-btn'
     onclick='addToCart("{{ snippetId }}")'
   >
     <span
       class='spinner hidden'
       id='loading__cart'
     ></span>
-    <span class="btn-content" >
-      {% render 'icon', name: 'bag' %}
+    <span>
       {{ text }}
     </span>
   </button>
 </div>
 
 {% javascript %}
-  const ADD_TO_CART_EXPECTED_ERRORS = {
-    select_variant: "{{ 'errors.select_variant' | t }}",
-    quantity_smaller_than_zero: "{{ 'errors.quantity_smaller_than_zero' | t }}",
-    upload_image: "{{ 'errors.upload_image' | t }}",
-    product_added: "{{ 'errors.product_added' | t }}"
+
+  const TRANSLATED_TEXT = {
+    empty_inventory: "{{ 'errors.empty_inventory' | t }}"
   }
 {% endjavascript %}
-{{ 'add-to-cart.js' | asset_url | script_tag_deferred }}

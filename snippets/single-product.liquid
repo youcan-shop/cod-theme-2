@@ -13,6 +13,7 @@
   id='variantId'
   type='hidden'
   >
+  <input id='_inventory' type='hidden'>
   <input
     type='file'
     id='yc-upload'
@@ -26,10 +27,9 @@
   >
   {% assign images = product.images %}
   {% assign product_name = product.name %}
-  {% assign has_product_description = false %}
+  {% assign section_settings = section.settings %}
 
-  {% render 'product-images-showcase', images: images, product_name: product_name, hidden: section.settings.hide_gallery, id: uniqID , view: 'desktop' -%}
-
+  {% render 'product-images-showcase', images: images, product_name: product_name, hidden: section.settings.hide_gallery, id: uniqID , view: 'desktop', banner_settings: section_settings -%}
   <div class='product-details'>
     {%- for block in section.blocks -%}
       <div {{ block.youcan_attributes }}>
@@ -39,29 +39,25 @@
           {%- when 'product_price' -%}
             <div class='product-price-container'>
               <h2 class='product-price'>{{ product.price | money }}</h2>
-              {% if section.settings.show_compare_at_price %}
                 <div class="compare-container">
-                  <h3 class="compare-price">
-                    {%- for variant in product.variants -%}
-                      {% if variant.variations.default and product.compare_at_price != nil %}
-                        <del>{{ product.compare_at_price | money }}</del>
-                      {% endif %}
-                    {% endfor %}
-                  </h3>
-                  {% if section.settings.tag_text %}
-                    <div class="tag">
-                      <div class="tag-banner">
-                        <div
-                          class="tag-banner"
-                          style="background: {{ section.settings.tag_color.hex }}; color: {{ section.settings.tag_text_color.hex }};"
-                        >
-                          {{ section.settings.tag_text }}
-                        </div>
-                      </div>
+                  {% if block.settings.show_compare_at_price %}
+                    <h3 class="compare-price">
+                      {%- for variant in product.variants -%}
+                        {% if variant.variations.default and product.compare_at_price != nil %}
+                          <del>{{ product.compare_at_price | money }}</del>
+                        {% endif %}
+                      {% endfor %}
+                    </h3>
+                  {% endif %}
+                  {% if block.settings.show_price_tag_banner and block.settings.price_tag_text %}
+                    <div
+                      class="tag"
+                      style="background: {{ block.settings.price_tag_background_color.hex }}; color: {{ block.settings.price_tag_text_color.hex }};"
+                    >
+                      {{ block.settings.price_tag_text }}
                     </div>
                   {% endif %}
                 </div>
-              {% endif %}
             </div>
           {%- when 'general_review' -%}
             {%- render 'general-review' -%}
@@ -69,15 +65,17 @@
               {%- render 'product-quantity-input' -%}
           {%- when 'product_variants' -%}
             {% render 'product-variants', options: product.options %}
-          {%- when 'countdown_timer' %}
-              {%- render 'countdown', section_settings: block.settings -%}
           {%- when 'product_description' -%}
-            {% assign has_product_description = true %}
+            <section class='product-description '>{{ product.description }}</section>
+          {%- when 'countdown_timer' %}
+            <div class="countdown-container">
+              {%- render 'countdown', section_settings: block.settings -%}
+            </div>
           {%- when 'stock' -%}
             {% render 'stock', stock_title: block.settings.stock_title, stock_items_left: block.settings.stock_items_left, total_stock_items: block.settings.total_stock_items %}
           {%- when 'add_to_cart' -%}
             {% render 'add-to-cart', text: block.settings.text_content, is_sticky: block.settings.is_sticky, background_color: block.settings.background_color, text_color: block.settings.text_color, snippetId: snippetId %}
-            {%- when 'accordion' -%}
+          {%- when 'accordion' -%}
               {%- render 'accordion', accordion_title: block.settings.accordion_title, accordion_details: block.settings.accordion_details, background_color: block.settings.background_color, text_color: block.settings.text_color, margin_bottom: block.settings.margin_bottom -%}
           {%- when 'express_checkout' -%}
             {% render 'express-checkout', checkout: checkout, is_sticky: block.settings.is_sticky, settings: block.settings %}
@@ -89,52 +87,52 @@
       </div>
     {%- endfor -%}
   </div>
+
 </div>
 
-{% if has_product_description %}
-  <div class="container">
-    <section class='product-description '>{{ product.description }}</section>
-  </div>
-{% endif %}
-
 <script defer>
-const products = {{ product.images.size }};
-const desktopSlider = new Splide(`#yc_slider_{{ uniqID }}.yc-slider__desktop`, {
-  arrows: products > 3,
-  rewind: true,
-  perPage: Math.min(products, 4),
-  perMove: 1,
-  gap: '10px',
-  drag: 'free',
-  snap: true,
+(function() {
+  const products = {{ product.images.size }};
+  const uniqProductDesktopSlider = $('#yc_slider_{{ uniqID }}');
+  if(uniqProductDesktopSlider) {
+    const desktopSlider = new Splide(`#yc_slider_{{ uniqID }}.yc-slider__desktop`, {
+      arrows: products > 3,
+      rewind: true,
+      perPage: Math.min(products, 4),
+      perMove: 1,
+      gap: '10px',
+      drag: 'free',
+      snap: true,
 
-  breakpoints: {
-    1024: {
-      perPage: Math.min(products, 3),
-    },
-    767: {
-      direction: 'ttb',
-      height: '255px',
-    },
-  },
-});
+      breakpoints: {
+        1024: {
+          perPage: Math.min(products, 3),
+        },
+        767: {
+          direction: 'ttb',
+          height: '255px',
+        },
+      },
+    });
 
-const resizedIcons = () => {
-  if (products >= 3 && window.innerWidth < 1024 || products >= 4) {
-    document.querySelector('.yc-slider__desktop').style.padding = '0 40px';
+    const resizedIcons = () => {
+      if (products >= 3 && window.innerWidth < 1024 || products >= 4) {
+        document.querySelector('.yc-slider__desktop').style.padding = '0 40px';
+      }
+
+      if (products > 3) {
+        document.querySelector('.thumbnail-images').style.justifyContent = 'center';
+      }
+
+      if (window.innerWidth < 768) {
+        document.querySelector('.yc-slider__desktop').style.padding = '0';
+      }
+    }
+
+    desktopSlider.on('mounted', resizedIcons);
+    desktopSlider.on('resize', resizedIcons);
+
+    desktopSlider.mount();
   }
-
-  if (products > 3) {
-    document.querySelector('.thumbnail-images').style.justifyContent = 'center';
-  }
-
-  if (window.innerWidth < 768) {
-    document.querySelector('.yc-slider__desktop').style.padding = '0';
-  }
-}
-
-desktopSlider.on('mounted', resizedIcons);
-desktopSlider.on('resize', resizedIcons);
-
-desktopSlider.mount();
+})();
 </script>

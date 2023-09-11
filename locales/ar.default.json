@@ -1,10 +1,10 @@
 {
-  "general":{
+  "general": {
     "show_more_button": "عرض المزيد",
-    "buy_now": "اشتري الأن"
+    "size_big_message": "المرجو تحميل صورة أقل من 2mb"
   },
   "head_metadata": {
-    "collections" : "التصنيفات",
+    "collections": "التصنيفات",
     "thankyou": "شكرا جزيلا على ثقتكم",
     "cart": "سلة مشترياتي"
   },
@@ -13,7 +13,7 @@
       "placeholder": "أدخل الكلمة الرئيسية للبحث عنها..."
     }
   },
-  "reviews":{
+  "reviews": {
     "ratings": "التقييمات"
   },
   "featured_products": {
@@ -23,17 +23,19 @@
     "title": "مجموعات مميزة"
   },
   "list_collections": {
-    "title": "مجموعات",
-    "category-show": "عرض المزيد"
+    "title": "مجموعات"
   },
   "cart": {
-    "title": "حقيبة التسوق",
-    "items_count": "منتجات في عربة التسوق الخاصة بك",
+    "title": "عربة التسوق",
+    "cart": "سلتك",
+    "total_amount": "مجموع سلة التسوق",
+    "empty_cart": "عربة التسوق فارغة.",
+    "items_count": "منتجات",
     "items": {
+      "items_name": "عناصر",
       "quantity": "الكمية",
-      "total": "الثمن",
-      "remove_cta": "إزالة",
-      "product": "اسم المنتوج"
+      "total": "المجموع",
+      "remove_cta": "إزالة"
     },
     "summary": {
       "title": "ملخص الطلب",
@@ -41,17 +43,15 @@
       "promo_input": "أدخل رمزك",
       "promo_cta": "تطبيق",
       "total": "التكلفة الإجمالية",
-      "checkout_cta": "الدفع"
+      "checkout_cta": "الدفع",
+      "continue_shppping": "استمر في التسوق"
     },
     "empty": {
       "title": "عربتك فارغة حاليًا.",
-      "description": "قبل أن تقوم بالدفع، يجب عليك إضافة بعض المنتجات إلى عربة التسوق الخاصة بك. <br/> ستجد الكثير من المنتجات المثيرة للاهتمام في صفحة \"Shop\" لدينا.",
+      "description": "قبل أن تقوم بالدفع، يجب عليك إضافة بعض المنتجات إلى عربة التسوق الخاصة بك. <br\/> ستجد الكثير من المنتجات المثيرة للاهتمام في صفحة \"Shop\" لدينا.",
       "cta": "عودة إلى المتجر"
     },
-    "continue_shopping_cta": "متابعة التسوق",
-    "your_cart": "سلتك",
-    "continue_shopping": "إتمام الشراء",
-    "close": "إغلاق"
+    "continue_shopping_cta": "متابعة التسوق"
   },
   "search": {
     "empty": {
@@ -64,8 +64,7 @@
     "title": "شكرا",
     "subtitle": "تم استلام طلبك.",
     "description": "سيتصل بك فريقنا لتأكيد طلبك",
-    "return_cta": "استمر في التسوق",
-    "order_summary": "ملخص الفاتورة",
+    "return_cta": "الصفحة الرئيسية ",
     "details": {
       "title": "ملخص الفاتورة",
       "payment_status": "حالة الدفع",
@@ -73,7 +72,9 @@
       "total": "إجمالي المبلغ",
       "product": "السلع",
       "one_piece_price": "سعر قطعة واحدة",
-      "quantity": "الكمية"
+      "quantity": "الكمية",
+      "coupon": "كوبون",
+      "vat": "الضريبة على القيمة المضافة"
     }
   },
   "snippets": {
@@ -86,14 +87,14 @@
     "single_product": {
       "quantity": "الكمية",
       "variants": {
-        "upload": "تحميل صورة"
+        "upload": "تحميل صورة (PNG, JPEG)"
       }
     },
     "express_checkout": {
       "cta": "اشتري الآن"
     },
     "collection-listing": {
-      "home":  "الرئيسية",
+      "home": "الرئيسية",
       "collections": "التصنيفات"
     },
     "main_sort": {
@@ -104,16 +105,11 @@
       "created_at_desc": "الأقدم",
       "title_asc": "الأبجدية: من الأقل إلى الأعلى",
       "title_desc": "الأبجدية: من الأعلى إلى الأقل"
-    },
-    "countdown": {
-      "day": "يوم",
-      "hour": "ساعة",
-      "minute": "دقيقة",
-      "second": "ثانية"
     }
   },
   "upsell": {
-    "yes_submit_button": "نعم ، أضف هذا إلى طلبي",
+    "yes_submit_button": "إطلب الأن",
+    "yes_submit_button_sub": "ولا تفوت عليك الفرصة ",
     "no_submit_button": "لا شكراً لست مهتماً"
   },
   "footer": {
@@ -136,6 +132,19 @@
     "select_variant": "الرجاء اختيار عرض",
     "quantity_smaller_than_zero": "يجب أن تكون الكمية أكبر من 0",
     "upload_image": "الرجاء تحميل صورة",
-    "product_added": "تمت إضافة المنتج بنجاح"
+    "product_added": "تمت إضافة المنتج بنجاح",
+    "empty_inventory": "المُنتج غير متوفر حاليًا في المخزون"
+  },
+  "page": {
+    "contact": {
+      "title": "اتصل بنا",
+      "subtitle": "إذا كان لديك أي استفسار أو كنت بحاجة إلى مساعدة في حل مشكلة ما، فنحن بانتظار رسالتك",
+      "form_placeholders": {
+        "email": "البريد الإلكتروني *",
+        "subject": "الموضوع *",
+        "message": "الرسالة *"
+      },
+      "button": "إرسال"
+    }
   }
 }

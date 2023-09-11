@@ -7,7 +7,7 @@
   }
 
   .section-slider-{{ id }} #yc_slider_{{ id }} .splide__arrow svg path {
-    fill: {{ section.settings.slider_desktop_arrows_color.hex }};
+    fill: {{ section.settings.slider_desktop_arrows_background_color.hex }};
   }
 
   .section-slider-{{ id }} #yc_slider_{{ id }} .content {
@@ -121,7 +121,7 @@
       "type": "range",
       "id": "slider_arrows_size",
       "min": 10,
-      "max": 0,
+      "max": 30,
       "step": 1,
       "unit": "px",
       "label": "Arrows size",
@@ -129,7 +129,7 @@
     },
     {
       "type": "color",
-      "id": "slider_desktop_arrows_color",
+      "id": "slider_desktop_arrows_background_color",
       "label": "Arrow color",
       "default": "#FFFFFF"
     },
@@ -159,8 +159,8 @@
       "min": 1,
       "max": 15,
       "step": 1,
-      "unit": "s",
-      "label": "Timeout",
+      "unit": "sec",
+      "label": "Duration between each slide",
       "default": 5
     },
     {
@@ -211,8 +211,8 @@
       "min": 1,
       "max": 15,
       "step": 1,
-      "unit": "sec",
-      "label": "Duration between each slide",
+      "unit": "s",
+      "label": "Timeout",
       "default": 5
     },
     {

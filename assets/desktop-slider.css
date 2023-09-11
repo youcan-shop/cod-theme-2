@@ -48,6 +48,7 @@
 .yc-slider__desktop .content .headers, .yc-slider__desktop .content h3, .yc-slider__desktop .content h2, .yc-slider__desktop .content h1 {
   font-weight: 700;
   line-height: 1.2;
+  margin-bottom: 2rem;
 }
 .yc-slider__desktop .content h1 {
   font-size: 3rem;

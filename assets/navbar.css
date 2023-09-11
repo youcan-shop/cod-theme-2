@@ -54,7 +54,7 @@
 .yc-header .yc-navbar .corner {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
 }
 .yc-header .yc-navbar .corner > * {
   display: flex;

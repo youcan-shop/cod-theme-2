@@ -159,6 +159,10 @@
 .yc-header .yc-navbar .corner a:hover {
   opacity: var(--yc-nav-links-hover-transparency);
 }
+.yc-header .yc-navbar-mobile {
+  padding: 12px 20px;
+  background-color: white;
+}
 
 #searchInputHolder {
   transition: var(--yc-primary-color);

@@ -188,6 +188,11 @@
       opacity: var(--yc-nav-links-hover-transparency);
     }
   }
+
+  .yc-navbar-mobile {
+    padding: 12px 20px;
+    background-color: white;
+  }
 }
 
 #searchInputHolder {

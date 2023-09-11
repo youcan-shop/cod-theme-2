@@ -1,5 +1,35 @@
 @import 'helpers/mixins';
 
+.splide {
+  .splide__arrow {
+    outline: none;
+    width: var(--yc-slider-arrows-size);
+    height: var(--yc-slider-arrows-size);
+    margin: 0 100px;
+
+    svg {
+      fill: var(--yc-primary-color);
+    }
+  }
+
+  .splide__pagination {
+    bottom: 42px;
+
+    .splide__pagination__page {
+      transform: none;
+      width: 28px;
+      border-radius: 6px;
+      height: 3px;
+      opacity: 1;
+      background-color: rgba(white, 0.4);
+
+      &.is-active {
+        background-color: white;
+      }
+    }
+  }
+}
+
 .yc-slider__desktop {
   display: none;
 

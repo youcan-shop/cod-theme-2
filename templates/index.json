@@ -8,20 +8,21 @@
                 "slider_pause_on_hover": true,
                 "duration_between_each_slide": 3,
                 "slider_mobile_timeout": 4,
-                "slider_arrows_size": 15,
                 "slider_arrows": true,
                 "slider_height_percentage": 60,
-                "slider_overlay_background_color": "#00000000"
-              },
+                "slider_overlay_background_color": "#00000000",
+                "slider_arrows_content_size": 26,
+                "slider_desktop_arrows_color": "#FFFFFFFF",
+                "caption_text_color": "#FFFFFFFF"
+            },
             "blocks": {
                 "block_qw91o394p69bv8l": {
                     "type": "image_picker",
                     "settings": {
                         "image": "daniel-storek-JM-qKEd1GMI-unsplash-2OfIakQKp2aFHsKMEwrbVoICfTm.jpg",
-                        "caption": "<h2>هذا هو شريط تمرير سطح المكتب<\/h2><p>في النشر والتصميم الجرافيكي ، هو عنصر نائب شائع الاستخدام.<\/p>",
+                        "caption": "<h1>Lenovo QT82 TWS Wireless BT Headphone<\/h1>",
                         "button_text": "Visit Now 🔥",
-                        "button_font_weight": "500",
-                        "product": "8dc07bcd-c5ba-4fa5-8389-ce1553f4cad3"
+                        "button_font_weight": "500"
                     }
                 },
                 "block_qx88dcfkmfmqpeh": {

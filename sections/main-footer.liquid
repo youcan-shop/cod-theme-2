@@ -11,66 +11,65 @@
   }
 
   .toggle-footer {
-    {%- if section.settings.top_border_color -%}
-      border-top: 1px solid {{- section.settings.top_border_color.hex -}};
-    {%- endif -%}
     display: {{ section.settings.toggle_footer ? 'none' : 'block' }};
   }
 
+  .copyright-wrapper {
+    {%- if section.settings.top_border_color -%}
+      border-top: 1px solid {{- section.settings.top_border_color.hex -}};
+    {%- endif -%}
+  }
 {% endstyle %}
 
 {% if section.settings.toggle_footer != true %}
-  <footer class='yc-footer toggle-footer'>
+  <footer class='yc-footer'>
     <div class="columns container">
+      <div class="column logo">
+        {% if section.settings.footer_logo.src %}
+          <img src="{{ section.settings.footer_logo.src }}">
+        {% else %}
+          <img src="{{ 'logo.png' | asset_url }}">
+        {% endif %}
+      </div>
+
       {%- for linklist in link-lists -%}
         {%- if linklist.links | count > 0  and linklist != main-link-list -%}
-          <div class="accordion-item column">
-            <div class='accordion-header'>
+          <div class="column">
+            <div class="links">
               <h1 class="title">{{ linklist.title }}</h1>
-              <svg class="arrow" width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.01947 7.41357L7.56174 1.50241L14.104 7.41357" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="accordion-content">
+
               {%- for item in linklist.links -%}
-                  <a class="item" href="{{ item.url }}">{{ item.title }}</a>
+                <a class="item" href="{{ item.url }}">{{ item.title }}</a>
               {%- endfor -%}
             </div>
           </div>
         {%- endif -%}
       {%- endfor -%}
-    </div>
-    <div class="container">
-      {%- assign cleaned_tag = section.settings.copyright | strip_html | strip -%}
-      {%- if section.settings.social_media_exist or cleaned_tag != '' %}
-        <div class="footer-space"></div>
-      {%- endif -%}
-      <div class="copyright-wrapper" {{ block.youcan_attributes }}>
-        {%- if cleaned_tag != '' %}
-          <div class="copyright-title">
-            {{ section.settings.copyright }}
-          </div>
-        {%- endif %}
-        <div class="spacer"></div>
-        {%- if section.settings.social_media_exist -%}
+      {%- if section.settings.social_media_exist -%}
+        <div class="column social-media">
           {%- for block in section.blocks -%}
             {%- if block.settings.social_media_icon_image.src -%}
-              <a class='link' href="{{ block.settings.social_media_url }}" target="_blank">
+              <a class='social-icon' href="{{ block.settings.social_media_url }}" target="_blank">
                 <img loading='lazy' class='image' src="{{ block.settings.social_media_icon_image.src }}" alt='social links'>
               </a>
-            {% else %}
-              <a class='link' href="{{ block.settings.social_media_url }}" target="_blank">
+              {% else %}
+              <a class='social-icon' href="{{ block.settings.social_media_url }}" target="_blank">
                 <img loading='lazy' src='{{ 'default_product.jpeg' | asset_url }}' alt='image placeholder'>
               </a>
             {%- endif -%}
           {%- endfor %}
-        {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="copyright-wrapper" {{ block.youcan_attributes }}>
+      <div class="container">
+        <div class="copyright-title">
+          {{ section.settings.copyright }}
+        </div>
       </div>
     </div>
   </footer>
 {% endif %}
-
-{{ 'accordion.js' | asset_url | script_tag_deferred }}
 
 {%- schema -%}
 {
@@ -86,6 +85,11 @@
       "id": "toggle_footer",
       "label": "Hide footer",
       "default": false
+    },
+    {
+        "type": "image_picker",
+        "id": "footer_logo",
+        "label": "Logo"
     },
     {
       "type": "color",
@@ -105,7 +109,7 @@
       "default": true
     },
     {
-      "type": "richtext",
+      "type": "text",
       "id": "copyright",
       "label": "Copyright text",
       "default": "All rights reserved"

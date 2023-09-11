@@ -1,6 +1,10 @@
 @import 'helpers/mixins';
 
 .splide {
+  .splide__arrow {
+    margin: 0 100px;
+  }
+
   .splide__pagination {
     bottom: 62px;
 
@@ -53,7 +57,6 @@
     .headers {
       font-weight: 700;
       line-height: 1.2;
-      margin-bottom: 2rem;
     }
 
     @for $i from 1 through 3 {

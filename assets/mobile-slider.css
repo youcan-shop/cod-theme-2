@@ -15,7 +15,7 @@
 }
 @media screen and (max-width: 767px) {
   .yc-slider__mobile .content * {
-    font-size: 24px !important;
+    font-size: 1.5rem !important;
   }
 }
 .yc-slider__mobile .content > div {

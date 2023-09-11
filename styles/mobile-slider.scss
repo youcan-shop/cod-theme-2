@@ -13,10 +13,6 @@
     align-items: center;
     * {
       background-color: transparent !important;
-
-      @media screen and (max-width: 767px) {
-        font-size: 1.5rem !important;
-      }
     }
 
     & > div {
@@ -34,6 +30,7 @@
     .headers {
       font-weight: 700;
       line-height: 1.2;
+      margin-bottom: 2rem;
     }
 
     @for $i from 1 through 3 {

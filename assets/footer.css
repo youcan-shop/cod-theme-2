@@ -23,12 +23,13 @@
 .yc-footer .columns .column .links {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 .yc-footer .columns .column .links .title {
-  font-weight: 500;
+  font-weight: 700;
   font-size: 16px;
   line-height: 20px;
+  margin-bottom: 24px;
 }
 .yc-footer .columns .social-media {
   display: flex;

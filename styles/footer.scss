@@ -24,12 +24,13 @@
       .links {
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 16px;
 
         .title {
-          font-weight: 500;
+          font-weight: 700;
           font-size: 16px;
           line-height: 20px;
+          margin-bottom: 24px;
         }
       }
     }

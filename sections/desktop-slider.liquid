@@ -2,8 +2,8 @@
 
 {% style %}
   .section-slider-{{ id }} #yc_slider_{{ id }} .splide__arrow svg {
-    height: {{ section.settings.slider_arrows_content_size }}px;
-    width: {{ section.settings.slider_arrows_content_size }}px;
+    height: {{ section.settings.slider_arrows_size }}px;
+    width: {{ section.settings.slider_arrows_size }}px;
   }
 
   .section-slider-{{ id }} #yc_slider_{{ id }} .splide__arrow svg path {
@@ -119,9 +119,9 @@
     },
     {
       "type": "range",
-      "id": "slider_arrows_content_size",
+      "id": "slider_arrows_size",
       "min": 10,
-      "max": 40,
+      "max": 0,
       "step": 1,
       "unit": "px",
       "label": "Arrows size",
@@ -159,8 +159,8 @@
       "min": 1,
       "max": 15,
       "step": 1,
-      "unit": "sec",
-      "label": "Duration between each slide",
+      "unit": "s",
+      "label": "Timeout",
       "default": 5
     },
     {

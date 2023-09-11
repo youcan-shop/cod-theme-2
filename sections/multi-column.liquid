@@ -2,22 +2,11 @@
 
 {% style %}
   .multi-column-{{ id }} {
-    margin-top: {{ section.settings.space_top }}px;
-    margin-bottom: {{ section.settings.space_bottom }}px;
+    padding: 32px 0;
+    padding-top: {{ section.settings.space_top }}px;
+    padding-bottom: {{ section.settings.space_bottom }}px;
     background-color: {{ section.settings.background_color.hex }};
     color: {{ section.settings.text_color.hex }};
-  }
-
-  @media screen and (min-width: 1024px) {
-    .multi-column-{{ id }} {
-      padding: 0 150px;
-    }
-  }
-
-  @media screen and (min-width: 1440px) {
-    .multi-column-{{ id }} {
-      padding: 0 240px;
-    }
   }
 
   .multi-column-{{ id }} .yc-section-title{
@@ -31,7 +20,6 @@
     grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
     grid-gap: 2vw;
     align-items: stretch;
-    padding: 10px 0;
   }
 
   .column-block {
@@ -51,7 +39,7 @@
   .column-block .column-description {
     margin: 12px auto;
     font-size: 15px;
-    color: {{ section.settings.text_color.hex }};;
+    color: {{ section.settings.text_color.hex }};
     font-weight: 400;
     line-height: 24px;
   }
@@ -92,9 +80,12 @@
   }
 {% endstyle %}
 
-<div class='multi-column-{{ id }}'>
+<section class='multi-column-{{ id }}'>
   <div class="container">
+    {% if section.settings.title %}
     <h3 class='yc-section-title'>{{ section.settings.title }}</h3>
+    {% endif %}
+
     <div class='multi-column-blocks'>
       {% for block in section.blocks %}
         {% assign block_setting = block.settings %}
@@ -124,13 +115,13 @@
             <h4 class='column-title'>{{ block_setting.heading }}</h4>
           {% endif %}
           {% if block_setting.description %}
-            <div class='column-description'>{{ block_setting.description }}</div>
+            <p class='column-description'>{{ block_setting.description }}</p>
           {% endif %}
         </div>
       {% endfor %}
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {
@@ -180,7 +171,7 @@
       "type": "color",
       "id": "text_color",
       "label": "Text color",
-      "default": "#000000FF"
+      "default": "#3C415FFF"
     },
     {
       "type": "color",
@@ -251,12 +242,12 @@
           "label": "4 columns"
         }
       ],
-      "default": "3"
+      "default": "4"
     },
     {
       "type": "select",
       "id": "columns_mobile",
-      "label": "Number of columsn on mobile",
+      "label": "Number of columns on mobile",
       "options": [
         {
           "value": "1",
@@ -267,7 +258,7 @@
           "label": "2 columns"
         }
       ],
-      "default": "1"
+      "default": "2"
     }
   ]
 }

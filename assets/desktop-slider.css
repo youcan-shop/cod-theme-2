@@ -1,14 +1,5 @@
-.splide .splide__arrow {
-  outline: none;
-  width: var(--yc-slider-arrows-size);
-  height: var(--yc-slider-arrows-size);
-  margin: 0 100px;
-}
-.splide .splide__arrow svg {
-  fill: var(--yc-primary-color);
-}
 .splide .splide__pagination {
-  bottom: 42px;
+  bottom: 62px;
 }
 .splide .splide__pagination .splide__pagination__page {
   transform: none;

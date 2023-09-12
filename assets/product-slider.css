@@ -16,7 +16,6 @@
   transform: translate(-50%, -50%) scale(1.1);
 }
 .product-slider .prices {
-  margin: 20px 0 0;
   text-align: center;
   padding-bottom: 12px;
 }
@@ -50,13 +49,24 @@
   border-radius: 3px;
 }
 .product-slider .product-block .product-details {
+  padding: 0 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   text-align: center;
   margin: 8px auto;
 }
+.product-slider .product-block .product-details .product-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+}
 .product-slider .product-block .prices {
   display: flex;
-  flex-direction: column;
-  gap: 9px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 .product-slider .product-block .compare-at-price {
   font-weight: 400;

@@ -29,7 +29,7 @@
     .product-name {
       color: #333;
       font-weight: 700;
-      font-size: 18px;
+      font-size: 27px;
       line-height: 36px;
 
       @media screen and (max-width: 768px) {
@@ -79,16 +79,16 @@
       text-align: start;
     }
 
-    .product-description-btn {
+    .yc-btn-secondary--large {
       width: 100%;
       max-width: 145px !important;
-      background-color: transparent;
-      border: 1px solid var(--yc-primary-color);
-      padding: 14px 10px;
-      border-radius: 5px;
-      text-align: center;
       font-size: 14px;
       font-weight: 400;
+
+      &:hover {
+        background-color: var(--yc-primary-color);
+        color: #fff !important;
+      }
     }
 
     @include max-screen('md') {

@@ -11,7 +11,7 @@
     px;
     margin-bottom: {{ section.settings.space_bottom }}
     px;
-    padding-top: 5px;
+    padding-top: 24px;
     padding-bottom: 5px;
   }
 
@@ -38,8 +38,7 @@
 
   .section-featured-products-{{ id }}{
     {% if section.settings.background_color %}
-      background-color: {{ section.settings.background_color.hex }}
-      ;
+      background-color: {{ section.settings.background_color.hex }};
     {% else %}
       background-color: var(--yc-primary-color);
     {% endif %}
@@ -65,20 +64,21 @@
   }
 {% endstyle %}
 
-<section class='section-featured-products-{{ id }} yc-featured-products'>
-  <div class='container'>
-    <h1 class='yc-section-title'>
-      {{ section.settings.title }}
-    </h1>
-
-    {% if section.settings.countdown_enabled %}
-      <div class="counter-wrapper">
-        {%- render 'countdown', section_settings: section.settings -%}
-      </div>
-    {% endif %}
-
-    {%- render 'product-slider', blocks: section.blocks, id: id, view: 'desktop' -%}
-    {%- render 'product-slider', blocks: section.blocks, id: id, view: 'mobile' -%}
+<section class='yc-featured-products'>
+  <h1 class='yc-section-title'>
+    {{ section.settings.title }}
+  </h1>
+  <div class="section-featured-products-{{ id }}">
+    <div class='container'>
+      {% if section.settings.countdown_enabled %}
+        <div class="counter-wrapper">
+          {%- render 'countdown', section_settings: section.settings -%}
+        </div>
+      {% endif %}
+  
+      {%- render 'product-slider', blocks: section.blocks, id: id, view: 'desktop' -%}
+      {%- render 'product-slider', blocks: section.blocks, id: id, view: 'mobile' -%}
+    </div>
   </div>
 </section>
 

@@ -2,7 +2,7 @@
 .yc-featured-products {
   .counter-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding-bottom: 24px;
 
@@ -14,6 +14,20 @@
 
       @media screen and (max-width: 767px) {
         font-size: 18px;
+      }
+    }
+  }
+
+  .splide {
+    padding: 37px 0 5rem 0;
+
+    .splide__pagination__page {
+      background-color: var(--yc-primary-color);
+      opacity: 0.3;
+
+      &.is-active {
+        background-color: var(--yc-primary-color);
+        opacity: 1;
       }
     }
   }

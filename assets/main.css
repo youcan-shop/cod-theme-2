@@ -150,7 +150,7 @@ button:focus {
 .yc-btn-secondary--large {
   border: 1px solid var(--yc-primary-color);
   color: var(--yc-primary-color);
-  padding: 14px;
+  padding: 2px 20px;
   border-radius: 4px;
   display: flex;
   font-weight: 700;
@@ -158,7 +158,8 @@ button:focus {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  width: 100%;
+  min-width: 70px;
+  min-height: 45px;
 }
 .yc-btn-secondary--large:hover {
   background: var(--yc-primary-color);

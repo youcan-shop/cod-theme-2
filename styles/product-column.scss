@@ -2,13 +2,14 @@
 
 .product-home-container {
   padding: 30px;
-  max-width: 700px !important;
+  max-width: 800px !important;
 
   .product-block {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    column-gap: 40px;
+    row-gap: 10px;
     width: 100%;
     border-radius: 5px !important;
 
@@ -22,7 +23,7 @@
       flex-direction: column;
       width: 50%;
       justify-content: center;
-      align-items: center;
+      align-items: start;
       text-align: center;
     }
 

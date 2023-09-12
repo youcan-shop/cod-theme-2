@@ -1,7 +1,8 @@
 {
   "general": {
     "show_more_button": "Voir plus",
-    "size_big_message": "Veuillez télécharger une image de moins de 2 Mo"
+    "size_big_message": "Veuillez télécharger une image de moins de 2 Mo",
+    "buy_now": "Acheter"
   },
   "navbar": {
     "search": {
@@ -101,6 +102,12 @@
       "created_at_desc": "Le plus ancien",
       "title_asc": "Alphabétique: de A à Z",
       "title_desc": "Alphabétique: de Z à A"
+    },
+    "countdown": {
+      "day": "Jour",
+      "hour": "Heure",
+      "minute": "Minute",
+      "second": "Seconde"
     }
   },
   "upsell": {

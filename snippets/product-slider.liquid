@@ -5,8 +5,8 @@
     width: 54px;
     height: 54px;
     margin: 0 100px;
-    border: 1px solid #EDEDED;
-    box-shadow: 4px 10px 76px rgba(0, 0, 0, 0.14);
+    /* border: 1px solid #EDEDED; */
+    /* box-shadow: 4px 10px 76px rgba(0, 0, 0, 0.14); */
     border-radius: 0px 8px 8px 0px;
   }
 
@@ -26,9 +26,9 @@
   }
 
   #yc_slider_{{ id }} .splide__arrow svg {
-    height: 16px;
-    width: 16px;
-    fill: #000;
+    height: 28px;
+    width: 28px;
+    fill: {{ section_settings.slider_arrows_color.hex }};
   }
 
   @media screen and (max-width: 768px) {
@@ -43,41 +43,46 @@
   id='yc_slider_{{ id }}'
 >
   <div class='splide__track'>
+    
     <ul class='splide__list'>
       {%- for block in blocks %}
+        {% assign settings = block.settings %}
         <li
           class='splide__slide'
           {{ block.youcan_attributes }}
         >
           <a
-            href='{{ block.settings.product.url }}'
+            href='{{ settings.product.url }}'
             class='product-block'
           >
             <div class="product-slider">
               <div class='product-thumbnail'>
                  <img
                   loading='lazy'
-                  src='{%- if block.settings.product.thumbnail -%} {{ block.settings.product.thumbnail }} {%- else -%} {{ 'default_product.jpeg' | asset_url }} {%- endif -%}'
+                  src='{%- if settings.product.thumbnail -%} {{ settings.product.thumbnail }} {%- else -%} {{ 'default_product.jpeg' | asset_url }} {%- endif -%}'
                   >
-                  {% if block.settings.tag_text %}
+                  {% if settings.tag_text %}
                     <div
-                      class="tag {{ section_settings.tag_position }}"
-                      style="background: {{ section_settings.banner_background_color.hex }}; color: {{ section_settings.tag_text_color.hex }}"
+                      class="tag {{ settings.tag_position }}"
+                      style="background: {{ settings.tag_color.hex }}; color: {{ settings.tag_text_color.hex }}"
                     >
-                      {{ block.settings.tag_text }}
+                      {{ settings.tag_text }}
                     </div>
                   {% endif %}
               </div>
               <div class='product-details'>
-                <span class='product-title'>{{ block.settings.product.name }}</span>
-              </div>
-              <div class='prices'>
-                {% if block.settings.product.price %}
-                  <span class='product-price'>{{ block.settings.product.price | money }}</span>
-                {% endif %}
-                {% if section.settings.show_compare_at_price and block.settings.product.compare_at_price %}
-                  <span class='compare-at-price'>{{ block.settings.product.compare_at_price | money }}</span>
-                {% endif %}
+                <span class='product-title'>{{ settings.product.name }}</span>
+                <div class='prices'>
+                  {% if section.settings.show_compare_at_price and settings.product.compare_at_price %}
+                    <span class='compare-at-price'>{{ settings.product.compare_at_price | money }}</span>
+                  {% endif %}
+                  {% if settings.product.price %}
+                    <span class='product-price'>{{ settings.product.price | money }}</span>
+                  {% endif %}
+                </div>
+                <button class="yc-btn-secondary--large">
+                  {{ 'general.buy_now' | t }}
+                </button>
               </div>
             </div>
           </a>
@@ -86,3 +91,6 @@
     </ul>
   </div>  
 </div>
+
+
+

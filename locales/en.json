@@ -1,7 +1,8 @@
 {
   "general": {
     "show_more_button": "Show more",
-    "size_big_message": "Please upload an image less than 2mb"
+    "size_big_message": "Please upload an image less than 2mb",
+    "buy_now": "Buy now"
   },
   "navbar": {
     "search": {
@@ -101,6 +102,12 @@
       "created_at_desc": "Oldest",
       "title_asc": "Alphabetically: A-Z",
       "title_desc": "Alphabetically: Z-A"
+    },
+    "countdown": {
+      "day": "Day",
+      "hour": "Hour",
+      "minute": "Minute",
+      "second": "Second"
     }
   },
   "upsell": {

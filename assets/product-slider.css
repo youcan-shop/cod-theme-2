@@ -20,7 +20,7 @@
   padding-bottom: 12px;
 }
 .product-slider .prices .product-price {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   text-align: center;
   color: var(--yc-primary-color);
@@ -71,7 +71,7 @@
 .product-slider .product-block .compare-at-price {
   font-weight: 400;
   color: #8D8D8D;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 120%;
   text-decoration-line: line-through;
 }

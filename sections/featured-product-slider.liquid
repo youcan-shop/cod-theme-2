@@ -7,10 +7,8 @@
 
 {% style %}
   .section-featured-products-{{ id }}{
-    margin-top: {{ section.settings.space_top }}
-    px;
-    margin-bottom: {{ section.settings.space_bottom }}
-    px;
+    margin-top: {{ section.settings.space_top }}px;
+    margin-bottom: {{ section.settings.space_bottom }}px;
     padding-top: 24px;
     padding-bottom: 5px;
   }
@@ -82,7 +80,7 @@
   </div>
 </section>
 
-<script defer>
+<script>
   (function() {
   const isMobile = window.matchMedia("(max-width: 768px)");
       const productSize = {{ section.blocks.size }};
@@ -107,6 +105,7 @@
         perMove: 1,
         snap: true,
         gap: '20px',
+        focus: 'center',
         breakpoints: {
         1024: {
           perPage: perPage >= 3 ? 3 : perPage,

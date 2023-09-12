@@ -128,7 +128,6 @@
 }
 .yc-featured-products .product-list .product-block .prices .product-price {
   font-weight: 700;
-  color: var(--yc-primary-color);
   font-size: 17px;
   line-height: 120%;
 }

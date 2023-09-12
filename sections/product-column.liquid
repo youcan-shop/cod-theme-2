@@ -8,13 +8,13 @@
     padding-bottom: {{ section.settings.space_bottom}}px;
   }
 
-  #product-column-{{ id }} .product-images-container {
+  #product-column-{{ id }} {
     background-color: {{ section.settings.background_color.hex }};
   }
 
   #product-column-{{ id }} .yc-btn {
-    color: {{ section.settings.button_text_color.hex }};
-  }
+    color: {{ section.settings.button_text_color.hex }} !important;
+}
 {%- endstyle -%}
 
 {%- assign selected_product = section.settings.product %}

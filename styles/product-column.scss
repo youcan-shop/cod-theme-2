@@ -67,9 +67,15 @@
         width: 100%;
         object-fit: contain;
       }
-    }
 
-    .yc-btn-secondary--large {
+      .tag-banner {
+          padding: 2px 4px;
+          font-size: 12px;
+          border-radius: 5px;
+        }
+      }
+
+    .yc-btn {
       width: 100%;
       max-width: 145px !important;
     }

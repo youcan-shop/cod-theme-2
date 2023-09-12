@@ -60,7 +60,12 @@
   width: 100%;
   object-fit: contain;
 }
-.product-home-container .product-block .yc-btn-secondary--large {
+.product-home-container .product-block .image-box .tag-banner {
+  padding: 2px 4px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+.product-home-container .product-block .yc-btn {
   width: 100%;
   max-width: 145px !important;
 }

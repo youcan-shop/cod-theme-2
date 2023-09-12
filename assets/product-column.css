@@ -66,9 +66,18 @@
   font-size: 12px;
   border-radius: 5px;
 }
-.product-home-container .product-block .yc-btn {
+.product-home-container .product-block .product-description {
+  text-align: start;
+}
+.product-home-container .product-block .product-description-btn {
   width: 100%;
   max-width: 145px !important;
+  background-color: transparent;
+  border: 1px solid var(--yc-primary-color);
+  padding: 14px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 400;
 }
 @media (max-width: 768px) {
   .product-home-container .product-block {

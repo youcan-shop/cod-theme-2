@@ -4,15 +4,15 @@
 
 {%- style -%}
   #product-column-{{ id }} {
-    padding-top: {{ section.settings.space_top}}px;
-    padding-bottom: {{ section.settings.space_bottom}}px;
+    margin-top: {{ section.settings.space_top}}px;
+    margin-bottom: {{ section.settings.space_bottom}}px;
   }
 
   #product-column-{{ id }} {
     background-color: {{ section.settings.background_color.hex }};
   }
 
-  #product-column-{{ id }} .yc-btn {
+  #product-column-{{ id }} .product-description-btn {
     color: {{ section.settings.button_text_color.hex }} !important;
 }
 {%- endstyle -%}
@@ -20,7 +20,7 @@
 {%- assign selected_product = section.settings.product %}
 
 {%- if selected_product %}
-  <section class='product-column' id="product-column-{{ id }}">
+  <section class='product-column' id='product-column-{{ id }}'>
     {%- render 'product-home', product_id: selected_product.id, product: selected_product, block_settings: section.settings-%}
   </section>
 {%- endif %}

@@ -76,9 +76,19 @@
         }
       }
 
-    .yc-btn {
+    .product-description {
+      text-align: start;
+    }
+
+    .product-description-btn {
       width: 100%;
       max-width: 145px !important;
+      background-color: transparent;
+      border: 1px solid var(--yc-primary-color);
+      padding: 14px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: 400;
     }
 
     @include max-screen('md') {

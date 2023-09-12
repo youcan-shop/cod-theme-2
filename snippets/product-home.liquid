@@ -5,25 +5,29 @@
 
 
 <div class='product-home-container container'>
-  <div
-    class='product-block'
-  >
-  <div class='image-box'>
-  {% if block_settings.tag_text %}
-    <div
-      class="tag {{ block_settings.tag_position }}"
-      style="background: {{ block_settings.tag_color.hex }}; color: {{ block_settings.tag_text_color.hex }}"
-    >
-      {{ block_settings.tag_text }}
+  <div class='product-block'>
+    <div class='image-box'>
+      {% if block_settings.tag_text %}
+        <div class="tag {{ block_settings.tag_position }}">
+          <div
+            class="tag-banner"
+            style="background: {{ block_settings.tag_color.hex }}; color: {{ block_settings.tag_text_color.hex }}"
+          >
+            {{ block_settings.tag_text }}
+          </div>
+        </div>
+      {% endif %}
+      <img
+        loading='lazy'
+        class='main-image'
+        class='main-thumbnail'
+        src='{%- if images[0] %}{{images[0]}}{%- else %}{{ 'default_product.jpeg' | asset_url }}{% endif %}'
+        alt='{{ product_name }}'
+      >
     </div>
-  {% endif %}
-    <img
-      loading='lazy'
-      src='{%- if images[0] %}{{images[0]}}{%- else %}{{ 'default_product.jpeg' | asset_url }}{% endif %}'
-      alt='{{ product_name }}'>
-  </div>
-  <div class='product-details product-home'>
-    {%- for block in section.blocks -%}
+
+    <div class='product-details product-home'>
+      {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'product_title' -%}
             <h1 class='product-name'>{{ product.name }}</h1>
@@ -31,22 +35,20 @@
             {%- render 'general-review' -%}
           {%- when 'product_price' -%}
             <div class='flex gap-2 items-center'>
-              {% if product.price %}
               <h2 class='product-price'>{{ product.price | money }}</h2>
-              {% endif %}
               {% if section.settings.show_compare_at_price and product.compare_at_price != nil %}
                 <h3>
                   <del class="product-compare-price">{{ product.compare_at_price | money }}</del>
                 </h3>
               {% endif %}
             </div>
-          {%- endcase -%}
-        {%- endfor -%}
-      <p class='product-description'>{{ section.settings.product_description }}</p>
-    <a href='{{ product.url }}' class='yc-btn buy-btn'>إتمام الشراء</a>
-    </div>
+        {%- endcase -%}
+      {%- endfor -%}
+
+      <a href='{{ product.url }}' class='yc-btn-secondary--large'>إتمام الشراء</a>
     </div>
   </div>
+</div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {

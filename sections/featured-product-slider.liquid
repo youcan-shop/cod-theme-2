@@ -6,35 +6,32 @@
 {% assign id = 100 | rand: 2000 %}
 
 {% style %}
-  .section-featured-products-{{ id }}{
+  .featured-products-wrapper-{{ id }}{
     margin-top: {{ section.settings.space_top }}px;
     margin-bottom: {{ section.settings.space_bottom }}px;
-    padding-top: 24px;
-    padding-bottom: 5px;
   }
 
   @media screen and (min-width: 768px) {
     .section-featured-products-{{ id }}{
-      padding-left: 70px;
-      padding-right: 70px;
+      padding: 0 70px;
     }
   }
 
   @media screen and (min-width: 1024px) {
     .section-featured-products-{{ id }}{
-      padding-left: 100px;
-      padding-right: 100px;
+      padding: 0 100px;
     }
   }
 
   @media screen and (min-width: 1440px) {
     .section-featured-products-{{ id }}{
-      padding-left: 150px;
-      padding-right: 150px;
+      padding: 0 150px;
     }
   }
 
   .section-featured-products-{{ id }}{
+    padding-top: 24px;
+    padding-bottom: 5px;
     {% if section.settings.background_color %}
       background-color: {{ section.settings.background_color.hex }};
     {% else %}
@@ -47,6 +44,10 @@
     ;
   }
 
+  .featured-products-wrapper-{{ id }} {
+    color: {{ section.settings.text_color.hex }};
+  }
+
   .section-featured-products-{{ id }}.countdown-wrapper .countdown .num {
     border-color: {{ section.settings.text_color.hex }}
     ;
@@ -57,12 +58,12 @@
   }
 
   .section-featured-products-{{ id }}.product-slider.splide .splide__arrow svg {
-    fill: {{ section.settings.slider_arrows_color.hex }}
-    ;
+    fill: {{ section.settings.slider_arrows_color.hex }};
   }
+  
 {% endstyle %}
 
-<section class='yc-featured-products'>
+<section class="yc-featured-products featured-products-wrapper-{{id}}">
   <h1 class='yc-section-title'>
     {{ section.settings.title }}
   </h1>
@@ -74,8 +75,8 @@
         </div>
       {% endif %}
   
-      {%- render 'product-slider', blocks: section.blocks, id: id, view: 'desktop' -%}
-      {%- render 'product-slider', blocks: section.blocks, id: id, view: 'mobile' -%}
+      {%- render 'product-slider', blocks: section.blocks, section_settings: section.settings, id: id, view: 'desktop' -%}
+      {%- render 'product-slider', blocks: section.blocks, section_settings: section.settings, id: id, view: 'mobile' -%}
     </div>
   </div>
 </section>

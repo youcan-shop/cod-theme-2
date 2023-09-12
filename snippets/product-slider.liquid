@@ -28,7 +28,7 @@
   #yc_slider_{{ id }} .splide__arrow svg {
     height: 28px;
     width: 28px;
-    fill: #000;
+    fill: {{ section_settings.slider_arrows_color.hex }};
   }
 
   @media screen and (max-width: 768px) {
@@ -43,6 +43,7 @@
   id='yc_slider_{{ id }}'
 >
   <div class='splide__track'>
+    
     <ul class='splide__list'>
       {%- for block in blocks %}
         {% assign settings = block.settings %}

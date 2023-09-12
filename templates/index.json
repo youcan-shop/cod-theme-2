@@ -225,12 +225,47 @@
                 "product": "cf3ed4d6-2109-463a-8422-be423a229cad",
                 "reviews_title": "Reviews"
             }
+        },
+        "section_y3hmupz12y65n7e": {
+            "type": "product-column",
+            "settings": {
+                "product": "62d3d96f-0766-4e0c-8017-edc7cc0caf95",
+                "show_compare_at_price": false,
+                "background_color": "#FFFFFFFF",
+                "space_top": 50,
+                "space_bottom": 50,
+                "button_text_color": "#3C415FFF",
+                "tag_color": "#000000FF",
+                "tag_text_color": "#FFFFFFFF",
+                "tag_position": "top_right",
+                "product_description": "<p>this is a description of product column section<\/p>"
+            },
+            "blocks": {
+                "block_y4uum8u715gcsnf": {
+                    "type": "product_title",
+                    "settings": {}
+                },
+                "block_y5o63fyo6pjse97": {
+                    "type": "product_reviews",
+                    "settings": {}
+                },
+                "block_y6faq1kfmjo5c8r": {
+                    "type": "product_price",
+                    "settings": {}
+                }
+            },
+            "order": [
+                "block_y4uum8u715gcsnf",
+                "block_y5o63fyo6pjse97",
+                "block_y6faq1kfmjo5c8r"
+            ]
         }
     },
     "order": [
         "section_qum9qooyrwe3uz",
         "section_62tm9748qh15wfk",
         "section_609gq1tx2x0aaa",
-        "section_b3g5zwjngmukzqp"
+        "section_b3g5zwjngmukzqp",
+        "section_y3hmupz12y65n7e"
     ]
-}
+  }

@@ -21,12 +21,11 @@
   width: 50%;
   justify-content: center;
   align-items: start;
-  text-align: center;
 }
 .product-home-container .product-block .product-name {
-  color: #000000;
+  color: #333;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 18px;
   line-height: 36px;
 }
 @media screen and (max-width: 768px) {
@@ -76,6 +75,7 @@
   border: 1px solid var(--yc-primary-color);
   padding: 14px 10px;
   border-radius: 5px;
+  text-align: center;
   font-size: 14px;
   font-weight: 400;
 }

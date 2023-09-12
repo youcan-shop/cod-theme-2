@@ -1,7 +1,8 @@
 {
   "general": {
     "show_more_button": "عرض المزيد",
-    "size_big_message": "المرجو تحميل صورة أقل من 2mb"
+    "size_big_message": "المرجو تحميل صورة أقل من 2mb",
+    "buy_now": "اشتري الأن"
   },
   "head_metadata": {
     "collections": "التصنيفات",

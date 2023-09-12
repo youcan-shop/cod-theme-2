@@ -45,37 +45,38 @@
   <div class='splide__track'>
     <ul class='splide__list'>
       {%- for block in blocks %}
+        {% assign settings = block.settings %}
         <li
           class='splide__slide'
           {{ block.youcan_attributes }}
         >
           <a
-            href='{{ block.settings.product.url }}'
+            href='{{ settings.product.url }}'
             class='product-block'
           >
             <div class="product-slider">
               <div class='product-thumbnail'>
                  <img
                   loading='lazy'
-                  src='{%- if block.settings.product.thumbnail -%} {{ block.settings.product.thumbnail }} {%- else -%} {{ 'default_product.jpeg' | asset_url }} {%- endif -%}'
+                  src='{%- if settings.product.thumbnail -%} {{ settings.product.thumbnail }} {%- else -%} {{ 'default_product.jpeg' | asset_url }} {%- endif -%}'
                   >
-                  {% if block.settings.tag_text %}
+                  {% if settings.tag_text %}
                     <div
-                      class="tag {{ section_settings.tag_position }}"
-                      style="background: {{ section_settings.banner_background_color.hex }}; color: {{ section_settings.tag_text_color.hex }}"
+                      class="tag {{ settings.tag_position }}"
+                      style="background: {{ settings.tag_color.hex }}; color: {{ settings.tag_text_color.hex }}"
                     >
-                      {{ block.settings.tag_text }}
+                      {{ settings.tag_text }}
                     </div>
                   {% endif %}
               </div>
               <div class='product-details'>
-                <span class='product-title'>{{ block.settings.product.name }}</span>
+                <span class='product-title'>{{ settings.product.name }}</span>
                 <div class='prices'>
-                  {% if section.settings.show_compare_at_price and block.settings.product.compare_at_price %}
-                    <span class='compare-at-price'>{{ block.settings.product.compare_at_price | money }}</span>
+                  {% if section.settings.show_compare_at_price and settings.product.compare_at_price %}
+                    <span class='compare-at-price'>{{ settings.product.compare_at_price | money }}</span>
                   {% endif %}
-                  {% if block.settings.product.price %}
-                    <span class='product-price'>{{ block.settings.product.price | money }}</span>
+                  {% if settings.product.price %}
+                    <span class='product-price'>{{ settings.product.price | money }}</span>
                   {% endif %}
                 </div>
                 <button class="yc-btn-secondary">

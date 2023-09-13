@@ -1,10 +1,12 @@
 @import 'helpers/mixins';
+@import 'countdown';
+
 .yc-featured-products {
   .counter-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 24px;
+    padding: 24px 0;
 
     .yc-section-title {
       margin: 0;
@@ -12,7 +14,7 @@
       font-weight: 600;
       text-align: start;
 
-      @media screen and (max-width: 767px) {
+      @include max-screen('md') {
         font-size: 18px;
       }
     }
@@ -42,16 +44,14 @@
 
     @include breakpoint('md') {
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      padding: 0 40px;
+      gap: 29px;
     }
     @include breakpoint('lg') {
       grid-template-columns: repeat(3, 1fr);
-      padding: 0 70px;
     }
 
     @include breakpoint('xl') {
-      padding: 0 150px;
+      grid-template-columns: repeat(4, 1fr);
     }
 
     .product-block {
@@ -62,11 +62,10 @@
       position: relative;
 
       .product-thumbnail {
-        border: 1px solid #EFEFEF;
         border-radius: 3px;
         position: relative;
         overflow: hidden;
-        padding: 0 0 100%;  
+        padding: 0 0 100%;
         height: 0;
 
         img {
@@ -76,7 +75,7 @@
           height: 100%;
           transform: translate(-50%,-50%);
           transition: transform .25s ease;
-  
+
           &:hover {
             transform: translate(-50%,-50%) scale(1.1);
           }
@@ -99,8 +98,8 @@
           line-height: 120%;
 
           @include breakpoint('md') {
-            font-weight: 600;
-            font-size: 17px;
+            font-weight: 300;
+            font-size: 16px;
           }
         }
       }
@@ -122,15 +121,14 @@
 
       .prices {
         display: flex;
-        flex-direction: column;
-        align-items: start;
+        justify-content: center;
         gap: 7px;
         margin: 12px auto 0;
         padding: 0 6px 6px;
         align-items: center;
 
         @include breakpoint('md') {
-          margin: 15px auto 20px;
+          margin: 8px auto 15px;
           gap: 10px;
         }
 
@@ -140,27 +138,33 @@
         }
 
         .product-price {
-          font-weight: 700;
+          font-weight: 600;
           color: var(--yc-primary-color);
           font-size: 17px;
           line-height: 120%;
 
           @include breakpoint('md') {
-            font-size: 22px;
+            font-size: 20px;
           }
         }
 
 
         .compare-at-price {
           text-decoration: line-through;
-          opacity: 0.5;
-          font-size: 15px;
-          font-weight: 500;
+          font-size: 18px;
+          font-weight: 300;
+          color: #9B9B9B;
         }
 
         .product-thumbnail:hover img {
           transform: scale(1.1);
         }
+      }
+
+      .product-btn {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 24px;
       }
     }
   }

@@ -136,7 +136,7 @@ button:focus {
   padding: 14px 10px;
   font-size: 14px;
   font-weight: 400;
-  min-width: 110px;
+  min-width: 100px;
   min-height: 45px;
   display: flex;
   justify-content: center;

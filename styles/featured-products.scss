@@ -47,6 +47,7 @@
     }
     @include breakpoint('lg') {
       grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
 
     @include breakpoint('xl') {

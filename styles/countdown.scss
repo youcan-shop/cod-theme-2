@@ -3,19 +3,16 @@
 .countdown-wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   flex-direction: column;
   gap: 16px;
 
   .message {
-    text-align: center;
     font-size: 20px;
   }
 
   .countdown {
     direction: ltr;
     display: flex;
-    justify-content: center;
     gap: 8px;
     margin: 0;
 

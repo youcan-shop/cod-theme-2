@@ -628,6 +628,12 @@ input:not([type=radio]),
   bottom: 8px;
   left: 8px;
 }
+.tag .tag-banner {
+  padding: 3px 12px;
+  font-size: 12px;
+  border-radius: 5px;
+  font-weight: 400;
+}
 
 .breadcrumbs-container .breadcrumbs-listings {
   display: flex;

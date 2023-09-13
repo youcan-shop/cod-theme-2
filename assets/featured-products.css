@@ -44,6 +44,9 @@
   margin-top: -11px;
 }
 
+.yc-featured-products {
+  padding: 5px 0;
+}
 .yc-featured-products .counter-wrapper {
   display: flex;
   justify-content: center;

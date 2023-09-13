@@ -44,7 +44,6 @@
 
     @include breakpoint('md') {
       grid-template-columns: repeat(3, 1fr);
-      gap: 29px;
     }
     @include breakpoint('lg') {
       grid-template-columns: repeat(3, 1fr);
@@ -83,19 +82,19 @@
       }
 
       .product-details {
-        text-align: start;
+        padding: 0 16px 16px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
         margin-top: 12px;
-        padding: 0 6px;
         text-align: center;
 
-        @include breakpoint('md') {
-          margin-top: 10px;
-        }
-
         .product-title {
-          font-weight: 400;
           font-size: 15px;
           line-height: 120%;
+          font-weight: 400;
+          font-size: 16px;
 
           @include breakpoint('md') {
             font-weight: 300;
@@ -147,7 +146,6 @@
             font-size: 20px;
           }
         }
-
 
         .compare-at-price {
           text-decoration: line-through;

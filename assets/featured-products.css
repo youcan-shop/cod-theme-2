@@ -125,20 +125,22 @@
   transform: translate(-50%, -50%) scale(1.1);
 }
 .yc-featured-products .product-list .product-block .product-details {
-  text-align: start;
+  padding: 0 16px 16px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 8px;
   margin-top: 12px;
-  padding: 0 6px;
   text-align: center;
 }
-@media (min-width: 768px) {
-  .yc-featured-products .product-list .product-block .product-details {
-    margin-top: 10px;
-  }
-}
 .yc-featured-products .product-list .product-block .product-details .product-title {
-  font-weight: 400;
   font-size: 15px;
   line-height: 120%;
+  font-weight: 400;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 @media (min-width: 768px) {
   .yc-featured-products .product-list .product-block .product-details .product-title {

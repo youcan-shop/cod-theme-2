@@ -86,12 +86,10 @@
       }
 
       .product-details {
-        padding: 0 16px 24px;
+        padding: 16px;
+        margin: 0;
         display: flex;
         flex-direction: column;
-        text-align: center;
-        gap: 8px;
-        margin-top: 12px;
         text-align: center;
 
         .product-title {
@@ -104,6 +102,10 @@
             font-weight: 300;
             font-size: 16px;
           }
+        }
+
+        @include breakpoint('md') {
+          padding: 24px;
         }
       }
 
@@ -126,12 +128,11 @@
         display: flex;
         justify-content: center;
         gap: 7px;
-        margin: 12px auto 0;
-        padding: 0 6px 6px;
         align-items: center;
+        margin: 8px auto 15px;
+
 
         @include breakpoint('md') {
-          margin: 8px auto 15px;
           gap: 10px;
         }
 

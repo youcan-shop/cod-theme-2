@@ -7,10 +7,10 @@
   place-items: center;
   text-align: center;
   background-color: #F7F7F7;
+  position: relative;
 
   .upsell-container {
     width: 100%;
-    position: relative;
 
     #upsell-form {
       position: sticky;
@@ -21,7 +21,7 @@
 
   .upsell-content {
     margin: 0 auto;
-    padding: 42px 0;
+    padding: 42px;
     max-width: var(--page-max-width);
     img {
       margin: auto;

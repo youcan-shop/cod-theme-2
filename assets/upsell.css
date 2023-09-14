@@ -3,10 +3,10 @@
   place-items: center;
   text-align: center;
   background-color: #F7F7F7;
+  position: relative;
 }
 .upsell-page .upsell-container {
   width: 100%;
-  position: relative;
 }
 .upsell-page .upsell-container #upsell-form {
   position: sticky;
@@ -14,7 +14,7 @@
 }
 .upsell-page .upsell-content {
   margin: 0 auto;
-  padding: 42px 0;
+  padding: 42px;
   max-width: var(--page-max-width);
 }
 .upsell-page .upsell-content img {

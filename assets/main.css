@@ -633,7 +633,7 @@ input:not([type=radio]),
   text-decoration: none;
 }
 .breadcrumbs-container .breadcrumbs-listings .second-listing {
-  font-weight: 700;
+  font-weight: 400;
   color: #000000;
   font-size: 16px;
   text-decoration: none;

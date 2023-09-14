@@ -1,7 +1,7 @@
 @import 'helpers/mixins';
 
 .upsell-page {
-  --max-width: 1124px;
+  --page-max-width: 1124px;
 
   display: grid;
   place-items: center;
@@ -22,7 +22,7 @@
   .upsell-content {
     margin: 0 auto;
     padding: 42px;
-    max-width: var(--max-width);
+    max-width: var(--page-max-width);
     img {
       margin: auto;
     }
@@ -56,7 +56,7 @@
 
     .upsell-form-submit-content {
       display: flex;
-      max-width: var(--max-width);
+      max-width: var(--page-max-width);
       margin: 0 auto;
       justify-content: center;
       align-items: center;
@@ -64,7 +64,8 @@
 
       .upsell-submit-yes,
       .upsell-submit-no {
-        width: 100%;
+        // width: 100%;
+        // max-width: 320px;
         height: 60px;
         display: flex;
         justify-content: center;
@@ -73,7 +74,7 @@
         font-weight: 600;
         padding: 16px 18px;
         border-radius: 5px;
-      }      
+      }
 
       .upsell-submit-no {
         border-width: 1px;
@@ -106,6 +107,10 @@
 
       @media (max-width: 520px) {
         flex-direction: column;
+        .size-small,
+        .size-medium  {
+          width: 100%;
+        }
       }
     }
     @media (max-width: 768px) {

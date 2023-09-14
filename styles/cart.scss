@@ -116,40 +116,34 @@
   }
 
   .quantity-wrapper {
-    width: fit-content;
-    border: 1px solid #BDBDBD;
-    border-radius: 4px;
     display: flex;
     align-items: center;
+    gap: 8px;
     flex-direction: row-reverse;
+    width: fit-content;
+    border-radius: 4px;
     background-color: white;
 
     button {
-      width: 34px !important;
-      min-width: 34px !important;
-      max-width: 34px !important;
-      height: 34px !important;
-      min-height: 34px !important;
-      max-height: 34px !important;
-      background-color: transparent;
+      width: 30px !important;
+      height: 30px !important;
+      border-radius: 5px;
+      background-color: #F3F3F3;
       font-size: 18px;
-      color: #B7B7B7;
+      color: #000000;
     }
 
     input {
-      width: 34px !important;
-      min-width: 34px !important;
-      max-width: 34px !important;
-      height: 34px !important;
-      min-height: 34px !important;
-      max-height: 34px !important;
+      width: 58px;
+      border-radius: 5px;
+      height: 30px !important;
       margin: 0 !important;
       padding: 0 !important;
       background-color: white;
+      border: 1px solid #E6E6E6;
       display: flex;
       font-weight: 600 !important;
       font-size: 16px !important;
-      border: 0;
       align-items: center;
       justify-content: center;
       text-align: center;
@@ -171,11 +165,11 @@
 .table-container {
   display: flex;
   flex-direction: column;
-  margin: 42px auto;
+  margin: 24px auto;
   overflow-x: auto;
 
   .cart__item {
-    background: #F5F5F5;
+    background: white;
     border: 1px solid #EDEDED;
     border-radius: 0px 0px 4px 4px;
     position: relative;
@@ -183,6 +177,7 @@
   }
 
   .header {
+    background-color: rgba(var(--yc-primary-color-rgb), 0.04);
     border: 1px solid #EDEDED;
     border-radius: 4px 4px 0px 0px;
     border-bottom: 0;
@@ -215,7 +210,7 @@
 
       .product-title {
         font-weight: 400;
-        font-size: 16.5px;
+        font-size: 16px;
         margin-bottom: 10px;
         width: 86%;
       }
@@ -223,13 +218,14 @@
       .total-price-wrapper span {
         color: var(--yc-primary-color);
         font-weight: 700;
-        font-size: 17px;
+        font-size: 20px;
       }
 
       .product-image {
         img {
-          width: 140px;
-          height: 110px;
+          border-radius: 5px;
+          width: 100px;
+          height: 100px;
           object-fit: contain;
         }
       }

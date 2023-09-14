@@ -1,11 +1,22 @@
 .upsell-page {
-  padding: 50px 20px;
+  --max-width: 1124px;
   display: grid;
   place-items: center;
   text-align: center;
+  background-color: #F7F7F7;
 }
 .upsell-page .upsell-container {
   width: 100%;
+  position: relative;
+}
+.upsell-page .upsell-container #upsell-form {
+  position: sticky;
+  bottom: 0;
+}
+.upsell-page .upsell-content {
+  margin: 0 auto;
+  padding: 42px;
+  max-width: var(--max-width);
 }
 .upsell-page .upsell-content img {
   margin: auto;
@@ -26,53 +37,66 @@
   line-height: 22px;
   font-weight: 300;
 }
+@media (max-width: 768px) {
+  .upsell-page .upsell-content {
+    padding: 16px;
+  }
+}
 .upsell-page .upsell-form-submit {
+  box-shadow: 0px 30px 93px 0px rgba(0, 0, 0, 0.2509803922);
   padding: 42px 0;
   background-color: #fff;
+}
+.upsell-page .upsell-form-submit .upsell-form-submit-content {
   display: flex;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 16px;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   gap: 24px;
 }
-.upsell-page .upsell-form-submit .upsell-submit-yes,
-.upsell-page .upsell-form-submit .upsell-submit-no {
+.upsell-page .upsell-form-submit .upsell-form-submit-content .upsell-submit-yes,
+.upsell-page .upsell-form-submit .upsell-form-submit-content .upsell-submit-no {
   width: 100%;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
   font-weight: 600;
-}
-.upsell-page .upsell-form-submit .upsell-submit-yes {
   padding: 16px 18px;
-  height: 60px;
+  border-radius: 5px;
 }
-.upsell-page .upsell-form-submit .upsell-submit-no {
-  padding: 16px 10px;
-  font-size: 14px;
-  height: 48px;
+.upsell-page .upsell-form-submit .upsell-form-submit-content .upsell-submit-no {
+  border-width: 1px;
+  border-style: solid;
 }
-.upsell-page .upsell-form-submit .text-small {
+.upsell-page .upsell-form-submit .upsell-form-submit-content .text-small {
   font-size: 15px;
 }
-.upsell-page .upsell-form-submit .text-medium {
+.upsell-page .upsell-form-submit .upsell-form-submit-content .text-medium {
   font-size: 19px;
 }
-.upsell-page .upsell-form-submit .text-large {
+.upsell-page .upsell-form-submit .upsell-form-submit-content .text-large {
   font-size: 22px;
 }
-.upsell-page .upsell-form-submit .size-small {
+.upsell-page .upsell-form-submit .upsell-form-submit-content .size-small {
   width: 50%;
 }
-.upsell-page .upsell-form-submit .size-medium {
+.upsell-page .upsell-form-submit .upsell-form-submit-content .size-medium {
   width: 70%;
 }
-.upsell-page .upsell-form-submit .size-large {
+.upsell-page .upsell-form-submit .upsell-form-submit-content .size-large {
   width: 100%;
 }
+@media (max-width: 520px) {
+  .upsell-page .upsell-form-submit .upsell-form-submit-content {
+    flex-direction: column;
+  }
+}
 @media (max-width: 768px) {
-  .upsell-page {
-    padding: 50px 16px;
+  .upsell-page .upsell-form-submit {
+    padding: 24px 0;
   }
 }

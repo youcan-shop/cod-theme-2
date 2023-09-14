@@ -133,13 +133,25 @@ button:focus {
 .yc-btn-secondary {
   border: 1px solid var(--yc-primary-color);
   color: var(--yc-primary-color);
-  padding: 2px 20px;
-  min-width: 70px;
+  padding: 14px 10px;
+  font-size: 14px;
+  font-weight: 400;
+  min-width: 100px;
   min-height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
+}
+@media (min-width: 768px) {
+  .yc-btn-secondary {
+    min-width: 145px;
+  }
+}
+.yc-btn-secondary:hover {
+  background: var(--yc-primary-color);
+  color: white;
+  transition: all 0.2s ease-in;
 }
 .yc-btn-secondary .spinner {
   width: 18px;
@@ -615,6 +627,12 @@ input:not([type=radio]),
 .tag.bottom_left {
   bottom: 8px;
   left: 8px;
+}
+.tag .tag-banner {
+  padding: 3px 12px;
+  font-size: 12px;
+  border-radius: 5px;
+  font-weight: 400;
 }
 
 .breadcrumbs-container {

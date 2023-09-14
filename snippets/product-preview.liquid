@@ -6,24 +6,22 @@
   class='product-block'
 >
   <div class='product-thumbnail'>
+    <div class="tag {{ section_settings.tag_position }}">
+      {% if block_settings.tag_text %}
+        <div class="tag-banner" style="background: {{ section_settings.tag_color.hex }}; color: {{ section_settings.tag_text_color.hex }}">
+          {{ block_settings.tag_text }}
+        </div>
+        {% endif %}
+        {% if section_settings.discount_text %}
+          <div class="tag-banner" style="background: {{ section_settings.discount_color.hex }}; color: {{ section_settings.discount_text_color.hex }}">
+            {{ section_settings.discount_text }}
+          </div>
+      {% endif %}
+    </div>
     {% if item.thumbnail %}
-      <img
-        loading='lazy'
-        src='{{ item.thumbnail }}'
-      >
+      <img loading='lazy' src='{{ item.thumbnail }}'>
     {% else %}
-      <img
-        loading='lazy'
-        src='{{ 'default_product.jpeg' | asset_url }}'
-      >
-    {% endif %}
-    {% if block_settings.tag_text %}
-      <div
-       class="tag {{ section_settings.tag_position }}"
-       style="background: {{ section_settings.tag_color.hex }}; color: {{ section_settings.tag_text_color.hex }}"
-      >
-        {{ block_settings.tag_text }}
-      </div>
+      <img loading='lazy' src='{{ 'default_product.jpeg' | asset_url }}'>
     {% endif %}
   </div>
   <div class='product-details'>
@@ -36,8 +34,10 @@
         <span class='compare-at-price'>{{ item.compare_at_price | money }}</span>
       {% endif %}
     </div>
-    <button class="yc-btn-secondary--large">
-      {{ 'general.buy_now' | t }}
-    </button>
+    <div class='product-btn'>
+      <button class="yc-btn-secondary">
+        {{ 'general.buy_now' | t }}
+      </button>
+    </div>
   </div>
 </a>

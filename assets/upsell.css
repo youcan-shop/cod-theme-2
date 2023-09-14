@@ -88,7 +88,7 @@
 .upsell-page .upsell-form-submit .upsell-form-submit-content .size-large {
   width: 100%;
 }
-@media (max-width: 520px) {
+@media (max-width: 640px) {
   .upsell-page .upsell-form-submit .upsell-form-submit-content {
     flex-direction: column;
   }
@@ -97,7 +97,7 @@
     width: 100%;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .upsell-page .upsell-form-submit {
     padding: 24px;
   }

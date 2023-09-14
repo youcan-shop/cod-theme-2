@@ -3,6 +3,12 @@
 .yc-product-listing-container {
   padding: 0 16px;
 
+  .collection-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+
   .product-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -107,8 +113,9 @@
 }
 
 .sort-container {
-  margin: 40px 0;
   max-width: max-content;
+  margin: 80px 0;
+  align-self: flex-end;
 
   #productDropdownFiltring {
     min-width: 280px;
@@ -116,15 +123,19 @@
     .dropdown-content {
       a {
         color: black;
-        padding: 10px;
-        margin: 3px auto;
+        padding: 10px 16px;
         text-decoration: none;
         font-size: 13px;
-        font-weight: 400;
+        font-weight: 300;
         display: block;
+        border-bottom: 1px solid #E6E6E6;
 
         &:hover {
           background-color: #f1f1f1;
+        }
+
+        &:last-child {
+          border-bottom: none;
         }
       }
     }

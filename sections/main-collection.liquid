@@ -3,25 +3,11 @@
 
 {%- assign per_page = section.settings.items_per_page -%}
 <div class='yc-product-listing-container'>
-  <div class="breadcrumbs-container">
-    <div class="breadcrumbs-listings">
-      <div class="listings__item">
-        <a href="/" class="first-listing">{{ 'snippets.collection-listing.home' | t }}</a>
-      </div>
-      <div class="listings__item">
-        <img src='{{ 'left-arrow.png' | asset_url }}'>
-      </div>
-      <div class="listings__item">
-        <a href="/collections" class="second-listing">{{ 'snippets.collection-listing.collections' | t }}</a>
-      </div>
+  <div class="collection-heading">
+    {%- render 'breadcrumbs' -%}
+    <div class="sort-container">
+      {%- render 'main-sort' -%}
     </div>
-
-    <div class="breadcrumbs-name">
-      <h1>{{ category.name }}</h1>
-    </div>
-  </div>
-  <div class="sort-container">
-    {%- render 'main-sort' -%}
   </div>
 
   {%- paginate collection.products by per_page cod, category_id: category.id %}

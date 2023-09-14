@@ -431,8 +431,9 @@ input:not([type='radio']),
 
   .dropbtn {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
+    padding: 10px;
     gap: 6px;
     text-align: start;
     font-size: 14px;
@@ -440,6 +441,11 @@ input:not([type='radio']),
 
     :first-child {
       margin-inline-end: 20px;
+    }
+
+    .order-by {
+      font-size: 14px;
+      font-weight: 400;
     }
 
     .dropdown-icon {
@@ -450,6 +456,10 @@ input:not([type='radio']),
         left: unset;
         right: 10px;
       }
+    }
+
+    .circle-outline-icon {
+      font-size: 20px;
     }
   }
 
@@ -463,8 +473,8 @@ input:not([type='radio']),
     z-index: 1;
     width: 100%;
     background: #FFFFFF;
-    border: 1px solid #ECECEC;
-    box-shadow: 0px 10px 55px rgba(0, 0, 0, 0.1);
+    border: 1px solid #E6E6E6;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.22);
     border-radius: 4px;
 
 
@@ -685,7 +695,7 @@ input:not([type='radio']),
 }
 
 .breadcrumbs-container {
-  margin: 80px auto;
+  margin: 80px 0;
 
   .breadcrumbs-listings {
     display: flex;

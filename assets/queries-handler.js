@@ -83,11 +83,30 @@ function filterProduct() {
     filterDropdownBtn.innerHTML = `<span class='order-by'>${order_by} : ${selectedOption.textContent} </span>`;
 
     const icon = document.createElement('ion-icon');
-    icon.setAttribute('name', 'chevron-down-outline');
-    icon.classList.add('dropdown-icon');
+    icon.setAttribute('name', 'arrow-down-circle-outline');
+    icon.classList.add('circle-outline-icon');
     filterDropdownBtn.appendChild(icon);
 
     selectedOption.style.fontWeight = 'bold';
+
+    // Handle the click event for the dropdown button
+    let isDropdownClicked = false;
+
+    productFiltring.addEventListener('click', () => {
+      if (!isDropdownClicked) {
+        productFiltring.style.borderColor = '#000';
+      } else {
+        productFiltring.style.borderColor = '';
+      }
+      isDropdownClicked = !isDropdownClicked;
+    });
+
+    window.addEventListener('click', (event) => {
+      if (!event.target.matches('.dropbtn, .dropbtn *')) {
+        productFiltring.style.borderColor = '';
+        isDropdownClicked = false; // Reset the click state
+      }
+    });
 
     setupDropdown(filterDropdownBtn, filterDropdownContent, convertUrlWithMultipleQuery);
   }

@@ -410,8 +410,9 @@ input:not([type=radio]),
 }
 .dropdown-input .dropbtn {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px 15px;
+  padding: 10px;
   gap: 6px;
   text-align: start;
   font-size: 14px;
@@ -420,6 +421,10 @@ input:not([type=radio]),
 .dropdown-input .dropbtn :first-child {
   margin-inline-end: 20px;
 }
+.dropdown-input .dropbtn .order-by {
+  font-size: 14px;
+  font-weight: 400;
+}
 .dropdown-input .dropbtn .dropdown-icon {
   position: absolute;
   left: 10px;
@@ -427,6 +432,9 @@ input:not([type=radio]),
 [dir=ltr] .dropdown-input .dropbtn .dropdown-icon {
   left: unset;
   right: 10px;
+}
+.dropdown-input .dropbtn .circle-outline-icon {
+  font-size: 20px;
 }
 .dropdown-input .dropdown-content {
   display: none;
@@ -437,8 +445,8 @@ input:not([type=radio]),
   z-index: 1;
   width: 100%;
   background: #FFFFFF;
-  border: 1px solid #ECECEC;
-  box-shadow: 0px 10px 55px rgba(0, 0, 0, 0.1);
+  border: 1px solid #E6E6E6;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.22);
   border-radius: 4px;
 }
 .dropdown-input .dropdown-content li {
@@ -636,7 +644,7 @@ input:not([type=radio]),
 }
 
 .breadcrumbs-container {
-  margin: 80px auto;
+  margin: 80px 0;
 }
 .breadcrumbs-container .breadcrumbs-listings {
   display: flex;

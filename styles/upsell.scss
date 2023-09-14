@@ -1,16 +1,26 @@
 @import 'helpers/mixins';
 
 .upsell-page {
-  padding: 50px 20px;
   display: grid;
   place-items: center;
   text-align: center;
+  background-color: #F7F7F7;
+  position: relative;
 
   .upsell-container {
     width: 100%;
+
+    #upsell-form {
+      position: sticky;
+      bottom: 0;
+    }
+
   }
 
   .upsell-content {
+    margin: 0 auto;
+    padding: 42px;
+    max-width: var(--page-max-width);
     img {
       margin: auto;
     }
@@ -32,64 +42,77 @@
       line-height: 22px;
       font-weight: 300;
     }
+    @media (max-width: 768px) {
+      padding: 16px;
+    }
   }
 
   .upsell-form-submit {
-    padding: 42px 0;
+    box-shadow: 0px -10px 10px 0px #00000007; 
+    padding: 42px;
     background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 24px;
 
-    .upsell-submit-yes,
-    .upsell-submit-no {
-      width: 100%;
+    .upsell-form-submit-content {
       display: flex;
+      max-width: var(--page-max-width);
+      margin: 0 auto;
       justify-content: center;
       align-items: center;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
+      gap: 24px;
 
-    .upsell-submit-yes {
-      padding: 16px 18px;
-      height: 60px;
-    }
+      .upsell-submit-yes,
+      .upsell-submit-no {
+        // width: 100%;
+        // max-width: 320px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        font-weight: 600;
+        padding: 16px 18px;
+        border-radius: 5px;
+      }
 
-    .upsell-submit-no {
-      padding: 16px 10px;
-      font-size: 14px;
-      height: 48px;
-    }
+      .upsell-submit-no {
+        border-width: 1px;
+        border-style: solid;
+      }
+  
+      .text-small {
+        font-size: 15px;
+      }
+      
+      .text-medium {
+          font-size: 19px;
+      }
+      
+      .text-large {
+          font-size: 22px;
+      }
+      
+      .size-small {
+          width: 50%;
+      }
+      
+      .size-medium {
+          width: 70%;
+      }
+      
+      .size-large {
+          width: 100%;
+      }
 
-    .text-small {
-      font-size: 15px;
+      @media (max-width: 640px) {
+        flex-direction: column;
+        .size-small,
+        .size-medium  {
+          width: 100%;
+        }
+      }
     }
-    
-    .text-medium {
-        font-size: 19px;
+    @media (max-width: 640px) {
+      padding: 24px;
     }
-    
-    .text-large {
-        font-size: 22px;
-    }
-    
-    .size-small {
-        width: 50%;
-    }
-    
-    .size-medium {
-        width: 70%;
-    }
-    
-    .size-large {
-        width: 100%;
-    }
-  }
-
-  @include max-screen('md') {
-    padding: 50px 16px;
   }
 }

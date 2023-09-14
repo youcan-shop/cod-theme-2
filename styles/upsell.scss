@@ -50,15 +50,14 @@
   }
 
   .upsell-form-submit {
-    box-shadow: 0px 30px 93px 0px #00000040; 
-    padding: 42px 0;
+    box-shadow: 0px -10px 10px 0px #00000007; 
+    padding: 42px;
     background-color: #fff;
 
     .upsell-form-submit-content {
       display: flex;
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 16px;
       justify-content: center;
       align-items: center;
       gap: 24px;
@@ -111,7 +110,7 @@
       }
     }
     @media (max-width: 768px) {
-      padding: 24px 0;
+      padding: 24px;
     }
   }
 }

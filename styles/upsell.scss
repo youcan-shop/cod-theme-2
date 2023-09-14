@@ -1,7 +1,7 @@
 @import 'helpers/mixins';
 
 .upsell-page {
-  --page-max-width: 1124px;
+  // --page-max-width: 1124px;
 
   display: grid;
   place-items: center;
@@ -21,7 +21,7 @@
 
   .upsell-content {
     margin: 0 auto;
-    padding: 42px;
+    padding: 42px 0;
     max-width: var(--page-max-width);
     img {
       margin: auto;

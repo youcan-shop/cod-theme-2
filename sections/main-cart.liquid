@@ -11,12 +11,8 @@
             {{ 'cart.items_count' | t }})
           </p>
         </div>
-        <div class="checkout_cta">
-          <a href='{{ cart.cart_submit_url }}' class='yc-btn w-full'>
-            {{ 'cart.summary.checkout_cta' | t }}
-          </a>
-        </div>
       </div>
+      {% for item in cart.items %}
       <div class="table-container">
         <div class="row header">
           <div class="cell"></div>
@@ -25,52 +21,51 @@
           <div class="cell">المجموع</div>
           <div class="cell adjust-space"></div>
         </div>
-        {% for item in cart.items %}
-          <div class="row cart__item" id='{{ item.id }}'>
-            <div class="cell">
-              <div class='product-image'>
-                <img loading='lazy' src='{{ item.image }}' alt='product-name'>
-              </div>
-            </div>
-            <div class='cell'>
-              <div class="product-title">{{ item.name }}</div>
-              <div class="product-variant">
-                {% for variant in item.variations %}
-                  {% if variant[0] != 'default' or variant[1] != 'default' %}
-                    <span>{{ variant[0] }}: {{ variant[1] }}</span>
-                    <span class="variant-space"></span>
-                  {% endif %}
-                {% endfor %}
-                <div>
-                  <span class='product-price'> {{ item.price }}</span>
-                  <span class='product-currency'></span>
-                </div>
-              </div>
-            </div>
-            <div class='cell'>
-              {%- render 'quantity-input', item: item -%}
-            </div>
-            <div class='cell total-price-table'>
-              <div
-              class='cart-item-loader-spinner hidden'
-              id='loading__{{ item.id }}'
-              >
-                <span class='spinner h-7 w-7'></span>
-              </div>
-              <div class="total-price-wrapper">
-                <span class="total-price">{{ item.price | times: item.quantity }}</span>
-                <span class="product-currency"></span>
-              </div>
-            </div>
-            <div class="cell adjust-space close-btn">
-              <button onclick="removeItem('{{ item.id }}', '{{ item.product_variant_id }}')" class='yc-btn-close'>
-                <ion-icon name="close-outline"></ion-icon>
-              </button>
+        <div class="row cart__item" id='{{ item.id }}'>
+          <div class="cell">
+            <div class='product-image'>
+              <img loading='lazy' src='{{ item.image }}' alt='product-name'>
             </div>
           </div>
-        {% endfor %}
+          <div class='cell'>
+            <div class="product-title">{{ item.name }}</div>
+            <div class="product-variant">
+              {% for variant in item.variations %}
+                {% if variant[0] != 'default' or variant[1] != 'default' %}
+                  <span>{{ variant[0] }}: {{ variant[1] }}</span>
+                  <span class="variant-space"></span>
+                {% endif %}
+              {% endfor %}
+              <div>
+                <span class='product-price'> {{ item.price }}</span>
+                <span class='product-currency'></span>
+              </div>
+            </div>
+          </div>
+          <div class='cell'>
+            {%- render 'quantity-input', item: item -%}
+          </div>
+          <div class='cell total-price-table'>
+            <div
+            class='cart-item-loader-spinner hidden'
+            id='loading__{{ item.id }}'
+            >
+              <span class='spinner h-7 w-7'></span>
+            </div>
+            <div class="total-price-wrapper">
+              <span class="total-price">{{ item.price | times: item.quantity }}</span>
+              <span class="product-currency"></span>
+            </div>
+          </div>
+          <div class="cell adjust-space close-btn">
+            <button onclick="removeItem('{{ item.id }}', '{{ item.product_variant_id }}')" class='yc-btn-close'>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
+        </div>
       </div>
-      <div class='summary-box h-fit'>
+      {% endfor %}
+      <div class='summary-box h-fit mx-auto'>
         <div id='summary'>
           {% if section.settings.show_coupon %}
             <form name='promo'>

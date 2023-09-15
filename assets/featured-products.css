@@ -105,6 +105,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  border: 1px solid #E7E7E7;
+  border-radius: 4px;
 }
 .yc-featured-products .product-list .product-block .product-thumbnail {
   border-radius: 3px;
@@ -125,12 +127,10 @@
   transform: translate(-50%, -50%) scale(1.1);
 }
 .yc-featured-products .product-list .product-block .product-details {
-  padding: 0 16px 24px;
+  padding: 16px;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  gap: 8px;
-  margin-top: 12px;
   text-align: center;
 }
 .yc-featured-products .product-list .product-block .product-details .product-title {
@@ -143,6 +143,11 @@
   .yc-featured-products .product-list .product-block .product-details .product-title {
     font-weight: 300;
     font-size: 16px;
+  }
+}
+@media (min-width: 768px) {
+  .yc-featured-products .product-list .product-block .product-details {
+    padding: 24px;
   }
 }
 .yc-featured-products .product-list .product-block:hover .yc-btn {
@@ -160,13 +165,11 @@
   display: flex;
   justify-content: center;
   gap: 7px;
-  margin: 12px auto 0;
-  padding: 0 6px 6px;
   align-items: center;
+  margin: 8px auto 15px;
 }
 @media (min-width: 768px) {
   .yc-featured-products .product-list .product-block .prices {
-    margin: 8px auto 15px;
     gap: 10px;
   }
 }

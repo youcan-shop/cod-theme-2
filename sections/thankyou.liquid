@@ -54,7 +54,7 @@
     <div class="order-details">
       <ul class="data-listing">
         <li class="data-item">
-          <span>المبلغ الاجمالي </span>
+          <span>{{- 'thankyou.details.sub_total' | t -}}</span>
           <span>{{- order.sub_total | money -}}</span>
         </li>
         {%- if order.coupon -%}

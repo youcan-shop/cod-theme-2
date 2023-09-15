@@ -58,12 +58,10 @@
     "return_cta": "Retour au magasin",
     "details": {
       "title": "Détails de la commande",
-      "payment_status": "Statut du paiement",
       "shipping_cost": "Coût d'expédition",
       "total": "Total",
-      "product": "PRODUIT",
-      "one_piece_price": "PRIX D'UNE PIÈCE",
-      "quantity": "QUANTITÉ",
+      "sub_total": "Sous-total",
+      "quantity": "Quantité",
       "coupon": "Coupon",
       "vat": "VAT"
     }

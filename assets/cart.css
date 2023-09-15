@@ -119,6 +119,11 @@
 .yc-cart .cart-table .breadcrumbs-container {
   margin-bottom: 32px;
 }
+@media screen and (max-width: 768px) {
+  .yc-cart .cart-table .breadcrumbs-container {
+    margin-top: 32px;
+  }
+}
 .yc-cart .quantity-wrapper {
   display: flex;
   align-items: center;
@@ -159,6 +164,11 @@
     height: 27px !important;
     min-height: 27px !important;
     max-height: 27px !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .yc-cart {
+    margin: 0rem;
   }
 }
 
@@ -242,7 +252,7 @@
   font-weight: 400;
   font-size: 20px;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .table-container .row .cell .total-price-wrapper span {
     font-size: 14px;
   }
@@ -266,7 +276,7 @@
   justify-content: center;
   align-items: center;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .table-container .cart__item {
     border: 0;
   }
@@ -285,23 +295,23 @@
     display: block;
   }
 }
-@media screen and (max-width: 767px) and (max-width: 767px) {
+@media screen and (max-width: 768px) and (max-width: 768px) {
   .table-container .row .cell.web-quantity {
     display: none;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .table-container .row .cell .product-image img {
     width: 140px;
     height: 130px;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .table-container .row .cell .mobile-quantity {
     display: block;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .table-container .close-btn button {
     position: absolute;
     left: 0;
@@ -309,24 +319,24 @@
     margin: 10px;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .table-container .product-title {
     width: 87%;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .table-container .row .cell:first-child,
   .table-container .row .cell:nth-child(n+3) {
     flex-basis: 35%;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .table-container .row .cell:nth-child(2),
   .table-container .row .cell:nth-child(n+4) {
     flex-basis: 65%;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .table-container {
     border-bottom: 1px solid #EDEDED;
   }

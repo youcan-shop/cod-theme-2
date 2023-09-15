@@ -4,6 +4,21 @@
 .yc-cart .empty-cart ion-icon {
   --ionicon-stroke-width: 18px;
 }
+.yc-cart .cart-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 32px 0;
+  padding: 16px;
+  border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+  .yc-cart .cart-items-container {
+    border: 1px solid #EDEDED;
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+}
 .yc-cart .cart-table .header-block {
   display: flex;
   align-items: center;
@@ -150,8 +165,6 @@
 .table-container {
   display: flex;
   flex-direction: column;
-  margin: 24px auto;
-  overflow-x: auto;
 }
 .table-container .cart__item {
   background: white;
@@ -220,10 +233,19 @@
   border-radius: 10px;
   background-color: black;
 }
+.table-container .row .cell .mobile-quantity {
+  margin-top: 10px;
+  display: none;
+}
 .table-container .row .cell .total-price-wrapper span {
   color: var(--yc-primary-color);
-  font-weight: 700;
+  font-weight: 400;
   font-size: 20px;
+}
+@media screen and (max-width: 767px) {
+  .table-container .row .cell .total-price-wrapper span {
+    font-size: 14px;
+  }
 }
 .table-container .row .cell .product-image img {
   border-radius: 5px;
@@ -245,6 +267,9 @@
   align-items: center;
 }
 @media screen and (max-width: 767px) {
+  .table-container .cart__item {
+    border: 0;
+  }
   .table-container .header {
     display: none;
   }
@@ -253,25 +278,59 @@
     justify-content: center;
     align-items: start;
   }
+  .table-container .row .cell.total-price-table {
+    display: none;
+  }
+  .table-container .row .cell.web-quantity {
+    display: block;
+  }
+}
+@media screen and (max-width: 767px) and (max-width: 767px) {
+  .table-container .row .cell.web-quantity {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
   .table-container .row .cell .product-image img {
     width: 140px;
-    height: 90px;
+    height: 130px;
   }
+}
+@media screen and (max-width: 767px) {
+  .table-container .row .cell .mobile-quantity {
+    display: block;
+  }
+}
+@media screen and (max-width: 767px) {
   .table-container .close-btn button {
     position: absolute;
     left: 0;
     top: 0;
     margin: 10px;
   }
+}
+@media screen and (max-width: 767px) {
   .table-container .product-title {
     width: 87%;
   }
+}
+@media screen and (max-width: 767px) {
   .table-container .row .cell:first-child,
   .table-container .row .cell:nth-child(n+3) {
     flex-basis: 35%;
   }
+}
+@media screen and (max-width: 767px) {
   .table-container .row .cell:nth-child(2),
   .table-container .row .cell:nth-child(n+4) {
     flex-basis: 65%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .table-container {
+    border-bottom: 1px solid #EDEDED;
+  }
+  .table-container:last-child {
+    border-bottom: 1px solid transparent;
   }
 }

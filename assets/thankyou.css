@@ -101,6 +101,7 @@
 @media (min-width: 768px) {
   .thankyou-page-container .cart-result-section .cart-items .product-list .product-item .product-image {
     width: 97px;
+    height: 91px;
   }
 }
 .thankyou-page-container .cart-result-section .cart-items .product-list .product-item .product-details * {
@@ -112,6 +113,9 @@
   color: var(--yc-primary-color);
   font-size: 12px;
   margin-bottom: 10px;
+}
+.thankyou-page-container .cart-result-section .cart-items .product-list .product-item .product-details .product-name:hover {
+  text-decoration: underline;
 }
 @media (min-width: 768px) {
   .thankyou-page-container .cart-result-section .cart-items .product-list .product-item .product-details .product-name {

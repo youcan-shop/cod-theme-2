@@ -184,7 +184,12 @@
 .yc-single-product .product-details .product-name {
   color: var(--yc-primary-color);
   font-weight: 400;
-  font-size: 24px;
+  font-size: 18px;
+}
+@media (min-width: 768px) {
+  .yc-single-product .product-details .product-name {
+    font-size: 24px;
+  }
 }
 .yc-single-product .product-details .product-options {
   display: grid;
@@ -298,8 +303,13 @@
 }
 .yc-single-product .product-price {
   font-weight: 300;
-  font-size: 32px;
+  font-size: 24px;
   color: var(--yc-primary-color);
+}
+@media (min-width: 768px) {
+  .yc-single-product .product-price {
+    font-size: 32px;
+  }
 }
 .yc-single-product .compare-price {
   font-weight: 300;

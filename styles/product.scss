@@ -191,7 +191,11 @@
     .product-name {
       color: var(--yc-primary-color);
       font-weight: 400;
-      font-size: 24px;
+      font-size: 18px;
+
+      @include breakpoint('md') {
+        font-size: 24px;
+      }
     }
     .product-options {
       display: grid;
@@ -327,8 +331,12 @@
 
   .product-price {
     font-weight: 300;
-    font-size: 32px;
+    font-size: 24px;
     color: var(--yc-primary-color);
+
+    @include breakpoint('md') {
+      font-size: 32px;
+    }
   }
 
   .compare-price {

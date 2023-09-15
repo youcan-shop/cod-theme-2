@@ -309,7 +309,7 @@
 .yc-single-product .compare-container {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 18px;
   flex-grow: 1;
 }
 .yc-single-product .compare-container .tag {

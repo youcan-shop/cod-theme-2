@@ -72,7 +72,7 @@
     .cart-items {
       border: 1px solid #E6E6E6;
       border-bottom: none;
-      border-radius: 4px 4px 0 0;
+      border-radius: 5px 5px 0 0;
 
       .product-list {
         display: grid;
@@ -143,7 +143,6 @@
               font-size: 12px;
               margin-top: 5px;
 
-
               @include breakpoint('md') {
                 margin-top: 8px;
                 font-size: 16px;
@@ -156,57 +155,59 @@
 
     .order-details {
       border: 1px solid #E6E6E6;
-      padding: 24px 28px;
-      border-radius: 0 0 4px 4px;
+      padding: 16px;
+      border-radius: 0 0 5px 5px;
+      background-color: #FAFAFA;
 
-      h2 {
-        font-weight: 600;
-        line-height: 22px;
-        color: #000000;
-        font-weight: 700;
+      @include breakpoint('md') {
+        padding: 24px;
       }
 
-      .table-content {
-        .head {
-          display: flex;
-          margin-top: 15px;
-          justify-content: space-between;
-          align-items: center;
+      .data-listing {
+        display: grid;
+        gap: 16px;
 
-          .item {
-            font-weight: 400;
-            font-size: 14px;
-          }
-
-          .data-item,
-          .data-item>* {
-            font-weight: 700;
-            font-size: 14px;
-          }
-
-          .coupon-head .data-item {
-            display: flex;
-            gap: 4px;
-          }
+        @include breakpoint('md') {
+          gap: 24px;
         }
 
-        .total-price-head {
+        .data-item {
           display: flex;
-          margin-top: 20px;
-          padding-top: 15px;
           justify-content: space-between;
-          align-items: center;
-          border-top: 1px solid #EBEBEB;
 
-          .item {
-            font-weight: 700;
-            line-height: 22px;
+          span {
+            font-size: 10px;
+            font-weight: 400;
+            line-height: normal;
+            color: #757575;
+
+            @include breakpoint('md') {
+              font-size: 14px;
+            }
           }
+        }
+      }
 
-          .data-item {
-            font-weight: 700;
+      .total-price {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 17px;
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
+        padding: 10px 0;
+
+        @include breakpoint('md') {
+          margin-top: 26px;
+          padding: 16px 0;
+        }
+
+        span {
+          font-weight: 400;
+          line-height: normal;
+          font-size: 10px;
+
+          @include breakpoint('md') {
             font-size: 16px;
-            color: var(--yc-primary-color);
           }
         }
       }
@@ -214,6 +215,10 @@
   }
 
   .home-page {
-    margin-top: 50px;
+    margin-top: 20px;
+
+    @include breakpoint('md') {
+      margin-top: 30px;
+    }
   }
 }

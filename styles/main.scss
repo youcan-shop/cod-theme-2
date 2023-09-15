@@ -6,7 +6,7 @@
 :root {
   --yc-reviews-stars-size: 20px;
   --yc-reviews-stars-color: #d4d4d4;
-  --yc-reviews-stars-background: #fc0;
+  --yc-reviews-stars-background: #3C415F;
 }
 
 /* ------------------------- */
@@ -666,7 +666,7 @@ input:not([type='radio']),
   font-size: 1rem;
   z-index: 1;
   padding: 4px 12px;
-  border-radius: 6px;
+  border-radius: 5px;
 
   &.top_right {
     top: 8px;

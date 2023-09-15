@@ -98,6 +98,7 @@
 @media screen and (max-width: 768px) {
   .yc-cart .cart-table .summary-box {
     width: 100%;
+    margin: 32px auto;
   }
 }
 .yc-cart .cart-table .breadcrumbs-container {

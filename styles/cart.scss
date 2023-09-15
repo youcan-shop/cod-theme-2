@@ -7,6 +7,21 @@
     }
   }
 
+  .cart-items-container {
+    
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 32px 0;
+    padding: 16px;
+    border-radius: 5px;
+    @media screen and (max-width: 768px) {
+      border: 1px solid #EDEDED;
+      max-height: 400px;
+      overflow-y: scroll;
+    }
+  }
+
   .cart-table {
     .header-block {
       display: flex;
@@ -121,6 +136,7 @@
         margin: 32px auto;
       }
     }
+    
     .breadcrumbs-container {
       margin-bottom: 32px;
     }
@@ -176,8 +192,6 @@
 .table-container {
   display: flex;
   flex-direction: column;
-  margin: 24px auto;
-  overflow-x: auto;
 
   .cart__item {
     background: white;
@@ -250,14 +264,24 @@
             border-radius: 10px;
             background-color: black;
           }
-
         }
       }
+      .mobile-quantity {
+        margin-top: 10px;
+        display: none;
+      }
+
+      
 
       .total-price-wrapper span {
         color: var(--yc-primary-color);
-        font-weight: 700;
+        font-weight: 400;
         font-size: 20px;
+
+        @media screen and (max-width: 767px) {
+          font-size: 14px;
+        }
+
       }
 
       .product-image {
@@ -287,6 +311,10 @@
   }
 
   @media screen and (max-width: 767px) {
+    .cart__item {
+      border: 0;
+    }
+
     .header {
       display: none;
     }
@@ -297,9 +325,24 @@
       align-items: start;
 
       .cell {
+        &.total-price-table {
+          display: none;
+        }
+
+        &.web-quantity {
+          display: block;
+          @media screen and (max-width: 767px) {
+            display: none;
+          }
+        }
+
         .product-image img {
           width: 140px;
-          height: 90px;
+          height: 130px;
+        }
+
+        .mobile-quantity {
+          display: block;
         }
       }
     }
@@ -325,6 +368,15 @@
     .row .cell:nth-child(2),
     .row .cell:nth-child(n+4) {
       flex-basis: 65%;
+    }
+  }
+
+  @media screen and (max-width: 767px) { 
+    & {
+      border-bottom: 1px solid #EDEDED;
+      &:last-child {
+        border-bottom: 1px solid transparent;
+      }
     }
   }
 }

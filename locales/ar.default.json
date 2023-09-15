@@ -40,11 +40,11 @@
     },
     "summary": {
       "title": "ملخص الطلب",
-      "promo": "رمز الترويج",
+      "promo": "الرمز الترويجي",
       "promo_input": "أدخل رمزك",
-      "promo_cta": "تطبيق",
-      "total": "التكلفة الإجمالية",
-      "checkout_cta": "الدفع",
+      "promo_cta": "تأكيد",
+      "total": "المجموع",
+      "checkout_cta": "إتمام الشراء",
       "continue_shppping": "استمر في التسوق"
     },
     "empty": {

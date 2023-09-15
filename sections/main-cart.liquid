@@ -61,14 +61,14 @@
         </div>
       </div>
       {% endfor %}
-      <div class='summary-box h-fit'>
+      <div class='summary-box'>
         <div id='summary'>
           {% if section.settings.show_coupon %}
             <form name='promo'>
               <div class='mb-7 w-full'>
-                <div class='border-b border-space'>
+                <div class=''>
                   <label for='promo' class="promo">{{ 'cart.summary.promo' | t }}</label>
-                  <div class="flex gap-2">
+                  <div class="flex gap-2 coupon-wrapper">
                     <input
                     type='text'
                     name='coupon'
@@ -78,24 +78,33 @@
                     >
                     <button
                     type='submit'
-                    class='yc-btn-secondary'
+                    class='yc-btn'
                     >
                     <span
                       class='spinner hidden'
                       id='loading__coupon'
                     ></span>
-                    <span>{{ 'cart.summary.checkout_cta' | t }}</span>
+                    <span>{{ 'cart.summary.promo_cta' | t }}</span>
                     </button>
                   </div>
                 </div>
               </div>
             </form>
           {% endif %}
-          {%- if cart and cart.items %}
+          {%- if cart and cart.available_shipping_options %}
             <div class="price-wrapper">
               <div class='flex flex-col gap-1 price-box'>
-                {%- for item in cart.items %}
+                {%- for option in cart.available_shipping_options -%}
                   <div class='flex justify-between text-sm box' id='cart-item-{{ item.id }}'>
+                    <div class='capitalize'>{{ option.name }}</div>
+                    <div>
+                      <span class="">{{ option.price }}</span>
+                      <span class="product-currency"></span>
+                    </div>
+                  </div>
+                {%- endfor %}
+                {%- for item in cart.items %}
+                  <div class='hidden'>
                     <div class='capitalize'>{{ item.name }}</div>
                     <div class="hidden">
                       {%- render 'quantity-input', item: item -%}
@@ -109,8 +118,8 @@
                 {%- endfor %}
               </div>
           {%- endif %}
-          <div class='border-t mt-5'>
-            <div class='flex text-sm justify-between mt-5'>
+          <div class='border-t mt-8'>
+            <div class='flex text-sm justify-between mt-8'>
               <span class="total">{{ 'cart.summary.total' | t }}</span>
               <span class="item-total-price"></span>
             </div>

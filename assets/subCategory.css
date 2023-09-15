@@ -1,8 +1,6 @@
 .subcategories {
   background-color: #F8F8F8;
   padding: 20px;
-}
-.subcategories .subcategory-box {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;

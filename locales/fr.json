@@ -30,6 +30,8 @@
     "title": "Panier d'achat",
     "cart": "votre panier",
     "items_count": "articles",
+    "item_count": "article",
+    "in_your_cart": "dans votre panier d'achat",
     "total_amount": "Total",
     "empty_cart": "Votre panier est vide",
     "items": {

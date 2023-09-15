@@ -30,6 +30,8 @@
     "title": "Shopping Cart",
     "cart": "your basket",
     "items_count": "items",
+    "item_count": "item",
+    "in_your_cart": "in your shopping cart",
     "total_amount": "Total",
     "empty_cart": "Your cart is currently empty.",
     "items": {

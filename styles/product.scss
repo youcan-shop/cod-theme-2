@@ -189,9 +189,9 @@
     }
 
     .product-name {
-      font-weight: 700;
-      font-size: 25px;
-      line-height: 120%;
+      color: var(--yc-primary-color);
+      font-weight: 400;
+      font-size: 24px;
     }
     .product-options {
       display: grid;
@@ -322,34 +322,31 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 13px;
   }
 
   .product-price {
-    font-weight: 700;
-    font-size: 25px;
-    line-height: 120%;
+    font-weight: 300;
+    font-size: 32px;
     color: var(--yc-primary-color);
   }
 
   .compare-price {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 120%;
-    color: #8D8D8D;
+    font-weight: 300;
+    font-size: 18px;
+    color: #818181;
   }
 
   .compare-container {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 13px;
     flex-grow: 1;
 
     .tag {
       position: unset;
-      font-weight: 700;
-      font-size: 16.99px;
-      line-height: 120%;
+      font-weight: 400;
+      font-size: 12px;
       padding: 4px 10px !important;
     }
   }

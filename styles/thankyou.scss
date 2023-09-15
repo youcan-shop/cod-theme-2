@@ -78,12 +78,13 @@
         display: grid;
         gap: 10px;
         padding: 16px;
-        max-height: 200px;
+        max-height: 254px;
         overflow-y: scroll;
 
         @include breakpoint('md') {
           gap: 16px;
           padding: 24px;
+          max-height: 354px;
         }
 
         .product-item {
@@ -100,6 +101,7 @@
             border: 1px solid #E6E6E6;
             border-radius: 5px;
             object-fit: contain;
+            flex-shrink: 0;
 
             @include breakpoint('md') {
               width: 97px;
@@ -188,6 +190,21 @@
 
             @include breakpoint('md') {
               font-size: 14px;
+            }
+          }
+
+          .coupon-wrapper {
+            display: inherit;
+            gap: 5px;
+
+            .coupon-value {
+              display: inherit;
+
+              .minus {
+                [dir='ltr'] & {
+                  order: -1;
+                }
+              }
             }
           }
         }

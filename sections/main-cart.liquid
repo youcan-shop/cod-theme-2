@@ -3,22 +3,28 @@
 <div class='yc-cart mt-4'>
   {%- if cart and cart.items %}
     <div class='container cart-table'>
+      {%- render 'breadcrumbs' -%}
       <div class="header-block">
         <div class="header-bar">
           <h2>{{ 'cart.title' | t }}</h2>
-          <p class='mt-1'>
-            ({{ cart.items | size }}
-            {{ 'cart.items_count' | t }})
-          </p>
+          <span class='mt-1'>
+            {{ cart.items | size }}
+            {% if cart.items.size > 1 %}
+              {{ 'cart.items_count' | t }}
+            {% else %}
+              {{ 'cart.item_count' | t }}
+            {% endif %}
+            {{ 'cart.in_your_cart' | t }}
+          </span>
         </div>
       </div>
       {% for item in cart.items %}
       <div class="table-container">
         <div class="row header">
           <div class="cell"></div>
-          <div class="cell">اسم المنتج</div>
-          <div class="cell">الكمية</div>
-          <div class="cell">المجموع</div>
+          <div class="cell">{{'cart.items.items_name' | t}}</div>
+          <div class="cell">{{'cart.items.quantity' | t}}</div>
+          <div class="cell">{{'cart.items.total' | t}}</div>
           <div class="cell adjust-space"></div>
         </div>
         <div class="row cart__item" id='{{ item.id }}'>

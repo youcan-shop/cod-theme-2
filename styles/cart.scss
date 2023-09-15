@@ -15,7 +15,7 @@
 
       .header-bar {
         display: flex;
-        align-items: center;
+        flex-direction: column;
         gap: 9px;
         width: 60%;
 
@@ -28,10 +28,10 @@
           font-size: 21px;
         }
 
-        p {
+        span {
           color: #9B9B9B;
           font-weight: 400;
-          font-size: 14px;
+          font-size: 18px;
           line-height: 22px;
         }
       }
@@ -119,6 +119,9 @@
       @media screen and (max-width: 768px) {
         width: 100%;
       }
+    }
+    .breadcrumbs-container {
+      margin-bottom: 32px;
     }
   }
 

@@ -52,9 +52,6 @@
     "continue_shopping_cta": "Continuer les achats"
   },
   "thankyou": {
-    "title": "Merci",
-    "subtitle": "Votre commande a été reçue.",
-    "description": "Notre équipe prendra contact avec vous pour confirmer votre demande.<br\/>Nous apprécions votre confiance et votre volonté de communiquer avec nous.<br\/>Nous sommes toujours là pour vous servir.",
     "return_cta": "Retour au magasin",
     "details": {
       "title": "Détails de la commande",

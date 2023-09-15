@@ -52,9 +52,6 @@
     "continue_shopping_cta": "Continue Shopping"
   },
   "thankyou": {
-    "title": "Thank you",
-    "subtitle": "Your order has been received.",
-    "description": "Our team will be in touch to confirm your request.<br\/>We value your trust and appreciate your willingness to communicate with us.<br\/>We are always here to serve you.",
     "return_cta": "Return to shop",
     "details": {
       "title": "Order details",

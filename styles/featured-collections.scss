@@ -71,9 +71,6 @@
         color: #333;
         text-align: center;
         padding: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
 
         @include breakpoint('md') {
           transform: translateY(100px);

@@ -35,7 +35,7 @@
     "total_amount": "Montant total",
     "empty_cart": "Votre panier est vide",
     "items": {
-      "items_name": "Nom de l'article",
+      "item_name": "Nom de l'article",
       "quantity": "Quantité",
       "total": "Total",
       "remove_cta": "Supprimer"

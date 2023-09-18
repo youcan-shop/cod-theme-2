@@ -35,7 +35,7 @@
     "total_amount": "Total amount",
     "empty_cart": "Your cart is currently empty.",
     "items": {
-      "items_name": "Item name",
+      "item_name": "Item name",
       "quantity": "Quantity",
       "total": "Total",
       "remove_cta": "Remove"

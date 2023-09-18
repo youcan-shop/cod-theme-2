@@ -7,15 +7,17 @@
       <div class="header-block">
         <div class="header-bar">
           <h2>{{ 'cart.title' | t }}</h2>
-          <span class='mt-1'>
-            {{ cart.items | size }}
+          <p class='mt-1'>
+            <span id="cart-items-count">
+              {{ cart.items | size }}
+            </span>
             {% if cart.items.size > 1 %}
               {{ 'cart.items_count' | t }}
             {% else %}
               {{ 'cart.item_count' | t }}
             {% endif %}
             {{ 'cart.in_your_cart' | t }}
-          </span>
+          </p>
         </div>
       </div>
       <div class="cart-items-container">

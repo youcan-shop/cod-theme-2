@@ -13,6 +13,7 @@
 }
 @media screen and (max-width: 768px) {
   .yc-cart .cart-items-container {
+    padding: 16px;
     border: 1px solid #ededed;
     max-height: 400px;
     overflow-y: scroll;
@@ -242,8 +243,9 @@
   font-size: 17px;
 }
 .table-container .row .cell .product-image img {
-  width: 140px;
-  height: 110px;
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
 }
 .table-container .row .adjust-space {
@@ -254,7 +256,15 @@
   font-size: 25px;
   color: #4B5565;
 }
-@media screen and (max-width: 767px) {
+.table-container .row .close-btn .yc-btn-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .table-container .cart__item {
+    border: 0;
+  }
   .table-container .header {
     display: none;
   }
@@ -265,7 +275,7 @@
   }
   .table-container .row .cell .product-image img {
     width: 140px;
-    height: 90px;
+    height: 130px;
   }
   .table-container .close-btn button {
     position: absolute;
@@ -283,5 +293,13 @@
   .table-container .row .cell:nth-child(2),
   .table-container .row .cell:nth-child(n+4) {
     flex-basis: 65%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .table-container {
+    border-bottom: 1px solid #ededed;
+  }
+  .table-container:last-child {
+    border-bottom: 1px solid transparent;
   }
 }

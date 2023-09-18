@@ -22,7 +22,7 @@
       </div>
       <div class="cart-items-container">
         {% for item in cart.items %}
-          <div class="table-container">
+          <div class="table-container" id='{{ item.id }}'>
             <div class="row header">
               <div class="cell"></div>
               <div class="cell">{{'cart.items.items_name' | t}}</div>
@@ -30,7 +30,7 @@
               <div class="cell">{{'cart.items.total' | t}}</div>
               <div class="cell adjust-space"></div>
             </div>
-            <div class="row cart__item" id='{{ item.id }}'>
+            <div class="row cart__item">
               <div class="product-preview">
                 <div class="cell">
                   <div class='product-image'>

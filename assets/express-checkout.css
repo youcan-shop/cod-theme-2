@@ -1,3 +1,20 @@
+.sticky-form-wrapper {
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 24px 16px;
+}
+@media (min-width: 768px) {
+  .sticky-form-wrapper {
+    border-width: 6px;
+  }
+}
+.sticky-form-wrapper .express-checkout-fields,
+.sticky-form-wrapper #express-checkout-form {
+  border: none;
+  padding: 0;
+}
+
 @media (min-width: 768px) {
   #express-checkout-form {
     border-width: 6px;
@@ -11,7 +28,7 @@
 }
 
 .express-checkout-fields {
-  border-width: 6px;
+  border-width: 4px;
   border-style: solid;
   background: #F8F8F8;
   box-shadow: 1px -1px 23px rgba(0, 0, 0, 0.04);
@@ -23,6 +40,7 @@
 }
 @media (min-width: 768px) {
   .express-checkout-fields {
+    border-width: 4px;
     border: unset;
     background: unset;
     box-shadow: unset;
@@ -31,10 +49,11 @@
 }
 
 .express-checkout-title {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 144%;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: normal;
   text-align: center;
+  color: #333;
 }
 
 .express-checkout-button {
@@ -99,9 +118,6 @@
   padding: 16px 20px;
   background-color: white;
   border-top: 1px solid #EBEBEB;
-}
-.yc-sticky-checkout .checkout-form {
-  padding-bottom: 20px;
 }
 .yc-sticky-checkout .step-2-wrapper {
   overflow-y: scroll;

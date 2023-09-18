@@ -4,6 +4,11 @@
   border-radius: 4px;
   margin-top: 26px;
 }
+@media (max-width: 768px) {
+  .yc-product-card {
+    display: none;
+  }
+}
 
 .yc-product-card .section-1 {
   display: flex;
@@ -12,7 +17,7 @@
   padding: 10px;
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .yc-product-card .section-1,
   .yc-product-card .selected-preview {
     padding: 20px;

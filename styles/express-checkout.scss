@@ -1,6 +1,21 @@
 @import 'helpers/mixins';
 
-$sticky-checkout-padding: 20px;
+.sticky-form-wrapper {
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 24px 16px;
+
+  @include breakpoint('md') {
+    border-width: 6px;
+  }
+
+  .express-checkout-fields,
+  #express-checkout-form {
+    border: none;
+    padding: 0;
+  }
+}
 
 #express-checkout-form {
   @include breakpoint('md') {
@@ -15,7 +30,7 @@ $sticky-checkout-padding: 20px;
 }
 
 .express-checkout-fields {
-  border-width: 6px;
+  border-width: 4px;
   border-style: solid;
   background: #F8F8F8;
   box-shadow: 1px -1px 23px rgba(0, 0, 0, 0.04);
@@ -26,6 +41,7 @@ $sticky-checkout-padding: 20px;
   padding: 10px;
 
   @include breakpoint('md') {
+    border-width: 4px;
     border: unset;
     background: unset;
     box-shadow: unset;
@@ -34,10 +50,11 @@ $sticky-checkout-padding: 20px;
 }
 
 .express-checkout-title {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 144%;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: normal;
   text-align: center;
+  color: #333;
 }
 
 .express-checkout-button {
@@ -106,10 +123,6 @@ $sticky-checkout-padding: 20px;
     padding: 16px 20px;
     background-color: white;
     border-top: 1px solid #EBEBEB;
-  }
-
-  .checkout-form {
-    padding-bottom: $sticky-checkout-padding;
   }
 
   .step-2-wrapper {

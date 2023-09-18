@@ -15,12 +15,17 @@
   {% endif %}
 
   .custom-checkout-{{ checkout_id }},
-  .express-checkout-fields {
+  .express-checkout-fields,
+  .sticky-form-wrapper {
     border-color: {{ settings.form_border_colour.hex }};
   }
 
   .custom-checkout-{{ checkout_id }} .express-checkout-fields  {
     grid-gap: {{ settings.inputs_gap }}px;
+  }
+
+  .sticky-form-wrapper .express-checkout-button {
+    margin-top: {{ settings.inputs_gap }}px;
   }
 
   .custom-checkout-{{ checkout_id }} input {

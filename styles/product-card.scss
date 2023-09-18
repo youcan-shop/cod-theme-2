@@ -1,8 +1,15 @@
+@import 'helpers/mixins';
+
 .yc-product-card {
   width: 100%;
   background: #F5F5F5;
   border-radius: 4px;
   margin-top: 26px;
+
+  @include max-screen('md') {
+    display: none;
+  }
+
 }
 
 .yc-product-card .section-1 {
@@ -12,7 +19,7 @@
   padding: 10px;
 }
 
-@media screen and (min-width: 768px) {
+@include breakpoint('md') {
   .yc-product-card .section-1,
   .yc-product-card .selected-preview {
     padding: 20px;

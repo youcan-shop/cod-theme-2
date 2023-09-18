@@ -705,22 +705,27 @@ input:not([type='radio']),
     gap: 8px;
     margin-bottom: 24px;
 
-    .first-listing {
-      color: #9B9B9B;
-      font-weight: 400;
-      font-size: 16px;
-      text-decoration: none;
-    }
-
-    .second-listing {
-      font-weight: 400;
-      color: #000000;
-      font-size: 16px;
-      text-decoration: none;
-    }
-
     .listings__item  {
       color: #9B9B9B;
+
+      .first-listing {
+        color: #9B9B9B;
+        font-weight: 400;
+        font-size: 16px;
+        text-decoration: none;
+      }
+
+      .second-listing {
+        font-weight: 400;
+        color: #000000;
+        font-size: 16px;
+        text-decoration: none;
+      }
+
+      &:last-child {
+        color: #000000;
+        font-weight: 600;
+      }
     }
   }
 

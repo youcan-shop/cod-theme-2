@@ -654,20 +654,24 @@ input:not([type=radio]),
   gap: 8px;
   margin-bottom: 24px;
 }
-.breadcrumbs-container .breadcrumbs-listings .first-listing {
+.breadcrumbs-container .breadcrumbs-listings .listings__item {
+  color: #9B9B9B;
+}
+.breadcrumbs-container .breadcrumbs-listings .listings__item .first-listing {
   color: #9B9B9B;
   font-weight: 400;
   font-size: 16px;
   text-decoration: none;
 }
-.breadcrumbs-container .breadcrumbs-listings .second-listing {
+.breadcrumbs-container .breadcrumbs-listings .listings__item .second-listing {
   font-weight: 400;
   color: #000000;
   font-size: 16px;
   text-decoration: none;
 }
-.breadcrumbs-container .breadcrumbs-listings .listings__item {
-  color: #9B9B9B;
+.breadcrumbs-container .breadcrumbs-listings .listings__item:last-child {
+  color: #000000;
+  font-weight: 600;
 }
 .breadcrumbs-container .breadcrumbs-name {
   font-weight: 400;

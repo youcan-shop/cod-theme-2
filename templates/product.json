@@ -59,10 +59,10 @@
               "block_ilbyet7ddszqmf4": {
                   "type": "add_to_cart",
                   "settings": {
-                      "text_content": "Add to cart",
+                      "text_content": "أضف إلى السلة",
                       "is_sticky": false,
-                      "background_color": "#E7412FFF",
-                      "text_color": "#FFFFFFFF"
+                      "background_color": "#FFFFFF",
+                      "text_color": "#3C415F"
                   }
               },
               "block_ir42h43j14h24hd": {

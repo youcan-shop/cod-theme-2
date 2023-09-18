@@ -329,6 +329,22 @@
   padding: 4px 10px !important;
 }
 
+.add-to-cart-btn button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 14px 10px;
+}
+.add-to-cart-btn button .btn-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
 /* ----- Quantity input ----- */
 .quantity-field {
   display: flex;

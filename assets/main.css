@@ -558,7 +558,7 @@ input:not([type=radio]),
 /* ---------------------- */
 .sticky-elements-container {
   border-top: 1px solid #e3e3e3;
-  background: white;
+  background: #F6F9FF;
   position: fixed;
   bottom: 0;
   left: 0;

@@ -666,6 +666,10 @@ input:not([type=radio]),
   font-size: 16px;
   text-decoration: none;
 }
+.breadcrumbs-container .breadcrumbs-listings .third-listing {
+  font-weight: 700;
+  color: #000000;
+}
 .breadcrumbs-container .breadcrumbs-listings .listings__item {
   color: #9B9B9B;
 }

@@ -32,19 +32,21 @@
     "total_amount": "مجموع سلة التسوق",
     "empty_cart": "عربة التسوق فارغة.",
     "items_count": "منتجات",
+    "item_count": "منتج",
+    "in_your_cart": "في عربة التسوق الخاصة بك",
     "items": {
-      "items_name": "عناصر",
+      "items_name": "اسم المنتج",
       "quantity": "الكمية",
       "total": "المجموع",
       "remove_cta": "إزالة"
     },
     "summary": {
       "title": "ملخص الطلب",
-      "promo": "رمز الترويج",
+      "promo": "الرمز الترويجي",
       "promo_input": "أدخل رمزك",
-      "promo_cta": "تطبيق",
-      "total": "التكلفة الإجمالية",
-      "checkout_cta": "الدفع",
+      "promo_cta": "تأكيد",
+      "total": "المجموع",
+      "checkout_cta": "إتمام الشراء",
       "continue_shppping": "استمر في التسوق"
     },
     "empty": {

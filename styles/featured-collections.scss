@@ -3,40 +3,35 @@
 .yc-featured-collections {
   .yc-featured-container {
     display: flex;
-    column-gap: 2px;
-    align-items: center;
-
-    img {
-      width: 24px;
-      height: 24px;
-    }
 
     .yc-section-title {
-      font-size: 26px;
-      margin: 30px 0;
+      font-size: 32px;
+      font-weight: 400;
+      color: #333;
+      margin: 24px 0;
     }
   }
 
   .collections-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 20px;
 
     @include breakpoint('md') {
       grid-template-columns: repeat(3, 1fr);
     }
     @include breakpoint('lg') {
       grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
     }
     .collection-block {
       position: relative;
-      background: gray;
       display: inline-block;
-      aspect-ratio: 4/5;
-      overflow: hidden; 
+      overflow: hidden;
       transition: 0.3s ease-in-out;
       aspect-ratio: 1/1;
-
+      border: 1px solid #E6E6E6;
+      border-radius: 5px;
 
       .collection-details, .collection-thumbnail img {
           transition: all 0.3s ease-in-out;
@@ -68,16 +63,18 @@
       .collection-details {
         transition: 0.3s ease-in-out;
         position: absolute;
+        background-color: white;
         bottom: 0;
         width: 100%;
-        margin: auto;
-        background: linear-gradient(0deg, #534b40, transparent);
-        color: white;
+        font-size: 14px;
+        font-weight: 400;
+        color: #333;
         text-align: center;
-        padding: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        padding: 15px;
+
+        .collection-name {
+          font-weight: 400;
+        }
 
         @include breakpoint('md') {
           transform: translateY(100px);

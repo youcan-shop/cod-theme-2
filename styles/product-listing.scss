@@ -7,6 +7,18 @@
     display: flex;
     justify-content: space-between;
     align-items: start;
+    margin: 80px auto;
+
+    .breadcrumbs-wrapper {
+      .breadcrumbs-container {
+        margin: 0 0 32px;
+      }
+
+      .breadcrumbs-name {
+        font-size: 24px;
+        font-weight: 400;
+      }
+    }
   }
 
   .product-list {
@@ -112,7 +124,6 @@
 
 .sort-container {
   max-width: max-content;
-  margin: 80px 0;
   align-self: flex-end;
 
   #productDropdownFiltring {

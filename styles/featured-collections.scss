@@ -72,6 +72,10 @@
         text-align: center;
         padding: 15px;
 
+        .collection-name {
+          font-weight: 400;
+        }
+
         @include breakpoint('md') {
           transform: translateY(100px);
         }

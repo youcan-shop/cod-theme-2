@@ -64,6 +64,9 @@
   text-align: center;
   padding: 15px;
 }
+.yc-featured-collections .collections-list .collection-block .collection-details .collection-name {
+  font-weight: 400;
+}
 @media (min-width: 768px) {
   .yc-featured-collections .collections-list .collection-block .collection-details {
     transform: translateY(100px);

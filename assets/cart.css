@@ -4,21 +4,6 @@
 .yc-cart .empty-cart ion-icon {
   --ionicon-stroke-width: 18px;
 }
-.yc-cart .cart-items-container {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin: 32px 0;
-  padding: 16px;
-  border-radius: 5px;
-}
-@media screen and (max-width: 768px) {
-  .yc-cart .cart-items-container {
-    border: 1px solid #EDEDED;
-    max-height: 400px;
-    overflow-y: scroll;
-  }
-}
 .yc-cart .cart-table .header-block {
   display: flex;
   align-items: center;
@@ -40,7 +25,7 @@
   font-size: 21px;
 }
 .yc-cart .cart-table .header-block .header-bar span {
-  color: #9B9B9B;
+  color: #9b9b9b;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
@@ -70,12 +55,8 @@
 .yc-cart .cart-table .summary-box .coupon-wrapper {
   display: flex;
 }
-.yc-cart .cart-table .summary-box .coupon-wrapper .yc-btn {
-  min-width: unset !important;
-  padding: 0 20px;
-}
 .yc-cart .cart-table .summary-box input {
-  border: 1px solid #BDBDBD;
+  border: 1px solid #bdbdbd;
   border-radius: 4px;
   height: 45px !important;
   flex: 1;
@@ -84,6 +65,9 @@
   font-weight: 400;
   font-size: 16px;
   color: #757575;
+}
+.yc-cart .cart-table .summary-box .price-box .shipping-wrapper {
+  margin: 24px 0 0;
 }
 .yc-cart .cart-table .summary-box .price-wrapper .capitalize {
   width: 80%;
@@ -103,7 +87,6 @@
 }
 .yc-cart .cart-table .summary-box .border-space {
   padding-bottom: 22px;
-  padding: 0px 18px 18px;
 }
 .yc-cart .cart-table .summary-box .item-total-price {
   color: var(--yc-primary-color);
@@ -125,21 +108,24 @@
   }
 }
 .yc-cart .quantity-wrapper {
+  width: fit-content;
+  border: 1px solid #BDBDBD;
+  border-radius: 4px;
   display: flex;
   align-items: center;
-  gap: 8px;
   flex-direction: row-reverse;
-  width: fit-content;
-  border-radius: 4px;
   background-color: white;
 }
 .yc-cart .quantity-wrapper button {
-  width: 30px !important;
-  height: 30px !important;
-  border-radius: 5px;
-  background-color: #F3F3F3;
+  width: 34px !important;
+  min-width: 34px !important;
+  max-width: 34px !important;
+  height: 34px !important;
+  min-height: 34px !important;
+  max-height: 34px !important;
+  background-color: transparent;
   font-size: 18px;
-  color: #000000;
+  color: #B7B7B7;
 }
 .yc-cart .quantity-wrapper input {
   width: 58px;
@@ -148,7 +134,7 @@
   margin: 0 !important;
   padding: 0 !important;
   background-color: white;
-  border: 1px solid #E6E6E6;
+  border: 1px solid #e6e6e6;
   display: flex;
   font-weight: 600 !important;
   font-size: 16px !important;
@@ -166,24 +152,21 @@
     max-height: 27px !important;
   }
 }
-@media screen and (max-width: 768px) {
-  .yc-cart {
-    margin: 0rem;
-  }
-}
 
 .table-container {
   display: flex;
   flex-direction: column;
+  margin: 42px auto;
+  overflow-x: auto;
 }
 .table-container .cart__item {
-  background: white;
+  background: #F5F5F5;
   border: 1px solid #EDEDED;
   border-radius: 0px 0px 4px 4px;
   position: relative;
+  margin-bottom: 25px;
 }
 .table-container .header {
-  background-color: rgba(var(--yc-primary-color-rgb), 0.04);
   border: 1px solid #EDEDED;
   border-radius: 4px 4px 0px 0px;
   border-bottom: 0;
@@ -210,57 +193,22 @@
 .table-container .row .cell {
   flex-basis: 20%;
   text-align: start;
-  padding: 8px;
+  padding: 10px;
 }
 .table-container .row .cell .product-title {
   font-weight: 400;
-  color: var(--yc-primary-color);
-  font-size: 16px;
-}
-.table-container .row .cell .product-variant {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px;
-  padding-top: 8px;
-  font-size: 14px;
-  text-transform: capitalize;
-}
-.table-container .row .cell .product-variant .variant-space {
-  width: 10px;
-  height: 10px;
-  font-weight: bold;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.table-container .row .cell .product-variant .variant-space:not(:last-child)::before {
-  content: "";
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  border-radius: 10px;
-  background-color: black;
-}
-.table-container .row .cell .mobile-quantity {
-  margin-top: 10px;
-  display: none;
+  font-size: 16.5px;
+  margin-bottom: 10px;
+  width: 86%;
 }
 .table-container .row .cell .total-price-wrapper span {
   color: var(--yc-primary-color);
-  font-weight: 400;
-  font-size: 20px;
-}
-@media screen and (max-width: 768px) {
-  .table-container .row .cell .total-price-wrapper span {
-    font-size: 14px;
-  }
+  font-weight: 700;
+  font-size: 17px;
 }
 .table-container .row .cell .product-image img {
-  border-radius: 5px;
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 110px;
   object-fit: contain;
 }
 .table-container .row .adjust-space {
@@ -271,15 +219,7 @@
   font-size: 25px;
   color: #4B5565;
 }
-.table-container .row .close-btn .yc-btn-close {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-@media screen and (max-width: 768px) {
-  .table-container .cart__item {
-    border: 0;
-  }
+@media screen and (max-width: 767px) {
   .table-container .header {
     display: none;
   }
@@ -288,59 +228,25 @@
     justify-content: center;
     align-items: start;
   }
-  .table-container .row .cell.total-price-table {
-    display: none;
-  }
-  .table-container .row .cell.web-quantity {
-    display: block;
-  }
-}
-@media screen and (max-width: 768px) and (max-width: 768px) {
-  .table-container .row .cell.web-quantity {
-    display: none;
-  }
-}
-@media screen and (max-width: 768px) {
   .table-container .row .cell .product-image img {
     width: 140px;
-    height: 130px;
+    height: 90px;
   }
-}
-@media screen and (max-width: 768px) {
-  .table-container .row .cell .mobile-quantity {
-    display: block;
-  }
-}
-@media screen and (max-width: 768px) {
   .table-container .close-btn button {
     position: absolute;
     left: 0;
     top: 0;
     margin: 10px;
   }
-}
-@media screen and (max-width: 768px) {
   .table-container .product-title {
     width: 87%;
   }
-}
-@media screen and (max-width: 768px) {
   .table-container .row .cell:first-child,
   .table-container .row .cell:nth-child(n+3) {
     flex-basis: 35%;
   }
-}
-@media screen and (max-width: 768px) {
   .table-container .row .cell:nth-child(2),
   .table-container .row .cell:nth-child(n+4) {
     flex-basis: 65%;
-  }
-}
-@media screen and (max-width: 768px) {
-  .table-container {
-    border-bottom: 1px solid #EDEDED;
-  }
-  .table-container:last-child {
-    border-bottom: 1px solid transparent;
   }
 }

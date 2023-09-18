@@ -667,7 +667,7 @@ input:not([type=radio]),
   text-decoration: none;
 }
 .breadcrumbs-container .breadcrumbs-listings .third-listing {
-  font-weight: 700;
+  font-weight: 600;
   color: #000000;
 }
 .breadcrumbs-container .breadcrumbs-listings .listings__item {

@@ -199,24 +199,19 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 .table-container .row .cell {
   flex-basis: 20%;
   text-align: start;
   padding: 10px;
 }
-.table-container .row .product-preview .product-image img {
-  border-radius: 5px;
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-}
-.table-container .row .prodcut-details .cell .product-title {
+.table-container .row .cell .product-title {
   font-weight: 400;
   color: var(--yc-primary-color);
   font-size: 16px;
 }
-.table-container .row .prodcut-details .cell .product-variant {
+.table-container .row .cell .product-variant {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -225,7 +220,7 @@
   font-size: 14px;
   text-transform: capitalize;
 }
-.table-container .row .prodcut-details .cell .product-variant .variant-space {
+.table-container .row .cell .product-variant .variant-space {
   width: 10px;
   height: 10px;
   font-weight: bold;
@@ -234,7 +229,7 @@
   justify-content: center;
   align-items: center;
 }
-.table-container .row .prodcut-details .cell .product-variant .variant-space:not(:last-child)::before {
+.table-container .row .cell .product-variant .variant-space:not(:last-child)::before {
   content: "";
   display: inline-block;
   width: 4px;
@@ -242,10 +237,16 @@
   border-radius: 10px;
   background-color: black;
 }
-.table-container .row .prodcut-details .cell .total-price-wrapper span {
+.table-container .row .cell .total-price-wrapper span {
   color: var(--yc-primary-color);
   font-weight: 700;
   font-size: 17px;
+}
+.table-container .row .cell .product-image img {
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
 .table-container .row .adjust-space {
   flex-basis: 5%;

@@ -4,7 +4,12 @@
 {%- assign per_page = section.settings.items_per_page -%}
 <div class='yc-product-listing-container'>
   <div class="collection-heading">
+    <div class="breadcrumbs-wrapper">
     {%- render 'breadcrumbs' -%}
+    <div class="breadcrumbs-name">
+      <h1>{{ category.name }}</h1>
+    </div>
+    </div>
     <div class="sort-container">
       {%- render 'main-sort' -%}
     </div>

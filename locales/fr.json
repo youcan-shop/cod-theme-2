@@ -32,7 +32,7 @@
     "items_count": "articles",
     "item_count": "article",
     "in_your_cart": "dans votre panier d'achat",
-    "total_amount": "Total",
+    "total_amount": "Montant total",
     "empty_cart": "Votre panier est vide",
     "items": {
       "items_name": "Nom de l'article",
@@ -46,8 +46,8 @@
       "promo_input": "Entrez votre code",
       "promo_cta": "Appliquer",
       "total": "Coût total",
-      "checkout_cta": "Paiement",
-      "continue_shppping": "continue le shopping"
+      "checkout_cta": "Continuer vers le paiement",
+      "continue_shppping": "Fermer"
     },
     "empty": {
       "title": "Votre panier est actuellement vide.",

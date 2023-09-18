@@ -7,6 +7,19 @@
     }
   }
 
+  .cart-items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 32px 0;
+    border-radius: 5px;
+    @media screen and (max-width: 768px) {
+      border: 1px solid #ededed;
+      max-height: 400px;
+      overflow-y: scroll;
+    }
+  }
+
   .cart-table {
     .header-block {
       display: flex;
@@ -132,24 +145,21 @@
   }
 
   .quantity-wrapper {
-    width: fit-content;
-    border: 1px solid #BDBDBD;
-    border-radius: 4px;
     display: flex;
     align-items: center;
+    gap: 8px;
     flex-direction: row-reverse;
+    width: fit-content;
+    border-radius: 4px;
     background-color: white;
 
     button {
-      width: 34px !important;
-      min-width: 34px !important;
-      max-width: 34px !important;
-      height: 34px !important;
-      min-height: 34px !important;
-      max-height: 34px !important;
-      background-color: transparent;
+      width: 30px !important;
+      height: 30px !important;
+      border-radius: 5px;
+      background-color: #f3f3f3;
       font-size: 18px;
-      color: #B7B7B7;
+      color: #000000;
     }
 
     input {
@@ -169,7 +179,8 @@
     }
 
     @media screen and (max-width: 520px) {
-      button, input {
+      button,
+      input {
         width: 26px !important;
         min-width: 25px !important;
         max-width: 25px !important;
@@ -184,19 +195,17 @@
 .table-container {
   display: flex;
   flex-direction: column;
-  margin: 42px auto;
-  overflow-x: auto;
 
   .cart__item {
-    background: #F5F5F5;
-    border: 1px solid #EDEDED;
+    background: white;
+    border: 1px solid #ededed;
     border-radius: 0px 0px 4px 4px;
     position: relative;
-    margin-bottom: 25px;
   }
 
   .header {
-    border: 1px solid #EDEDED;
+    background-color: rgba(var(--yc-primary-color-rgb), 0.04);
+    border: 1px solid #ededed;
     border-radius: 4px 4px 0px 0px;
     border-bottom: 0;
     display: flex;
@@ -228,9 +237,37 @@
 
       .product-title {
         font-weight: 400;
-        font-size: 16.5px;
-        margin-bottom: 10px;
-        width: 86%;
+        color: var(--yc-primary-color);
+        font-size: 16px;
+      }
+
+      .product-variant {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px;
+        padding-top: 8px;
+        font-size: 14px;
+        text-transform: capitalize;
+
+        .variant-space {
+          width: 10px;
+          height: 10px;
+          font-weight: bold;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &:not(:last-child)::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            border-radius: 10px;
+            background-color: black;
+          }
+        }
       }
 
       .total-price-wrapper span {

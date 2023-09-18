@@ -37,9 +37,17 @@
 }
 
 .express-checkout-button {
+  display: flex;
+  justify-content: center;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+  font-family: inherit;
+  font-weight: bold;
+}
+.express-checkout-button span {
+  font-family: inherit;
+  font-weight: inherit;
 }
 
 @keyframes slideFromBottom {

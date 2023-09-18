@@ -421,7 +421,7 @@ input:not([type=radio]),
   font-weight: 400;
 }
 .dropdown-input .dropbtn :first-child {
-  margin-inline-end: 20px;
+  margin-inline-end: 10px;
 }
 .dropdown-input .dropbtn .order-by {
   font-size: 14px;

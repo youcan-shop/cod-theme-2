@@ -368,14 +368,12 @@
   border-radius: 5px;
   padding: 14px 10px;
 
-  span {
-    font-weight: 400;
-  }
-
   .btn-content {
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 14px;
+    font-weight: 400;
   }
 }
 

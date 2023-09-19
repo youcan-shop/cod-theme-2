@@ -91,6 +91,10 @@
   font-family: inherit;
   font-weight: inherit;
 }
+.express-checkout-button .spinner {
+  width: 24px;
+  height: 24px;
+}
 
 @keyframes slideFromBottom {
   0% {

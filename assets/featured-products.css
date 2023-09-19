@@ -84,6 +84,7 @@
   justify-content: center;
   overflow: hidden;
   align-items: stretch;
+  padding: 16px;
 }
 @media (min-width: 768px) {
   .yc-featured-products .product-list {

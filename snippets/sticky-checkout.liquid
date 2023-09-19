@@ -12,15 +12,17 @@
         </div>
 
         <section class='sticky-form-wrapper'>
-          <div class="checkout-form"></div>
-          <div class="form-button">
-            <button
-              type='submit'
-              class='express-checkout-button'
-              onclick='placeOrder(this)'>
-              <span class='spinner hidden' id='loading__checkout'></span>
-              <span>{{ settings.express_checkout_cta }}</span>
-            </button>
+          <div class="form-wrapper">
+            <div class="checkout-form"></div>
+            <div class="sticky-form-button">
+              <button
+                type='submit'
+                class='express-checkout-button'
+                onclick='placeOrder(this)'>
+                <span class='spinner hidden' id='loading__checkout'></span>
+                <span>{{ settings.express_checkout_cta }}</span>
+              </button>
+            </div>
           </div>
         </section>
       </section>

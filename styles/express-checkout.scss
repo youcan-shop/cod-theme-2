@@ -28,6 +28,20 @@
   .form-button {
     padding: 0 16px 24px 16px;
   }
+
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .sticky-form-button {
+      width: 100%;
+      padding: 0 16px;
+      margin-bottom: 24px;
+    }
+  }
 }
 
 #express-checkout-form {
@@ -154,14 +168,6 @@
     flex-direction: column;
   }
 
-  .step_1 .yc-product-card .section-2 {
-    display: none;
-  }
-
-  .step_2 .yc-product-card .section-2 {
-    display: block;
-  }
-
   #checkout_step_1, #checkout_step_2 {
     animation: slideFromBottom 0.2s ease-in-out;
     will-change: transform;
@@ -193,35 +199,9 @@
     @include breakpoint('md') {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-top: 30px;
-
-      .variant-card-2 {
-        position: sticky;
-        top: 20px;
-        height: fit-content;
-      }
-
-      .yc-product-card {
-        margin-top: 0;
-
-        .section-1 {
-          flex-direction: column;
-
-          .image {
-            width: 125px;
-            height: 106px;
-          }
-        }
-
-        .section-2 .selected-variants {
-          padding: 21px 10px;
-        }
-      }
-
-      .variant-card-2 {
-        margin-bottom: 0;
-      }
+      align-items: stretch;
+      gap: 37px;
+      margin-top: 37px;
 
       .checkout-form {
         padding-bottom: 0;

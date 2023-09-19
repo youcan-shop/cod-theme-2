@@ -56,6 +56,7 @@
     }
 
     .product-block {
+      height: 100%;
       text-align: center;
       color: var(--yc-neutral-color);
       display: flex;
@@ -98,6 +99,21 @@
           font-weight: 400;
           font-size: 16px;
 
+          min-height: 40px;
+
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+
+          @supports (-webkit-line-clamp: 2) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: initial;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+
           @include breakpoint('md') {
             font-weight: 300;
             font-size: 16px;
@@ -125,6 +141,7 @@
       }
 
       .prices {
+        min-height: 30px;
         display: flex;
         justify-content: center;
         gap: 7px;
@@ -144,7 +161,7 @@
         .product-price {
           font-weight: 600;
           color: var(--yc-primary-color);
-          font-size: 17px;
+          font-size: 14px;
           line-height: 120%;
 
           @include breakpoint('md') {
@@ -154,9 +171,12 @@
 
         .compare-at-price {
           text-decoration: line-through;
-          font-size: 18px;
+          font-size: 12px;
           font-weight: 300;
           color: #9B9B9B;
+          @include breakpoint('md') {
+            font-size: 18px;
+          }
         }
 
         .product-thumbnail:hover img {
@@ -165,8 +185,13 @@
       }
 
       .product-btn {
+        flex: 1;
         display: flex;
         justify-content: center;
+
+        .yc-btn-secondary {
+          width: 100%;
+        }
       }
     }
   }

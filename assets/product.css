@@ -251,7 +251,7 @@
 .yc-single-product .product-details .product-options .yc-colors-select .active,
 .yc-single-product .product-details .product-options .yc-options-list .active,
 .yc-single-product .product-details .product-options .yc-image-options-list .active {
-  border: 1px solid #000000;
+  border: 1px solid var(--yc-primary-color);
 }
 .yc-single-product .product-details .product-description {
   overflow: hidden;

@@ -26,17 +26,21 @@
   color: var(--yc-primary-color);
   line-height: 24px;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .product-slider .prices .product-price {
-    font-size: 20px;
+    font-size: 14px;
   }
 }
-.product-slider .prices .compare-price {
-  color: #8D8D8D;
-  font-size: 16px;
-  margin-top: 5px;
-  font-weight: 400;
-  text-decoration-line: line-through;
+.product-slider .prices .compare-at-price {
+  text-decoration: line-through;
+  font-size: 18px;
+  font-weight: 300;
+  color: #9B9B9B;
+}
+@media (max-width: 768px) {
+  .product-slider .prices .compare-at-price {
+    font-size: 12px;
+  }
 }
 .product-slider .splide__pagination {
   display: flex !important;
@@ -71,7 +75,6 @@
 .product-slider .product-block .compare-at-price {
   font-weight: 400;
   color: #8D8D8D;
-  font-size: 18px;
   line-height: 120%;
   text-decoration-line: line-through;
 }

@@ -31,7 +31,9 @@
   gap: 8px;
 }
 .yc-product-card .product-name {
-  font-size: 15px !important;
+  font-size: 16px !important;
+  font-weight: 400;
+  line-height: normal;
   margin-top: 12px;
 }
 .yc-product-card .price {
@@ -41,10 +43,11 @@
   gap: 10px;
 }
 .yc-product-card #sticky-price {
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
   line-height: 120%;
   color: var(--yc-primary-color);
-  font-size: 16px;
 }
 .yc-product-card .selected-preview {
   display: flex;
@@ -60,6 +63,13 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
+}
+.yc-product-card #selected-product-variants div span,
+.yc-product-card .quantity-preview :first-child {
+  color: #4A4A4A;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
 }
 .yc-product-card #selected-product-variants .yc-textual-item {
   padding: 6.5px 10px;

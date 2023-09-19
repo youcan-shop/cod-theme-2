@@ -35,7 +35,9 @@
   }
 
   .product-name {
-    font-size: 15px !important;
+    font-size: 16px !important;
+    font-weight: 400;
+    line-height: normal;
     margin-top: 12px;
   }
 
@@ -47,10 +49,11 @@
   }
 
   #sticky-price {
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
     line-height: 120%;
     color: var(--yc-primary-color);
-    font-size: 16px;
   }
 
   .selected-preview {
@@ -68,6 +71,14 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
+  }
+
+  #selected-product-variants div span,
+  .quantity-preview :first-child {
+    color: #4A4A4A;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
   }
 
   #selected-product-variants .yc-textual-item {

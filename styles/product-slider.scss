@@ -1,3 +1,5 @@
+@import 'helpers/mixins';
+
 .product-slider {
   .product-thumbnail {
     position: relative;
@@ -24,26 +26,26 @@
     padding-bottom: 12px;
 
     .product-price {
-      font-size: 20px;
+      font-size: 14px;
       font-weight: 600;
       text-align: center;
       color: var(--yc-primary-color);
       line-height: 24px;
 
-      @media (max-width: 768px) {
-        font-size: 14px;
+     @include breakpoint('md') {
+        font-size: 20px;
       }
     }
     
 
     .compare-at-price {
       text-decoration: line-through;
-      font-size: 18px;
+      font-size: 12px;
       font-weight: 300;
       color: #9B9B9B;
       
-      @media (max-width: 768px) {
-        font-size: 12px;
+     @include breakpoint('md') {
+        font-size: 18px;
       }
     }
   }

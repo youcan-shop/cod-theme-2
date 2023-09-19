@@ -13,13 +13,15 @@
 
         <section class='sticky-form-wrapper'>
           <div class="checkout-form"></div>
-          <button
-            type='submit'
-            class='express-checkout-button'
-            onclick='placeOrder(this)'>
-            <span class='spinner hidden' id='loading__checkout'></span>
-            <span>{{ settings.express_checkout_cta }}</span>
-          </button>
+          <div class="form-button">
+            <button
+              type='submit'
+              class='express-checkout-button'
+              onclick='placeOrder(this)'>
+              <span class='spinner hidden' id='loading__checkout'></span>
+              <span>{{ settings.express_checkout_cta }}</span>
+            </button>
+          </div>
         </section>
       </section>
     </div>

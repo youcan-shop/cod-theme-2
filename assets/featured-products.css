@@ -230,6 +230,11 @@
 .yc-featured-products .product-list .product-block .product-btn .yc-btn-secondary {
   width: 100%;
 }
+@media (min-width: 576px) {
+  .yc-featured-products .product-list .product-block .product-btn .yc-btn-secondary {
+    width: max-content;
+  }
+}
 .yc-featured-products .button-container {
   max-width: max-content;
   margin-left: auto;

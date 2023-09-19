@@ -191,6 +191,10 @@
 
         .yc-btn-secondary {
           width: 100%;
+
+          @include breakpoint('sm') {
+            width: max-content;
+          }
         }
       }
     }

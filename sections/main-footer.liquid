@@ -14,7 +14,7 @@
     display: {{ section.settings.toggle_footer ? 'none' : 'block' }};
   }
 
-  .copyright-wrapper {
+  .yc-footer {
     {%- if section.settings.top_border_color -%}
       border-top: 1px solid {{- section.settings.top_border_color.hex -}};
     {%- endif -%}
@@ -109,7 +109,7 @@
       "default": true
     },
     {
-      "type": "text",
+      "type": "richtext",
       "id": "copyright",
       "label": "Copyright text",
       "default": "All rights reserved"

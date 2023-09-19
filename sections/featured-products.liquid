@@ -38,16 +38,18 @@
   }
 {% endstyle %}
 
-<section class='section-featured-products-{{ id }} yc-featured-products container'>
-  <h1 class='yc-section-title'>
-    {{ section.settings.title }}
-  </h1>
-  <div class='product-list product-container-{{ id }}'>
-    {%- for block in section.blocks -%}
-      <div {{ block.youcan_attributes }} class="product-item-{{ id }}">
-        {%- render 'product-preview', item: block.settings.product, block_settings: block.settings, section_settings: section.settings -%}
-      </div>
-    {%- endfor -%}
+<section class='section-featured-products-{{ id }} yc-featured-products'>
+  <div class="container">
+    <h1 class='yc-section-title'>
+      {{ section.settings.title }}
+    </h1>
+    <div class='product-list product-container-{{ id }}'>
+      {%- for block in section.blocks -%}
+        <div {{ block.youcan_attributes }} class="product-item-{{ id }}">
+          {%- render 'product-preview', item: block.settings.product, block_settings: block.settings, section_settings: section.settings -%}
+        </div>
+      {%- endfor -%}
+    </div>
   </div>
 </section>
 

@@ -9,7 +9,14 @@
     font-family: var(--yc-font-family);
   }
 
+  .yc-{{ uniq }}-add-to-cart .spinner {
+    width: 21px;
+    height: 21px;
+  }
 
+  .yc-{{ uniq }}-add-to-cart .btn-content.hidden {
+    display: none !important;
+  }
 {%- endstyle -%}
 
 <div class='yc-{{ uniq }}-add-to-cart{% if block_settings.is_sticky %} is_sticky{% endif %} add-to-cart-btn'>
@@ -20,7 +27,7 @@
       class='spinner hidden'
       id='loading__cart'
     ></span>
-    <span class="btn-content" >
+    <span class="btn-content">
       {% render 'icon', name: 'bag' %}
       {{ block_settings.text_content }}
     </span>

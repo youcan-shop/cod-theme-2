@@ -10,16 +10,20 @@
         <div class="variant-card-2">
           {% render 'product-card' %}
         </div>
-        <div class="checkout-form"></div>
+        <section class='sticky-form-wrapper'>
+          <div class="form-wrapper">
+            <div class="checkout-form"></div>
+            <div class="sticky-form-button">
+              <button
+                type='submit'
+                class='express-checkout-button'
+                onclick='placeOrder(this)'>
+                <span class='spinner hidden' id='loading__checkout'></span>
+                <span>{{ settings.express_checkout_cta }}</span>
+              </button>
+            </div>
+          </div>
+        </section>
       </section>
-    </div>
-    <div class="cta-bottom-wrapper">
-      <button
-        type='submit'
-        class='yc-btn w-full express-checkout-button'
-        onclick='placeOrder(this)'>
-        <span class='spinner hidden' id='loading__checkout'></span>
-        <span>{{ settings.express_checkout_cta }}</span>
-      </button>
     </div>
 </div>

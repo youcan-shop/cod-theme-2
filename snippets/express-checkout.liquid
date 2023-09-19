@@ -14,9 +14,15 @@
 
   {% endif %}
 
-  .custom-checkout-{{ checkout_id }} .express-checkout-fields  {
+  .custom-checkout-{{ checkout_id }},
+  .express-checkout-fields,
+  .sticky-form-wrapper {
+    border-color: {{ settings.form_border_colour.hex }};
+  }
+
+  .custom-checkout-{{ checkout_id }} .express-checkout-fields,
+  .sticky-form-wrapper .form-wrapper {
     grid-gap: {{ settings.inputs_gap }}px;
-    border-color: {{ settings.form_border_colour.hex }}
   }
 
   .custom-checkout-{{ checkout_id }} input {
@@ -41,14 +47,11 @@
     padding: {{ settings.button_padding }}px;
     border-radius: {{ settings.button_border_radius }}px;
     font-size: {{ settings.button_text_size }}px;
+    color: {{ settings.button_text_color.hex }};
 
     {% if settings.button_background_color %}
     background-color: {{ settings.button_background_color.hex }} !important;
     {% endif %}
-  }
-
-  .express-checkout-button span {
-    font-weight: bold;
   }
 
   {% if settings.button_text_color %}
@@ -100,7 +103,7 @@
     {% if is_sticky == false %}
       <button
         type='submit'
-        class='yc-btn w-full express-checkout-button'
+        class='express-checkout-button'
         onclick='placeOrder(this)'
       >
         <span

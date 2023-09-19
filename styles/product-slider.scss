@@ -1,3 +1,5 @@
+@import 'helpers/mixins';
+
 .product-slider {
   .product-thumbnail {
     position: relative;
@@ -24,23 +26,27 @@
     padding-bottom: 12px;
 
     .product-price {
-      font-size: 20px;
+      font-size: 14px;
       font-weight: 600;
       text-align: center;
       color: var(--yc-primary-color);
       line-height: 24px;
 
-      @media (max-width: 767px) {
+     @include breakpoint('md') {
         font-size: 20px;
       }
     }
+    
 
-    .compare-price {
-      color: #8D8D8D;
-      font-size: 16px;
-      margin-top: 5px;
-      font-weight: 400;
-      text-decoration-line: line-through;
+    .compare-at-price {
+      text-decoration: line-through;
+      font-size: 12px;
+      font-weight: 300;
+      color: #9B9B9B;
+      
+     @include breakpoint('md') {
+        font-size: 18px;
+      }
     }
   }
 
@@ -63,10 +69,20 @@
       text-align: center;
       margin: 8px auto;
       .product-title {
+        min-height: 48px;
+
         white-space: nowrap;
-        overflow: hidden;
         text-overflow: ellipsis;
-        font-size: 1rem;
+        overflow: hidden;
+
+        @supports (-webkit-line-clamp: 2) {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: initial;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
       }
     }
 
@@ -81,7 +97,6 @@
     .compare-at-price {
       font-weight: 400;
       color: #8D8D8D;
-      font-size: 18px;
       line-height: 120%;
       text-decoration-line: line-through;
     }

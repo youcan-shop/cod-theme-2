@@ -43,6 +43,12 @@
             </div>
           {%- when 'menu' %}
             <div class='menu'>
+              <button
+                class='menu-toggler text-3xl'
+                onclick="openDrawer('.navbar-drawer')"
+              >
+                <ion-icon name='menu-outline'></ion-icon>
+              </button>
               <ul class='menu-list'>
                 {% for item in main-link-list.links %}
                   <li class='menu-item {%-if item.active %} active {%-endif%}'>
@@ -62,12 +68,6 @@
                   <path d="M1 6.30859H23.1538" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M17 11.2316C17 12.5373 16.4813 13.7895 15.558 14.7128C14.6348 15.636 13.3826 16.1547 12.0769 16.1547C10.7712 16.1547 9.519 15.636 8.59574 14.7128C7.67249 13.7895 7.15381 12.5373 7.15381 11.2316" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-              </button>
-              <button
-                class='menu-toggler text-3xl'
-                onclick="openDrawer('.navbar-drawer')"
-              >
-                <ion-icon name='menu-outline'></ion-icon>
               </button>
               <div id='searchInputHolder'>
                 <div class='container flex justify-center'>

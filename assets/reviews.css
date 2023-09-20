@@ -22,11 +22,11 @@
 }
 .yc-product-reviews .yc-reviews-wrapper {
   display: grid;
-  column-gap: 32px;
-  row-gap: 20px;
+  gap: 20px;
 }
 @media (min-width: 768px) {
   .yc-product-reviews .yc-reviews-wrapper {
+    gap: 32px;
     grid-template-columns: repeat(2, 1fr);
   }
 }

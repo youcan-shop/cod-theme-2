@@ -28,7 +28,6 @@ function reviewTemplate(review) {
         <img loading='lazy' class='image' src='${review.images_urls[0] || defaultAvatar}' />
         <div class='info'>
           <span class='name'>${review.first_name || ''} ${review.last_name || ''}</span>
-          <span class='created-at-date'>${review.created_at}</span>
         </div>
       </div>
       <div class='yc-reviews-stars'
@@ -39,6 +38,7 @@ function reviewTemplate(review) {
     <div class='content'>
       ${review.content === null ? '' : review.content}
     </div>
+    <span class='created-at-date'>${review.created_at}</span>
   `;
 }
 
@@ -69,6 +69,7 @@ const setupReviews = async () => {
     const reviewItem = document.createElement('li')
     reviewItem.classList.add('review-item');
     reviewItem.innerHTML = reviewTemplate(review);
+    console.log(reviewItem);
 
     return reviewsWrapper.appendChild(reviewItem);
   }
@@ -108,7 +109,7 @@ const setupReviews = async () => {
   }
 
   try {
-    const res = youcanjs.product.fetchReviews(reviewsProductId, { limit: 3 });
+    const res = youcanjs.product.fetchReviews(reviewsProductId, { limit: 2 });
     reviews = await res.data();
 
     addReviews(reviewsWrapper, reviews);

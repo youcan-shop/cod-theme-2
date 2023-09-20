@@ -201,6 +201,10 @@
   }
 
   .sticky-desktop-wrapper {
+    .checkout-form {
+      width: 100%;
+    }
+
     @include breakpoint('md') {
       display: grid;
       grid-template-columns: 1fr 1fr;

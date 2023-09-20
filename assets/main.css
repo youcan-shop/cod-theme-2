@@ -246,23 +246,20 @@ input:not([type=radio]),
 }
 
 .yc-options-item {
-  padding: 15px;
+  padding: 12px 24px;
   font-size: 14px;
   line-height: 120%;
   font-weight: 400;
   border: 1px solid #BDBDBD;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
-}
-.yc-options-item.active {
-  font-weight: 700;
 }
 
 .yc-image-options-list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
 }
 .yc-image-options-list .yc-image-options-item {
   aspect-ratio: 1;
@@ -270,13 +267,13 @@ input:not([type=radio]),
   height: 52px;
   padding: 3px;
   border: 1px solid var(--yc-neutral-light-color);
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
 }
 .yc-image-options-list .yc-image-options-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .yc-upload {
@@ -288,7 +285,7 @@ input:not([type=radio]),
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 5px;
   gap: 12px;
   font-weight: 300;
   font-size: 12px;
@@ -315,6 +312,7 @@ input:not([type=radio]),
 .yc-radio {
   display: grid;
   gap: 16px;
+  max-width: max-content;
 }
 .yc-radio .yc-radio-buttons {
   position: relative;
@@ -332,11 +330,10 @@ input:not([type=radio]),
 .yc-radio .yc-radio-buttons .checkmark {
   position: relative;
   display: inline-block;
-  height: 26px;
-  width: 26px;
-  background-color: white;
+  height: 24px;
+  width: 24px;
+  background-color: #f5f5f5;
   border-radius: 50%;
-  border: 1px solid var(--yc-neutral-light-color);
 }
 .yc-radio .yc-radio-buttons .checkmark:after {
   content: "";
@@ -345,16 +342,16 @@ input:not([type=radio]),
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  background-color: white;
+  width: 18px;
+  height: 18px;
+  background-color: #f5f5f5;
   border-radius: 50%;
 }
-.yc-radio .yc-radio-buttons input[type=radio]:checked + .checkmark {
+.yc-radio .yc-radio-buttons input[type=radio]:checked + .checkmark:after {
   background: var(--yc-primary-color);
 }
-.yc-radio .yc-radio-buttons:hover .checkmark {
-  background-color: #f5f5f5;
+.yc-radio .yc-radio-buttons:hover .checkmark:after {
+  background-color: rgba(175, 175, 175, 0.3843137255);
 }
 .yc-radio .yc-radio-buttons .label-text {
   color: var(--yc-neutral);
@@ -374,10 +371,9 @@ input:not([type=radio]),
   gap: 10px;
 }
 .yc-colors-select .color-item {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 1px solid #E7E7E7;
+  width: 37px;
+  height: 37px;
+  border-radius: 5px;
   cursor: pointer;
 }
 .yc-colors-select .color-item:focus {
@@ -387,13 +383,13 @@ input:not([type=radio]),
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 5px;
 }
 .yc-colors-select .color-item .value {
   opacity: 0;
 }
 .yc-colors-select .color-item.active {
-  padding: 4px;
+  padding: 2px;
 }
 
 /* ---------------------------------- */
@@ -402,7 +398,7 @@ input:not([type=radio]),
 .dropdown-input {
   position: relative;
   border: 1px solid #E7E7E7;
-  border-radius: 4px;
+  border-radius: 5px;
   width: 100%;
   min-width: 335px;
   max-width: max-content;

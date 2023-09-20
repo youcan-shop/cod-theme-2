@@ -269,7 +269,7 @@
       .yc-options-list,
       .yc-image-options-list {
         .active {
-          border: 1px solid #000000;
+          border: 1px solid  var(--yc-primary-color);
         }
       }
     }
@@ -298,10 +298,11 @@
     .product-option-title {
       text-transform: capitalize;
       margin-top: 0;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       font-weight: 700;
       font-size: 16px;
-      line-height: 120%;
+      line-height: normal;
+      color: #303030;
 
       @include breakpoint('md') {
         font-size: 18px;
@@ -373,11 +374,10 @@
 .quantity-field {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 151px;
-  border: 1px solid #BDBDBD;
-  border-radius: 4px;
+  width: 181px;
+  border-radius: 5px;
   padding: 5px;
+  gap: 8px;
 
   /* Hide input arrows in Chrome, Safari, Edge, Opera */
   .quantity-input::-webkit-outer-spin-button,
@@ -392,13 +392,15 @@
   }
 
   .quantity-input {
-    width: 50%;
+    width: 58px;
     text-align: center;
     border: none;
+    border: 1px solid #E6E6E6;
+    border-radius: 5px;
     padding: 0 !important;
-    font-weight: 700 !important;
-    font-size: 20px !important;
-    line-height: 120% !important;
+    font-weight: 300 !important;
+    font-size: 18px !important;
+    line-height: normal !important;
     color: black;
   }
 
@@ -408,19 +410,21 @@
 
   .decrement-button,
   .increment-button {
-    width: 25%;
-    height: 100%;
+    width: 37px;
+    height: 37px;
     border: none;
-    color: #BDBDBD;
-    font-weight: 700;
-    font-size: 29px;
-    line-height: 120%;
-    background: none;
+    color: black;
+    font-weight: 300;
+    background-color: #F3F3F3;
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: normal;
     cursor: pointer;
+
     transition: all 200ms ease-in-out;
 
     &:active {
-      scale: 1.5;
+      scale: 1.1;
     }
   }
 }

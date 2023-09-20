@@ -186,6 +186,9 @@
     right: 20px;
   }
 }
+.yc-sticky-checkout .sticky-desktop-wrapper .checkout-form {
+  width: 100%;
+}
 @media (min-width: 768px) {
   .yc-sticky-checkout .sticky-desktop-wrapper {
     display: grid;

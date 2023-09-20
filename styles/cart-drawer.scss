@@ -110,12 +110,8 @@
       margin-bottom: 24px;
 
       img {
-        width: auto;
-        height: 106px;
-
-        @include max-screen('md') {
-          height: 80px;
-        }
+        width: 81px;
+        height: 81px;
       }
 
       .item-body {

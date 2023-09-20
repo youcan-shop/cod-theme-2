@@ -721,6 +721,12 @@ input:not([type='radio']),
         font-weight: 600;
       }
     }
+
+    .arrow {
+      [dir='ltr'] & {
+        rotate: 180deg;
+      }
+    }
   }
 
   .breadcrumbs-name {

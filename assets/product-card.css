@@ -78,7 +78,7 @@
   border: 1px solid black;
   color: black;
   font-size: 12px;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 .yc-product-card #selected-product-variants .colored-button {
   display: block;

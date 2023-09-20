@@ -296,10 +296,11 @@
     .product-option-title {
       text-transform: capitalize;
       margin-top: 0;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       font-weight: 700;
       font-size: 16px;
-      line-height: 120%;
+      line-height: normal;
+      color: #303030;
 
       @include breakpoint('md') {
         font-size: 18px;

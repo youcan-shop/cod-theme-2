@@ -94,13 +94,8 @@
   margin-bottom: 24px;
 }
 .cart-drawer ul .cart-item img {
-  width: auto;
-  height: 106px;
-}
-@media (max-width: 768px) {
-  .cart-drawer ul .cart-item img {
-    height: 80px;
-  }
+  width: 81px;
+  height: 81px;
 }
 .cart-drawer ul .cart-item .item-body {
   display: flex;

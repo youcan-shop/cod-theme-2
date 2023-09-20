@@ -2,6 +2,7 @@
 
 .yc-product-reviews {
   margin-bottom: 80px;
+  max-width: 904px;
 
   .head {
     display: flex;
@@ -34,7 +35,7 @@
 
     .review-item {
       border-radius: 5px;
-      background-color: var(--yc-neutral-light-color);
+      background-color: #F6F9FF;
       padding: 24px;
       display: flex;
       flex-direction: column;

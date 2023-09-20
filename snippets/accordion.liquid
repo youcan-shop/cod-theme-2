@@ -4,7 +4,7 @@
   .accordion {
     background: {{ background_color.hex }};
     color: {{ text_color.hex }};
-    margin-bottom: {{ margin_bottom }}px;
+    margin-bottom: {{ space_bottom }}px;
 
   }
 {%- endstyle -%}
@@ -20,3 +20,5 @@
     {{ accordion_details }}
   </div>
 </div>
+
+{{ 'accordion.js' | asset_url | script_tag_deferred }}

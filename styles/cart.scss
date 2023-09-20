@@ -260,13 +260,13 @@
         flex-direction: column;
         align-items: start;
         justify-content: center;
-        
+
         .product-title {
           font-weight: 400;
           color: var(--yc-primary-color);
           font-size: 16px;
         }
-  
+
         .product-variant {
           display: flex;
           flex-wrap: wrap;
@@ -275,7 +275,7 @@
           padding-top: 8px;
           font-size: 14px;
           text-transform: capitalize;
-  
+
           .variant-space {
             width: 10px;
             height: 10px;
@@ -284,7 +284,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-  
+
             &:not(:last-child)::before {
               content: '';
               display: inline-block;
@@ -295,7 +295,7 @@
             }
           }
         }
-  
+
         .total-price-wrapper span {
           color: var(--yc-primary-color);
           font-weight: 700;
@@ -308,6 +308,11 @@
         left: 16px;
         top: 50%;
         transform: translateY(-50%);
+
+        [dir='ltr'] & {
+          left: unset;
+          right: 16px;
+        }
       }
 
       @media screen and (max-width: 768px) {
@@ -349,9 +354,9 @@
         align-items: center;
       }
     }
-    
+
     @media screen and (max-width: 768px) {
-      & { 
+      & {
         grid-template-columns: auto repeat(3, 1fr);
       }
       .product-preview {

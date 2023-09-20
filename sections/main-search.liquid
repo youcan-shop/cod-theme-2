@@ -16,13 +16,13 @@
 {%- assign products_per_page = section.settings.products_per_page -%}
 
 {%- paginate search.products by products_per_page cod %}
-  <div class='yc-featured-products yc-search-{{id}} container' id="stick-footer">
+  <div class='yc-featured-products yc-search-{{id}}' id="stick-footer">
     {%- if items %}
-      <div class="sort-container search-page">
+      <div class="sort-container container">
         {%- render 'main-sort' -%}
       </div>
       <h1 class='yc-section-title' id='search-title'></h1>
-      <div class='product-list'>
+      <div class='product-list container'>
         {%- for item in items %}
         <div {{ block.youcan_attributes }} class="product-item-{{id}}">
           <a

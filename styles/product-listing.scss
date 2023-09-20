@@ -118,19 +118,6 @@
   }
 }
 
-.search-page {
-  @include breakpoint('md') {
-    padding: 0 40px;
-  }
-  @include breakpoint('lg') {
-    padding: 0 70px;
-  }
-
-  @include breakpoint('xl') {
-    padding: 0 150px;
-  }
-}
-
 .sort-container {
   max-width: max-content;
   align-self: flex-end;

@@ -2,8 +2,9 @@
 
 {% style %}
   .upsell-submit-no.size-{{- upsell.actions.btn_no.size -}} {
-    color: {{- upsell.actions.btn_no.bg_color -}};
-    border-color: {{- upsell.actions.btn_no.bg_color -}};
+    --action-bottom: {{- upsell.actions.btn_no.bg_color -}};
+    color: var(--action-bottom);
+    border-color: var(--action-bottom);
     transition: color 0.3s;
   }
   .upsell-submit-no.size-{{- upsell.actions.btn_no.size -}}:hover {

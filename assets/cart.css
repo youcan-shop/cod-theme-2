@@ -267,6 +267,10 @@
   top: 50%;
   transform: translateY(-50%);
 }
+[dir=ltr] .table-container .row .prodcut-details .close-btn {
+  left: unset;
+  right: 16px;
+}
 @media screen and (max-width: 768px) {
   .table-container .row .prodcut-details {
     padding-inline-end: 48px;

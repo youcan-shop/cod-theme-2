@@ -1,6 +1,5 @@
 .yc-page {
   margin: 0 auto 5rem;
-  padding: 0 20px;
 }
 .yc-page .yc-page-container {
   max-width: 960px;
@@ -127,12 +126,16 @@
 .yc-page .yc-page-container .contact-us .contact-form .form-group:not(:first-of-type) {
   margin-top: 19px;
 }
+.yc-page .yc-page-container .contact-us .contact-form .form-group:last-of-type {
+  margin-top: 24px;
+}
 .yc-page .yc-page-container .contact-us .contact-form .form-group input, .yc-page .yc-page-container .contact-us .contact-form .form-group textarea {
   width: 100%;
-  padding: 14px 15px !important;
-  font-size: 14px !important;
-  border-radius: 4px;
-  border: 1px solid var(--yc-neutral-color);
+  padding: 15px 16px !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  border-radius: 5px;
+  border: 1px solid #9AA4B2;
   background: #FFF;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.03);
   height: unset !important;
@@ -150,20 +153,12 @@
 .yc-page .yc-page-container .contact-us .contact-form .form-group button.primary-button {
   width: 100%;
   padding: 15px 20px;
-  background: #F33520;
+  background: var(--yc-primary-color);
+  box-shadow: 0px 1px 2px 0px rgba(18, 25, 38, 0.05);
   color: white;
+  border-radius: 4px;
   font-size: 16px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 150%;
-}
-@media (min-width: 768px) {
-  .yc-page {
-    padding: 0 80px;
-  }
-}
-@media (min-width: 992px) {
-  .yc-page {
-    padding: 0 155px;
-  }
 }

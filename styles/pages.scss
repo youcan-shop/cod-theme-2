@@ -2,7 +2,6 @@
 
 .yc-page {
   margin: 0 auto 5rem;
-  padding: 0 20px;
 
   .yc-page-container {
     max-width: 960px;
@@ -14,7 +13,7 @@
     &, * {
       font-family: inherit;
     }
-    
+
     font-family: inherit;
 
     h1 {
@@ -30,7 +29,7 @@
       line-height: 1.2;
       margin-bottom: 1.2rem;
     }
-    
+
     h3 {
       font-size: 1.75rem;
       font-weight: 700;
@@ -155,12 +154,17 @@
             margin-top: 19px;
           }
 
+          &:last-of-type {
+            margin-top: 24px;
+          }
+
           input, textarea {
             width: 100%;
-            padding: 14px 15px !important;
-            font-size: 14px !important;
-            border-radius: 4px;
-            border: 1px solid var(--yc-neutral-color);
+            padding: 15px 16px !important;
+            font-size: 13px !important;
+            font-weight: 400 !important;
+            border-radius: 5px;
+            border: 1px solid #9AA4B2;
             background: #FFF;
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.03);
             height: unset !important;
@@ -175,30 +179,24 @@
             outline: 5px auto -webkit-focus-ring-color;
           }
 
-          textarea { 
+          textarea {
             min-height: 172px;
           }
 
           button.primary-button {
             width: 100%;
             padding: 15px 20px;
-            background: #F33520;
+            background: var(--yc-primary-color);
+            box-shadow: 0px 1px 2px 0px rgba(18, 25, 38, 0.05);
             color: white;
+            border-radius: 4px;
             font-size: 16px;
             font-style: normal;
-            font-weight: 700;
+            font-weight: 400;
             line-height: 150%;
           }
         }
       }
     }
-  }
-
-  @include breakpoint('md') {
-    padding: 0 80px;
-  }
-
-  @include breakpoint('lg') {
-    padding: 0 155px;
   }
 }

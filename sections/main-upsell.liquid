@@ -14,12 +14,12 @@
   }
 {% endstyle %}
 
-<div class="upsell-page">
+<div class="upsell-page" id="stick-footer">
   <div class="upsell-container">
     <div class="upsell-content container">
       {{ upsell.description }}
     </div>
-    <div class="upsell-content container"> 
+    <div class="upsell-content container">
     {{ upsell.footer }}
     </div>
     <form id="upsell-form">
@@ -30,12 +30,12 @@
       <input
         type="hidden"
         name="upsell_id"
-        value="{{ upsell.id }}" 
+        value="{{ upsell.id }}"
       />
       <input
         type="hidden"
         name="order_id"
-        value="{{ order.id }}" 
+        value="{{ order.id }}"
       />
       {%- for product in upsell.products %}
         <input
@@ -64,7 +64,7 @@
       </div>
     </form>
   </div>
-</div> 
+</div>
 
 {{ 'upsell.js' | asset_url | script_tag_deferred }}
 

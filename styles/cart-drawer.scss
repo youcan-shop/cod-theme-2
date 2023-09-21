@@ -44,7 +44,7 @@
     top: 0;
     background-color: white;
     z-index: 100;
-    border-bottom: 1px solid #9B9B9B;
+    border-bottom: 0.5px solid #ADADAD;
 
     .cart {
       font-weight: 700;
@@ -62,8 +62,7 @@
   }
 
   .footer {
-    background: white;
-    border-top: 1px solid #EBEBEB;
+    background-color: rgba(var(--yc-primary-color-rgb), 0.04);
     position: absolute;
     bottom: 0;
     padding: 26px 24px;
@@ -72,6 +71,7 @@
     .price-wrapper {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 32px;
 
       .total-price {
         font-weight: 400;
@@ -79,7 +79,7 @@
       }
 
       .currency-value {
-        font-weight: 700;
+        font-weight: 600;
         font-size: 16px;
       }
 
@@ -93,7 +93,7 @@
     }
 
     .cart-action {
-      border: 1px solid var(--yc-primary-color);
+      // border: 1px solid var(--yc-primary-color);
       padding: 0 2rem;
       transition: all 0.15s ease-in-out 0s;
       letter-spacing: 1px;
@@ -102,6 +102,7 @@
       align-items: center;
       justify-content: center;
       height: 43px;
+      color: #9B9B9B;
     }
   }
 

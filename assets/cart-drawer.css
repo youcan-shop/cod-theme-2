@@ -169,7 +169,13 @@
   color: var(--yc-primary-color);
 }
 .cart-drawer ul .cart-item .item-details .variants {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 8px;
+  column-gap: 16px;
   margin-top: 12px;
+}
+.cart-drawer ul .cart-item .item-details .variants .variant {
   font-weight: 400;
   font-size: 13px;
 }

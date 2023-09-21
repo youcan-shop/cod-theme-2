@@ -121,21 +121,30 @@ function cartTemplate(item) {
       variationsArray.push(`${key}: ${item.productVariant.variations[key]}`);
     }
   }
-  const variationsString = variationsArray.join('<br/>');
-  const variationsCheck = variationsString === 'default: default' ? '' : variationsString;
+  let variationsString = variationsArray.join('<br/>');
+  
+  let variationsCheck = ''
+  if (variationsString === 'default: default') {
+    variationsCheck = ''
+  } else {
+    variationsCheck = variationsArray.map(variant => `<div class="variant">${variant}</div>`).join('')
+  }
 
   // Check if there's an image URL available
   const imageUrl = item.productVariant.product.images.length > 0 ? item.productVariant.product.images[0].url : defaultImage;
   return `
     <li class="cart-item">
       <div class="item-body">
-      <div class="right-items">
-        ${imageUrl && `<img src="${imageUrl}" />`}
-        <div class="item-details">
-          <p class="product-name">${item.productVariant.product.name}</p>
-          <div class="variants">
-          ${CART_DRAWER_TRANSLATION.quantityVariant}: ${item.quantity}${variationsCheck}
-          </div>
+        <div class="right-items">
+          ${imageUrl && `<img src="${imageUrl}" />`}
+          <div class="item-details">
+            <p class="product-name">${item.productVariant.product.name}</p>
+            <div class="variants">
+            <div class="variant">
+              ${CART_DRAWER_TRANSLATION.quantityVariant}: ${item.quantity}
+            </div>
+              ${variationsCheck}
+            </div>
           </div>
         </div>
         <div class="left-items">
@@ -181,7 +190,7 @@ async function updateCartDrawer() {
 
     const headerContainer = `
       <div class="header">
-        <h2 class="cart">${CART_DRAWER_TRANSLATION.cartName}<span> ${cartData.count} ${CART_DRAWER_TRANSLATION.itemsName}</span></h2>
+        <h2 class="cart">${CART_DRAWER_TRANSLATION.cartName}</h2>
       </div>
     `;
 

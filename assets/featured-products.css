@@ -9,9 +9,7 @@
   font-weight: 400;
 }
 .countdown-wrapper .countdown {
-  direction: ltr;
   display: flex;
-  justify-content: flex-end;
   gap: 8px;
   margin: 0;
 }

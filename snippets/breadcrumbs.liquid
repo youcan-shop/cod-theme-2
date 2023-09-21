@@ -27,5 +27,13 @@
           <a href="/cart" class="second-listing">{{ 'cart.title' | t }}</a>
         </div>
       {% endif %}
+      {% if template contains 'page' %}
+        <div class="listings__item arrow">
+          <img src='{{ 'left-arrow.png' | asset_url }}' alt="arrow" width="7" height="12" />
+        </div>
+        <div class="listings__item">
+          <span class="second-listing">{{ page.name }}</span>
+        </div>
+      {% endif %}
   </div>
 </div>

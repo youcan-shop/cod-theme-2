@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   right: -100%;
-  width: 400px;
+  width: 478px;
   height: 100%;
   background: #FFFFFF;
   overflow-y: auto;
@@ -29,6 +29,7 @@
     border: none;
     font-size: 28px;
     z-index: 1000;
+    color: #9B9B9B;
 
     [dir='ltr'] & {
       left: unset;
@@ -38,11 +39,12 @@
 
   .header {
     display: flex;
-    padding: 16px 24px;
+    padding: 16px;
     position: sticky;
     top: 0;
     background-color: white;
     z-index: 100;
+    border-bottom: 1px solid #9B9B9B;
 
     .cart {
       font-weight: 700;
@@ -109,23 +111,26 @@
   }
 
   ul {
-    margin: 20px 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 32px;
 
     .cart-item {
-      margin-bottom: 24px;
+      border-bottom: 1px solid #E1E1E1;
 
       img {
+        border-radius: 6px;
+        border: 1px solid #F5F5F5;
         width: 81px;
         height: 81px;
       }
 
       .item-body {
         display: flex;
-        align-items: flex-end;
         gap: 16px;
-        padding: 20px 10px;
+        padding-bottom: 12px;
         position: relative;
-        background: #F5F5F5;
         border-radius: 4px;
 
         .right-items {
@@ -133,48 +138,15 @@
           gap: 14px;
           width: 70%;
         }
-
+        
         .left-items {
           width: 30%;
-        }
+          display: flex;
+          flex-direction: column;
+          align-items: end;
 
-        @include max-screen('md') {
-          padding: 20px 6px;
-        }
-      }
-
-      .remove-item-btn, .spinner {
-        position: absolute;
-        left: 10px;
-        top: 15px;
-
-        [dir='ltr'] & {
-          left: unset;
-          right: 10px;
-        }
-      }
-
-      .remove-item-btn {
-        font-size: 23px;
-      }
-
-      .item-details {
-        max-width: 195px;
-
-        .product-name {
-          font-weight: 600;
-          font-size: 14px;
-          line-height: 17px;
-        }
-
-        .variants {
-          margin-top: 12px;
-          font-weight: 400;
-          font-size: 13px;
-        }
 
         .product-price {
-          margin-top: 14px;
           display: flex;
           flex-direction: column-reverse;
           color: var(--yc-primary-color);
@@ -196,6 +168,40 @@
           align-items: center;
           gap: 4px;
         }
+        }
+
+        @include max-screen('md') {
+          padding: 20px 6px;
+        }
+      }
+
+      .remove-item-btn, .spinner {
+        margin-top: 16px;
+        color: #9B9B9B;
+        width: max-content;
+      }
+
+      .remove-item-btn {
+        font-size: 23px;
+      }
+
+      .item-details {
+        margin-top: 4px;
+        max-width: 195px;
+
+        .product-name {
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 17px;
+          color: var(--yc-primary-color);
+        }
+
+        .variants {
+          margin-top: 12px;
+          font-weight: 400;
+          font-size: 13px;
+        }
+
       }
 
       .quantity-control {

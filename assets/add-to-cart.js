@@ -134,8 +134,11 @@ function cartTemplate(item) {
         <div class="item-details">
           <p class="product-name">${item.productVariant.product.name}</p>
           <div class="variants">
-          ${CART_DRAWER_TRANSLATION.quantityVariant}: ${item.quantity} <br/>'${variationsCheck}
+          ${CART_DRAWER_TRANSLATION.quantityVariant}: ${item.quantity}${variationsCheck}
           </div>
+          </div>
+        </div>
+        <div class="left-items">
           <div class="product-price">
             <span class="compare-price">${item.productVariant.compare_at_price ? `${item.productVariant.compare_at_price} ${currencyCode}` : ''}</span>
             <div class="currency-wrapper">
@@ -143,18 +146,17 @@ function cartTemplate(item) {
               <span class="currency-code">${currencyCode}</span>
             </div>
           </div>
-          </div>
-        </div>
-        <div class="left-items">
           <button class="remove-item-btn">
-          <ion-icon data-cart-item-id="${item.id}" data-product-variant-id="${item.productVariant.id}" name="close-outline"></ion-icon>
+            <ion-icon data-cart-item-id="${item.id}" data-product-variant-id="${item.productVariant.id}" name="trash-outline"></ion-icon>
           </button>
-          <div class="spinner" data-spinner-id="${item.id}" style="display: none;"></div>
-          <div class="quantity-control">
-            <button class="increase-btn cart-quantity-btn" onclick="increaseCartQuantity('${item.id}', '${item.productVariant.id}')">+</button>
-            <input type="number" id="quantity-${item.id}" value="${item.quantity}" min="1" onchange="updateCartItem('${item.id}', '${item.productVariant.id}', this.value)">
-            <button class="decrease-btn cart-quantity-btn" onclick="decreaseCartQuantity('${item.id}', '${item.productVariant.id}')">-</button>
-          </div>
+          <!-- 
+            <div class="spinner" data-spinner-id="${item.id}" style="display: none;"></div>
+            <div class="quantity-control">
+              <button class="increase-btn cart-quantity-btn" onclick="increaseCartQuantity('${item.id}', '${item.productVariant.id}')">+</button>
+              <input type="number" id="quantity-${item.id}" value="${item.quantity}" min="1" onchange="updateCartItem('${item.id}', '${item.productVariant.id}', this.value)">
+              <button class="decrease-btn cart-quantity-btn" onclick="decreaseCartQuantity('${item.id}', '${item.productVariant.id}')">-</button>
+            </div>
+          -->
         </div>
       </div>
     </li>

@@ -25,6 +25,7 @@
 
     /* colors */
     --yc-primary-color: {{ settings.primary_color.hex }};
+    --yc-primary-color-rgb: {{settings.primary_color.red}},{{settings.primary_color.green}},{{settings.primary_color.blue}};
     --yc-success-color: {{ settings.success_color.hex }};
     --yc-error-color: {{ settings.error_color.hex }};
     --yc-warning-color: {{ settings.warning_color.hex }};
@@ -51,8 +52,6 @@
     /* Sliders */
     /* -- Desktop */
     --yc-slider-arrows-background: {{ settings.slider_mobile_arrows_background_color.hex }};
-    --yc-slider-arrows-size: 42px;
-    --yc-slider-arrows-content-size: 42px;
 
     /* -- Mobile */
     --yc-slider-mobile-arrows-background: {{ settings.slider_mobile_desktop_arrows_background_color.hex }};
@@ -121,13 +120,12 @@
 ></script>
 
 {% javascript %}
-  const defaultAvatar = '{{ "avatar.png" | asset_url }}';
+  const defaultAvatar = "{{ 'avatar.png' | asset_url }}";
   const ratings = "{{ 'reviews.ratings' | t }}";
 {% endjavascript %}
 
 {{ 'main.css' | asset_url | stylesheet_tag }}
 {{ 'utils.css' | asset_url | stylesheet_tag }}
-{{ 'dropdown.css' | asset_url | stylesheet_tag }}
 
 {% assign store_title = store.title | default: store.name %}
 

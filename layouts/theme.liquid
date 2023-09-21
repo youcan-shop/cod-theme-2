@@ -14,14 +14,14 @@
   <body>
     {%- render 'overlay' -%}
     {%- render 'alert' -%}
-    {%- render 'cart-drawer', cart: cart %}
 
     {%- section 'notice-bar' %}
     {%- section 'main-navbar' %}
-    
+
     {{ content_for_layout }}
 
     {% section 'main-footer' %}
+    {%- render 'cart-drawer' -%}
 
     {{ 'main.js' | asset_url | script_tag }}
   </body>

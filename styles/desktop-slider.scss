@@ -2,18 +2,11 @@
 
 .splide {
   .splide__arrow {
-    outline: none;
-    width: var(--yc-slider-arrows-size);
-    height: var(--yc-slider-arrows-size);
     margin: 0 100px;
-
-    svg {
-      fill: var(--yc-primary-color);
-    }
   }
 
   .splide__pagination {
-    bottom: 42px;
+    bottom: 62px;
 
     .splide__pagination__page {
       transform: none;
@@ -63,17 +56,15 @@
 
     .headers {
       font-weight: 700;
-      margin-bottom: 1rem;
+      line-height: 1.2;
+      margin-bottom: 2rem;
     }
 
-    h1 {
-      font-size: 2rem;
-      @extend .headers;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      @extend .headers;
+    @for $i from 1 through 3 {
+      h#{$i} {
+        font-size: calc(3rem / $i);
+        @extend .headers;
+      }
     }
 
     p {

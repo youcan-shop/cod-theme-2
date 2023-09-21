@@ -1,10 +1,8 @@
 function previewProductImage(element) {
   const parentSection = element.closest('.yc-single-product');
-  const thumbnail = parentSection.querySelector('.main-thumbnail');
-  const magnified = parentSection.querySelector('#magnified-image');
+  const thumbnail = parentSection.querySelector('.main-image');
 
-  thumbnail.src = element.src;
-  magnified.style.backgroundImage = 'url(' + element.src + ')';
+  thumbnail.src = element.firstElementChild.src;
   setElementActive(element);
 }
 
@@ -15,6 +13,13 @@ function previewProductImage(element) {
 function uploadImage(element) {
   const parentSection = element.closest('.yc-single-product');
   const uploadInput = parentSection.querySelector('#yc-upload');
+  const uploadArea = parentSection.querySelector('.yc-upload');
+  const imagePreview = parentSection.querySelector('.yc-upload-preview');
+  const imageWrapper = imagePreview.querySelector('.yc-image-preview');
+  const progressContainer =  imagePreview.querySelector('.progress-container');
+  const imageName = $('.yc-image-info .image-name');
+  const imageSize = $('.yc-image-info .image-size');
+  const closePreviewButton = $('#close-preview');
   let uploadedImageLink = parentSection.querySelector('#yc-upload-link');
 
   uploadInput.click();
@@ -24,29 +29,34 @@ function uploadImage(element) {
       const reader = new FileReader();
       reader.readAsDataURL(this.files[0]);
 
-      reader.onload = function () {
+      reader.addEventListener("load", () => {
         const base64 = reader.result;
+        const previews = parentSection.querySelectorAll('.yc-image-preview .yc-image img');
 
-        const previews = parentSection.querySelectorAll(
-          '.yc-upload-preview img'
-        );
         previews.forEach((preview) => {
           preview.remove();
         });
 
-        const uploadArea = parentSection.querySelector('.yc-upload');
         uploadArea.style.display = 'none';
+        imagePreview.style.display = 'block';
+        imageWrapper.style.opacity = 0.4;
+        imageName.innerText = this.files[0].name;
+        progressContainer.style.display = "block";
 
         const preview = document.createElement('img');
         preview.src = base64;
+        parentSection.querySelector('.yc-image-preview .yc-image').appendChild(preview);
 
-        preview.addEventListener('click', function () {
+        closePreviewButton.addEventListener('click', function () {
           uploadArea.style.display = 'flex';
+          imagePreview.style.display = 'none';
           uploadInput.value = '';
           preview.remove();
         });
-        parentSection.querySelector('.yc-upload-preview').appendChild(preview);
-      };
+
+        getFileSize(this.files[0], preview);
+        smoothProgressBar();
+      });
 
       const res = await youcanjs.product.upload(this.files[0]);
       if (res.error) return notify(res.error, 'error');
@@ -54,6 +64,46 @@ function uploadImage(element) {
       uploadedImageLink.value = res.link;
     }
   });
+
+  function getFileSize(file, source) {
+    const fileSizeInBytes = file.size;
+    const fileSizeInKB = fileSizeInBytes / 1024;
+    const fileSizeInMB = fileSizeInKB / 1024;
+
+    if(fileSizeInMB > 2) {
+      source.src = '';
+      source.style.height = "40px";
+      imageName.style.color = "red";
+      imageName.innerText = sizeBigMessage;
+      imageSize.innerText = fileSizeInMB.toFixed(2) + " Mb";
+    } else if(fileSizeInMB < 1) {
+      imageName.style.color = "inherit";
+      imageSize.innerText = fileSizeInKB.toFixed(2) + " Kb";
+    } else {
+      imageName.style.color = "inherit";
+      imageSize.innerText = fileSizeInMB.toFixed(2) + " Mb";
+    }
+  }
+
+  function smoothProgressBar() {
+    const progressBar = document.querySelector('.progress-bar');
+    let progress = 0;
+    progressBar.style.width = progress;
+    const interval = setInterval(() => {
+      if (progress >= 100) {
+        setTimeout(() => {
+          progressContainer.style.display = 'none';
+          imageWrapper.style.opacity = 1;
+        }, 1000);
+        clearInterval(interval);
+        return;
+      }
+      progress += 10;
+      progressBar.style.width = `${progress}%`;
+    }, 200);
+
+    progressBar.style.transition = 'width 1s ease-in-out';
+  }
 }
 
 (function productImageHoverZoomer() {
@@ -69,7 +119,7 @@ function uploadImage(element) {
     if (!imgZoomer) return;
 
     function eventHandler(e) {
-      const original = $('.thumbnail-images .active') || $('.main-image');
+      const original = $('.main-image');
       const magnified = $('#magnified-image');
 
       x = (e.offsetX / original.offsetWidth) * 100;
@@ -110,6 +160,40 @@ function setVariant(parentSection, id) {
 }
 
 /**
+ * Sets inventory of product variant.
+ * And disable add to cart button when inventory is not sufficient.
+ * 
+ * @param {HTMLElement} parentSection
+ * @param {Number} inventory 
+ */
+function setInventory(parentSection, inventory) {
+  const inventoryInput = parentSection.querySelector('#_inventory');
+
+  inventoryInput.value = globalProduct.isTrackingInventory ? inventory : null;
+
+  /** @type {HTMLButtonElement} addToCartButton */
+  const addToCartButton = parentSection.querySelector('.yc-btn');
+
+  if (!addToCartButton) {
+    return;
+  }
+
+  if (!addToCartButton.disabled && addToCartButton.getAttribute('data-text') === null) {
+    addToCartButton.setAttribute('data-text', addToCartButton.innerHTML);
+  }
+
+  const isAddToCartDisabled = globalProduct.isTrackingInventory && inventory === 0;
+
+  addToCartButton.disabled = isAddToCartDisabled;
+
+  if (isAddToCartDisabled) {
+    addToCartButton.innerHTML = TRANSLATED_TEXT.empty_inventory;
+  } else {
+    addToCartButton.innerHTML = addToCartButton.getAttribute('data-text');
+  }
+}
+
+/**
  * Sets default options for a product
  * @param {HTMLElement} parentSection
  */
@@ -117,7 +201,9 @@ function selectDefaultOptions(parentSection) {
   const options = parentSection.querySelectorAll('.product-options > div');
 
   if (!options || !options.length) {
-    return setVariant(parentSection, variants[0]?.id);
+    setInventory(parentSection, defaultVariant?.inventory);
+
+    return setVariant(parentSection, defaultVariant?.id);
   }
 
   options.forEach((option) => {
@@ -125,17 +211,15 @@ function selectDefaultOptions(parentSection) {
 
     switch (optionType) {
       case 'dropdown':
-        option.querySelector('select').value =
-          option.querySelector('select').options[0].value;
+        option.querySelector('.dropdown-content li:first-child').classList.add('selected');
         break;
       case 'textual_buttons':
         option.querySelector('.yc-options-item').classList.add('active');
         break;
       case 'radio_buttons':
-        const radioButton = option.querySelector('.yc-radio');
-        radioButton.classList.add('active');
-        radioButton.querySelector('input[type="radio"]').checked = true;
-        option.querySelector('input').checked = true;
+        const radioLabel = option.querySelector('.yc-radio-buttons');
+        radioLabel.classList.add('active');
+        radioLabel.querySelector('input[type="radio"]').checked = true;
         break;
       case 'image_based_buttons':
         option.querySelector('.yc-image-options-item').classList.add('active');
@@ -151,6 +235,7 @@ function selectDefaultOptions(parentSection) {
 
   const selectedVariant = getSelectedVariant(parentSection);
 
+  setInventory(parentSection, selectedVariant.inventory);
   setVariant(parentSection, selectedVariant.id);
 }
 
@@ -171,7 +256,7 @@ function getSelectedOptions(parentSection) {
 
     switch (optionType) {
       case 'dropdown':
-        selectedOptions[optionName] = option.querySelector('select')?.value;
+        selectedOptions[optionName] = option.querySelector('.dropdown-content li.selected')?.innerText;
         break;
       case 'textual_buttons':
         selectedOptions[optionName] = option.querySelector(
@@ -180,7 +265,7 @@ function getSelectedOptions(parentSection) {
         break;
       case 'radio_buttons':
         selectedOptions[optionName] =
-          option.querySelector('.yc-radio.active input[type="radio"]')?.value;
+          option.querySelector('.yc-radio-buttons.active input[type="radio"]')?.value;
         break;
       case 'image_based_buttons':
         selectedOptions[optionName] = option.querySelector(
@@ -218,19 +303,6 @@ function getSelectedVariant(parentSection) {
 }
 
 /**
- * Get the currency Symbol
- * @param {HTMLElement} parentSection
- * @return {String} currency symbol
- */
-function currencySymbol(parentElement) {
-  const currentParent = parentElement.querySelector('.product-price');
-  const priceContent = currentParent.innerText;
-  const currencySymbol = priceContent.replace(/[0-9.,]/g, "").trim();
-
-  return currencySymbol;
-}
-
-/**
  * Updates product details after variant change
  * @param {HTMLElement} parentSection
  * @param {String} image
@@ -248,28 +320,38 @@ function updateProductDetails(parentSection, image, price, compareAtPrice) {
     const productPrices = parentSection.querySelectorAll('.product-price');
     const showStickyCheckoutPrice = $('#sticky-price');
 
+    if(productPrices.length === 0){
+      if(showStickyCheckoutPrice) {
+        showStickyCheckoutPrice.innerHTML = `${price} ${Dotshop.currency}`;
+      }
+
+      return;
+    }
+
     productPrices.forEach(productPrice => {
-      const displayValue = `${price} ${currencySymbol(parentSection)}`;
+      const displayValue = `${price} ${Dotshop.currency}`;
 
       productPrice.innerText = displayValue;
 
       if(showStickyCheckoutPrice) {
         showStickyCheckoutPrice.innerHTML = productPrice.innerHTML;
       }
-    })
+    });
   }
 
   const variantCompareAtPrices = parentSection.querySelectorAll('.compare-price');
 
   if(compareAtPrice) {
     variantCompareAtPrices.forEach(variantComparePrice => {
-      variantComparePrice.innerHTML = `<del> ${compareAtPrice} ${currencySymbol(parentSection)} </del>`;
+      variantComparePrice.innerHTML = `<del> ${compareAtPrice} ${Dotshop.currency} </del>`;
     })
   } else {
     variantCompareAtPrices.forEach(variantComparePrice => {
       variantComparePrice.innerHTML = ``;
     })
   }
+
+  goToCheckoutStep();
 }
 
 /**
@@ -294,10 +376,39 @@ function createPlaceholderDiv(id) {
   return div;
 }
 
+const expressCheckoutForm = $('#express-checkout-form');
+
+teleport(expressCheckoutForm, '#checkout_step_2 .checkout-form');
+
+/**
+ * Teleport variants and quantity to sticky checkout section
+ * @param {HTMLElement} parentSection
+ */
+function teleportCheckoutElements(parentSection) {
+  const quantity = parentSection.querySelector('.product-quantity');
+  const options = parentSection.querySelector('.product-options');
+
+  if(!quantity || !options){
+    return;
+  }
+
+  // Create placeholder for the teleported items
+  const quantityPlaceholder = createPlaceholderDiv('quantity-placeholder');
+  const optionsPlaceholder = createPlaceholderDiv('options-placeholder');
+  quantity.parentElement.appendChild(quantityPlaceholder);
+  options.parentElement.appendChild(optionsPlaceholder);
+}
+
 function teleportProductName() {
-  const elementContent = $('.product-name').textContent;
+  const elementContent = $('.product-name').textContent || globalProduct.name;
 
   $('#product-name').textContent = elementContent;
+}
+
+function teleportProductCard() {
+  const productCard = $('.yc-product-card');
+
+  teleport(productCard, '#checkout_step_2 .variant-card-2');
 }
 
 function showStickyCheckout() {
@@ -317,22 +428,43 @@ function triggerCheckout(parentId) {
 
   showStickyCheckout();
 
+  const parentSection = $(`#${parentId}`);
+  teleportCheckoutElements(parentSection);
+
   teleportProductName();
 
-  goToCheckoutStep()
+  if (!window.matchMedia("(max-width: 768px)").matches) {
+    goToCheckoutStep();
+  }
 
   overlay.addEventListener('click', () => {
     hideCheckout();
   });
+
+  window.addEventListener("resize", responsiveStickyCheckout);
+}
+
+function responsiveStickyCheckout() {
+  goToCheckoutStep();
 }
 
 function hideCheckout() {
   const stickyCheckout = $('#yc-sticky-checkout');
+  const options = stickyCheckout.querySelector('.product-options');
+  const quantity = stickyCheckout.querySelector('.product-quantity');
+  const optionsPlaceholder = $('#options-placeholder');
+  const quantityPlaceholder = $('#quantity-placeholder');
 
   overlay.click();
 
   $("body").style.overflow = "auto";
   overlay.style.zIndex = '95';
+  window.removeEventListener('resize', responsiveStickyCheckout);
+
+  if (options && quantity) {
+    optionsPlaceholder?.replaceWith(options);
+    quantityPlaceholder?.replaceWith(quantity);
+  }
 
   stickyCheckout.style.visibility = 'hidden';
   stickyCheckout.style.transform = 'translateY(100%)';
@@ -353,7 +485,8 @@ function createAndSetText(tagType = '', tagValue = '', cssClass = '') {
   return { element: element };
 }
 
-// Show selected variants in checkout_step
+// Show selected variants in checkout_step_2
+
 function showSelectedVariants() {
   const variants = document.querySelectorAll('.product-options > div');
 
@@ -377,11 +510,11 @@ function showSelectedVariants() {
         variantOption = createAndSetText(variantName, colorBaseButton, 'colored-button').element;
         break;
       case 'radio_buttons':
-        const radioButton = variant.querySelector('.yc-radio.active input[type="radio"]')?.value;
+        const radioButton = variant.querySelector('.yc-radio-buttons.active input[type="radio"]')?.value;
         variantOption = createAndSetText(variantName, radioButton).element;
       break;
       case 'dropdown':
-        const dropDown = variant.querySelector('select')?.value;
+        const dropDown = variant.querySelector('.dropdown-content li.selected')?.innerText;
         variantOption = createAndSetText(variantName, dropDown).element;
         break;
       case 'image_based_buttons':
@@ -389,7 +522,7 @@ function showSelectedVariants() {
         variantOption = createAndSetText(variantName, imageBasedButton, 'image-container').element;
         break;
       case 'upload_image_zone':
-        const uploadImageZone = variant.querySelector(' .yc-upload-preview img')?.outerHTML;
+        const uploadImageZone = variant.querySelector('.yc-image-preview .yc-image img')?.outerHTML;
         variantOption = createAndSetText(variantName, uploadImageZone, 'image-container').element;
         break;
     }
@@ -398,14 +531,31 @@ function showSelectedVariants() {
   });
 }
 
-// Sticky checkout steps conditions
-function goToCheckoutStep() {
-  $('#checkout_step').style.display = 'flex';
-  $(' #express-checkout-form').style.display = 'block';
-  const expressCheckoutForm = $('#express-checkout-form');
+// Show selected quantity in checkout_step_2
 
-  teleport(expressCheckoutForm, '#checkout_step .checkout-form');
+function showSelectedQuantity() {
+  const quantityValue = $('.product-quantity input')?.value || 1;
+  $('#variant_quantity').innerHTML = `<span class='quantity-value'>x${quantityValue}</span`;
+}
+
+// Sticky checkout steps conditions
+
+function goToCheckoutStep(close = false) {
+  if (!$('#checkout_step_2')) {
+    return;
+  }
+
+  if (close) {
+    hideCheckout();
+
+    return;
+  }
+
+  $('#checkout_step_2').style.display = 'flex';
+  $(' #express-checkout-form').style.display = 'block';
+  teleportProductCard();
   showSelectedVariants();
+  showSelectedQuantity();
 }
 
 function setup() {
@@ -415,7 +565,7 @@ function setup() {
 
   singleProductSections.forEach((section) => {
     const productDetails = section.querySelector('.product-options');
-    const variant = variants[0];
+    const variant = defaultVariant;
 
     updateProductDetails(
       section,
@@ -436,6 +586,8 @@ function setup() {
           selectedVariant.price,
           selectedVariant.compare_at_price
         );
+
+        setInventory(section, selectedVariant.inventory);
       });
 
       observer.observe(productDetails, {
@@ -447,6 +599,8 @@ function setup() {
 
     selectDefaultOptions(section);
   });
+
+  goToCheckoutStep();
 }
 
 setup();

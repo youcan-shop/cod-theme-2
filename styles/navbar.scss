@@ -33,7 +33,7 @@
 
   .yc-navbar {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
     height: var(--yc-nav-height);
     z-index: 100;
@@ -64,7 +64,7 @@
     .corner {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 16px;
 
       & > * {
         display: flex;
@@ -112,29 +112,32 @@
 
     .logo {
       img {
-        height: calc(var(--yc-nav-height) - 20px);
-        max-height: 40px;
+        height: min(calc(var(--yc-nav-height) - 20px), 40px);
       }
     }
 
-    .menu {
-      display: none;
-
-      @include breakpoint('md') {
-        display: flex;
+    @media screen and (max-width: 767px) {
+      .menu, .menu-toggler {
+        height: 30px;
       }
     }
 
     .menu-list {
-      display: flex;
+      display: none;
       list-style: none;
-      gap: 40px;
 
+      @include breakpoint('md') {
+        display: flex;
+        gap: 32px;
+      }
     }
+
     .menu-item {
       a {
         white-space: nowrap;
         color: var(--yc-nav-links-color);
+        opacity: 80%;
+        filter: saturate(0);
         font-size: 16px;
         padding: 0 calc(var(--yc-nav-px) / 5);
         height: 100%;
@@ -144,17 +147,20 @@
 
       &.active {
         a {
+          filter: saturate(1);
+          opacity: 100%;
           color: var(--yc-nav-links-color);
           font-weight: 600;
         }
       }
 
-      &.active ::after, &:hover ::after {
+      &.active ::after,
+      &:hover ::after {
         display: block;
-        content: "";
+        content: '';
         position: absolute;
         bottom: -6px;
-        border-radius: 99;
+        border-radius: 100px;
         right: 0;
         width: 40%;
         height: 2px;
@@ -182,6 +188,11 @@
       opacity: var(--yc-nav-links-hover-transparency);
     }
   }
+
+  .yc-navbar-mobile {
+    padding: 12px 20px;
+    background-color: white;
+  }
 }
 
 #searchInputHolder {
@@ -195,7 +206,7 @@
   left: 0;
   width: 100vw;
   height: var(--yc-nav-height);
-  z-index: 999;
+  z-index: 1001;
   background: white;
 
   .input,
@@ -229,7 +240,7 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 400;
+  z-index: 1000;
   visibility: hidden;
   opacity: 0;
 }
@@ -245,9 +256,9 @@
   height: 100vh;
   width: 18rem;
   opacity: 0;
-  z-index: 450;
+  z-index: 99;
 
-  &.navbar-drawer *:not(span) {
+  *:not(span) {
     @extend .items-configs;
   }
 

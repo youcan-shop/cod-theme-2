@@ -5,9 +5,9 @@
     --yc-nav-height: {{ section.settings.navbar_height }}px;
     --yc-nav-background: {{ section.settings.navbar_background_color.hex }};
     --yc-nav-links-color: {%- if section.settings.navbar_links_color -%}
-                            {{ section.settings.navbar_links_color.hex }}
-                          {%- else -%}
-                            var(--yc-neutral-color){%- endif -%};
+      {{ section.settings.navbar_links_color.hex }}
+    {%- else -%}
+      var(--yc-neutral-color){%- endif -%};
     --yc-nav-links-font-weight: {{ section.settings.navbar_links_font_weight }};
     --yc-nav-links-hover-transparency: {{ section.settings.navbar_links_hover_transparency }};
     --yc-nav-font-family: {%- if section.settings.navbar_font_family -%}
@@ -23,7 +23,13 @@
 
 {% if section.settings.toggle_navbar != true %}
   <header class='yc-header {%if section.settings.navbar_always_on_top%} nav-fixed {%endif%}'>
-    <nav class='yc-navbar container {%if section.settings.full_width%} fluid {%endif%}'>
+    {%- if section.settings.navbar_font_family -%}
+      <link
+        href='https://fonts.googleapis.com/css2?family={{ section.settings.navbar_font_family }}:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap'
+        rel='stylesheet'
+      >
+    {%- endif -%}
+    <nav class='yc-navbar container'>
       {%- for block in section.blocks -%}
         {%- case block.type %}
           {%- when 'logo' %}
@@ -37,9 +43,15 @@
             </div>
           {%- when 'menu' %}
             <div class='menu'>
+              <button
+                class='menu-toggler text-3xl'
+                onclick="openDrawer('.navbar-drawer')"
+              >
+                <ion-icon name='menu-outline'></ion-icon>
+              </button>
               <ul class='menu-list'>
                 {% for item in main-link-list.links %}
-                  <li class='menu-item {%if item.active %}active {%-endif%}'>
+                  <li class='menu-item {%-if item.active %} active {%-endif%}'>
                     <a href='{{ item.url }}'>{{ item.title }}</a>
                   </li>
                 {% endfor %}
@@ -47,11 +59,15 @@
             </div>
           {%- when 'search_and_cart' %}
             <div class='corner'>
-              <button
-                class='search'
-                onclick='openSearch()'
-              >
-                {% render 'icon', name: 'search', width: 25, height: 25 %}
+              <button class='cart relative' id='navbar-cart-icon' onclick='preventCartDrawerOpening("{{ template.name }}")'>
+                <span id='cart-items-badge'>
+                  {{- cart.items | size -}}
+                </span>
+                <svg width="25" height="27" viewBox="0 0 25 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.69231 1.3855L1 6.30858V23.5393C1 24.1922 1.25934 24.8183 1.72097 25.2799C2.1826 25.7415 2.8087 26.0009 3.46154 26.0009H20.6923C21.3451 26.0009 21.9713 25.7415 22.4329 25.2799C22.8945 24.8183 23.1538 24.1922 23.1538 23.5393V6.30858L19.4615 1.3855H4.69231Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M1 6.30859H23.1538" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M17 11.2316C17 12.5373 16.4813 13.7895 15.558 14.7128C14.6348 15.636 13.3826 16.1547 12.0769 16.1547C10.7712 16.1547 9.519 15.636 8.59574 14.7128C7.67249 13.7895 7.15381 12.5373 7.15381 11.2316" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </button>
               <div id='searchInputHolder'>
                 <div class='container flex justify-center'>
@@ -71,25 +87,23 @@
                       type='submit'
                       class='search-btn'
                     >
-                      {% render 'icon', name: 'search' %}
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.5 25C20.299 25 25 20.299 25 14.5C25 8.701 20.299 4 14.5 4C8.70101 4 4 8.701 4 14.5C4 20.299 8.70101 25 14.5 25Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21.9258 21.9258L28.0008 28.0008" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
                     </button>
                   </form>
                 </div>
               </div>
               <button
-                class='cart relative'
-                onclick="openDrawer('.cart-drawer', '{{ template.name }}')"
+                class='search'
+                onclick='openSearch()'
               >
-                <span id='cart-items-badge'>
-                  {{- cart.items | size -}}
-                </span>
-                {% render 'icon', name: 'cart' %}
-              </button>
-              <button
-                class='menu-toggler text-3xl'
-                onclick="openDrawer('.navbar-drawer')"
-              >
-                <ion-icon name='menu-outline'></ion-icon>
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14.5 25C20.299 25 25 20.299 25 14.5C25 8.701 20.299 4 14.5 4C8.70101 4 4 8.701 4 14.5C4 20.299 8.70101 25 14.5 25Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M21.9258 21.9258L28.0008 28.0008" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              
               </button>
             </div>
         {%- endcase %}
@@ -122,7 +136,10 @@
           <button
             type='submit'
           >
-            {% render 'icon', name: 'search' %}
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.5 25C20.299 25 25 20.299 25 14.5C25 8.701 20.299 4 14.5 4C8.70101 4 4 8.701 4 14.5C4 20.299 8.70101 25 14.5 25Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21.9258 21.9258L28.0008 28.0008" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </button>
         </form>
       <div class='flex flex-col items-wrapper'>
@@ -158,7 +175,7 @@
       "type": "menu"
     },
     {
-      "label": "Search and Cart",
+      "label": "Search and cart",
       "limit": 1,
       "type": "search_and_cart"
     }
@@ -263,14 +280,7 @@
           "value": "Montserrat",
           "label": "Montserrat"
         }
-      ],
-      "default": "Roboto"
-    },
-    {
-      "type": "checkbox",
-      "id": "full_width",
-      "label": "Full width navbar",
-      "default": false
+      ]
     },
     {
       "type": "checkbox",

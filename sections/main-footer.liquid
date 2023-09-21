@@ -13,13 +13,23 @@
   .toggle-footer {
     display: {{ section.settings.toggle_footer ? 'none' : 'block' }};
   }
+
+  .yc-footer {
+    {%- if section.settings.top_border_color -%}
+      border-top: 1px solid {{- section.settings.top_border_color.hex -}};
+    {%- endif -%}
+  }
 {% endstyle %}
 
 {% if section.settings.toggle_footer != true %}
   <footer class='yc-footer'>
     <div class="columns container">
       <div class="column logo">
-        <img src="{{ section.settings.footer_logo.src }}">
+        {% if section.settings.footer_logo.src %}
+          <img src="{{ section.settings.footer_logo.src }}">
+        {% else %}
+          <img src="{{ 'logo.png' | asset_url }}">
+        {% endif %}
       </div>
 
       {%- for linklist in link-lists -%}
@@ -35,27 +45,26 @@
           </div>
         {%- endif -%}
       {%- endfor -%}
-      <div class="column social-media">
-        {%- for block in section.blocks -%}
-          {%- if block.settings.social_media_icon_image.src -%}
-            <a class='social-icon' href="{{ block.settings.social_media_url }}" target="_blank">
-              <img loading='lazy' class='image' src="{{ block.settings.social_media_icon_image.src }}" alt='social links'>
-            </a>
-            {% else %}
-            <a class='social-icon' href="{{ block.settings.social_media_url }}" target="_blank">
-              <img loading='lazy' src='{{ 'default_product.jpeg' | asset_url }}' alt='image placeholder'>
-            </a>
-          {%- endif -%}
-        {%- endfor %}
-      </div>
+      {%- if section.settings.social_media_exist -%}
+        <div class="column social-media">
+          {%- for block in section.blocks -%}
+            {%- if block.settings.social_media_icon_image.src -%}
+              <a class='social-icon' href="{{ block.settings.social_media_url }}" target="_blank">
+                <img loading='lazy' class='image' src="{{ block.settings.social_media_icon_image.src }}" alt='social links'>
+              </a>
+              {% else %}
+              <a class='social-icon' href="{{ block.settings.social_media_url }}" target="_blank">
+                <img loading='lazy' src='{{ 'default_product.jpeg' | asset_url }}' alt='image placeholder'>
+              </a>
+            {%- endif -%}
+          {%- endfor %}
+        </div>
+      {%- endif -%}
     </div>
     <div class="copyright-wrapper" {{ block.youcan_attributes }}>
       <div class="container">
         <div class="copyright-title">
           {{ section.settings.copyright }}
-        </div>
-        <div class="copyright-image">
-          <img src="{{ section.settings.copyright_image.src }}">
         </div>
       </div>
     </div>
@@ -91,17 +100,25 @@
       "type": "color",
       "id": "footer_text_color",
       "label": "Text color",
-      "default": "#FFFFFFFF"
+      "default": "#fff"
     },
     {
-      "type": "text",
+      "type": "checkbox",
+      "id": "social_media_exist",
+      "label": "Social media",
+      "default": true
+    },
+    {
+      "type": "richtext",
       "id": "copyright",
-      "label": "Copyright content"
+      "label": "Copyright text",
+      "default": "All rights reserved"
     },
     {
-      "type": "image_picker",
-      "id": "copyright_image",
-      "label": "Copyright image"
+      "type": "color",
+      "id": "top_border_color",
+      "label": "Top border color",
+      "default": "#e5e5e5"
     }
   ],
   "blocks": [

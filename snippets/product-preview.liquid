@@ -1,30 +1,20 @@
-{{ 'components.css' | asset_url | stylesheet_tag }}
-{%- assign productId = 0 | rand %}
-
-{% style %}
-  .discount_count .percentage {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-
-    background: red
-  }
-{% endstyle %}
+{{ 'featured-products.css' | asset_url | stylesheet_tag }}
+{{ 'countdown.css' | asset_url | stylesheet_tag }}
 
 <a
   href='{{ item.url }}'
-  class='product-preview'
-  id="product_{{ productId }}">
+  class='product-block'
+>
   <div class='product-thumbnail'>
-    <div class="tag {{ block.settings.tag_position }}">
+    <div class="tag {{ section_settings.tag_position }}">
       {% if block_settings.tag_text %}
-        <div class="tag-banner" style="background: {{ block_settings.tag_color.hex }}; color: {{ block_settings.tag_text_color.hex }}">
+        <div class="tag-banner" style="background: {{ section_settings.tag_color.hex }}; color: {{ section_settings.tag_text_color.hex }}">
           {{ block_settings.tag_text }}
         </div>
         {% endif %}
-        {% if block_settings.discount_text %}
-          <div class="tag-banner" style="background: {{ block_settings.discount_color.hex }}; color: {{ block_settings.discount_text_color.hex }}">
-            {{ block_settings.discount_text }}
+        {% if section_settings.discount_text %}
+          <div class="tag-banner" style="background: {{ section_settings.discount_color.hex }}; color: {{ section_settings.discount_text_color.hex }}">
+            {{ section_settings.discount_text }}
           </div>
       {% endif %}
     </div>
@@ -40,12 +30,14 @@
       {% if item.price %}
         <span class='product-price'>{{ item.price | money }}</span>
       {% endif %}
-      {% if section.settings.show_compare_at_price and item.compare_at_price %}
+      {% if section.settings.show_compare_at_price and item.compare_at_price or show_compare_at_price_on_collection_temp %}
         <span class='compare-at-price'>{{ item.compare_at_price | money }}</span>
       {% endif %}
     </div>
-    <button class="yc-btn-secondary--large">
-      {{ 'general.buy_now' | t }}
-    </button>
+    <div class='product-btn'>
+      <button class="yc-btn-secondary">
+        {{ 'general.buy_now' | t }}
+      </button>
+    </div>
   </div>
 </a>

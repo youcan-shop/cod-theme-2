@@ -2,12 +2,12 @@
 
 {% style %}
   .section-slider-{{ id }} #yc_slider_{{ id }} .splide__arrow svg {
-    height: {{ section.settings.slider_arrows_content_size }}px;
-    width: {{ section.settings.slider_arrows_content_size }}px;
+    height: {{ section.settings.slider_arrows_size }}px;
+    width: {{ section.settings.slider_arrows_size }}px;
   }
 
   .section-slider-{{ id }} #yc_slider_{{ id }} .splide__arrow svg path {
-    fill: {{ section.settings.slider_desktop_arrows_color.hex }};
+    fill: {{ section.settings.slider_desktop_arrows_background_color.hex }};
   }
 
   .section-slider-{{ id }} #yc_slider_{{ id }} .content {
@@ -48,7 +48,7 @@
       pauseOnHover: '{{ section.settings.slider_pause_on_hover }}' ? true : false,
       pauseOnFocus: '{{ section.settings.slider_pause_on_focus }}' ? true : false,
       height: `{{ section.settings.slider_height_percentage }}vh`,
-      interval: '{{ section.settings.slider_timeout | times: 1000 }}',
+      interval: '{{ section.settings.duration_between_each_slide | times: 1000 }}',
       focus: 'center',
       rewind: true,
       drag: 'free',
@@ -82,7 +82,7 @@
   "settings": [
     {
       "type": "header",
-      "content": "🖥 Desktop Slider Settings"
+      "content": "🖥 Desktop slider settings"
     },
     {
       "type": "paragraph",
@@ -98,7 +98,7 @@
       "type": "color",
       "id": "slider_overlay_background_color",
       "label": "Overlay background color",
-      "default": "#0000007d",
+      "default": "##00000000",
       "maintain-opacity": true
     },
     {
@@ -112,10 +112,16 @@
       "default": 60
     },
     {
+      "type": "checkbox",
+      "id": "slider_arrows",
+      "label": "Arrows",
+      "default": true
+    },
+    {
       "type": "range",
-      "id": "slider_arrows_content_size",
+      "id": "slider_arrows_size",
       "min": 10,
-      "max": 40,
+      "max": 30,
       "step": 1,
       "unit": "px",
       "label": "Arrows size",
@@ -123,8 +129,8 @@
     },
     {
       "type": "color",
-      "id": "slider_desktop_arrows_color",
-      "label": "Arrows color",
+      "id": "slider_desktop_arrows_background_color",
+      "label": "Arrow color",
       "default": "#FFFFFF"
     },
     {
@@ -148,20 +154,20 @@
       "default": "loop"
     },
     {
-      "type": "checkbox",
-      "id": "slider_autoplay",
-      "label": "Autoplay",
-      "default": true
-    },
-    {
       "type": "range",
-      "id": "slider_timeout",
+      "id": "duration_between_each_slide",
       "min": 1,
       "max": 15,
       "step": 1,
       "unit": "sec",
       "label": "Duration between each slide",
       "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_autoplay",
+      "label": "Autoplay",
+      "default": true
     },
     {
       "type": "checkbox",
@@ -182,14 +188,8 @@
       "default": true
     },
     {
-      "type": "checkbox",
-      "id": "slider_arrows",
-      "label": "Arrows",
-      "default": true
-    },
-    {
       "type": "header",
-      "content": "📱 Mobile Slider Settings"
+      "content": "📱 Mobile slider settings"
     },
     {
       "type": "paragraph",
@@ -204,6 +204,16 @@
       "unit": "%",
       "label": "Slider height",
       "default": 60
+    },
+    {
+      "type": "range",
+      "id": "slider_mobile_timeout",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "unit": "s",
+      "label": "Timeout",
+      "default": 5
     },
     {
       "type": "select",
@@ -230,16 +240,6 @@
       "id": "slider_mobile_autoplay",
       "label": "Autoplay",
       "default": true
-    },
-    {
-      "type": "range",
-      "id": "slider_mobile_timeout",
-      "min": 1,
-      "max": 15,
-      "step": 1,
-      "unit": "sec",
-      "label": "Duration between each slide",
-      "default": 5
     },
     {
       "type": "checkbox",
@@ -281,21 +281,44 @@
           "label": "Button font weight level",
           "options": [
             {
+              "value": "100",
+              "label": "100"
+            },
+            {
+              "value": "200",
+              "label": "200"
+            },
+            {
               "value": "300",
-              "label": "Light"
+              "label": "300"
             },
             {
               "value": "400",
-              "label": "Normal"
+              "label": "400"
+            },
+            {
+              "value": "500",
+              "label": "500"
             },
             {
               "value": "600",
-              "label": "Bold"
+              "label": "600"
+            },
+            {
+              "value": "700",
+              "label": "700"
+            },
+            {
+              "value": "800",
+              "label": "800"
+            },
+            {
+              "value": "900",
+              "label": "900"
             }
           ],
-          "default": "400"
+          "default": "500"
         }
-
       ]
     }
   ]

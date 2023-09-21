@@ -7,14 +7,10 @@
             "notice-bar": {
                 "type": "notice-bar",
                 "settings": {
-                    "notice_bar_content_desktop": "<p>شحن مجاني ومنتج من إختيارك عند شرائك بقيمة 400ج.م أو أكثر<\/p>",
-                    "notice_bar_content_mobile": "<p>الشحن المجاني متاح لجميع الطلبات<\/p>",
-                    "notice_bar_content_font_size_desktop": 13,
-                    "notice_bar_content_font_size_mobile": 12,
-                    "notice_bar_height_desktop": 50,
-                    "notice_bar_height_mobile": 45,
-                    "notice_bar_background_color_desktop": "#3C415F",
-                    "notice_bar_background_color_mobile": "#E72E25FF"
+                    "notice_bar_content_text_color": "#FFFFFFFF",
+                    "notice_bar_background_color": "#3C415F",
+                    "notice_bar_content": "<p>شحن مجاني ومنتج من إختيارك عند شرائك بقيمة 400ج.م أو أكثر<\/p>",
+                    "notice_bar_height": 50
                 }
             },
             "main-navbar": {
@@ -37,24 +33,33 @@
                     "block_gkk8ae6rzniqule",
                     "block_glpfko4s63fm6kj",
                     "block_gmrv273jdps9sso"
-                ]
+                ],
+                "settings": {
+                    "cart_badge_color": "#DC5151FF",
+                    "navbar_logo": "logo-2VFLjjhovaJvrEZ3EkN6n6Dawfn.png",
+                    "navbar_links_color": "#3C415F",
+                    "navbar_background_color": "#FFFFFFFF",
+                    "navbar_height": 64,
+                    "navbar_always_on_top": true,
+                    "toggle_navbar": false
+                }
             },
             "main-footer": {
                 "type": "main-footer",
                 "settings": {
                     "footer_background_color": "#3C415F",
                     "mention_and_social_media": true,
-                    "footer_logo": "untitled (5)-2NNASOm8V90nDKvk5iel6w06KP8.png",
-                    "copyright": "<p>جميع الحقوق محفوظة2023<\/p>",
-                    "copyright_image": "untitled (6)-2NNHfAONNDSLFc3DPqrL5tERh4z.png",
-                    "footer_text_color": "#FFFFFFFF"
+                    "mention": "<p>made with ❤️ by YouCan<\/p>",
+                    "footer_text_color": "#F6F9FFFF",
+                    "toggle_footer": false,
+                    "top_border_color": "#ffffff4c"
                 },
                 "blocks": {
                     "block_social": {
                         "type": "social-media",
                         "settings": {
                             "social_media_icon_image": "untitled-2NMs6zT0eQIZZJR8DKeE20QQsoS.png",
-                            "social_media_url": "https:\/\/www.google.com\/"
+                            "social_media_url": "https:\/\/www.google.com"
                         }
                     },
                     "block_nlltx86k7y4b93k": {
@@ -67,7 +72,7 @@
                     "block_o07mmbhyf997iu": {
                         "type": "social-media",
                         "settings": {
-                            "social_media_icon_image": "untitled (3)-2NMsFUfpe6adxpPbwlXjdceEN1N.png",
+                            "social_media_icon_image": "untitled-2NMs6zT0eQIZZJR8DKeE20QQsoS.png",
                             "social_media_url": "https:\/\/www.google.com\/"
                         }
                     }
@@ -83,8 +88,7 @@
         "error_color": "#DF1E2FFF",
         "meta_title": "COD Theme",
         "navbar_height": 60,
-        "navbar_links_hover_transparency": 0.69999999999999996,
-        "neutral_light_color": "#F6F9FF"
+        "navbar_links_hover_transparency": 0.69999999999999996
     },
     "presets": {
         "Default": {}

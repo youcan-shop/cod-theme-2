@@ -1,21 +1,64 @@
 @import 'helpers/mixins';
 
-$sticky-checkout-padding: 20px;
+.sticky-form-wrapper {
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 5px;
+
+  @include breakpoint('md') {
+    border-width: 6px;
+  }
+
+  .express-checkout-title {
+    padding-top: 24px;
+  }
+
+  #express-checkout-form {
+    border: none;
+    padding: 0;
+  }
+
+  .express-checkout-fields {
+    border: none;
+    padding: 0 16px;
+    overflow-y: scroll;
+    max-height: 276px;
+  }
+
+  .form-button {
+    padding: 0 16px 24px 16px;
+  }
+
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .sticky-form-button {
+      width: 100%;
+      padding: 0 16px;
+      margin-bottom: 24px;
+    }
+  }
+}
 
 #express-checkout-form {
   @include breakpoint('md') {
-    border: 6px solid var(--yc-primary-color);
+    border-width: 6px;
+    border-style: solid;
     background: #F8F8F8;
     box-shadow: 1px -1px 23px rgba(0, 0, 0, 0.04);
     border-radius: 4px;
     padding: 20px;
     grid-gap: 18px;
-    height: 100%;
   }
 }
 
 .express-checkout-fields {
-  border: 4px solid var(--yc-primary-color);
+  border-width: 4px;
+  border-style: solid;
   background: #F8F8F8;
   box-shadow: 1px -1px 23px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
@@ -25,39 +68,41 @@ $sticky-checkout-padding: 20px;
   padding: 10px;
 
   @include breakpoint('md') {
+    border-width: 4px;
     border: unset;
     background: unset;
     box-shadow: unset;
     padding: unset;
   }
-
-  label {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    margin: 0 0 6px 0;
-  }
-
-  input {
-    font-family: var(--yc-font-family);
-  }
 }
 
 .express-checkout-title {
-  font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  line-height: 22px;
+  line-height: normal;
   text-align: center;
-  color: #333333;
-  margin-bottom: 10px;
+  color: #333;
 }
 
 .express-checkout-button {
+  display: flex;
+  justify-content: center;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+  font-family: inherit;
+  font-weight: bold;
+
+  span {
+    font-family: inherit;
+    font-weight: inherit;
+
+  }
+
+  .spinner {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 @keyframes slideFromBottom {
@@ -79,56 +124,96 @@ $sticky-checkout-padding: 20px;
   transition-property: all;
   will-change: transform, opacity;
   z-index: 99999;
-  width: 100vw;
+  width: 100%;
+  min-height: max-content;
+  max-height: 70vh;
   background-color: white;
   left: 0;
   bottom: 0;
-  padding: 40px 10px;
-  height: 75vh;
-  overflow: auto;
+  padding-bottom: 0;
 
   @include breakpoint('md') {
-    height: 50vh;
-    align-items: center;
+    max-height: 54vh;
+  }
+
+  .spacer {
+    margin-top: 20px;
+  }
+
+  .cta-bottom-wrapper {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding: 16px 20px;
+    background-color: white;
+    border-top: 1px solid #EBEBEB;
+  }
+
+  .step-2-wrapper {
+    padding: 20px 20px 0 20px;
+    margin-bottom: 75px;
+
+    @include breakpoint('md') {
+      width: 100%;
+      padding: unset;
+      max-width: 940px;
+      padding: 0 20px;
+      margin: 0 auto 37px auto;
+    }
+
+    .close-icon {
+      display: block;
+    }
+  }
+
+  .step_1, .step_2 {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #checkout_step_1, #checkout_step_2 {
+    animation: slideFromBottom 0.2s ease-in-out;
+    will-change: transform;
   }
 
   .close-icon {
+    background: white;
+    color: #C8C8C8;
     position: absolute;
-    top: 15px;
-    right: 35px;
-    cursor: pointer;
-  }
-
-  #checkout_step {
-    flex-direction: column;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: -17px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 32px;
-    padding: 10px;
-    width: 100%;
-    overflow: auto;
-
-    .yc-product-card {
-      width: 100%;
-      height: 100%;
-    }
-
-    .checkout-form {
-      width: 100%;
-      height: 100%;
-    }
-
+    font-size: 32px;
+    border-radius: 4px 4px 0 0;
 
     @include breakpoint('md') {
-      flex-direction: row;
-      align-items: start;
-      gap: 20px;
+      left: unset;
+      transform: unset;
+      bottom: unset;
+      top: 8px;
+      right: 20px;
+    }
+  }
 
-      .yc-product-card {
-        width: 40%;
-      }
+  .sticky-desktop-wrapper {
+    .checkout-form {
+      width: 100%;
+    }
+
+    @include breakpoint('md') {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      gap: 37px;
+      margin-top: 37px;
 
       .checkout-form {
-        width: 50%;
+        padding-bottom: 0;
       }
     }
   }

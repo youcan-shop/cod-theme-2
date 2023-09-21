@@ -2,29 +2,24 @@
 
 {%- style -%}
   .yc-{{ uniq }}-add-to-cart button {
-    background: {{ background_color.hex }} !important;
-    color: {{ text_color.hex }} !important;
-    border: 1px solid {{ border_color.hex }} !important;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    padding: 9px 12px;
+    background: {{ block_settings.background_color.hex }};
+    color: {{ block_settings.text_color.hex }};
+    border: 1px solid;
+    border-color: {{ block_settings.border_color.hex }};
     font-family: var(--yc-font-family);
   }
 
-  .yc-{{ uniq }}-add-to-cart button span {
-    font-weight: 400;
+  .yc-{{ uniq }}-add-to-cart .spinner {
+    width: 21px;
+    height: 21px;
   }
 
-  .yc-{{ uniq }}-add-to-cart button .btn-content {
-    display: flex;
-    gap: 10px;
+  .yc-{{ uniq }}-add-to-cart .btn-content.hidden {
+    display: none !important;
   }
 {%- endstyle -%}
 
-<div class='yc-{{ uniq }}-add-to-cart{% if is_sticky %} is_sticky{% endif %}'>
+<div class='yc-{{ uniq }}-add-to-cart{% if block_settings.is_sticky %} is_sticky{% endif %} add-to-cart-btn'>
   <button
     onclick='addToCart("{{ snippetId }}")'
   >
@@ -32,19 +27,16 @@
       class='spinner hidden'
       id='loading__cart'
     ></span>
-    <span class="btn-content" >
+    <span class="btn-content">
       {% render 'icon', name: 'bag' %}
-      {{ text }}
+      {{ block_settings.text_content }}
     </span>
   </button>
 </div>
 
 {% javascript %}
-  const ADD_TO_CART_EXPECTED_ERRORS = {
-    select_variant: "{{ 'errors.select_variant' | t }}",
-    quantity_smaller_than_zero: "{{ 'errors.quantity_smaller_than_zero' | t }}",
-    upload_image: "{{ 'errors.upload_image' | t }}",
-    product_added: "{{ 'errors.product_added' | t }}"
+
+  const TRANSLATED_TEXT = {
+    empty_inventory: "{{ 'errors.empty_inventory' | t }}"
   }
 {% endjavascript %}
-{{ 'add-to-cart.js' | asset_url | script_tag_deferred }}

@@ -24,12 +24,13 @@
       .links {
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 16px;
 
         .title {
-          font-weight: 500;
+          font-weight: 700;
           font-size: 16px;
           line-height: 20px;
+          margin-bottom: 24px;
         }
       }
     }
@@ -54,14 +55,13 @@
 
   .copyright-wrapper {
     width: 100%;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
     margin-top: 27px;
     padding: 22px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.30);
 
     &, * {
       font-weight: 600;
       font-size: 16px;
-      line-height: 30px;
     }
 
     .container {

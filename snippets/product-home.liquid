@@ -4,7 +4,7 @@
 {{ 'reviews.css' | asset_url | stylesheet_tag }}
 
 
-<div class='product-images-container container'>
+<div class='product-home-container container'>
   <div class='product-block'>
     <div class='image-box'>
       {% if block_settings.tag_text %}
@@ -19,8 +19,6 @@
       {% endif %}
       <img
         loading='lazy'
-        class='main-image'
-        class='main-thumbnail'
         src='{%- if images[0] %}{{images[0]}}{%- else %}{{ 'default_product.jpeg' | asset_url }}{% endif %}'
         alt='{{ product_name }}'
       >
@@ -31,10 +29,13 @@
         {%- case block.type -%}
           {%- when 'product_title' -%}
             <h1 class='product-name'>{{ product.name }}</h1>
+          {%- when 'product_reviews' -%}
             {%- render 'general-review' -%}
           {%- when 'product_price' -%}
             <div class='flex gap-2 items-center'>
-              <h2 class='product-price'>{{ product.price | money }}</h2>
+              {% if product.price %}
+                <h2 class='product-price'>{{ product.price | money }}</h2>
+              {% endif %}
               {% if section.settings.show_compare_at_price and product.compare_at_price != nil %}
                 <h3>
                   <del class="product-compare-price">{{ product.compare_at_price | money }}</del>
@@ -43,7 +44,9 @@
             </div>
         {%- endcase -%}
       {%- endfor -%}
-
+      <div class='product-description'>
+        {{ section.settings.product_description }}
+      </div>
       <a href='{{ product.url }}' class='yc-btn-secondary--large'>إتمام الشراء</a>
     </div>
   </div>

@@ -4,37 +4,26 @@
 
 {%- style -%}
   #product-column-{{ id }} {
-    padding-top: {{ section.settings.space_top}}px;
-    padding-bottom: {{ section.settings.space_bottom}}px;
+    margin-top: {{ section.settings.space_top}}px;
+    margin-bottom: {{ section.settings.space_bottom}}px;
   }
 
-  #product-column-{{ id }} .product-images-container {
+  #product-column-{{ id }} {
     background-color: {{ section.settings.background_color.hex }};
   }
 
-  #product-column-{{ id }} .product-name {
-    color: {{ section.settings.title_color.hex }};
-  }
-
-  @media screen and (max-width: 768px) {
-    #product-column-{{ id }} {
-      display: {% if section.settings.show_product %}block{% else %}none{% endif %};
-    }
-  }
-
+  #product-column-{{ id }} .yc-btn-secondary--large {
+    color: {{ section.settings.button_text_color.hex }};
+}
 {%- endstyle -%}
 
-<section class='product-column' id="product-column-{{ id }}">
-  {%- assign selected_product = section.settings.product %}
+{%- assign selected_product = section.settings.product %}
 
-  {%- if product %}
-    {%- assign selected_product = product %}
-  {%- endif %}
-
-  {%- if selected_product %}
+{%- if selected_product %}
+  <section class='product-column' id='product-column-{{ id }}'>
     {%- render 'product-home', product_id: selected_product.id, product: selected_product, block_settings: section.settings-%}
-  {%- endif %}
-</section>
+  </section>
+{%- endif %}
 
 {%- schema -%}
   {
@@ -45,6 +34,11 @@
         "label": "Product",
         "id": "product",
         "type": "product"
+      },
+      {
+        "label": "Product description",
+        "id": "product_description",
+        "type": "richtext"
       },
       {
         "type": "checkbox",
@@ -58,28 +52,31 @@
         "label": "Background color"
       },
       {
-        "type": "color",
-        "id": "title_color",
-        "label": "Title text color",
-        "default": "#000000"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_product",
-        "label": "Show product on mobile",
-        "default": true
-      },
-      {
-        "type": "number",
+        "type": "range",
         "id": "space_top",
         "label": "Space top",
-        "default": 10
+        "min": 5,
+        "max": 160,
+        "step": 1,
+        "unit": "px",
+        "default": 50
+
       },
       {
-        "type": "number",
+        "type": "range",
         "id": "space_bottom",
         "label": "Space bottom",
-        "default": 10
+        "min": 5,
+        "max": 160,
+        "step": 1,
+        "unit": "px",
+        "default": 50
+      },
+      {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button text color",
+        "default": "#3C415F"
       },
       {
         "type": "text",
@@ -130,6 +127,11 @@
         "type": "product_title"
       },
       {
+        "label": "Reviews",
+        "limit": 1,
+        "type": "product_reviews"
+      },
+      {
         "label": "Price",
         "limit": 1,
         "type": "product_price"
@@ -137,6 +139,3 @@
     ]
   }
 {%- endschema -%}
-
-
-{{ 'product.js' | asset_url | script_tag_deferred }}

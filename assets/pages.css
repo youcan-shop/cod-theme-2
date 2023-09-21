@@ -141,6 +141,10 @@
   height: unset !important;
   line-height: initial !important;
 }
+.yc-page .yc-page-container .contact-us .contact-form .form-group .validate-error {
+  color: red;
+  font-size: 14px;
+}
 .yc-page .yc-page-container .contact-us .contact-form .form-group input::placeholder, .yc-page .yc-page-container .contact-us .contact-form .form-group textarea::placeholder {
   color: #A8A8A8;
 }

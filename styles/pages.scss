@@ -171,6 +171,11 @@
             line-height: initial !important;
           }
 
+          .validate-error {
+            color: red;
+            font-size: 14px;
+          }
+
           input::placeholder, textarea::placeholder {
             color: #A8A8A8;
           }

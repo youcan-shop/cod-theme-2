@@ -113,6 +113,7 @@
   border: 1px solid #F5F5F5;
   width: 81px;
   height: 81px;
+  object-fit: contain;
 }
 .cart-drawer ul .cart-item .item-body {
   display: flex;

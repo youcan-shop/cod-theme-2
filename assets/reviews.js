@@ -69,7 +69,6 @@ const setupReviews = async () => {
     const reviewItem = document.createElement('li')
     reviewItem.classList.add('review-item');
     reviewItem.innerHTML = reviewTemplate(review);
-    console.log(reviewItem);
 
     return reviewsWrapper.appendChild(reviewItem);
   }

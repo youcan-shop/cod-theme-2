@@ -61,7 +61,8 @@
                       "text_content": "أضف إلى السلة",
                       "is_sticky": false,
                       "background_color": "#FFFFFF",
-                      "text_color": "#3C415F"
+                      "text_color": "#3C415F",
+                      "skip_cart": false
                   }
               },
               "block_ir42h43j14h24hd": {

@@ -32,6 +32,13 @@ async function addToCart(snippetId) {
     await updateCartDrawer();
 
     stopLoad('#loading__cart');
+
+    if (IS_CART_SKIPED){
+      window.location.href = CHECKOUT_PAGE_URL;
+
+      return;
+    }
+
     notify(ADD_TO_CART_EXPECTED_ERRORS.product_added, 'success');
     toggleCartDrawer();
   } catch (err) {
@@ -122,7 +129,7 @@ function cartTemplate(item) {
     }
   }
   const variationsString = variationsArray.join('<br/>');
-  
+
   let variationsCheck = ''
   if (variationsString === 'default: default') {
     variationsCheck = ''
@@ -158,7 +165,7 @@ function cartTemplate(item) {
           <button class="remove-item-btn">
             <ion-icon data-cart-item-id="${item.id}" data-product-variant-id="${item.productVariant.id}" name="trash-outline"></ion-icon>
           </button>
-          <!-- 
+          <!--
             <div class="spinner" data-spinner-id="${item.id}" style="display: none;"></div>
             <div class="quantity-control">
               <button class="increase-btn cart-quantity-btn" onclick="increaseCartQuantity('${item.id}', '${item.productVariant.id}')">+</button>

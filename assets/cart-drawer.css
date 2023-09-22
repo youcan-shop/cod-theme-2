@@ -160,7 +160,7 @@
   }
 }
 .cart-drawer ul .cart-item .remove-item-btn, .cart-drawer ul .cart-item .spinner {
-  margin-top: 16px;
+  margin-top: 10px;
   color: #9B9B9B;
   width: max-content;
 }

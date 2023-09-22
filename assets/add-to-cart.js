@@ -121,7 +121,7 @@ function cartTemplate(item) {
       variationsArray.push(`${key}: ${item.productVariant.variations[key]}`);
     }
   }
-  let variationsString = variationsArray.join('<br/>');
+  const variationsString = variationsArray.join('<br/>');
   
   let variationsCheck = ''
   if (variationsString === 'default: default') {

@@ -328,3 +328,26 @@ function preventCartDrawerOpening(templateName) {
   cartDrawerIcon.removeEventListener("click", toggleCartDrawer);
   window.location.reload();
 }
+
+async function directAddToCart(event, productId) {
+  event.preventDefault();
+
+  try {
+    const response = await youcanjs.cart.addItem({
+      productVariantId: productId,
+      quantity: 1
+    });
+
+    if (response.error) throw new Error(response.error);
+
+    updateCartCount(response.count);
+    await updateCartDrawer();
+
+    notify(ADD_TO_CART_EXPECTED_ERRORS.product_added, 'success');
+    toggleCartDrawer();
+  } catch (err) {
+    notify(err.message, 'error');
+  } finally {
+    stopLoad('#loading__cart');
+  }
+}

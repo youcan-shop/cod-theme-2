@@ -35,9 +35,15 @@
       {% endif %}
     </div>
     <div class='product-btn'>
-      <button class="yc-btn-secondary">
-        {{ 'general.buy_now' | t }}
-      </button>
+      {% if settings.direct_add_to_cart %}
+        <button class="yc-btn-secondary" onclick="directAddToCart(event, '{{ item.variants[0].id }}')">
+          {{ 'general.direct_add_to_cart' | t }}
+        </button>
+      {% else %}
+        <button class="yc-btn-secondary">
+          {{ 'general.buy_now' | t }}
+        </button>
+      {% endif %}
     </div>
   </div>
 </a>

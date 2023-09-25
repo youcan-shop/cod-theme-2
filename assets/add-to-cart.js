@@ -165,8 +165,8 @@ function cartTemplate(item) {
           <button class="remove-item-btn">
             <ion-icon data-cart-item-id="${item.id}" data-product-variant-id="${item.productVariant.id}" name="trash-outline"></ion-icon>
           </button>
+          <div class="spinner" data-spinner-id="${item.id}" style="display: none;"></div>
           <!--
-            <div class="spinner" data-spinner-id="${item.id}" style="display: none;"></div>
             <div class="quantity-control">
               <button class="increase-btn cart-quantity-btn" onclick="increaseCartQuantity('${item.id}', '${item.productVariant.id}')">+</button>
               <input type="number" id="quantity-${item.id}" value="${item.quantity}" min="1" onchange="updateCartItem('${item.id}', '${item.productVariant.id}', this.value)">

@@ -55,9 +55,15 @@
                     <span class='product-price'>{{ block.settings.product.price | money }}</span>
                   {% endif %}
                 </div>
-                <button class="yc-btn-secondary--large">
-                  {{ 'general.buy_now' | t }}
-                </button>
+                {% if settings.direct_add_to_cart %}
+                  <button class="yc-btn-secondary--large" onclick="directAddToCart(event, '{{ block.settings.product.variants[0].id }}');">
+                    {{ 'general.direct_add_to_cart' | t }}
+                  </button>
+                {% else %}
+                  <button class="yc-btn-secondary--large">
+                    {{ 'general.buy_now' | t }}
+                  </button>
+                {% endif %}
               </div>
             </div>
           </a>

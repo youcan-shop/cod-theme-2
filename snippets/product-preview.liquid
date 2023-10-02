@@ -35,7 +35,7 @@
       {% endif %}
     </div>
     <div class='product-btn'>
-      {% if settings.direct_add_to_cart %}
+      {% if settings.direct_add_to_cart and item.variants.size <= 1 %}
         <button class="yc-btn-secondary" onclick="directAddToCart(event, '{{ item.variants[0].id }}')">
           {{ 'general.direct_add_to_cart' | t }}
         </button>

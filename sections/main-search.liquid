@@ -16,7 +16,7 @@
 {%- assign products_per_page = section.settings.products_per_page -%}
 
 {%- paginate search.products by products_per_page cod %}
-  <div class='yc-featured-products yc-search-{{id}}' id="stick-footer">
+  <div class='yc-featured-products yc-search-{{id}}'>
     {%- if items %}
       <div class="sort-container container">
         {%- render 'main-sort' -%}

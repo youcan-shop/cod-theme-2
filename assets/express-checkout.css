@@ -113,7 +113,7 @@
   transition: 0.3s ease;
   transition-property: all;
   will-change: transform, opacity;
-  z-index: 99999;
+  z-index: 1001;
   width: 100%;
   min-height: max-content;
   max-height: 70vh;

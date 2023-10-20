@@ -103,60 +103,60 @@
                 <path d="M14.5 25C20.299 25 25 20.299 25 14.5C25 8.701 20.299 4 14.5 4C8.70101 4 4 8.701 4 14.5C4 20.299 8.70101 25 14.5 25Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M21.9258 21.9258L28.0008 28.0008" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              
+
               </button>
             </div>
         {%- endcase %}
       {%- endfor -%}
     </nav>
-    <div class='navigation-drawer navbar-drawer block md:hidden'>
-      <div class='close-drawer-btn'>
-        <ion-icon name="close-outline" class='close-svg'></ion-icon>
-      </div>
-      <div class='logo flex items-center justify-center'>
-        <a href='/'>
-          <img
-            loading='lazy'
-            src='{%- if section.settings.navbar_logo.src -%} {{ section.settings.navbar_logo.src }} {%- else -%} {{ 'cod-logo.png' | asset_url }} {%- endif -%}'
-          >
-        </a>
-      </div>
-        <form
-          action='/search'
-          method='GET'
-          class='mobile-search w-full flex gap-1 items-center'
-          >
-          <input
-            placeholder='{{ 'navbar.search.placeholder' | t }}'
-            type='text'
-            name='q'
-            value=''
-            class='w-full'
-          >
-          <button
-            type='submit'
-          >
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14.5 25C20.299 25 25 20.299 25 14.5C25 8.701 20.299 4 14.5 4C8.70101 4 4 8.701 4 14.5C4 20.299 8.70101 25 14.5 25Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M21.9258 21.9258L28.0008 28.0008" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </form>
-      <div class='flex flex-col items-wrapper'>
-        {% for item in main-link-list.links %}
-          <a
-            class='items flex items-center justify-between'
-            href='{{ item.url }}'
-          >
-            <div>
-              {{ item.title }}
-            </div>
-            <ion-icon name='chevron-forward-outline'></ion-icon>
-          </a>
-        {% endfor %}
-      </div>
-    </div>
   </header>
+  <section class='navigation-drawer navbar-drawer block md:hidden'>
+    <div class='close-drawer-btn'>
+      <ion-icon name="close-outline" class='close-svg'></ion-icon>
+    </div>
+    <div class='logo flex items-center justify-center'>
+      <a href='/'>
+        <img
+          loading='lazy'
+          src='{%- if section.settings.navbar_logo.src -%} {{ section.settings.navbar_logo.src }} {%- else -%} {{ 'cod-logo.png' | asset_url }} {%- endif -%}'
+        >
+      </a>
+    </div>
+      <form
+        action='/search'
+        method='GET'
+        class='mobile-search w-full flex gap-1 items-center'
+        >
+        <input
+          placeholder='{{ 'navbar.search.placeholder' | t }}'
+          type='text'
+          name='q'
+          value=''
+          class='w-full'
+        >
+        <button
+          type='submit'
+        >
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.5 25C20.299 25 25 20.299 25 14.5C25 8.701 20.299 4 14.5 4C8.70101 4 4 8.701 4 14.5C4 20.299 8.70101 25 14.5 25Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21.9258 21.9258L28.0008 28.0008" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+    <div class='flex flex-col items-wrapper'>
+      {% for item in main-link-list.links %}
+        <a
+          class='items flex items-center justify-between'
+          href='{{ item.url }}'
+        >
+          <div>
+            {{ item.title }}
+          </div>
+          <ion-icon name='chevron-forward-outline'></ion-icon>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
 {% endif %}
 
 {%- schema -%}

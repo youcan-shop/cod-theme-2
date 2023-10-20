@@ -110,9 +110,12 @@
       }
     }
 
-    .logo {
-      img {
-        height: min(calc(var(--yc-nav-height) - 20px), 40px);
+    .logo img {
+      max-width: 110px;
+      height: auto;
+
+      @include breakpoint('md') {
+        max-width: 120px;
       }
     }
 

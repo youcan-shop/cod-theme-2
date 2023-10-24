@@ -17,6 +17,14 @@
     flex-direction: row;
   }
 }
+.yc-footer .columns .logo {
+  height: fit-content;
+}
+@media (min-width: 768px) {
+  .yc-footer .columns .logo {
+    margin-top: -12px;
+  }
+}
 .yc-footer .columns .column {
   flex: 1 1 0;
 }

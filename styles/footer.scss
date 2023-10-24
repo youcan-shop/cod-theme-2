@@ -18,6 +18,14 @@
       flex-direction: row;
     }
 
+    .logo {
+      height: fit-content;
+
+      @include breakpoint('md') {
+        margin-top: -12px;
+      }
+    }
+
     .column {
       flex: 1 1 0;
 

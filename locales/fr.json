@@ -48,7 +48,11 @@
       "promo_cta": "Appliquer",
       "total": "Coût total",
       "checkout_cta": "Continuer vers le paiement",
-      "continue_shppping": "Fermer"
+      "continue_shppping": "Fermer",
+      "discount": "Discount",
+      "coupon": "Coupon",
+      "coupon_applied": "Coupon appliqué avec succès",
+      "coupon_removed": "Coupon supprimé avec succès"
     },
     "empty": {
       "title": "Votre panier est actuellement vide.",

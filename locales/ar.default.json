@@ -48,7 +48,11 @@
       "promo_cta": "تأكيد",
       "total": "المجموع",
       "checkout_cta": "الدفع",
-      "continue_shppping": "إغلاق"
+      "continue_shppping": "إغلاق",
+      "discount": "خصم",
+      "coupon": "كوبون",
+      "coupon_applied": "تم تطبيق الكوبون بنجاح",
+      "coupon_removed": "تمت إزالة الكوبون بنجاح"
     },
     "empty": {
       "title": "عربتك فارغة حاليًا.",

@@ -9,9 +9,9 @@
                 "duration_between_each_slide": 3,
                 "slider_mobile_timeout": 4,
                 "slider_arrows": true,
-                "slider_height_percentage": 60,
+                "slider_height_percentage": 50,
                 "slider_overlay_background_color": "#00000000",
-                "slider_arrows_content_size": 26,
+                "slider_arrows_size": 30,
                 "slider_desktop_arrows_color": "#FFFFFFFF",
                 "caption_text_color": "#FFFFFFFF"
             },
@@ -20,8 +20,8 @@
                     "type": "image_picker",
                     "settings": {
                         "image": "daniel-storek-JM-qKEd1GMI-unsplash-2OfIakQKp2aFHsKMEwrbVoICfTm.jpg",
-                        "caption": "<h1>Lenovo QT82 TWS Wireless BT Headphone<\/h1>",
-                        "button_text": "Visit Now 🔥",
+                        "caption": "<p><br><\/p>",
+                        "button_text": "",
                         "button_font_weight": "500"
                     }
                 },
@@ -29,9 +29,9 @@
                     "type": "image_picker",
                     "settings": {
                         "image": "deanna-alys-6LBBOwkPzyQ-unsplash-2OfIaRecGHx4JGVCteF2IV8HnDm.jpg",
-                        "button_font_weight": "500",
                         "caption": "<p><br><\/p>",
-                        "button_text": ""
+                        "button_text": "",
+                        "button_font_weight": "500"
                     }
                 }
             },
@@ -102,15 +102,9 @@
                 "padding_top": 20,
                 "padding_bottom": 20,
                 "show_compare_at_price": true,
-                "countdown_message": "<p>Hurry up! There aren't many items left in stock.<\/p>",
-                "countdown_year": 2024,
-                "countdown_month": 1,
-                "countdown_day": 14,
-                "countdown_hour": 0,
-                "countdown_minute": 0,
                 "row_desktop": 3,
                 "show_product_title": true,
-                "title": "Featured Products",
+                "title": "المنتجات الأكتر مبيعاً",
                 "section_title_position": "center",
                 "countdown_enabled": false,
                 "text_color": "#000000FF",
@@ -163,7 +157,7 @@
             "settings": {
                 "margin_top": 20,
                 "margin_bottom": 20,
-                "countdown_message": "<p>سارع قبل فوات الاوان :<\/p>",
+                "countdown_message": "<p>ينتهي في :<\/p>",
                 "countdown_year": 2024,
                 "countdown_month": 1,
                 "countdown_day": 14,
@@ -190,7 +184,7 @@
                 "slider_timeout": 15,
                 "background_color": "#F6F9FFFF",
                 "text_color": "#3C415FFF",
-                "title": "عروض محدودة",
+                "title": "عرض خاص",
                 "slider_arrows_color": "#3D415DFF"
             },
             "blocks": {

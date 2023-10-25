@@ -11,7 +11,7 @@
 
   .upsell-content {
     img {
-    margin: auto;
+      margin: auto;
     }
   }
 
@@ -26,44 +26,44 @@
 
     .upsell-submit-yes,
     .upsell-submit-no {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-family: var(--yc-font-family);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: var(--yc-font-family);
     }
 
-  .upsell-submit-yes {
-    padding: 14px;
+    .upsell-submit-yes {
+      padding: 14px;
     }
 
     .upsell-submit-no {
-    padding: 12px 10px;
+      padding: 12px 10px;
     }
 
     .text-small {
-    font-size: 15px;
+      font-size: 15px;
     }
 
     .text-medium {
-    font-size: 19px;
+        font-size: 19px;
     }
 
     .text-large {
-    font-size: 22px;
+        font-size: 22px;
     }
 
     .size-small {
-    width: 50%;
+        width: 50%;
     }
 
     .size-medium {
-    width: 70%;
+        width: 70%;
     }
 
     .size-large {
-    width: 100%;
+        width: 100%;
     }
   }
 

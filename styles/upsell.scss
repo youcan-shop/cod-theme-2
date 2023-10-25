@@ -1,116 +1,73 @@
 @import 'helpers/mixins';
 
 .upsell-page {
-  display: grid;
-  place-items: center;
-  text-align: center;
-  background-color: #F7F7F7;
-  position: relative;
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 50px 20px;
 
-  .upsell-container {
-    width: 100%;
-
-    #upsell-form {
-      position: sticky;
-      bottom: 0;
-    }
-
+  @include breakpoint('lg') {
+    padding: 50px 0;
   }
 
   .upsell-content {
-    margin: 0 auto;
-    padding: 42px;
-    max-width: var(--page-max-width);
     img {
-      margin: auto;
-    }
-    h1 {
-      font-weight: 500;
-      color: #333333;
-      line-height: 29px;
-      font-size: 24px;
-    }
-
-    h2 {
-      font-size: 20px;
-      line-height: 22px;
-    }
-
-    p {
-      color: #333333;
-      font-size: 18px;
-      line-height: 22px;
-      font-weight: 300;
-    }
-    @media (max-width: 768px) {
-      padding: 16px;
+    margin: auto;
     }
   }
 
   .upsell-form-submit {
-    box-shadow: 0px -10px 10px 0px #00000007; 
-    padding: 42px;
+    padding: 23px 0;
     background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
 
-    .upsell-form-submit-content {
-      display: flex;
-      max-width: var(--page-max-width);
-      margin: 0 auto;
-      justify-content: center;
-      align-items: center;
-      gap: 24px;
-
-      .upsell-submit-yes,
-      .upsell-submit-no {
-        height: 60px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-transform: uppercase;
-        font-weight: 600;
-        padding: 16px 18px;
-        border-radius: 5px;
-      }
-
-      .upsell-submit-no {
-        border-width: 1px;
-        border-style: solid;
-      }
-  
-      .text-small {
-        font-size: 15px;
-      }
-      
-      .text-medium {
-          font-size: 19px;
-      }
-      
-      .text-large {
-          font-size: 22px;
-      }
-      
-      .size-small {
-          width: 50%;
-      }
-      
-      .size-medium {
-          width: 70%;
-      }
-      
-      .size-large {
-          width: 100%;
-      }
-
-      @media (max-width: 640px) {
-        flex-direction: column;
-        .size-small,
-        .size-medium  {
-          width: 100%;
-        }
-      }
+    .upsell-submit-yes,
+    .upsell-submit-no {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: var(--yc-font-family);
     }
-    @media (max-width: 640px) {
-      padding: 24px;
+
+  .upsell-submit-yes {
+    padding: 14px;
     }
+
+    .upsell-submit-no {
+    padding: 12px 10px;
+    }
+
+    .text-small {
+    font-size: 15px;
+    }
+
+    .text-medium {
+    font-size: 19px;
+    }
+
+    .text-large {
+    font-size: 22px;
+    }
+
+    .size-small {
+    width: 50%;
+    }
+
+    .size-medium {
+    width: 70%;
+    }
+
+    .size-large {
+    width: 100%;
+    }
+  }
+
+  @include max-screen('md') {
+    padding: 50px 16px;
   }
 }

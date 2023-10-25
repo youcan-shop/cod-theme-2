@@ -120,6 +120,7 @@ button {
 .yc-btn {
   background: var(--yc-primary-color);
   border: 1px solid var(--yc-primary-color) !important;
+  font-family: inherit;
   color: white;
   padding: 10px 12px;
   transition: all 0.15s ease-in-out 0s;
@@ -142,6 +143,7 @@ button {
 .yc-btn-secondary {
   border: 1px solid var(--yc-primary-color);
   color: var(--yc-primary-color);
+  font-family: inherit;
   padding: 14px 10px;
   font-size: 14px;
   font-weight: 400;
@@ -172,6 +174,7 @@ button {
 .yc-btn-secondary--large {
   border: 1px solid var(--yc-primary-color);
   color: var(--yc-primary-color);
+  font-family: inherit;
   padding: 2px 20px;
   border-radius: 4px;
   display: flex;

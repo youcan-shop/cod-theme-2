@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .yc-product-reviews {
   margin-bottom: 80px;
   max-width: 904px;
@@ -289,7 +290,7 @@
 #reviewForm .star-rating input[type=radio]:checked ~ label,
 #reviewForm .star-rating input[type=radio] + label:hover,
 #reviewForm .star-rating input[type=radio] + label:hover ~ label {
-  color: #FDD07A;
+  color: var(--yc-reviews-stars-background);
 }
 #reviewForm .star-rating label {
   color: #ccc;

@@ -318,7 +318,7 @@
       &:checked ~ label,
       + label:hover,
       + label:hover ~ label {
-        color: #FDD07A;
+        color: var(--yc-reviews-stars-background);
       }
     }
 

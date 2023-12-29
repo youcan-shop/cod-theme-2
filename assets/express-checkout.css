@@ -49,6 +49,10 @@
   }
 }
 
+#express-checkout-form * {
+  font-family: var(--yc-font-family);
+}
+
 .express-checkout-fields {
   border-width: 4px;
   border-style: solid;

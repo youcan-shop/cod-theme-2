@@ -25,6 +25,7 @@
       0% {
         transform: translateY(-100%);
       }
+
       100% {
         transform: translateY(0);
       }
@@ -35,10 +36,10 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    height: var(--yc-nav-height);
+    min-height: var(--yc-nav-height);
     z-index: 100;
     background-color: var(--yc-nav-background);
-    padding: 0 20px;
+    padding: 8px 20px;
 
     *:not(span):not(input) {
       @extend .items-configs;
@@ -46,7 +47,7 @@
 
     @include breakpoint('md') {
       grid-template-columns: repeat(3, 1fr);
-      padding: 0 40px;
+      padding: 8px 40px;
     }
 
     :first-child {
@@ -66,7 +67,7 @@
       align-items: center;
       gap: 16px;
 
-      & > * {
+      &>* {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -80,6 +81,7 @@
           display: flex;
         }
       }
+
       .cart {
         font-size: 1.5rem;
         cursor: pointer;
@@ -120,7 +122,9 @@
     }
 
     @media screen and (max-width: 767px) {
-      .menu, .menu-toggler {
+
+      .menu,
+      .menu-toggler {
         height: 30px;
       }
     }
@@ -174,6 +178,7 @@
           0% {
             width: 0;
           }
+
           100% {
             width: 40%;
           }

@@ -1,6 +1,10 @@
 {% assign id = 100 | rand: 2000 %}
 
 {% style %}
+  .section-slider-{{ id }} #yc_slider_{{ id }} .splide__arrow {
+    --slider-height: {{- section.settings.slider_height_percentage -}}vh;
+  }
+
   .section-slider-{{ id }} #yc_slider_{{ id }} .splide__arrow svg {
     height: {{ section.settings.slider_arrows_size }}px;
     width: {{ section.settings.slider_arrows_size }}px;

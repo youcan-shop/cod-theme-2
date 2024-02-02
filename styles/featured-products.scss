@@ -87,10 +87,6 @@
         }
       }
 
-      .featured-product-placeholder {
-        cursor: not-allowed;
-      }
-
       .product-details {
         padding: 16px;
         margin: 0;
@@ -203,6 +199,10 @@
         }
       }
     }
+  }
+
+  .featured-product-placeholder {
+    cursor: not-allowed;
   }
 
   .button-container {

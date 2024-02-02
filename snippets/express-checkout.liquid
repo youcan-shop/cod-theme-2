@@ -65,11 +65,17 @@
     color: {{ settings.input_placeholder_color.hex }};
   }
   {% endif %}
+
+  .express-checkout-placeholder .express-checkout-button {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 {% endstyle %}
 
 <form
   id='express-checkout-form'
-  class='custom-checkout-{{ checkout_id }}'
+  class='custom-checkout-{{ checkout_id }}
+  {% if is_placeholder %}express-checkout-placeholder{% endif %}'
   onsubmit="return false;"
 >
   <div class='express-checkout-fields'>
@@ -104,6 +110,7 @@
       <button
         type='submit'
         class='express-checkout-button'
+        {% if is_placeholder %} disabled {% endif %}
         onclick='placeOrder(this)'
       >
         <span

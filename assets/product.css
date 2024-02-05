@@ -329,6 +329,16 @@
   font-weight: 400;
 }
 
+.add-to-cart-btn button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.add-to-cart-btn:disabled {
+  background-color: #E7E7E7;
+  color: #8D8D8D;
+}
+
 .single-product-placeholder .product-images svg {
   width: 100%;
   height: 333px;

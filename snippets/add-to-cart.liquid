@@ -20,8 +20,9 @@
 {%- endstyle -%}
 
 <div class='yc-{{ uniq }}-add-to-cart{% if block_settings.is_sticky %} is_sticky{% endif %} add-to-cart-btn'>
-  <button {% if is_placeholder %} disabled {% endif %}
+  <button
     onclick='addToCart("{{ snippetId }}")'
+    {% if is_placeholder %} disabled {% endif %}
   >
     <span
       class='spinner hidden'

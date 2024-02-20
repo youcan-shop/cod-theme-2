@@ -1,6 +1,5 @@
 async function placeOrder() {
   const expressCheckoutForm = document.querySelector('#express-checkout-form');
-
   let fields = Object.fromEntries(new FormData(expressCheckoutForm));
 
   load('#loading__checkout');
@@ -20,37 +19,7 @@ async function placeOrder() {
         redirectToThankyouPage();
       })
       .onValidationErr((err) => {
-        const form = document.querySelector('#express-checkout-form');
-        const formFields = Object.keys(err.meta.fields);
-
-        if (!form || !formFields) return;
-
-        formFields.forEach((field) => {
-          const fieldName = field.indexOf('extra_fields') > -1 ? field.replace('extra_fields.', 'extra_fields[') + ']' : field;
-          const input = form.querySelector(`input[name="${fieldName}"]`);
-          const errorEl = form.querySelector(`.validation-error[data-error="${field}"]`);
-
-          if (input) {
-            input.classList.add('error');
-          }
-
-          if (errorEl) {
-            errorEl.innerHTML = err.meta.fields[field][0];
-          }
-
-          input.addEventListener('input', () => {
-            input.classList.remove('error');
-            errorEl.innerHTML = '';
-          });
-        });
-
-        notify(err.detail, 'error');
-
-        const formTop = form.getBoundingClientRect().top;
-
-        if(!document.querySelector('#yc-sticky-checkout')) {
-          window.scrollBy({ top: formTop - window.innerHeight / 3, behavior: 'smooth' });
-        }
+        displayValidationErrors(err);
       })
       .onSkipShippingStep((data, redirectToShippingPage) => {
         redirectToShippingPage();
@@ -62,5 +31,61 @@ async function placeOrder() {
     notify(e.message, 'error');
   } finally {
     stopLoad('#loading__checkout');
+  }
+}
+
+function displayValidationErrors(err) {
+  const form = document.querySelector('#express-checkout-form');
+  const errorDetails = err.meta.fields;
+
+  if (!form || !Object.keys(errorDetails).length) return;
+
+  form.querySelectorAll('.validation-error').forEach(el => {
+    el.textContent = '';
+    el.previousElementSibling?.classList.remove('error');
+  });
+
+  const setError = (inputName, message) => {
+    const input = form.querySelector(`[name="${inputName}"]`);
+    const errorEl = form.querySelector(`.validation-error[data-error-for="${inputName}"]`);
+
+    if (input && errorEl) {
+      input.classList.add('error');
+      errorEl.textContent = message;
+      return true;
+    }
+    return false;
+  };
+
+  Object.entries(errorDetails).forEach(([field, messages]) => {
+    let inputName = `extra_fields[${field}]`;
+    if (!setError(inputName, messages[0])) {
+      if (field.startsWith('extra_fields.')) {
+        inputName = field.replace('extra_fields.', 'extra_fields[') + ']';
+        if (!setError(inputName, messages[0])) {
+          notify(`Error element not found for field: ${field}`, 'error');
+        }
+      } else {
+        notify(`Error element not found for field: ${field}`, 'error');
+      }
+    }
+  });
+}
+
+function normalizeFieldName(field) {
+  return field.includes('extra_fields')
+    ? field.replace('extra_fields.', 'extra_fields[') + ']'
+    : field;
+}
+
+function clearError(input, errorEl) {
+  input.classList.remove('error');
+  if (errorEl) errorEl.textContent = '';
+}
+
+function scrollToFirstError(form) {
+  const firstError = form.querySelector('.error');
+  if (firstError) {
+    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }

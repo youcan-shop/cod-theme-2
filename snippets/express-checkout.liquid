@@ -25,7 +25,7 @@
     grid-gap: {{ settings.inputs_gap }}px;
   }
 
-  .custom-checkout-{{ checkout_id }} input, textarea {
+  .custom-checkout-{{ checkout_id }} input, textarea, .select {
     padding: {{ settings.input_padding }}px;
     border-radius: {{ settings.input_border_radius }}px;
     font-size: {{ settings.input_text_size }}px !important;
@@ -72,7 +72,7 @@
   }
 {% endstyle %}
 
-<form 
+<form
   id='express-checkout-form'
    class='custom-checkout-{{ checkout_id }}
     {% if is_placeholder %}express-checkout-placeholder{% endif %}'
@@ -82,7 +82,7 @@
     {%- for field in checkout.fields -%}
       <div class='express-checkout-field'>
         {%- if field.type == 'select' -%}
-          <div class='dropdown-input'>
+          <div class='dropdown-input select'>
             <div class='dropbtn'>
               <span class='option-name'>{{ field.placeholder | default: 'Select option' }}</span>
               <ion-icon name='chevron-down-outline' class='dropdown-icon'></ion-icon>

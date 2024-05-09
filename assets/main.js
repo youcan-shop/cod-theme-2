@@ -328,3 +328,4 @@ if (FORM.errors) {
   let decodedText = decodeHtmlEntities(FORM.errors);
   notify(renderTextContent(decodedText), 'error', 20000);
 }
+

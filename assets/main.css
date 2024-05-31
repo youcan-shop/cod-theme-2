@@ -223,6 +223,8 @@ input:not([type=radio]), select {
 }
 
 textarea {
+  font-family: var(--yc-font-family);
+  font-weight: 500 !important;
   min-height: 38px;
   outline: none;
 }

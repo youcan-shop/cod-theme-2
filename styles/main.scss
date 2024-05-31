@@ -230,7 +230,7 @@ input:not([type='radio']), select {
 
 textarea {
   min-height: 38px;
-  font-family: var(--yc-font-family);
+  outline: none;
 }
 
 * {

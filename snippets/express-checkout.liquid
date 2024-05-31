@@ -68,6 +68,11 @@
   }
   {% endif %}
 
+  .custom-checkout-{{ checkout_id }} select,
+  .custom-checkout-{{ checkout_id }} textarea {
+    padding: calc({{ settings.input_padding }}px - 4px);
+  }
+
   .express-checkout-placeholder .express-checkout-button {
     opacity: 0.5;
     cursor: not-allowed;

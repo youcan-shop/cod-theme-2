@@ -64,7 +64,3 @@ async function placeOrder() {
     stopLoad('#loading__checkout');
   }
 }
-
-function displayValidationErrors(err) {
-
-}

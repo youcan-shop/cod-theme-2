@@ -21,9 +21,9 @@ async function placeOrder() {
       .onValidationErr((err) => {
         const form = document.querySelector('#express-checkout-form');
         const formFields = Object.keys(err.meta.fields);
-      
+
         if (!form || !formFields) return;
-      
+
         formFields.forEach(field => {
           const fieldName = field.indexOf('extra_fields') > -1 ? field.replace('extra_fields.', 'extra_fields[') + ']' : field;
 

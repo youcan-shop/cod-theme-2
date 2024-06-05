@@ -19,7 +19,38 @@ async function placeOrder() {
         redirectToThankyouPage();
       })
       .onValidationErr((err) => {
-        displayValidationErrors(err);
+        const form = document.querySelector('#express-checkout-form');
+        const formFields = Object.keys(err.meta.fields);
+      
+        if (!form || !formFields) return;
+      
+        formFields.forEach(field => {
+          const fieldName = field.indexOf('extra_fields') > -1 ? field.replace('extra_fields.', 'extra_fields[') + ']' : field;
+
+          const formField = form.querySelector(`[name="${fieldName}"]`);
+          const errorEl = form.querySelector(`.validation-error[data-error="${fieldName}"]`);
+          if (formField) {
+            console.log(formField);
+            formField.classList.add('error');
+          }
+
+          if (errorEl) {
+            errorEl.innerHTML = err.meta.fields[field][0];
+          }
+
+          formField.addEventListener('formField', () => {
+            formField.classList.remove('error');
+            errorEl.innerHTML = '';
+          });
+        });
+
+        notify(err.detail, 'error');
+
+        const formTop = form.getBoundingClientRect().top;
+
+        if(!document.querySelector('#yc-sticky-checkout')) {
+          window.scrollBy({ top: formTop - window.innerHeight / 3, behavior: 'smooth' });
+        }
       })
       .onSkipShippingStep((data, redirectToShippingPage) => {
         redirectToShippingPage();
@@ -35,36 +66,5 @@ async function placeOrder() {
 }
 
 function displayValidationErrors(err) {
-  const form = document.querySelector('#express-checkout-form');
-  const formFields = Object.keys(err.meta.fields);
 
-  if (!form || !formFields) return;
-
-  formFields.forEach(field => {
-    const fieldName = field.indexOf('extra_fields') > -1 ? field.replace('extra_fields.', 'extra_fields[') + ']' : field;
-
-    const formField = form.querySelector(`[name="${fieldName}"]`);
-    const errorEl = form.querySelector(`.validation-error[data-error="${fieldName}"]`);
-    if (formField) {
-      console.log(formField);
-      formField.classList.add('error');
-    }
-
-    if (errorEl) {
-      errorEl.innerHTML = err.meta.fields[field][0];
-    }
-
-    formField.addEventListener('formField', () => {
-      formField.classList.remove('error');
-      errorEl.innerHTML = '';
-    });
-  });
-
-  notify(err.detail, 'error');
-
-  const formTop = form.getBoundingClientRect().top;
-
-  if(!document.querySelector('#yc-sticky-checkout')) {
-    window.scrollBy({ top: formTop - window.innerHeight / 3, behavior: 'smooth' });
-  }
 }
